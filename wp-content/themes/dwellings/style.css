@@ -696,6 +696,12 @@ object {
 .gallery-caption {
   display: block; }
 
-/*# sourceMappingURL=style.css.map */
+/*--------------------------------------------------------------
+# layout
+--------------------------------------------------------------*/
+.logo {
+  width: 131px;
+  height: 57px;
+  overflow: hidden; }
 
-/*main style*/
+/*# sourceMappingURL=style.css.map */
