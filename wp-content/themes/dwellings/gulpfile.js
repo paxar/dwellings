@@ -24,13 +24,14 @@ plumberErrorHandler = {
 };
 
 gulp.task('sass', function(){ // Создаем таск Sass
-    return gulp.src('sass/**/*.scss') // Берем источник
+    return gulp.src('sass/style.scss') // Берем источник в котором собраны все файлы
         .pipe(plumber(plumberErrorHandler))
         .pipe(sourcemaps.init()) // подключаем sourcemaps
         .pipe(sass().on ('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
         .pipe(autoprefixer(['last 3 versions'], { cascade: true })) // Создаем префиксы
         .pipe(sourcemaps.write('.')) // записываем sourcemaps
         .pipe(gulp.dest('.')) // Выгружаем результаты в папку
+        .pipe(notify("Done!")) // Подтверждение выполнение результатов
 });
 
 

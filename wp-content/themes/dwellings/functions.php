@@ -67,6 +67,13 @@ function dwellings_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
+    // Add theme support for Custom Logo.
+    add_theme_support( 'custom-logo', array(
+        'width'       => 131,
+        'height'      => 57,
+        'flex-width'  => true,
+    ) );
 }
 endif;
 add_action( 'after_setup_theme', 'dwellings_setup' );
