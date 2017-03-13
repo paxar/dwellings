@@ -18,6 +18,7 @@ define('WP_SITEURL','http://your_localhost');
 
 http://dev-dwellings.pantheonsite.io/
 
+
 **MySQL database settings**
 
 'DB_NAME', 'dwellings'
