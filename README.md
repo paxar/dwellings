@@ -2,6 +2,12 @@
 
 bla bla
 
+**Wordpress settings**
+
+login: admin
+
+pass: 147852
+
 **MySQL database settings**
 
 'DB_NAME', 'dwellings'
