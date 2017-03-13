@@ -1,6 +1,6 @@
 **Dwellings project**
 
-bla bla bla
+bla bla
 
 **MySQL database settings**
 
