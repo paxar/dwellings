@@ -15,6 +15,61 @@ function dwellings_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
+    /*--------------------------------------------------------------
+    # Hero section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'hero-section',
+        array(
+            'title' => esc_html__('Hero settings'),
+            'priority' => 10,
+        )
+    );
+    $wp_customize->add_setting(
+        'hero-intro'
+    );
+    $wp_customize->add_control(
+        'hero-intro',
+        array(
+            'label' => esc_html__('Intro'),
+            'section' => 'hero-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'hero_description'
+    );
+    $wp_customize->add_control(
+        'hero_description',
+        array(
+            'label' => esc_html__('Intro description'),
+            'section' => 'hero-section',
+            'type' => 'textarea'
+        )
+    );
+    $wp_customize->add_setting(
+        'btn_url'
+    );
+    $wp_customize->add_control(
+        'btn_url',
+        array(
+            'label' => esc_html__('Button URL'),
+            'section' => 'hero-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'btn_text'
+    );
+    $wp_customize->add_control(
+        'btn_text',
+        array(
+            'label' => esc_html__('Button text'),
+            'section' => 'hero-section'
+        )
+    );
+
+    /*--------------------------------------------------------------
+    # Donate page
+    --------------------------------------------------------------*/
     $wp_customize->add_section(
         'cover-donate',
         array(
@@ -46,6 +101,7 @@ function dwellings_customize_register( $wp_customize ) {
             'type' => 'textarea'
         )
     );
+
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 
