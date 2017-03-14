@@ -120,7 +120,7 @@ function dwellings_scripts() {
     /*Add scripts*/
     wp_enqueue_script( 'jquery' );
 
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/vendors/bootstrap-sass/assets/javascripts/bootstrap.min.js' );
+    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/vendors/bootstrap-sass/assets/javascripts/bootstrap.min.js', [] );
 
 }
 add_action( 'wp_enqueue_scripts', 'dwellings_scripts' );
