@@ -22,9 +22,8 @@
 <body <?php body_class(); ?>>
 <nav id="page" class="site">
 	<!--<a class="skip-link screen-reader-text" href="#content"><?php /*esc_html_e( 'Skip to content', 'dwellings' ); */?></a>-->
-
-	<header id="masthead" class="site-header" role="banner">
-        <div class="container">
+    <div class="container">
+        <header id="masthead" class="site-header" role="banner">
             <h1 class="logo">
                 <?php the_custom_logo(); ?>
                 Dwellings
@@ -36,8 +35,7 @@
 
                 <?php wp_nav_menu(array('them_location' => 'menu-1', 'container' => false, 'menu_class' => 'navigation')) ?>
 
-        </div><!-- .container -->
-
-	</header><!-- #masthead -->
+        </header><!-- #masthead -->
+    </div><!-- .container -->
 
 	<main id="content" class="site-content">

@@ -1,0 +1,36 @@
+.hero {
+  padding: 150px 0;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  .intro {
+    font: 800 30px $lato;
+  }
+  .intro-description {
+    margin: 30px 0;
+    font: 400 18px $lato;
+  }
+  .btn {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    .intro {
+      font-size: 45px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .hero {
+    padding: 200px 0 250px;
+    .intro {
+      font-size: 60px;
+    }
+    .intro-description {
+      margin: 50px 0;
+    }
+  }
+}

@@ -66,6 +66,19 @@ function dwellings_customize_register( $wp_customize ) {
             'section' => 'hero-section'
         )
     );
+    $wp_customize->add_setting(
+        'bg-hero'
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'bg-hero',
+            array(
+                'label' => esc_html__('Background image'),
+                'section' => 'hero-section'
+            )
+        )
+    );
 
     /*--------------------------------------------------------------
     # Donate page
@@ -104,6 +117,18 @@ function dwellings_customize_register( $wp_customize ) {
 
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
+
+function bg_hero() {
+    ?>
+    <style type="text/css">
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(<?php echo get_theme_mod('bg-hero') ?>) 50% 0 /cover no-repeat;
+        }
+    </style>
+    <?php
+}
+add_action('wp_head', 'bg_hero');
+
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.

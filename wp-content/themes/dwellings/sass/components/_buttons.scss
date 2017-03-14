@@ -1,0 +1,20 @@
+.btn {
+  display: block;
+  padding: 17px;
+  width: 192px;
+  height: 55px;
+  text-align: center;
+  border: 0;
+  background-color: $brand-color;
+  border-radius: 4px;
+  font: 400 16px $lato;
+  transition: 0.3s all ease-out;
+  text-transform: uppercase;
+  color: #000;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background: #fff;
+  }
+}
