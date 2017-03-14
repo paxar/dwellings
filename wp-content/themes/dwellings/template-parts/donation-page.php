@@ -11,7 +11,8 @@ Template Name: Template donation page
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <div class="cover-organization">
-                            <?php echo get_theme_mod('cover_organization-url'); ?>
+                            <iframe width="560" height="315" src="<?php echo get_theme_mod('cover_organization-url'); ?>" frameborder="0" allowfullscreen>
+                            </iframe>
                         </div>
                         <h2 class="title-cover">
                             <?php echo get_theme_mod('cover_title'); ?>
