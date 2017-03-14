@@ -15,15 +15,15 @@ function dwellings_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-	$cover = array("organization-url", "title", "description");
-    for ($i=0; $i<count($cover); $i++) {
-	$wp_customize->add_section(
+    $wp_customize->add_section(
         'cover-donate',
         array(
             'title' => esc_html__('Donation page'),
             'priority' => 10,
         )
     );
+	$cover = array("organization-url", "title");
+    for ($i=0; $i<count($cover); $i++) {
         $wp_customize->add_setting(
             'cover_'.$cover[$i]
         );
@@ -35,6 +35,17 @@ function dwellings_customize_register( $wp_customize ) {
             )
         );
     }
+    $wp_customize->add_setting(
+        'cover_description'
+    );
+    $wp_customize->add_control(
+        'cover_description',
+        array(
+            'label' => esc_html__('Cover description'),
+            'section' => 'cover-donate',
+            'type' => 'textarea'
+        )
+    );
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 
