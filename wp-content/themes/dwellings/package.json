@@ -1,15 +1,11 @@
 {
-  "name": "homework",
+  "name": "dwellings",
   "version": "1.0.0",
-  "description": "homework geekhub",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "description": "from geekhub",
+  "main": "",
+  "author": "geekhub",
+  "license": "UNLICENSED",
   "devDependencies": {
-    "browser-sync": "^2.18.5",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",

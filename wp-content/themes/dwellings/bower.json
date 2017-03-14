@@ -1,9 +1,9 @@
 {
-  "name": "homework",
-  "description": "homework geekhub",
+  "name": "dwellings",
+  "description": "from geekhub",
   "main": "index.js",
   "authors": [
-    "Pavel Charchenko <paxar81@gmail.com>"
+    "geekhub <info@geekhub.ck.ua>"
   ],
   "license": "ISC",
   "homepage": "https://github.com/paxar/HomeWork9",
@@ -11,12 +11,15 @@
     "**/.*",
     "node_modules",
     "bower_components",
+    "vendors",
     "test",
     "tests",
-    "app/libs/"
+    "libs"
   ],
-  "dependencies": {},
-  "devDependencies": {
-    "bootstrap": "^3.3.7"
-  }
+  "dependencies": {
+    "jquery": "3.1.1",
+    "bootstrap-sass": "^3.3.7",
+    "meyer-reset": "*"
+  },
+  "devDependencies": {}
 }
