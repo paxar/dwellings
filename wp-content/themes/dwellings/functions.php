@@ -114,7 +114,7 @@ add_action( 'widgets_init', 'dwellings_widgets_init' );
 function dwellings_scripts() {
     /*Add styles*/
 
-    wp_enqueue_style('vendor_css', get_template_directory_uri() . '/vendor.css');
+    wp_enqueue_style('vendor_css', get_template_directory_uri() . '/css/vendor.css');
 
     wp_enqueue_style('style_css', get_stylesheet_uri(), ['vendor_css']);
 

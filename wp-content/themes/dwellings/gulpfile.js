@@ -40,7 +40,7 @@ gulp.task('vendor', function(){
         .pipe(sass().on ('error', sass.logError))
         .pipe(autoprefixer(['last 3 versions'], { cascade: true }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('.'))
+        .pipe(gulp.dest('css/'))
         .pipe(notify("Done!"))
 });
 
