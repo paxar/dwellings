@@ -1,20 +1,19 @@
-/*  Gulp config for Word Press    ver:  0.1 beta   */
+/*  Gulp config for Word Press    ver:  0.2 beta   */
 
-var gulp       = require('gulp'), // Подключаем Gulp
-    sass         = require('gulp-sass'), //Подключаем Sass пакет,
-    //browserSync  = require('browser-sync'), // Подключаем Browser Sync
-    concat       = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
-    //uglify       = require('gulp-uglifyjs'), // Подключаем gulp-uglifyjs (для сжатия JS)
-    cssnano      = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
-    rename       = require('gulp-rename'), // Подключаем библиотеку для переименования файлов
-    del          = require('del'), // Подключаем библиотеку для удаления файлов и папок
-    //imagemin     = require('gulp-imagemin'), // Подключаем библиотеку для работы с изображениями
-    //pngquant     = require('imagemin-pngquant'), // Подключаем библиотеку для работы с png
-    cache        = require('gulp-cache'), // Подключаем библиотеку кеширования
-    autoprefixer = require('gulp-autoprefixer');// Подключаем библиотеку для автоматического добавления префиксов
-plumber = require('gulp-plumber');  //не тормозим при ошибках
-sourcemaps = require('gulp-sourcemaps');  //исходные пути SCSS
-notify = require("gulp-notify");
+var gulp = require('gulp'), // Includes Gulp
+    sass = require('gulp-sass'), //Includes Sass package
+    concat = require('gulp-concat'), // Includes concat package
+    //uglify = require('gulp-uglifyjs'), // Includes js file compression package
+    cssnano = require('gulp-cssnano'), // Includes css file compression package
+    rename = require('gulp-rename'), // Includes rename package
+    del = require('del'), // Includes files delete package
+    //imagemin = require('gulp-imagemin'), // Includes images package
+    //pngquant = require('imagemin-pngquant'), // Includes png files package
+    cache = require('gulp-cache'), // Includes cache package
+    autoprefixer = require('gulp-autoprefixer'); // Includes autoprefixer package
+    plumber = require('gulp-plumber'); // Includes error package
+    sourcemaps = require('gulp-sourcemaps'); // Includes sourcemaps package
+    notify = require("gulp-notify"); // Includes notify package
 
 plumberErrorHandler = {
     errorHandler: notify.onError({
@@ -23,25 +22,31 @@ plumberErrorHandler = {
     })
 };
 
-gulp.task('sass', function(){ // Создаем таск Sass
-    return gulp.src('sass/style.scss') // Берем источник в котором собраны все файлы
+gulp.task('style', function(){
+    return gulp.src('sass/style.scss')
         .pipe(plumber(plumberErrorHandler))
-        .pipe(sourcemaps.init()) // подключаем sourcemaps
-        .pipe(sass().on ('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
-        .pipe(autoprefixer(['last 3 versions'], { cascade: true })) // Создаем префиксы
-        .pipe(sourcemaps.write('.')) // записываем sourcemaps
-        .pipe(gulp.dest('.')) // Выгружаем результаты в папку
-        .pipe(notify("Done!")) // Подтверждение выполнение результатов
+        .pipe(sourcemaps.init())
+        .pipe(sass().on ('error', sass.logError))
+        .pipe(autoprefixer(['last 3 versions'], { cascade: true }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('.'))
+        .pipe(notify("Done!"))
 });
 
-
-
-
-gulp.task('watch', [/*'browser-sync',*/ 'sass' /*, 'scripts'*/], function() {
-    gulp.watch('sass/**/*.scss', ['sass']); // Наблюдение за sass файлами в папке sass
-
+gulp.task('vendor', function(){
+    return gulp.src('sass/vendor.scss')
+        .pipe(plumber(plumberErrorHandler))
+        .pipe(sourcemaps.init())
+        .pipe(sass().on ('error', sass.logError))
+        .pipe(autoprefixer(['last 3 versions'], { cascade: true }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('.'))
+        .pipe(notify("Done!"))
 });
 
+gulp.task('watch', ['style', 'vendor'/*, 'scripts'*/], function() {
+    gulp.watch('sass/**/*.scss', ['style']);
+});
 
 gulp.task('clear', function () {
     return cache.clearAll();
