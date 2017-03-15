@@ -47,7 +47,6 @@ wp-content/uploads/*
 
 # ignore node dependency directories (used by grunt)
 node_modules/
-wp-content/themes/dwellings/vendors/
 wp-content/plugins/busted/
 
 # ignore OS generated files
@@ -113,3 +112,20 @@ Thumbs.db
 !wp-content/plugins/*
 !wp-content/themes/dwellings/
 !wp-content/uploads/*
+
+# libs jquery
+wp-content/themes/dwellings/vendors/*
+!wp-content/themes/dwellings/vendors/jquery/
+wp-content/themes/dwellings/vendors/jquery/*
+!wp-content/themes/dwellings/vendors/jquery/dist/
+wp-content/themes/dwellings/vendors/jquery/dist/*
+!wp-content/themes/dwellings/vendors/jquery/dist/jquery.min.js
+
+# libs bootstrap
+!wp-content/themes/dwellings/vendors/bootstrap-sass/
+wp-content/themes/dwellings/vendors/bootstrap-sass/*
+!wp-content/themes/dwellings/vendors/bootstrap-sass/assets/
+wp-content/themes/dwellings/vendors/bootstrap-sass/assets/*
+!wp-content/themes/dwellings/vendors/bootstrap-sass/assets/javascripts/
+wp-content/themes/dwellings/vendors/bootstrap-sass/assets/javascripts/*
+!wp-content/themes/dwellings/vendors/bootstrap-sass/assets/javascripts/bootstrap.min.js
