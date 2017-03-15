@@ -40,6 +40,7 @@ wp-content/mu-plugins/*
 wp-content/plugins/*
 wp-content/themes/*
 wp-content/uploads/*
+wp-content/plugins/busted/*
 
 # ignore all files starting with . or ~
 .*
@@ -47,7 +48,6 @@ wp-content/uploads/*
 
 # ignore node dependency directories (used by grunt)
 node_modules/
-wp-content/plugins/busted/
 
 # ignore OS generated files
 ehthumbs.db

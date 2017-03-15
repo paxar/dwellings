@@ -25,9 +25,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-5">
-                        <label for="subscribe">Join our newsletter</label>
-                        <input id="subscribe" type="text">
-                        <input type="button" value="Subscribe">
+                        <?php dynamic_sidebar( 'sidebar-2' ); ?>
                     </div>
                     <div class="col-xs-12">
                         <div class="copy">
