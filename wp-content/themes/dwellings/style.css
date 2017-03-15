@@ -149,52 +149,53 @@ Version: 1.0.0
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
-.donation-div {
+.donation-wrap {
   position: relative;
   border: 1px solid black; }
-  .donation-div .form-headers {
+  .donation-wrap .form-headers {
     display: -ms-flexbox;
     display: flex;
     margin-bottom: 20px; }
-    .donation-div .form-headers .form-header {
+    .donation-wrap .form-headers .form-header {
       -ms-flex: 1;
           flex: 1;
       text-align: center;
       border-top: 3px solid gray;
       margin: 0 10px;
       cursor: pointer; }
-      .donation-div .form-headers .form-header.current {
+      .donation-wrap .form-headers .form-header.current {
         border-color: yellow; }
-  .donation-div #amounts {
+  .donation-wrap #amounts {
     margin-bottom: 20px; }
-    .donation-div #amounts .first-row {
+    .donation-wrap #amounts .first-row {
       display: -ms-flexbox;
       display: flex; }
-      .donation-div #amounts .first-row label {
+      .donation-wrap #amounts .first-row label {
         -ms-flex: 1;
             flex: 1;
         margin: 0 10px; }
-    .donation-div #amounts .second-row {
+    .donation-wrap #amounts .second-row {
       display: -ms-flexbox;
       display: flex; }
-      .donation-div #amounts .second-row label {
+      .donation-wrap #amounts .second-row label {
         -ms-flex: 1;
             flex: 1;
         margin-top: 5px; }
-      .donation-div #amounts .second-row input.custom-amount {
+      .donation-wrap #amounts .second-row input.custom-amount {
         -ms-flex: 1;
             flex: 1;
         visibility: hidden; }
-    .donation-div #amounts input[type=radio] {
+    .donation-wrap #amounts input[type=radio] {
       display: none; }
-    .donation-div #amounts label {
+    .donation-wrap #amounts label {
       height: 30px;
       line-height: 30px;
       text-align: center;
       border: 1px solid black;
       cursor: pointer; }
-    .donation-div #amounts input:checked + label {
+    .donation-wrap #amounts input:checked + label {
       background-color: yellow; }
+
 .blog-page-section {
   padding-top: 100px; }
 
