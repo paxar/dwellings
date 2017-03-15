@@ -123,5 +123,17 @@ Version: 1.0.0
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
+.blog-page-section {
+  padding-top: 100px; }
+
+.top-part-content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+
+.breadcrumbs {
+  display: -ms-flexbox;
+  display: flex; }
 
 /*# sourceMappingURL=style.css.map */
