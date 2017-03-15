@@ -48,7 +48,7 @@
             </div><!-- .site-info -->
         </div><!-- .scontainer -->
 	</footer><!-- #colophon -->
-</div><!-- #page -->
+<!--</nav>--><!-- #page -->
 
 <?php wp_footer(); ?>
 

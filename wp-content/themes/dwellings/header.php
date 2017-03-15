@@ -20,7 +20,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<nav id="page" class="site">
+<!--<nav id="page" class="site">-->
 	<!--<a class="skip-link screen-reader-text" href="#content"><?php /*esc_html_e( 'Skip to content', 'dwellings' ); */?></a>-->
     <div id="container">
     <header id="masthead" class="site-header header-page" role="banner">
