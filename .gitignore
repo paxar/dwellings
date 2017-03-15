@@ -9,10 +9,10 @@
 # By default all files are ignored.  You'll need to whitelist
 # any mu-plugins, plugins, or themes you want to include in the repo.
 #
-# To ignore uncommitted changes in a file that is already tracked, use 
+# To ignore uncommitted changes in a file that is already tracked, use
 # git update-index --assume-unchanged
 #
-# To stop tracking a file that is currently tracked, use 
+# To stop tracking a file that is currently tracked, use
 # git rm --cached
 #
 # Change Log:
@@ -47,6 +47,7 @@ wp-content/uploads/*
 
 # ignore node dependency directories (used by grunt)
 node_modules/
+wp-content/themes/dwellings/vendors/
 wp-content/plugins/busted/
 
 # ignore OS generated files
@@ -112,5 +113,3 @@ Thumbs.db
 !wp-content/plugins/*
 !wp-content/themes/dwellings/
 !wp-content/uploads/*
-/vendors/*
-!/vendors/jquery/dist/jquery.min.js
