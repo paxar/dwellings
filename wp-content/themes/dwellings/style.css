@@ -125,6 +125,7 @@ Version: 1.0.0
 
 .hero {
   position: relative;
+  margin: 0 auto;
   padding: 150px 0;
   top: 0;
   text-align: center;
@@ -133,14 +134,17 @@ Version: 1.0.0
   .hero .intro {
     font: 800 30px "Lato", sans-serif; }
   .hero .intro-description {
-    margin: 30px 0;
+    width: 80%;
+    margin: 30px auto;
     font: 400 18px "Lato", sans-serif; }
   .hero .btn, .hero .site-footer .subscribe input[type="submit"], .site-footer .subscribe .hero input[type="submit"] {
     margin: 0 auto; }
 
 @media (min-width: 768px) {
   .hero .intro {
-    font-size: 45px; } }
+    font-size: 45px; }
+  .hero .intro-description {
+    width: 70%; } }
 
 @media (min-width: 992px) {
   .hero {
@@ -148,7 +152,8 @@ Version: 1.0.0
     .hero .intro {
       font-size: 60px; }
     .hero .intro-description {
-      margin: 50px 0; } }
+      width: 60%;
+      margin: 50px auto; } }
 
 .site-footer {
   padding: 30px 0; }
