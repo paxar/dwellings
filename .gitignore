@@ -47,7 +47,6 @@ wp-content/uploads/*
 
 # ignore node dependency directories (used by grunt)
 node_modules/
-wp-content/themes/dwellings/vendors/
 wp-content/plugins/busted/
 
 # ignore OS generated files
@@ -113,3 +112,5 @@ Thumbs.db
 !wp-content/plugins/*
 !wp-content/themes/dwellings/
 !wp-content/uploads/*
+/vendors/*
+!/vendors/jquery/dist/jquery.min.js
