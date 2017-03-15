@@ -137,7 +137,6 @@ function dwellings_scripts() {
 
     wp_enqueue_script('donate_page_js');
 
-
 }
 add_action( 'wp_enqueue_scripts', 'dwellings_scripts' );
 
