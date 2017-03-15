@@ -115,6 +115,30 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
 
+    /*--------------------------------------------------------------
+    # Footer
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'footer',
+        array(
+            'title' => esc_html__('Footer settings'),
+            'priority' => 50,
+        )
+    );
+    $wp_customize->add_setting(
+        'copy',
+        array(
+            "default"=>esc_html__('Copy')
+        )
+    );
+    $wp_customize->add_control(
+        'copy',
+        array(
+            'label' => esc_html__('Copyright text'),
+            'section' => 'footer'
+        )
+    );
+
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 
