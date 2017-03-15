@@ -21,7 +21,7 @@ Version: 1.0.0
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
-.btn {
+.btn, .site-footer .subscribe input[type="submit"] {
   display: block;
   padding: 17px;
   width: 192px;
@@ -34,9 +34,9 @@ Version: 1.0.0
   transition: 0.3s all ease-out;
   text-transform: uppercase;
   color: #000; }
-  .btn:focus {
+  .btn:focus, .site-footer .subscribe input[type="submit"]:focus {
     outline: none; }
-  .btn:hover {
+  .btn:hover, .site-footer .subscribe input[type="submit"]:hover {
     background: #fff; }
 
 /*--------------------------------------------------------------
@@ -135,7 +135,7 @@ Version: 1.0.0
   .hero .intro-description {
     margin: 30px 0;
     font: 400 18px "Lato", sans-serif; }
-  .hero .btn {
+  .hero .btn, .hero .site-footer .subscribe input[type="submit"], .site-footer .subscribe .hero input[type="submit"] {
     margin: 0 auto; }
 
 @media (min-width: 768px) {
@@ -149,6 +149,89 @@ Version: 1.0.0
       font-size: 60px; }
     .hero .intro-description {
       margin: 50px 0; } }
+
+.site-footer {
+  padding: 30px 0; }
+  .site-footer .custom-logo-link {
+    width: 131px;
+    margin-left: 15px;
+    float: left;
+    -webkit-filter: brightness(0);
+            filter: brightness(0); }
+  .site-footer .nav-footer {
+    margin-left: 45%;
+    -moz-column-count: 2;
+         column-count: 2; }
+    .site-footer .nav-footer li {
+      padding: 10px 0; }
+  .site-footer span, .site-footer a, .site-footer label, .site-footer .mc4wp-response {
+    font: 700 14px/23px "Lato", sans-serif;
+    color: #000;
+    transition: 0.3s all ease-out;
+    cursor: pointer; }
+  .site-footer .mc4wp-response {
+    float: left;
+    margin: 0 0 15px 15px;
+    color: #fed52f; }
+  .site-footer a:hover {
+    color: #fed52f; }
+  .site-footer .implementers {
+    float: right; }
+    .site-footer .implementers .design {
+      margin-right: 15px; }
+  .site-footer .col-xs-12 {
+    padding: 0; }
+  .site-footer .subscribe label {
+    display: block;
+    margin: 0 15px; }
+  .site-footer .subscribe input[type="email"] {
+    width: 40%;
+    height: 45px;
+    margin: 15px;
+    padding-left: 10px;
+    border-radius: 4px;
+    float: left;
+    border: 1px solid #e5e5e5;
+    font: 700 16px/23px "Lato", sans-serif;
+    color: #000; }
+    .site-footer .subscribe input[type="email"]::-webkit-input-placeholder {
+      color: #000; }
+  .site-footer .subscribe input[type="submit"] {
+    max-width: 132px;
+    height: 45px;
+    margin: 15px 15px 0 0;
+    padding: 12px;
+    color: #fff; }
+    .site-footer .subscribe input[type="submit"]:hover {
+      color: #000; }
+
+@media (min-width: 768px) {
+  .site-footer .subscribe input[type="email"] {
+    width: 43%;
+    float: left; }
+  .site-footer .subscribe input[type="submit"] {
+    max-width: 132px;
+    float: right;
+    color: #fff; } }
+
+@media (min-width: 992px) {
+  .site-footer .subscribe input[type="email"] {
+    width: 55%;
+    padding-left: 15px;
+    float: left; }
+  .site-footer .subscribe input[type="submit"] {
+    max-width: 132px;
+    float: right;
+    color: #fff; } }
+
+@media (min-width: 1200px) {
+  .site-footer .subscribe input[type="email"] {
+    width: 282px;
+    float: left; }
+  .site-footer .subscribe input[type="submit"] {
+    max-width: 152px;
+    float: right;
+    color: #fff; } }
 
 /*--------------------------------------------------------------
 # Pages
