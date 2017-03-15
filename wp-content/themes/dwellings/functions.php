@@ -119,9 +119,19 @@ function dwellings_scripts() {
     wp_enqueue_style('style_css', get_stylesheet_uri(), ['vendor_css']);
 
     /*Add scripts*/
-    wp_enqueue_script( 'jquery' );
+    wp_deregister_script( 'jquery' );
 
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/vendors/bootstrap-sass/assets/javascripts/bootstrap.min.js', [] );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/vendors/jquery/dist/jquery.min.js', '', '', true);
+
+    wp_enqueue_script('jquery');
+
+    wp_register_script( 'bootstrap', get_template_directory_uri() . '/vendors/bootstrap-sass/assets/javascripts/bootstrap.min.js', ['jquery'], '', true );
+
+    wp_enqueue_script('bootstrap');
+
+    wp_register_script('main_js', get_template_directory_uri() . '/js/main.js', ['jquery'], '', true);
+
+    wp_enqueue_script('main_js');
 
 }
 add_action( 'wp_enqueue_scripts', 'dwellings_scripts' );
