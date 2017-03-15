@@ -48,6 +48,7 @@ wp-content/uploads/*
 # ignore node dependency directories (used by grunt)
 node_modules/
 wp-content/themes/dwellings/vendors/
+wp-content/plugins/busted/
 
 # ignore OS generated files
 ehthumbs.db

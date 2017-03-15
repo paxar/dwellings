@@ -129,10 +129,13 @@ function dwellings_scripts() {
 
     wp_enqueue_script('bootstrap');
 
-    wp_register_script('home_page_js', get_template_directory_uri() . '/js/home_page.js', ['jquery'], '', true);
+    wp_register_script('home_page_js', get_template_directory_uri() . '/js/home-page.js', ['jquery'], '', true);
 
     wp_enqueue_script('home_page_js');
 
+    wp_register_script('donate_page_js', get_template_directory_uri() . '/js/donate-page.js', ['jquery'], '', true);
+
+    wp_enqueue_script('donate_page_js');
 }
 add_action( 'wp_enqueue_scripts', 'dwellings_scripts' );
 
