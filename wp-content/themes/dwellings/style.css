@@ -195,8 +195,6 @@ Version: 1.0.0
       cursor: pointer; }
     .donation-div #amounts input:checked + label {
       background-color: yellow; }
-.blog-page-section {
-  padding-top: 100px; }
 
 .top-part-content {
   display: -ms-flexbox;
@@ -207,5 +205,8 @@ Version: 1.0.0
 .breadcrumbs {
   display: -ms-flexbox;
   display: flex; }
+
+.image-box img {
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
