@@ -14,4 +14,32 @@ Template Name: Template main page
         </div>
     </section>
 
+
+    <section class="icongroup">
+
+        <!-- TODO add loop there       -->
+    </section>
+
+    <section class="about">
+
+        <!-- TODO add custom fields there       -->
+    </section>
+
+    <section class="families">
+
+        <!-- TODO add loop there       -->
+    </section>
+
+    <section class="testimonials">
+
+        <!-- TODO add loop there       -->
+    </section>
+
+    <section class="info">
+
+        <!-- TODO add custom fields there       -->
+    </section>
+
+
+
 <?php get_footer() ?>

@@ -149,5 +149,63 @@ Version: 1.0.0
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
+.donation-div {
+  position: relative;
+  border: 1px solid black; }
+  .donation-div .form-headers {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px; }
+    .donation-div .form-headers .form-header {
+      -ms-flex: 1;
+          flex: 1;
+      text-align: center;
+      border-top: 3px solid gray;
+      margin: 0 10px;
+      cursor: pointer; }
+      .donation-div .form-headers .form-header.current {
+        border-color: yellow; }
+  .donation-div #amounts {
+    margin-bottom: 20px; }
+    .donation-div #amounts .first-row {
+      display: -ms-flexbox;
+      display: flex; }
+      .donation-div #amounts .first-row label {
+        -ms-flex: 1;
+            flex: 1;
+        margin: 0 10px; }
+    .donation-div #amounts .second-row {
+      display: -ms-flexbox;
+      display: flex; }
+      .donation-div #amounts .second-row label {
+        -ms-flex: 1;
+            flex: 1;
+        margin-top: 5px; }
+      .donation-div #amounts .second-row input.custom-amount {
+        -ms-flex: 1;
+            flex: 1;
+        visibility: hidden; }
+    .donation-div #amounts input[type=radio] {
+      display: none; }
+    .donation-div #amounts label {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid black;
+      cursor: pointer; }
+    .donation-div #amounts input:checked + label {
+      background-color: yellow; }
+.blog-page-section {
+  padding-top: 100px; }
+
+.top-part-content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+
+.breadcrumbs {
+  display: -ms-flexbox;
+  display: flex; }
 
 /*# sourceMappingURL=style.css.map */

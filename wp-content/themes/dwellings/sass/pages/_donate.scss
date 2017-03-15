@@ -1,0 +1,55 @@
+.donation-div {
+  position: relative;
+  border: 1px solid black;
+  .form-headers {
+    display: flex;
+    margin-bottom: 20px;
+    .form-header {
+      flex: 1;
+      text-align: center;
+      border-top: 3px solid gray;
+      margin: 0 10px;
+      cursor: pointer;
+      &.current {
+        border-color: yellow;
+      }
+    }
+  }
+  #amounts {
+    $label-height: 30px;
+    margin-bottom: 20px;
+    .first-row {
+      display: flex;
+      label {
+        flex: 1;
+        margin: 0 10px;
+      }
+    }
+    .second-row {
+      display: flex;
+      label {
+        flex: 1;
+        margin-top: 5px;
+      }
+      input.custom-amount {
+        flex: 1;
+        visibility: hidden;
+      }
+
+    }
+    input[type=radio] {
+      display: none;
+    }
+    label {
+      height: $label-height;
+      line-height: $label-height;
+      text-align: center;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+    input:checked + label {
+      background-color: yellow;
+    }
+
+  }
+}
