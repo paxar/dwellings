@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <div><?php the_post_thumbnail(); ?></div>
+    <div class="image-box"><?php the_post_thumbnail(); ?></div>
     <header class="entry-header">
         <?php
         if ( is_single() ) :
