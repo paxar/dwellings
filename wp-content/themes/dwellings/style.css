@@ -10,6 +10,9 @@ Version: 1.0.0
 # Base
 --------------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+.site-content {
+  padding: 60px 0; }
+
 /*--------------------------------------------------------------
 # Utils
 --------------------------------------------------------------*/
@@ -92,7 +95,7 @@ Version: 1.0.0
 
 .header-page {
   position: relative;
-  background-color: #000; }
+  background-color: #2d2620; }
 
 @media (min-width: 768px) {
   .site-header .main-nav .nav-btn {
@@ -123,6 +126,7 @@ Version: 1.0.0
 .hero {
   position: relative;
   padding: 150px 0;
+  top: 0;
   text-align: center;
   color: #fff;
   overflow: hidden; }

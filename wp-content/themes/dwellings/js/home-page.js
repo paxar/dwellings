@@ -11,3 +11,9 @@ $(document).ready(function () {
         $('#open-nav').addClass("remove-btn")
     });
 });
+
+if ($('section.hero').length) {
+    $('.site-header').removeClass('header-page');
+    $('#container').addClass('container');
+    $('.header-wrap').removeClass('container');
+}

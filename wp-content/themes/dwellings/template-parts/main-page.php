@@ -13,7 +13,7 @@ Template Name: Template main page
             <a href="<?php echo get_theme_mod('btn_url'); ?>" class="btn"><?php echo get_theme_mod('btn_text'); ?></a>
         </div>
     </section>
-
+    <main id="content" class="site-content">
 
     <section class="icongroup">
 

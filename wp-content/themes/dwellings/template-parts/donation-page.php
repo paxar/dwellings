@@ -5,7 +5,14 @@ Template Name: Template donation page
 ?>
 
 <?php get_header() ?>
+    <main id="content" class="site-content">
+        <?php
+        while ( have_posts() ) : the_post();
 
+            get_template_part( 'template-parts/content', 'page' );
+
+        endwhile; // End of the loop.
+        ?>
         <div class="container">
             <section class="donation">
                 <div class="row">

@@ -2,7 +2,7 @@
 get_header();?>
 
 <!--    <div id="primary" class="content-area">-->
-<!--        <main id="main" class="site-main" role="main">-->
+        <main id="content" class="site-content">
         <div class="container">
             <section class="blog-page-section">
             <div class="top-part-content">
