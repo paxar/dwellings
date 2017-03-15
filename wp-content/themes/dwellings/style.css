@@ -48,8 +48,7 @@ Version: 1.0.0
   top: 0;
   left: 0;
   padding: 7px 15px;
-  z-index: 10;
-  overflow: hidden; }
+  z-index: 10; }
   .site-header .logo {
     float: left;
     width: 131px;
@@ -63,14 +62,27 @@ Version: 1.0.0
       border: none;
       font-size: 25px;
       color: #fff;
-      transition: 0.3s all ease-out; }
+      transition: 0.3s all ease-out;
+      z-index: 10; }
       .site-header .main-nav .nav-btn:hover {
         color: #fed52f; }
       .site-header .main-nav .nav-btn:focus {
         outline: none; }
+    .site-header .main-nav .remove-btn {
+      display: none; }
     .site-header .main-nav .navigation {
       display: none;
-      padding: 25px 0; }
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.9);
+      top: 0;
+      left: 0;
+      padding: 20vh 0 0;
+      z-index: -1; }
+      .site-header .main-nav .navigation li {
+        margin: 5vh 0; }
       .site-header .main-nav .navigation a {
         font: 700 16px "Lato", sans-serif;
         color: #fff;
@@ -78,13 +90,26 @@ Version: 1.0.0
         .site-header .main-nav .navigation a:hover {
           color: #fed52f; }
 
+.header-page {
+  position: relative;
+  background-color: #000; }
+
 @media (min-width: 768px) {
   .site-header .main-nav .nav-btn {
     display: none; }
   .site-header .main-nav .navigation {
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    position: relative;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    top: auto;
+    left: auto;
+    padding: 25px 0;
+    z-index: 1; }
     .site-header .main-nav .navigation li {
+      margin: 0;
       padding: 0 18px; }
       .site-header .main-nav .navigation li:last-child {
         padding-right: 0; }
@@ -96,6 +121,7 @@ Version: 1.0.0
     padding: 0 30px; } }
 
 .hero {
+  position: relative;
   padding: 150px 0;
   text-align: center;
   color: #fff;
@@ -123,6 +149,52 @@ Version: 1.0.0
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
+.donation-div {
+  position: relative;
+  border: 1px solid black; }
+  .donation-div .form-headers {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px; }
+    .donation-div .form-headers .form-header {
+      -ms-flex: 1;
+          flex: 1;
+      text-align: center;
+      border-top: 3px solid gray;
+      margin: 0 10px;
+      cursor: pointer; }
+      .donation-div .form-headers .form-header.current {
+        border-color: yellow; }
+  .donation-div #amounts {
+    margin-bottom: 20px; }
+    .donation-div #amounts .first-row {
+      display: -ms-flexbox;
+      display: flex; }
+      .donation-div #amounts .first-row label {
+        -ms-flex: 1;
+            flex: 1;
+        margin: 0 10px; }
+    .donation-div #amounts .second-row {
+      display: -ms-flexbox;
+      display: flex; }
+      .donation-div #amounts .second-row label {
+        -ms-flex: 1;
+            flex: 1;
+        margin-top: 5px; }
+      .donation-div #amounts .second-row input.custom-amount {
+        -ms-flex: 1;
+            flex: 1;
+        visibility: hidden; }
+    .donation-div #amounts input[type=radio] {
+      display: none; }
+    .donation-div #amounts label {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid black;
+      cursor: pointer; }
+    .donation-div #amounts input:checked + label {
+      background-color: yellow; }
 .blog-page-section {
   padding-top: 100px; }
 
