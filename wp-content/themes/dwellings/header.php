@@ -20,10 +20,12 @@
 </head>
 
 <body <?php body_class(); ?>>
-<nav id="page" class="site">
+<!--<nav id="page" class="site">-->
 	<!--<a class="skip-link screen-reader-text" href="#content"><?php /*esc_html_e( 'Skip to content', 'dwellings' ); */?></a>-->
-    <header id="masthead" class="site-header" role="banner">
-        <div class="container">
+    <div id="container">
+    <header id="masthead" class="site-header header-page" role="banner">
+        <div class="header-wrap container">
+
             <h1 class="logo">
                 <?php the_custom_logo(); ?>
                 Dwellings
@@ -36,7 +38,7 @@
                     <i class="fa fa-times"></i>
                 </button>
                 <?php wp_nav_menu(array('them_location' => 'menu-1', 'container' => false, 'menu_class' => 'navigation')) ?>
-        </div><!-- .container -->
-    </header><!-- #masthead -->
+        </div>
 
-	<main id="content" class="site-content">
+    </header><!-- #masthead -->
+    </div><!-- .container -->

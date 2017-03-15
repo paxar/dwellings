@@ -8,7 +8,7 @@
  */
 
 ?>
-
+<main id="content" class="site-content">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="image-box"><?php the_post_thumbnail(); ?></div>
     <header class="entry-header">

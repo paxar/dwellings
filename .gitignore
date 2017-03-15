@@ -9,10 +9,10 @@
 # By default all files are ignored.  You'll need to whitelist
 # any mu-plugins, plugins, or themes you want to include in the repo.
 #
-# To ignore uncommitted changes in a file that is already tracked, use 
+# To ignore uncommitted changes in a file that is already tracked, use
 # git update-index --assume-unchanged
 #
-# To stop tracking a file that is currently tracked, use 
+# To stop tracking a file that is currently tracked, use
 # git rm --cached
 #
 # Change Log:
@@ -40,6 +40,7 @@ wp-content/mu-plugins/*
 wp-content/plugins/*
 wp-content/themes/*
 wp-content/uploads/*
+wp-content/plugins/busted/*
 
 # ignore all files starting with . or ~
 .*
@@ -47,7 +48,6 @@ wp-content/uploads/*
 
 # ignore node dependency directories (used by grunt)
 node_modules/
-wp-content/themes/dwellings/vendors/
 
 # ignore OS generated files
 ehthumbs.db
@@ -112,3 +112,20 @@ Thumbs.db
 !wp-content/plugins/*
 !wp-content/themes/dwellings/
 !wp-content/uploads/*
+
+# libs jquery
+wp-content/themes/dwellings/vendors/*
+!wp-content/themes/dwellings/vendors/jquery/
+wp-content/themes/dwellings/vendors/jquery/*
+!wp-content/themes/dwellings/vendors/jquery/dist/
+wp-content/themes/dwellings/vendors/jquery/dist/*
+!wp-content/themes/dwellings/vendors/jquery/dist/jquery.min.js
+
+# libs bootstrap
+!wp-content/themes/dwellings/vendors/bootstrap-sass/
+wp-content/themes/dwellings/vendors/bootstrap-sass/*
+!wp-content/themes/dwellings/vendors/bootstrap-sass/assets/
+wp-content/themes/dwellings/vendors/bootstrap-sass/assets/*
+!wp-content/themes/dwellings/vendors/bootstrap-sass/assets/javascripts/
+wp-content/themes/dwellings/vendors/bootstrap-sass/assets/javascripts/*
+!wp-content/themes/dwellings/vendors/bootstrap-sass/assets/javascripts/bootstrap.min.js

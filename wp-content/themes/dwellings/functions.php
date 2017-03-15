@@ -105,6 +105,15 @@ function dwellings_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Footer widgets', 'dwellings' ),
+        'id'            => 'sidebar-2',
+        'description'   => esc_html__( 'Add subscription form.', 'dwellings' ),
+        'before_widget' => '<diiv class="subscribe">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-footer">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action( 'widgets_init', 'dwellings_widgets_init' );
 
@@ -129,10 +138,14 @@ function dwellings_scripts() {
 
     wp_enqueue_script('bootstrap');
 
-    wp_register_script('main_js', get_template_directory_uri() . '/js/main.js', ['jquery'], '', true);
-    if (is_page('donate')) {
-        wp_enqueue_script('main_js');
-    }
+    wp_register_script('home_page_js', get_template_directory_uri() . '/js/home-page.js', ['jquery'], '', true);
+
+    wp_enqueue_script('home_page_js');
+
+    wp_register_script('donate_page_js', get_template_directory_uri() . '/js/donate-page.js', ['jquery'], '', true);
+
+    wp_enqueue_script('donate_page_js');
+
 }
 add_action( 'wp_enqueue_scripts', 'dwellings_scripts' );
 
@@ -160,8 +173,6 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
-
-
 
 // Breadcrumbs
 function custom_breadcrumbs() {

@@ -1,0 +1,119 @@
+.site-footer {
+  padding: 30px 0;
+  .custom-logo-link {
+    width: 131px;
+    margin-left: 15px;
+    float: left;
+    filter: brightness(0);
+  }
+  .nav-footer {
+    margin-left: 45%;
+    column-count: 2;
+    li {
+      padding: 10px 0;
+    }
+  }
+  span, a, label, .mc4wp-response {
+    font: 700 14px/23px $lato;
+    color: $font-black;
+    transition: 0.3s all ease-out;
+    cursor: pointer;
+  }
+  .mc4wp-response {
+    float: left;
+    margin: 0 0 15px 15px;
+    color: $brand-color;
+  }
+  a:hover {
+    color: $brand-color;
+  }
+  .implementers {
+    float: right;
+    .design {
+      margin-right: 15px;
+    }
+  }
+  .col-xs-12 {
+    padding: 0;
+  }
+  .subscribe {
+    label {
+      display: block;
+      margin: 0 15px;
+    }
+    input[type="email"] {
+      width: 40%;
+      height: 45px;
+      margin: 15px;
+      padding-left: 10px;
+      border-radius: 4px;
+      float: left;
+      border: 1px solid #e5e5e5;
+      font: 700 16px/23px $lato;
+      color: $font-black;
+      &::-webkit-input-placeholder {
+        color: $font-black;
+      }
+    }
+    input[type="submit"] {
+      @extend .btn;
+      max-width: 132px;
+      height: 45px;
+      margin: 15px 15px 0 0;
+      padding: 12px;
+      color: #fff;
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .site-footer {
+    .subscribe {
+      input[type="email"] {
+        width: 43%;
+        float: left;
+      }
+      input[type="submit"] {
+        max-width: 132px;
+        float: right;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .site-footer {
+    .subscribe {
+      input[type="email"] {
+        width: 55%;
+        padding-left: 15px;
+        float: left;
+      }
+      input[type="submit"] {
+        max-width: 132px;
+        float: right;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .site-footer {
+    .subscribe {
+      input[type="email"] {
+        width: 282px;
+        float: left;
+      }
+      input[type="submit"] {
+        max-width: 152px;
+        float: right;
+        color: #fff;
+      }
+    }
+  }
+}

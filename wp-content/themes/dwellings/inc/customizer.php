@@ -115,19 +115,62 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
 
+    /*--------------------------------------------------------------
+    # Footer
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'footer',
+        array(
+            'title' => esc_html__('Footer settings'),
+            'priority' => 50,
+        )
+    );
+    $wp_customize->add_setting(
+        'copy',
+        array(
+            "default"=>esc_html__('Copy')
+        )
+    );
+    $wp_customize->add_control(
+        'copy',
+        array(
+            'label' => esc_html__('Copyright text'),
+            'section' => 'footer'
+        )
+    );
+    $wp_customize->add_setting(
+        'bg-footer',
+        array(
+            'default' => '#fff'
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'bg-footer',
+            array(
+                'label' => esc_html__('Background color'),
+                'section' => 'footer'
+            )
+        )
+    );
+
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 
-function bg_hero() {
+function custom_style() {
     ?>
     <style type="text/css">
         .hero {
             background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(<?php echo get_theme_mod('bg-hero') ?>) 50% 0 /cover no-repeat;
         }
+        .site-footer {
+            background-color: <?php echo get_theme_mod('bg-footer') ?>;
+        }
     </style>
     <?php
 }
-add_action('wp_head', 'bg_hero');
+add_action('wp_head', 'custom_style');
 
 
 /**

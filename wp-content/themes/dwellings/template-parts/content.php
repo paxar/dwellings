@@ -8,7 +8,7 @@
  */
 
 ?>
-
+<main id="content" class="site-content">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
@@ -27,6 +27,7 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
+
 		<?php
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
@@ -39,6 +40,8 @@
 				'after'  => '</div>',
 			) );
 		?>
+
+
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
