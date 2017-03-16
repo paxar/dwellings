@@ -60,7 +60,7 @@
       max-width: 132px;
       height: 45px;
       margin: 15px 15px 0 0;
-      padding: 12px;
+      padding: 12px 25px;
       color: #fff;
       &:hover {
         color: #000;
@@ -77,7 +77,6 @@
         float: left;
       }
       input[type="submit"] {
-        max-width: 132px;
         float: right;
         color: #fff;
       }
@@ -110,7 +109,6 @@
         float: left;
       }
       input[type="submit"] {
-        max-width: 152px;
         float: right;
         color: #fff;
       }
