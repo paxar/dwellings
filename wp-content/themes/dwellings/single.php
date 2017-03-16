@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-	<div class="container">
-		<main id="main" class="site-content" role="main">
+	<main id="content" class="site-content">
+		<div class="container">
 			<section class="blog-page-section">
 
 				<?php
@@ -20,9 +20,9 @@ get_header(); ?>
 
 				endwhile; // End of the loop.
 				?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+			</section>
+		</div><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_footer();
