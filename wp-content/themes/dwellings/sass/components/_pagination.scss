@@ -1,0 +1,37 @@
+.dwelling-pagination {
+  padding: 25px 0;
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    padding: 0 12px;
+    margin-left: 4px;
+    font: 400 16px/31px "Lato", sans-serif;
+    text-align: center;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.active,
+    &:hover {
+      background-color: #fed52f;
+      border-radius: 6px;
+
+      a {
+        color: #fff;
+      }
+    }
+
+    a {
+      color: black;
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+
+}

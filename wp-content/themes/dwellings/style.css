@@ -7,30 +7,17 @@ Description: Charity project Geek Hub students
 Version: 1.0.0
 */
 /*--------------------------------------------------------------
-# Utils
---------------------------------------------------------------*/
-/*Colors*/
-/*Fonts*/
-/*--------------------------------------------------------------
 # Base
 --------------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
 .site-content {
   padding: 60px 0; }
 
-.title {
-  font: 900 40px/50px "Lato", sans-serif;
-  color: #000000;
-  text-align: center; }
-
-.title-decor:after {
-  content: '';
-  display: block;
-  margin: 20px auto 0;
-  width: 103px;
-  height: 3px;
-  background-color: #fed52f; }
-
+/*--------------------------------------------------------------
+# Utils
+--------------------------------------------------------------*/
+/*Colors*/
+/*Fonts*/
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
@@ -49,6 +36,29 @@ Version: 1.0.0
     outline: none; }
   .btn:hover, .site-footer .subscribe input[type="submit"]:hover {
     background: #fff; }
+
+.dwelling-pagination {
+  padding: 25px 0; }
+  .dwelling-pagination ul {
+    display: -ms-flexbox;
+    display: flex; }
+  .dwelling-pagination li {
+    padding: 0 12px;
+    margin-left: 4px;
+    font: 400 16px/31px "Lato", sans-serif;
+    text-align: center; }
+    .dwelling-pagination li:first-child {
+      margin-left: 0; }
+    .dwelling-pagination li.active, .dwelling-pagination li:hover {
+      background-color: #fed52f;
+      border-radius: 6px; }
+      .dwelling-pagination li.active a, .dwelling-pagination li:hover a {
+        color: #fff; }
+    .dwelling-pagination li a {
+      color: black; }
+      .dwelling-pagination li a:hover {
+        color: #fff;
+        text-decoration: none; }
 
 /*--------------------------------------------------------------
 # Layout
@@ -314,16 +324,119 @@ Version: 1.0.0
       background-color: yellow; }
 
 .blog-page-section {
-  padding-top: 100px; }
+  padding: 0 15px 10px;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px; }
+  @media only screen and (min-width: 700px) {
+    .blog-page-section {
+      padding: 0 38px; } }
+  .blog-page-section p {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
+    color: black;
+    font: 16px/24px "Lato", sans-serif;
+    word-wrap: break-word; }
+    @media only screen and (min-width: 992px) {
+      .blog-page-section p .more-link {
+        position: absolute;
+        bottom: 0; } }
+  .blog-page-section .blog-item {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    padding: 30px 0 50px;
+    max-width: 886px;
+    border-bottom: 1px solid #e5e5e5; }
+    .blog-page-section .blog-item:last-of-type {
+      border-bottom: none; }
+    @media only screen and (min-width: 992px) {
+      .blog-page-section .blog-item {
+        -ms-flex-direction: row;
+            flex-direction: row; } }
+    .blog-page-section .blog-item:after {
+      content: '';
+      display: block;
+      clear: left; }
+  .blog-page-section .post-information {
+    margin-bottom: 17px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    opacity: 0.6;
+    color: black;
+    font: 400 14px/24px "Lato", sans-serif; }
+    .blog-page-section .post-information .byline {
+      width: 166px; }
+    .blog-page-section .post-information a {
+      color: #000; }
+      .blog-page-section .post-information a:hover {
+        color: #fed52f; }
 
 .top-part-content {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between; }
+  -ms-flex-direction: column;
+      flex-direction: column; }
+  @media only screen and (min-width: 640px) {
+    .top-part-content {
+      -ms-flex-direction: row;
+          flex-direction: row;
+      -ms-flex-pack: justify;
+          justify-content: space-between; } }
 
 .breadcrumbs {
   display: -ms-flexbox;
   display: flex; }
+
+.image-box {
+  margin-bottom: 30px; }
+  @media only screen and (min-width: 992px) {
+    .image-box {
+      margin-right: 40px;
+      margin-bottom: 0;
+      max-width: 365px; } }
+  .image-box img {
+    width: 100%;
+    height: auto; }
+
+.content-post-wrap {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  position: relative; }
+  @media only screen and (min-width: 992px) {
+    .content-post-wrap {
+      width: 58%; } }
+
+.post-title {
+  margin-top: -7px;
+  color: #000;
+  font: 700 24px/32px "Lato", sans-serif; }
+  .post-title a {
+    color: #000; }
+
+.more-link {
+  display: block;
+  font: 14px/23px "Lato", sans-serif;
+  text-transform: uppercase;
+  color: #fed52f; }
+
+.no-results,
+.not-found {
+  padding: 30px 0 50px;
+  min-height: 200px; }
+
+.search-results-title {
+  display: block;
+  word-wrap: break-word;
+  max-width: 200px; }
 
 /*# sourceMappingURL=style.css.map */
