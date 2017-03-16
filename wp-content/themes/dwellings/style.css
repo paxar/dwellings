@@ -247,6 +247,22 @@ Version: 1.0.0
     float: right;
     color: #fff; } }
 
+.icongroup-post {
+  margin-top: 30px; }
+  .icongroup-post .img-wrap img {
+    display: block;
+    margin: 0 auto; }
+  .icongroup-post .description {
+    text-align: center; }
+    .icongroup-post .description h3 {
+      margin-top: 20px;
+      font: 700 24px/36px "Lato", sans-serif;
+      color: #000; }
+    .icongroup-post .description p {
+      margin-top: 20px;
+      font: 400 16px/23px "Lato", sans-serif;
+      color: #000; }
+
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
