@@ -16,7 +16,11 @@ Version: 1.0.0
 --------------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
 .site-content {
+  background: #fbf7f4;
   padding: 60px 0; }
+
+.intro {
+  font: 800 30px "Lato", sans-serif; }
 
 .title {
   font: 900 40px/50px "Lato", sans-serif;
@@ -30,6 +34,14 @@ Version: 1.0.0
   width: 103px;
   height: 3px;
   background-color: #fed52f; }
+
+@media (min-width: 768px) {
+  .intro {
+    font-size: 45px; } }
+
+@media (min-width: 992px) {
+  .intro {
+    font-size: 45px; } }
 
 /*--------------------------------------------------------------
 # Components
@@ -213,8 +225,6 @@ Version: 1.0.0
   text-align: center;
   color: #fff;
   overflow: hidden; }
-  .hero .intro {
-    font: 800 30px "Lato", sans-serif; }
   .hero .intro-description {
     width: 80%;
     margin: 30px auto;
@@ -337,53 +347,6 @@ Version: 1.0.0
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
-.donation-wrap {
-  position: relative;
-  border: 1px solid black; }
-  .donation-wrap .form-headers {
-    display: -ms-flexbox;
-    display: flex;
-    margin-bottom: 20px; }
-    .donation-wrap .form-headers .form-header {
-      -ms-flex: 1;
-          flex: 1;
-      text-align: center;
-      border-top: 3px solid gray;
-      margin: 0 10px;
-      cursor: pointer; }
-      .donation-wrap .form-headers .form-header.current {
-        border-color: yellow; }
-  .donation-wrap #amounts {
-    margin-bottom: 20px; }
-    .donation-wrap #amounts .first-row {
-      display: -ms-flexbox;
-      display: flex; }
-      .donation-wrap #amounts .first-row label {
-        -ms-flex: 1;
-            flex: 1;
-        margin: 0 10px; }
-    .donation-wrap #amounts .second-row {
-      display: -ms-flexbox;
-      display: flex; }
-      .donation-wrap #amounts .second-row label {
-        -ms-flex: 1;
-            flex: 1;
-        margin-top: 5px; }
-      .donation-wrap #amounts .second-row input.custom-amount {
-        -ms-flex: 1;
-            flex: 1;
-        visibility: hidden; }
-    .donation-wrap #amounts input[type=radio] {
-      display: none; }
-    .donation-wrap #amounts label {
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      border: 1px solid black;
-      cursor: pointer; }
-    .donation-wrap #amounts input:checked + label {
-      background-color: yellow; }
-
 .blog-page-main {
   padding-top: 15px; }
 
@@ -491,6 +454,107 @@ Version: 1.0.0
   color: #fed52f; }
   .more-link:hover {
     color: #fed52f; }
+
+.contact-us {
+  width: 100%;
+  display: table;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden; }
+  .contact-us .information {
+    width: 100%;
+    box-sizing: content-box;
+    background: #fed52f;
+    color: #fff; }
+  .contact-us .intro {
+    margin-bottom: 30px; }
+  .contact-us .contact-info {
+    padding: 40px 50px 60px 30px; }
+    .contact-us .contact-info dt, .contact-us .contact-info dd, .contact-us .contact-info span, .contact-us .contact-info a, .contact-us .contact-info address {
+      font: 700 16px/23px "Lato", sans-serif;
+      color: #fff; }
+    .contact-us .contact-info dt {
+      float: left;
+      padding-right: 5px; }
+  .contact-us img {
+    display: block;
+    width: 100%; }
+  .contact-us .contact-form {
+    width: 100%;
+    padding: 20px;
+    border-radius: 0 0 6px 6px;
+    border: 1px solid #e5e5e5;
+    border-top: none; }
+
+@media (min-width: 768px) {
+  .contact-us .information {
+    display: table-cell;
+    width: 50%; }
+  .contact-us .contact-form {
+    display: table-cell;
+    width: 50%;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid #e5e5e5;
+    border-left: none; } }
+
+@media (min-width: 1200px) {
+  .contact-us .contact-info {
+    padding-bottom: 140px; }
+  .contact-us .contacts {
+    width: 65%;
+    float: left; }
+  .contact-us .address {
+    width: 160px;
+    float: left; }
+    .contact-us .address dt {
+      float: none; } }
+
+.donation-wrap {
+  position: relative;
+  border: 1px solid black; }
+  .donation-wrap .form-headers {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px; }
+    .donation-wrap .form-headers .form-header {
+      -ms-flex: 1;
+          flex: 1;
+      text-align: center;
+      border-top: 3px solid gray;
+      margin: 0 10px;
+      cursor: pointer; }
+      .donation-wrap .form-headers .form-header.current {
+        border-color: yellow; }
+  .donation-wrap #amounts {
+    margin-bottom: 20px; }
+    .donation-wrap #amounts .first-row {
+      display: -ms-flexbox;
+      display: flex; }
+      .donation-wrap #amounts .first-row label {
+        -ms-flex: 1;
+            flex: 1;
+        margin: 0 10px; }
+    .donation-wrap #amounts .second-row {
+      display: -ms-flexbox;
+      display: flex; }
+      .donation-wrap #amounts .second-row label {
+        -ms-flex: 1;
+            flex: 1;
+        margin-top: 5px; }
+      .donation-wrap #amounts .second-row input.custom-amount {
+        -ms-flex: 1;
+            flex: 1;
+        visibility: hidden; }
+    .donation-wrap #amounts input[type=radio] {
+      display: none; }
+    .donation-wrap #amounts label {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid black;
+      cursor: pointer; }
+    .donation-wrap #amounts input:checked + label {
+      background-color: yellow; }
 
 .no-results,
 .not-found {

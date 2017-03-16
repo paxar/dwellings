@@ -1,0 +1,73 @@
+.contact-us {
+  width: 100%;
+  display: table;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  .information {
+    width: 100%;
+    box-sizing: content-box;
+    background: $brand-color;
+    color: #fff;
+  }
+  .intro {
+    margin-bottom: 30px;
+  }
+  .contact-info {
+    padding: 40px 50px 60px 30px;
+    dt, dd, span, a, address {
+      font: 700 16px/23px $lato;
+      color: #fff;
+    }
+    dt {
+      float: left;
+      padding-right: 5px;
+    }
+  }
+  img {
+    display: block;
+    width: 100%;
+  }
+  .contact-form {
+    width: 100%;
+    padding: 20px;
+    border-radius: 0 0 6px 6px;
+    border: 1px solid #e5e5e5;
+    border-top: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-us {
+    .information {
+      display: table-cell;
+      width: 50%;
+    }
+    .contact-form {
+      display: table-cell;
+      width: 50%;
+      border-radius: 0 6px 6px 0;
+      border: 1px solid #e5e5e5;
+      border-left: none;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .contact-us {
+    .contact-info {
+     padding-bottom: 140px;
+    }
+    .contacts {
+      width: 65%;
+      float: left;
+    }
+    .address {
+      width: 160px;
+      float: left;
+      dt {
+        float: none;
+      }
+    }
+  }
+}
