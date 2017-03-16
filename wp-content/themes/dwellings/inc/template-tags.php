@@ -58,22 +58,22 @@ function dwellings_entry_footer() {
 		}
 	}
 
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
-		/* translators: %s: post title */
-		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'dwellings' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
-		echo '</span>';
-	}
+//	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+//		echo '<span class="comments-link">';
+//		/* translators: %s: post title */
+//		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'dwellings' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+//		echo '</span>';
+//	}
 
-	edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'dwellings' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
+//	edit_post_link(
+//		sprintf(
+//			/* translators: %s: Name of current post */
+//			esc_html__( 'Edit %s', 'dwellings' ),
+//			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+//		),
+//		'<span class="edit-link">',
+//		'</span>'
+//	);
 }
 endif;
 

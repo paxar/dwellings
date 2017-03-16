@@ -1,10 +1,28 @@
 .blog-page-section {
+  padding: 0 15px 10px;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
 
+  @media only screen and (min-width: 700px) {
+    padding: 0 38px;
+  }
+
+  .blog-item {
+    padding: 30px 0 50px;
+    wax-width: 886px;
+    border-bottom: 1px solid #e5e5e5;
+  }
 }
 
 .top-part-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+  @media only screen and (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .breadcrumbs {
@@ -15,5 +33,21 @@
 
   img {
     width: 100%;
+    height: auto;
   }
+}
+
+.post-title {
+  color: #000;
+  font: 700 24px/32px $lato;
+  a {
+    color: #000;
+  }
+}
+
+.more-link {
+  display: block;
+  font: 14px/23px $lato;
+  text-transform: uppercase;
+  color: #fed52f;
 }

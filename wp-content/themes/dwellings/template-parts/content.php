@@ -8,39 +8,35 @@
  */
 
 ?>
-<main id="content" class="site-content">
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('blog-item'); ?>>
+	<div class="image-box"><?php the_post_thumbnail(); ?></div>
 	<header class="entry-header">
 		<?php
 		if ( is_single() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			the_title( '<h1 class="post-title">', '</h1>' );
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php dwellings_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
+			<div class="entry-meta">
+				<?php dwellings_posted_on(); ?>
+			</div><!-- .entry-meta -->
+			<?php
 		endif; ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
+		<?php the_content(); ?>
 
 		<?php
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'dwellings' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'dwellings' ),
-				'after'  => '</div>',
-			) );
+		wp_link_pages( array(
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'dwellings' ),
+			'after'  => '</div>',
+		) );
+
 		?>
-
 
 	</div><!-- .entry-content -->
 

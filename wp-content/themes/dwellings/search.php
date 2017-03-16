@@ -9,15 +9,17 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
+		<main id="main" class="site-content" role="main">
+			<div class="container">
+				<div class="top-part-content">
+					<?php
+					custom_breadcrumbs();
+					get_search_form();
+					?>
+				</div>
+				<section class="blog-page-section">
 		<?php
 		if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'dwellings' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
@@ -28,21 +30,20 @@ get_header(); ?>
 				 * If you want to overload this in a child theme then include a file
 				 * called content-search.php and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', 'search' );
+				get_template_part( 'template-parts/content', get_post_format() );
 
 			endwhile;
 
-			the_posts_navigation();
+			custom_numeric_posts_nav();
 
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif; ?>
-
+			</section>
+		</div>
 		</main><!-- #main -->
-	</section><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();
