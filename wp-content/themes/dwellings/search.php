@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-		<main id="main" class="site-content" role="main">
+		<main id="main" class="site-content blog-page-main" role="main">
 			<div class="container">
 				<div class="top-part-content">
 					<?php
