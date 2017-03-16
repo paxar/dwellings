@@ -1,8 +1,54 @@
 <?php
 /**
 * Dwellings site custom pagination
-*
 */
+
+function custom_get_prev_link( $label = null ) {
+    global $paged;
+
+    if ( null === $label )
+        $label = __( '&laquo;' );
+
+    if ( !is_single() && $paged > 1 ) {
+        /**
+         * Filters the anchor tag attributes for the previous posts page link.
+         *
+         * @since 2.7.0
+         *
+         * @param string $attributes Attributes for the anchor tag.
+         */
+        $attr = apply_filters( 'previous_posts_link_attributes', '' );
+        return '<a href="' . previous_posts( false ) . "\" $attr>". preg_replace( '/&([^#])(?![a-z]{1,8};)/i', '&#038;$1', $label ) .'</a>';
+    }
+}
+
+function custom_get_next_posts_link( $label = null, $max_page = 0 ) {
+    global $paged, $wp_query;
+
+    if ( !$max_page )
+        $max_page = $wp_query->max_num_pages;
+
+    if ( !$paged )
+        $paged = 1;
+
+    $nextpage = intval($paged) + 1;
+
+    if ( null === $label )
+        $label = __( '&raquo;' );
+
+    if ( !is_single() && ( $nextpage <= $max_page ) ) {
+        /**
+         * Filters the anchor tag attributes for the next posts page link.
+         *
+         * @since 2.7.0
+         *
+         * @param string $attributes Attributes for the anchor tag.
+         */
+        $attr = apply_filters( 'next_posts_link_attributes', '' );
+
+        return '<a href="' . next_posts( $max_page, false ) . "\" $attr>" . preg_replace('/&([^#])(?![a-z]{1,8};)/i', '&#038;$1', $label) . '</a>';
+    }
+}
 
 function custom_numeric_posts_nav() {
 
@@ -36,8 +82,8 @@ $links[] = $paged + 1;
 echo '<div class="dwelling-pagination"><ul>' . "\n";
 
         /**	Previous Post Link */
-        if ( get_previous_posts_link() )
-        printf( '<li>%s</li>' . "\n", get_previous_posts_link() );
+        if ( custom_get_prev_link() )
+        printf( '<li>%s</li>' . "\n", custom_get_prev_link() );
 
         /**	Link to first page, plus ellipses if necessary */
         if ( ! in_array( 1, $links ) ) {
@@ -66,8 +112,8 @@ echo '<div class="dwelling-pagination"><ul>' . "\n";
         }
 
         /**	Next Post Link */
-        if ( get_next_posts_link() )
-        printf( '<li>%s</li>' . "\n", get_next_posts_link() );
+        if ( custom_get_next_posts_link() )
+        printf( '<li>%s</li>' . "\n", custom_get_next_posts_link() );
 
         echo '</ul></div>' . "\n";
 

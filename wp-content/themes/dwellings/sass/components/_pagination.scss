@@ -6,10 +6,13 @@
   }
 
   li {
-    padding: 0 12px;
+    padding: 0 10px;
     margin-left: 4px;
     font: 400 16px/31px "Lato", sans-serif;
     text-align: center;
+    @media only screen and (min-width: 768px) {
+      padding: 0 12px;
+    }
 
     &:first-child {
       margin-left: 0;

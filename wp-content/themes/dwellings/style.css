@@ -68,10 +68,13 @@ Version: 1.0.0
     display: -ms-flexbox;
     display: flex; }
   .dwelling-pagination li {
-    padding: 0 12px;
+    padding: 0 10px;
     margin-left: 4px;
     font: 400 16px/31px "Lato", sans-serif;
     text-align: center; }
+    @media only screen and (min-width: 768px) {
+      .dwelling-pagination li {
+        padding: 0 12px; } }
     .dwelling-pagination li:first-child {
       margin-left: 0; }
     .dwelling-pagination li.active, .dwelling-pagination li:hover {
@@ -372,6 +375,12 @@ Version: 1.0.0
     border-bottom: 1px solid #e5e5e5; }
     .blog-page-section .blog-item:last-of-type {
       border-bottom: none; }
+  .blog-page-section .entry-content ol {
+    list-style: decimal inside; }
+  .blog-page-section .entry-content ul {
+    list-style: disc inside; }
+  .blog-page-section .entry-content blockquote {
+    padding: 10px 20px; }
 
 .post-information {
   margin-bottom: 17px;
