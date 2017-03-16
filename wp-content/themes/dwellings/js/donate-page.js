@@ -1,57 +1,28 @@
-$.fn.swap = function(b) {
-    var a = this; b = $(b);
-    var tmp = $('<span>').hide();
-    a.before(tmp);
-    b.before(a);
-    tmp.replaceWith(b);
-};
+function init() {
+    var mcmeqeil46hzy;
+    (function (d, t) {
+        var s = d.createElement(t), opts = {"checkoutToken": "meqeil46hzy", "width": "100%"};
+        s.src = 'https://d2l7e0y6ygya2s.cloudfront.net/assets/embed.js';
+        s.onload = s.onreadystatechange = function () {
+            var rs = this.readyState;
+            if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+            try {
+                mcmeqeil46hzy = new MoonclerkEmbed(opts);
+                mcmeqeil46hzy.display();
+            } catch (e) {
+                console.log(e);
+            }
+        };
+        var scr = d.getElementsByTagName(t)[0];
+        scr.parentNode.insertBefore(s, scr);
+    })(document, 'script');
+
+}
 
 $(() => {
-    // Inputs functionality
-    function changeAmount() {
-        if (customRadio.prop('checked')) {
-            customInput.css('visibility', 'initial');
-        } else customInput.css('visibility', 'hidden');
+    // init script only if on a certain page (with donation form)
+    if ($('.donation-wrap').length) {
+        console.log('donation scripts loaded');
+        init();
     }
-
-    var customRadio = $('input#amount-custom');
-    var customInput = $('input.amount-input');
-
-    $('#amounts').on('change', changeAmount);
-    changeAmount();
-
-    // Page switching/swapping
-    function switchPages(oldP, newP, cb) {
-        newP.fadeOut();
-        oldP.fadeOut('slow', () => {
-            oldP.swap(newP);
-            newP.fadeIn('slow');
-            if (cb) cb();
-        });
-
-    }
-    function setCurrentPage(index) {
-        $('.form-headers .form-header').each((i, el) => {
-            curPage = pageArr[index];
-            el = $(el);
-            (i === index) ? el.addClass('current') : el.removeClass('current');
-        })
-    }
-
-    var pageArr = [$('.page1'), $('.page2'), $('.page3')];
-    var [page1, page2, page3] = pageArr;
-    var curPage = null;
-    setCurrentPage(0);
-
-    $('.page1-button').on('click', () => {
-        switchPages(page1, page2, () => { setCurrentPage(1); });
-    });
-    [$('.form-header.first'), $('.form-header.second')].forEach((el, i) =>{
-        el.on('click', function() {
-            if (!(pageArr[i] === curPage)) {
-                switchPages(curPage, pageArr[i], () => { setCurrentPage(i); });
-            }
-        });
-    });
-
 });
