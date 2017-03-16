@@ -2,36 +2,36 @@
 /**
  * Icons section
  * use in homepage and learn more  pages
-
  */
 ?>
 
 <section class="icongroup">
+    <div class="container">
+        <div class="row">
+
+
+        <h2 class="title title-decor">What’s the process?</h2>
 
 
 
-    <h2 class="title title-decor">What’s the process?</h2>
+        <?php
+
+        $args = array(
+            'post_type' => 'icons-section',
+            'order' => 'ASC'
+
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) :
+
+            while ($query->have_posts()) : $query->the_post();
+                ?>
 
 
-
-
-    <?php
-
-    $args = array(
-        'post_type' => 'icons-section'
-    );
-
-    $query = new WP_Query( $args );
-
-    if ($query -> have_posts()) :
-
-        while ($query -> have_posts()) : $query -> the_post();
-            ?>
-
-
-            <div class="project-post">
-                <div class="img-wrap">
-
+                <div class="icongroup-post col-xs-12 col-md-4">
+                    <div class="img-wrap">
 
 
                         <?php if (has_post_thumbnail()) : ?>
@@ -40,34 +40,30 @@
 
                         <?php endif; ?>
 
+                    </div>
+
+                    <div class="description">
+
+                        <h3> <?php the_title(); ?> </h3>
+
+                        <p><?php the_content(); ?></p>
+
+
+                    </div>
+
+
                 </div>
 
-                <div class="description">
+                <?php
+            endwhile;
+            wp_reset_postdata();
 
-                    <h3> <?php the_title(); ?> </h3>
+        else :
+            echo '<p> No content </p>';
 
-                    <div><?php the_content(); ?></div>
+        endif;
+        ?>
+        </div> <!--  row   -->
+    </div> <!--  container   -->
 
-
-
-
-
-
-                </div>
-
-
-
-
-
-            </div>
-
-            <?php
-        endwhile;
-        wp_reset_postdata();
-
-    else :
-        echo '<p> No content </p>';
-
-    endif;
-    ?>
 </section>

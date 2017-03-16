@@ -1,0 +1,25 @@
+.icongroup{}
+.icongroup-post{
+  margin-top: 30px;
+  .img-wrap{
+    img{
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .description{
+    text-align: center;
+    h3{
+      margin-top: 20px;
+      font: 700 24px/36px $lato;
+      color: $font-black;
+    }
+    p{
+      margin-top: 20px;
+      font: 400 16px/23px $lato;
+      color: $font-black;
+
+
+    }
+  }
+}
