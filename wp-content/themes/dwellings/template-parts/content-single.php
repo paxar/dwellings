@@ -8,7 +8,7 @@
  */
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class('single-post'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('single-blog-post'); ?>>
     <div class="image-box">
         <?php
         if ( has_post_thumbnail() ) {
