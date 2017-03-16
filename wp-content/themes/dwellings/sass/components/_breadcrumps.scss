@@ -1,0 +1,18 @@
+.breadcrumbs {
+  margin-bottom: 6px;
+  display: flex;
+  color: darkgrey;
+  font: 100 18px/27px $lato;
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+
+  .bread-link {
+    color: darkgrey;
+
+    &:hover {
+      color: darkgrey;
+    }
+  }
+}
