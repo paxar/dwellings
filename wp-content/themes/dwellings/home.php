@@ -34,7 +34,6 @@ get_header();?>
             endif; ?>
             </section>
         </div><!-- #primary -->
-    </main><!-- #main -->
 
 <?php
 
