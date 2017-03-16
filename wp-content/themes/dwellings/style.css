@@ -93,7 +93,7 @@ Version: 1.0.0
     @media only screen and (min-width: 768px) {
       .search-form .search-field {
         width: 300px; } }
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 992px) {
       .search-form .search-field {
         width: 444px; } }
   .search-form input[type="submit"] {
@@ -423,25 +423,22 @@ Version: 1.0.0
       .blog-page-section .blog-item {
         -ms-flex-direction: row;
             flex-direction: row; } }
-    .blog-page-section .blog-item:after {
-      content: '';
-      display: block;
-      clear: left; }
-  .blog-page-section .post-information {
-    margin-bottom: 17px;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    opacity: 0.6;
-    color: black;
-    font: 400 14px/24px "Lato", sans-serif; }
-    .blog-page-section .post-information .byline {
-      width: 166px; }
-    .blog-page-section .post-information a {
-      color: #000; }
-      .blog-page-section .post-information a:hover {
-        color: #fed52f; }
+
+.post-information {
+  margin-bottom: 17px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  opacity: 0.6;
+  color: black;
+  font: 400 14px/24px "Lato", sans-serif; }
+  .post-information .byline {
+    width: 166px; }
+  .post-information a {
+    color: #000; }
+    .post-information a:hover {
+      color: #fed52f; }
 
 .top-part-content {
   padding-bottom: 10px;
@@ -462,6 +459,7 @@ Version: 1.0.0
   margin-bottom: 30px; }
   @media only screen and (min-width: 992px) {
     .image-box {
+      float: left;
       margin-right: 40px;
       margin-bottom: 0;
       max-width: 365px; } }
@@ -491,6 +489,8 @@ Version: 1.0.0
   font: 14px/23px "Lato", sans-serif;
   text-transform: uppercase;
   color: #fed52f; }
+  .more-link:hover {
+    color: #fed52f; }
 
 .no-results,
 .not-found {
@@ -500,5 +500,13 @@ Version: 1.0.0
 .search-results-title {
   display: block;
   word-wrap: break-word; }
+
+.single-post {
+  padding: 30px 0 50px;
+  max-width: 886px; }
+  .single-post:after {
+    content: '';
+    display: block;
+    clear: left; }
 
 /*# sourceMappingURL=style.css.map */
