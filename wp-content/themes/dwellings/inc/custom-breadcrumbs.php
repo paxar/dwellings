@@ -1,10 +1,8 @@
 <?php
 /**
  * Dwellings site custom breadcrumbs
- *
  */
 
-// Breadcrumbs
 function custom_breadcrumbs() {
 
     // Settings
