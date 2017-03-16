@@ -1,7 +1,6 @@
 <?php
 /**
  * Dwellings site custom search
- *
  */
 
 function custom_search_results($search, &$wp_query) {
@@ -16,11 +15,16 @@ function custom_search_results($search, &$wp_query) {
         foreach ( ( array ) $q['search_terms'] as $term ){
             $search[] = $wpdb->prepare( "$wpdb->posts.post_title LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
             $search[] = $wpdb->prepare( "$wpdb->posts.post_content LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
-            $search[] = $wpdb->prepare( "$wpdb->posts.post_date LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
+            $test_date_var = strtotime($term);
+            if ($test_date_var)
+                $search[] = $wpdb->prepare( "$wpdb->posts.post_date LIKE %s", $n . $wpdb->esc_like( date( "Y-m-j", $test_date_var )) . $n );
         }
 
-        $search = ' AND post_type="post" AND (' . implode( ' OR ', $search ).')';
+        $test_date_var = strtotime(implode(' ',$q['search_terms']));
 
+        if ($test_date_var)
+           $search[] = $wpdb->prepare( "$wpdb->posts.post_date LIKE %s", $n . $wpdb->esc_like( date( "Y-m-j", $test_date_var )) . $n );
+        $search = ' AND post_type="post" AND (' . implode( ' OR ', $search ).')';
     }
 
     return $search;
