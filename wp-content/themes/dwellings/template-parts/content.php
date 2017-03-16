@@ -9,7 +9,18 @@
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('blog-item'); ?>>
-	<div class="image-box"><?php the_post_thumbnail(); ?></div>
+	<div class="image-box">
+		<?php
+			if ( has_post_thumbnail() ) {
+				the_post_thumbnail();
+			}
+			else {
+				echo '<img src="' . get_bloginfo('stylesheet_directory')
+					. '/images/thumbnail-default.jpg" />';
+			}
+			?>
+	</div>
+	<div class="content-post-wrap">
 	<header class="entry-header">
 		<?php
 		if ( is_single() ) :
@@ -19,7 +30,7 @@
 		endif;
 
 		if ( 'post' === get_post_type() ) : ?>
-			<div class="entry-meta">
+			<div class="entry-meta post-information">
 				<?php dwellings_posted_on(); ?>
 			</div><!-- .entry-meta -->
 			<?php
@@ -43,4 +54,5 @@
 	<footer class="entry-footer">
 		<?php dwellings_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+	</div>
 </article><!-- #post-## -->

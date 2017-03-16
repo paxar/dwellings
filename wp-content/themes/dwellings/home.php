@@ -23,14 +23,13 @@ get_header();?>
 
                 endwhile;
 
-                custom_numeric_posts_nav();
-
                 else :
 
                 get_template_part( 'template-parts/content', 'none' );
 
             endif; ?>
             </section>
+            <?php custom_numeric_posts_nav() ?>
         </div>
     </main><!-- #main -->
 <?php

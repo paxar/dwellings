@@ -395,7 +395,7 @@ function custom_breadcrumbs() {
         } else if ( is_search() ) {
 
             // Search results page
-            echo '<li class="item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</strong></li>';
+            echo '<li class="item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: <span class="search-results-title">' . get_search_query() . '</span></strong></li>';
 
         } elseif ( is_404() ) {
 
@@ -497,10 +497,11 @@ function custom_search_results($search, &$wp_query) {
         foreach ( ( array ) $q['search_terms'] as $term ){
             $search[] = $wpdb->prepare( "$wpdb->posts.post_title LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
             $search[] = $wpdb->prepare( "$wpdb->posts.post_content LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
-//            $search[] = $wpdb->prepare( "$wpdb->posts.post_date LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
+            $search[] = $wpdb->prepare( "$wpdb->posts.post_date LIKE %s", $n . $wpdb->esc_like( $term ) . $n );
         }
 
         $search = ' AND post_type="post" AND (' . implode( ' OR ', $search ).')';
+
     }
 
     return $search;

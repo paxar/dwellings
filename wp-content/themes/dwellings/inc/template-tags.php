@@ -26,7 +26,7 @@ function dwellings_posted_on() {
 
     $posted_on = sprintf(
         esc_html_x( '%s', 'post date', 'dwellings' ),
-        '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . date( "j F, Y", strtotime(strip_tags($time_string)) ). '</a>'
+        '<span' . esc_url( get_permalink() ) . '>' . date( "j F, Y", strtotime(strip_tags($time_string)) ). '</span>'
     );
 
     $byline = sprintf(
