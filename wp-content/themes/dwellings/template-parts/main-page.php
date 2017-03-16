@@ -15,10 +15,12 @@ Template Name: Template main page
     </section>
     <main id="content" class="site-content">
 
-    <section class="icongroup">
 
-        <!-- TODO add loop there       -->
-    </section>
+
+        <!-- Icons section show there      -->
+
+       <?php get_template_part( 'template-parts/icongroup', 'none' ); ?>
+
 
     <section class="about">
 
