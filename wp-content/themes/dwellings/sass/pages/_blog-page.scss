@@ -29,6 +29,18 @@
       border-bottom: none;
     }
   }
+
+  .entry-content {
+    ol {
+      list-style: decimal inside;
+    }
+    ul {
+      list-style: disc inside;
+    }
+    blockquote {
+      padding: 10px 20px;
+    }
+  }
 }
 
 .post-information {
