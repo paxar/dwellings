@@ -177,7 +177,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'cover-donate',
         array(
-            'title' => esc_html__('Donation page', 'dwellings'),
+            'title' => esc_html__('Donation', 'dwellings'),
             'priority' => 10,
             'panel' => 'donate_page'
         )
@@ -204,6 +204,42 @@ function dwellings_customize_register( $wp_customize ) {
             'label' => esc_html__('Cover description', 'dwellings'),
             'section' => 'cover-donate',
             'type' => 'textarea'
+        )
+    );
+
+    /*--------------------------------------------------------------
+    # Contact-us page panel
+    --------------------------------------------------------------*/
+    $wp_customize->add_panel( 'contact_us_page', array(
+        'priority' => 11,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Contact-us page', 'dwellings' ),
+        'description' => __( 'Settings of ontact-us page.', 'dwellings' ),
+    ) );
+
+    /*--------------------------------------------------------------
+    # Contact-us section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'cover-contact-us',
+        array(
+            'title' => esc_html__('Contact-us', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'contact_us_page'
+        )
+    );
+    $wp_customize->add_setting(
+        'cover-contact-img'
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'cover-contact-img',
+            array(
+                'label' => esc_html__('Background image', 'dwellings'),
+                'section' => 'cover-contact-us'
+            )
         )
     );
 
