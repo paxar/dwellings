@@ -21,8 +21,9 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'hero-section',
         array(
-            'title' => esc_html__('Hero settings'),
+            'title' => esc_html__('Hero settings', 'dwellings'),
             'priority' => 10,
+            'panel' => 'main_page',
         )
     );
     $wp_customize->add_setting(
@@ -31,7 +32,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'hero-intro',
         array(
-            'label' => esc_html__('Intro'),
+            'label' => esc_html__('Intro', 'dwellings'),
             'section' => 'hero-section'
         )
     );
@@ -41,7 +42,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'hero_description',
         array(
-            'label' => esc_html__('Intro description'),
+            'label' => esc_html__('Intro description', 'dwellings'),
             'section' => 'hero-section',
             'type' => 'textarea'
         )
@@ -52,7 +53,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'btn_url',
         array(
-            'label' => esc_html__('Button URL'),
+            'label' => esc_html__('Button URL', 'dwellings'),
             'section' => 'hero-section'
         )
     );
@@ -62,7 +63,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'btn_text',
         array(
-            'label' => esc_html__('Button text'),
+            'label' => esc_html__('Button text', 'dwellings'),
             'section' => 'hero-section'
         )
     );
@@ -74,7 +75,7 @@ function dwellings_customize_register( $wp_customize ) {
             $wp_customize,
             'bg-hero',
             array(
-                'label' => esc_html__('Background image'),
+                'label' => esc_html__('Background image', 'dwellings'),
                 'section' => 'hero-section'
             )
         )
@@ -86,7 +87,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'cover-donate',
         array(
-            'title' => esc_html__('Donation page'),
+            'title' => esc_html__('Donation page', 'dwellings'),
             'priority' => 10,
         )
     );
@@ -98,7 +99,7 @@ function dwellings_customize_register( $wp_customize ) {
         $wp_customize->add_control(
             'cover_'.$cover[$i],
             array(
-                'label' => esc_html__('Cover '.$cover[$i]),
+                'label' => esc_html__('Cover '.$cover[$i], 'dwellings'),
                 'section' => 'cover-donate'
             )
         );
@@ -109,7 +110,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'cover_description',
         array(
-            'label' => esc_html__('Cover description'),
+            'label' => esc_html__('Cover description', 'dwellings'),
             'section' => 'cover-donate',
             'type' => 'textarea'
         )
@@ -121,20 +122,20 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'footer',
         array(
-            'title' => esc_html__('Footer settings'),
+            'title' => esc_html__('Footer settings', 'dwellings'),
             'priority' => 50,
         )
     );
     $wp_customize->add_setting(
         'copy',
         array(
-            "default"=>esc_html__('Copy')
+            "default"=>esc_html__('Copy', 'dwellings')
         )
     );
     $wp_customize->add_control(
         'copy',
         array(
-            'label' => esc_html__('Copyright text'),
+            'label' => esc_html__('Copyright text', 'dwellings'),
             'section' => 'footer'
         )
     );
@@ -149,11 +150,48 @@ function dwellings_customize_register( $wp_customize ) {
             $wp_customize,
             'bg-footer',
             array(
-                'label' => esc_html__('Background color'),
+                'label' => esc_html__('Background color', 'dwellings'),
                 'section' => 'footer'
             )
         )
     );
+
+    /*--------------------------------------------------------------
+   # Main page
+   --------------------------------------------------------------*/
+
+    $wp_customize->add_panel( 'main_page', array(
+        'priority' => 10,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Main page', 'dwellings' ),
+        'description' => __( 'Settings of main page.', 'dwellings' ),
+    ) );
+
+    $wp_customize->add_section( 'section_test', array(
+        'priority' => 10,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Example Section', 'dwellings' ),
+        'description' => '',
+        'panel' => 'main_page',
+    ) );
+
+    $wp_customize->add_setting(
+        'test',
+        array(
+            'default' => 'Hello'
+        )
+    );
+    $wp_customize->add_control(
+        'test',
+        array(
+            'label' => esc_html__('test', 'dwellings'),
+            'section' => 'section_test',
+            'type' => 'textarea'
+        )
+    );
+
 
 }
 add_action( 'customize_register', 'dwellings_customize_register' );

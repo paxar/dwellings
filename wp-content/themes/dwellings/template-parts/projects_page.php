@@ -49,6 +49,10 @@ Description:  Projects_page
 
                         <div><?php the_content(); ?></div>
 
+                       <div class="post-meta"> <?php echo get_post_meta( $post->ID, 'description', true ); ?> </div>
+
+                        <div class="post-meta2"> <?php the_meta(); ?> </div>
+
 
                         <div class="campaign-description">
 
