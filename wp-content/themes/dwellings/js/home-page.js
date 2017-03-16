@@ -17,3 +17,15 @@ if ($('section.hero').length) {
     $('#container').addClass('container');
     $('.header-wrap').removeClass('container');
 }
+else {
+    $('#close-nav').click(function () {
+        $('.site-header').addClass('header-page');
+        $('#container').removeClass('container');
+        $('.header-wrap').addClass('container');
+    });
+    $('#open-nav').click(function () {
+        $('.site-header').removeClass('header-page');
+        $('#container').addClass('container');
+        $('.header-wrap').removeClass('container');
+    });
+}

@@ -16,13 +16,25 @@ function dwellings_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
     /*--------------------------------------------------------------
+    # Main page panel
+    --------------------------------------------------------------*/
+    $wp_customize->add_panel( 'main_page', array(
+        'priority' => 10,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Main page', 'dwellings' ),
+        'description' => __( 'Settings of main page.', 'dwellings' ),
+    ) );
+
+    /*--------------------------------------------------------------
     # Hero section
     --------------------------------------------------------------*/
     $wp_customize->add_section(
         'hero-section',
         array(
-            'title' => esc_html__('Hero settings'),
+            'title' => esc_html__('Hero settings', 'dwellings'),
             'priority' => 10,
+            'panel' => 'main_page',
         )
     );
     $wp_customize->add_setting(
@@ -31,7 +43,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'hero-intro',
         array(
-            'label' => esc_html__('Intro'),
+            'label' => esc_html__('Intro', 'dwellings'),
             'section' => 'hero-section'
         )
     );
@@ -41,7 +53,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'hero_description',
         array(
-            'label' => esc_html__('Intro description'),
+            'label' => esc_html__('Intro description', 'dwellings'),
             'section' => 'hero-section',
             'type' => 'textarea'
         )
@@ -52,7 +64,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'btn_url',
         array(
-            'label' => esc_html__('Button URL'),
+            'label' => esc_html__('Button URL', 'dwellings'),
             'section' => 'hero-section'
         )
     );
@@ -62,7 +74,7 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'btn_text',
         array(
-            'label' => esc_html__('Button text'),
+            'label' => esc_html__('Button text', 'dwellings'),
             'section' => 'hero-section'
         )
     );
@@ -74,43 +86,35 @@ function dwellings_customize_register( $wp_customize ) {
             $wp_customize,
             'bg-hero',
             array(
-                'label' => esc_html__('Background image'),
+                'label' => esc_html__('Background image', 'dwellings'),
                 'section' => 'hero-section'
             )
         )
     );
 
     /*--------------------------------------------------------------
-    # Donate page
+    # Example section
     --------------------------------------------------------------*/
-    $wp_customize->add_section(
-        'cover-donate',
+    $wp_customize->add_section( 'section_test', array(
+        'priority' => 10,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Example Section', 'dwellings' ),
+        'description' => '',
+        'panel' => 'main_page',
+    ) );
+
+    $wp_customize->add_setting(
+        'test',
         array(
-            'title' => esc_html__('Donation page'),
-            'priority' => 10,
+            'default' => 'Hello'
         )
     );
-	$cover = array("organization-url", "title");
-    for ($i=0; $i<count($cover); $i++) {
-        $wp_customize->add_setting(
-            'cover_'.$cover[$i]
-        );
-        $wp_customize->add_control(
-            'cover_'.$cover[$i],
-            array(
-                'label' => esc_html__('Cover '.$cover[$i]),
-                'section' => 'cover-donate'
-            )
-        );
-    }
-    $wp_customize->add_setting(
-        'cover_description'
-    );
     $wp_customize->add_control(
-        'cover_description',
+        'test',
         array(
-            'label' => esc_html__('Cover description'),
-            'section' => 'cover-donate',
+            'label' => esc_html__('test', 'dwellings'),
+            'section' => 'section_test',
             'type' => 'textarea'
         )
     );
@@ -121,20 +125,21 @@ function dwellings_customize_register( $wp_customize ) {
     $wp_customize->add_section(
         'footer',
         array(
-            'title' => esc_html__('Footer settings'),
+            'title' => esc_html__('Footer settings', 'dwellings'),
             'priority' => 50,
+            'panel' => 'main_page',
         )
     );
     $wp_customize->add_setting(
         'copy',
         array(
-            "default"=>esc_html__('Copy')
+            "default"=>esc_html__('Copy', 'dwellings')
         )
     );
     $wp_customize->add_control(
         'copy',
         array(
-            'label' => esc_html__('Copyright text'),
+            'label' => esc_html__('Copyright text', 'dwellings'),
             'section' => 'footer'
         )
     );
@@ -149,9 +154,56 @@ function dwellings_customize_register( $wp_customize ) {
             $wp_customize,
             'bg-footer',
             array(
-                'label' => esc_html__('Background color'),
+                'label' => esc_html__('Background color', 'dwellings'),
                 'section' => 'footer'
             )
+        )
+    );
+
+    /*--------------------------------------------------------------
+    # Donate page panel
+    --------------------------------------------------------------*/
+    $wp_customize->add_panel( 'donate_page', array(
+        'priority' => 11,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Donate page', 'dwellings' ),
+        'description' => __( 'Settings of donate page.', 'dwellings' ),
+    ) );
+
+    /*--------------------------------------------------------------
+    # Donate section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'cover-donate',
+        array(
+            'title' => esc_html__('Donation page', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'donate_page'
+        )
+    );
+	$cover = array("organization-url", "title");
+    for ($i=0; $i<count($cover); $i++) {
+        $wp_customize->add_setting(
+            'cover_'.$cover[$i]
+        );
+        $wp_customize->add_control(
+            'cover_'.$cover[$i],
+            array(
+                'label' => esc_html__('Cover '.$cover[$i], 'dwellings'),
+                'section' => 'cover-donate'
+            )
+        );
+    }
+    $wp_customize->add_setting(
+        'cover_description'
+    );
+    $wp_customize->add_control(
+        'cover_description',
+        array(
+            'label' => esc_html__('Cover description', 'dwellings'),
+            'section' => 'cover-donate',
+            'type' => 'textarea'
         )
     );
 

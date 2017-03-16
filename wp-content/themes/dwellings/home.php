@@ -31,7 +31,6 @@ get_header();?>
             </section>
             <?php custom_numeric_posts_nav() ?>
         </div>
-    </main><!-- #main -->
 <?php
 
 get_footer();
