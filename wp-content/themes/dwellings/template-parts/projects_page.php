@@ -11,8 +11,8 @@ Description:  Projects_page
 <section class="projects">
     <div class="container">
 
-        <h2 class="title">bla bla bla</h2>
-        <p class="subtitle">bla bla bla</p>
+        <h2 class="title">Title page</h2>
+
 
 
 
