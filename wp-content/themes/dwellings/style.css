@@ -17,7 +17,7 @@ Version: 1.0.0
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
 .site-content {
   background: #fbf7f4;
-  padding: 60px 0; }
+  padding: 155px 0 60px; }
 
 .intro {
   font: 800 30px "Lato", sans-serif; }
@@ -85,11 +85,59 @@ Version: 1.0.0
         color: #fff;
         text-decoration: none; }
 
+.search-form {
+  position: relative;
+  width: 100%; }
+  @media only screen and (min-width: 768px) {
+    .search-form {
+      width: auto; } }
+  .search-form label {
+    width: 100%; }
+  .search-form .screen-reader-text {
+    display: none; }
+  .search-form .search-field {
+    width: 100%;
+    height: 40px;
+    padding: 12px 12px 12px 42px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px; }
+    @media only screen and (min-width: 768px) {
+      .search-form .search-field {
+        width: 300px; } }
+    @media only screen and (min-width: 768px) {
+      .search-form .search-field {
+        width: 444px; } }
+  .search-form input[type="submit"] {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    background: url("images/search-icon.png") no-repeat left top;
+    border: none;
+    font-size: 0; }
+
+.breadcrumbs {
+  margin-bottom: 6px;
+  display: -ms-flexbox;
+  display: flex;
+  color: darkgrey;
+  font: 100 18px/27px "Lato", sans-serif; }
+  @media only screen and (min-width: 768px) {
+    .breadcrumbs {
+      margin-bottom: 0; } }
+  .breadcrumbs .bread-link {
+    color: darkgrey; }
+    .breadcrumbs .bread-link:hover {
+      color: darkgrey; }
+
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
 .container {
-  position: relative; }
+  position: static; }
 
 .site-header {
   width: 100%;
@@ -140,9 +188,15 @@ Version: 1.0.0
           color: #fed52f; }
 
 .header-page {
-  position: relative;
-  background-color: #2d2620; }
+  width: 100%;
+  position: fixed;
+  background-color: #2d2620;
+  transition: 0.5s;
+  z-index: 99; }
 
+/*.fixed-scroll {
+
+}*/
 @media (min-width: 768px) {
   .site-header .main-nav .nav-btn {
     display: none; }
@@ -299,6 +353,9 @@ Version: 1.0.0
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
+.blog-page-main {
+  padding-top: 105px; }
+
 .blog-page-section {
   padding: 0 15px 10px;
   background-color: white;
@@ -356,20 +413,19 @@ Version: 1.0.0
         color: #fed52f; }
 
 .top-part-content {
+  padding-bottom: 10px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
-      flex-direction: column; }
-  @media only screen and (min-width: 640px) {
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center; }
+  @media only screen and (min-width: 768px) {
     .top-part-content {
       -ms-flex-direction: row;
           flex-direction: row;
       -ms-flex-pack: justify;
           justify-content: space-between; } }
-
-.breadcrumbs {
-  display: -ms-flexbox;
-  display: flex; }
 
 .image-box {
   margin-bottom: 30px; }
@@ -513,7 +569,6 @@ Version: 1.0.0
 
 .search-results-title {
   display: block;
-  word-wrap: break-word;
-  max-width: 200px; }
+  word-wrap: break-word; }
 
 /*# sourceMappingURL=style.css.map */
