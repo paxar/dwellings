@@ -1,0 +1,16 @@
+.title{
+  font: 900 40px/50px $lato;
+  color: #000000;
+  text-align: center;
+}
+
+.title-decor{
+  &:after{
+    content: '';
+    display: block;
+    margin: 20px auto 0;
+    width: 103px;
+    height: 3px;
+    background-color: $brand-color;
+  }
+}

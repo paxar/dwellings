@@ -10,7 +10,7 @@
 
 
 
-    <h2 class="title">bla bla bla</h2>
+    <h2 class="title title-decor">What’s the process?</h2>
 
 
 
