@@ -29,6 +29,7 @@ function custom_breadcrumbs() {
 
         if (is_home()) {
             echo '<li class="item-current item-archive"><strong class="bread-current bread-archive">' . get_the_title( get_option('page_for_posts', true) ) . '</strong></li>';
+
         }
 
         if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
@@ -151,7 +152,7 @@ function custom_breadcrumbs() {
                 echo $parents;
 
                 // Current page
-                echo '<li class="item-current item-' . $post->ID . '"><strong title="' . get_the_title() . '"> ' . get_the_title() . '</strong></li>';
+//                echo '<li class="item-current item-' . $post->ID . '"><strong title="' . get_the_title() . '"> ' . get_the_title() . '</strong></li>';
 
             } else {
 
@@ -218,16 +219,19 @@ function custom_breadcrumbs() {
             // Display author name
             echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><strong class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . 'Author: ' . $userdata->display_name . '</strong></li>';
 
-        } else if ( get_query_var('paged') ) {
-
-            // Paginated archives
-//            echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</strong></li>';
-
-        } else if ( is_search() ) {
+        }
+        else if ( is_search() ) {
 
             // Search results page
-//            echo '<li class="item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: <span class="search-results-title">' . get_search_query() . '</span></strong></li>';
+            echo '<li class="item-current item-current"><strong class="bread-current bread-current" title="Search results for: ' . get_search_query() . '">Search results for: <span class="search-results-title">' . get_search_query() . '</span></strong></li>';
 
+        }
+        else if ( get_query_var('paged') ) {
+
+            // Paginated archives
+            if (!is_home()) {
+                echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">' . __('Page') . ' ' . get_query_var('paged') . '</strong></li>';
+            }
         } elseif ( is_404() ) {
 
             // 404 page
