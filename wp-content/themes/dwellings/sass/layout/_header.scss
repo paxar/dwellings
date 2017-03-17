@@ -61,16 +61,17 @@
 }
 
 .header-page {
+  position: fixed;
+  background-color: #2d2620;
+}
+
+.fixed-scroll {
   width: 100%;
   position: fixed;
   background-color: #2d2620;
   transition: 0.5s;
   z-index: 99;
 }
-
-/*.fixed-scroll {
-
-}*/
 
 @media (min-width: 768px) {
   .site-header {
