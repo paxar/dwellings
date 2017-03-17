@@ -39,9 +39,11 @@ else {
     $(window).scroll(function() {
         if( $(this).scrollTop() > 0 ) {
             page_nav.addClass(fixed_scroll);
+            nav.addClass('container');
         }
         else {
             page_nav.removeClass(fixed_scroll);
+            nav.removeClass('container');
         }
     });
 
