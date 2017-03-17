@@ -29,8 +29,8 @@ $(document).ready(function () {
 
 if ($('section.hero').length) {
     $('.site-header').removeClass('header-page');
-     $('#container').addClass('container');
-     $('.header-wrap').removeClass('container');
+    $('#container').addClass('container');
+    $('.header-wrap').removeClass('container');
     $('.container').css("position", "relative");
 }
 else {

@@ -45,6 +45,10 @@
       left: 0;
       padding: 20vh 0 0;
       z-index: -1;
+      li.current-menu-item a {
+        text-decoration: underline;
+        color: $brand-color;
+      }
       li {
         margin: 5vh 0;
       }
