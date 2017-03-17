@@ -9,14 +9,12 @@
     <main id="main" class="site-main" role="main">
 
         <?php
+        while ( have_posts() ) : the_post();
 
+           // get_template_part( 'charitable/content-campaign', get_post_format() );
+            the_content();
 
-
-
-
-
-
-
+        endwhile; // End of the loop.
         ?>
 
 

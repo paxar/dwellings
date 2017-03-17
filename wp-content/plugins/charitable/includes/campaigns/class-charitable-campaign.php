@@ -513,7 +513,7 @@ if ( ! class_exists( 'Charitable_Campaign' ) ) :
 			$currency_helper = charitable_get_currency_helper();
 
 			if ( $this->has_goal() ) {
-				$ret = sprintf( _x( '%s donated! of %s goal', 'amount donated of goal', 'charitable' ),
+				$ret = sprintf( _x( '%s donated of %s goal', 'amount donated of goal', 'charitable' ),
 					'<span class="amount">' . $currency_helper->get_monetary_amount( $this->get_donated_amount() ) . '</span>',
 					'<span class="goal-amount">' . $currency_helper->get_monetary_amount( $this->get( 'goal' ) ) . '</span>'
 				);

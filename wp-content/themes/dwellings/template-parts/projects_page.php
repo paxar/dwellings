@@ -19,6 +19,7 @@ Description:  Projects_page
 
 
         <?php echo do_shortcode( '[campaigns]' ); ?>
+<!--        /* this shortcode use theme_folder/charitable/campaign-loop.php  template */-->
 
 
 
