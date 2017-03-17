@@ -31,3 +31,11 @@ function custom_search_results($search, &$wp_query) {
 }
 
 add_filter( 'posts_search', 'custom_search_results', 10, 2 );
+
+add_action('pre_get_posts','sort_searchresult_by_date');
+function sort_searchresult_by_date($k) {
+    if(is_search()) {
+        $k->query_vars['orderby'] = 'post_date';
+        $k->query_vars['order'] = 'DESC';
+    }
+}
