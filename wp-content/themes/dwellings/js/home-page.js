@@ -42,4 +42,9 @@ else {
             page_nav.removeClass(fixed_scroll)
         }
     });
+
+
+    /*Tooltips by paxar*/
+    $('[data-toggle="tooltip"]').tooltip('show');
+
 }
