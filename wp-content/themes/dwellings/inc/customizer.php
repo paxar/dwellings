@@ -243,6 +243,39 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
 
+    /*--------------------------------------------------------------
+    # Learn more panel
+    --------------------------------------------------------------*/
+    $wp_customize->add_panel( 'learn_more_page', array(
+        'priority' => 10,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Learn more', 'dwellings' ),
+        'description' => __( 'Settings of learn more page.', 'dwellings' ),
+    ) );
+
+    /*--------------------------------------------------------------
+    # Test section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'test-section',
+        array(
+            'title' => esc_html__('Test settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'learn_more_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'section-title'
+    );
+    $wp_customize->add_control(
+        'section-title',
+        array(
+            'label' => esc_html__('Title', 'dwellings'),
+            'section' => 'test-section'
+        )
+    );
+
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 
