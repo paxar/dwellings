@@ -19,12 +19,12 @@
                         <dd><address> PO Box 3107 Ferndale, WA 98248</address></dd>
                     </dl>
                 </div>
-                <div>
+                <div class="cover-contact">
                     <img src="<?php echo get_theme_mod('cover-contact-img') ?>" alt="<?php echo get_theme_mod('cover-contact-img') ?>">
                 </div>
             </div>
             <div class="contact-form">
-                <input type="text">
+                <?php dynamic_sidebar( 'sidebar-3' ); ?>
             </div>
         </section>
     </div>

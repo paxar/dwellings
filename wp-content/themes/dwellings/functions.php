@@ -108,10 +108,19 @@ function dwellings_widgets_init() {
     register_sidebar( array(
         'name'          => esc_html__( 'Footer widgets', 'dwellings' ),
         'id'            => 'sidebar-2',
-        'description'   => esc_html__( 'Add subscription form.', 'dwellings' ),
+        'description'   => esc_html__( 'Add widgets form.', 'dwellings' ),
         'before_widget' => '<diiv class="subscribe">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-footer">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Contact us widgets', 'dwellings' ),
+        'id'            => 'sidebar-3',
+        'description'   => esc_html__( 'Add widgets form.', 'dwellings' ),
+        'before_widget' => '<diiv class="widget-contact">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-contact-title">',
         'after_title'   => '</h3>',
     ) );
 }
