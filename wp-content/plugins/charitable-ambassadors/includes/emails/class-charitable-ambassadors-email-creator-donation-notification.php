@@ -1,0 +1,345 @@
+<?php
+/**
+ * Class that models the email that is sent to campaign creators whenever their campaign receives a donation.
+ *
+ * @version     1.1.0
+ * @package     Charitable Ambassadors/Classes/Charitable_Ambassadors_Email_Creator_Donation_Notification
+ * @author      Eric Daams
+ * @copyright   Copyright (c) 2017, Studio 164a
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ */
+
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+if ( ! class_exists( 'Charitable_Ambassadors_Email_Creator_Donation_Notification' ) ) :
+
+	/**
+	 * New Donation Email
+	 *
+	 * @since       1.1.0
+	 */
+	class Charitable_Ambassadors_Email_Creator_Donation_Notification extends Charitable_Email {
+
+		/**
+		 * @var     string
+		 */
+		const ID = 'creator_donation_notification';
+
+		/**
+		 * Sets whether the email allows you to define the email recipients.
+		 *
+		 * @var     boolean
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected $has_recipient_field = false;
+
+		/**
+		 * @var     string[] Array of supported object types (campaigns, donations, donors, etc).
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected $object_types = array( 'donation', 'creator' );
+
+		/**
+		 * @var     Charitable_User The campaign creator who will be receiving the email.
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected $creator;
+
+		/**
+		 * @var     object[] The campaign donations received by the campaign creator in this donation.
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected $campaign_donations;
+
+		/**
+		 * Instantiate the email class, defining its key values.
+		 *
+		 * @param   mixed[]  $objects
+		 * @access  public
+		 * @since   1.1.0
+		 */
+		public function __construct( $objects = array() ) {
+			parent::__construct( $objects );
+
+			$this->creator = isset( $objects['creator'] ) ? $objects['creator'] : null;
+
+			$this->campaign_donations = isset( $objects['campaign_donations'] ) ? $objects['campaign_donations'] : array();
+
+			$this->name = apply_filters( 'charitable_email_creator_donation_notification_name', __( 'Campaign Creator: Donation Notification', 'charitable-ambassadors' ) );
+
+			add_filter( 'charitable_email_content_fields', array( $this, 'add_creator_content_fields' ), 10, 2 );
+
+			add_filter( 'charitable_email_preview_content_fields', array( $this, 'add_preview_creator_content_fields' ), 10, 2 );
+		}
+
+		/**
+		 * Returns the current email's ID.
+		 *
+		 * @return  string
+		 * @access  public
+		 * @static
+		 * @since   1.0.3
+		 */
+		public static function get_email_id() {
+			return self::ID;
+		}
+
+		/**
+		 * Static method that is fired right after a donation is completed, sending the donation receipt.
+		 *
+		 * @param   int     $donation_id
+		 * @return  boolean
+		 * @access  public
+		 * @static
+		 * @since   1.1.0
+		 */
+		public static function send_with_donation_id( $donation_id ) {
+			if ( ! charitable_get_helper( 'emails' )->is_enabled_email( self::get_email_id() ) ) {
+				return false;
+			}
+
+			if ( ! charitable_is_approved_status( get_post_status( $donation_id ) ) ) {
+				return false;
+			}
+
+			/**
+			 * Since a single donation may include donations to multiple
+			 * campaigns, it is possible that multiple creator notifications
+			 * need to be sent.
+			 *
+			 * We group the campaign donations created by donor and send one
+			 * notification for each creator.
+			 */
+			$donation = charitable_get_donation( $donation_id );
+			$creators = array();
+
+			foreach ( $donation->get_campaign_donations() as $campaign_donation ) {
+
+				$creator_id = get_post_field( 'post_author', $campaign_donation->campaign_id );
+
+				if ( ! isset( $creators[ $creator_id ] ) ) {
+					$creators[ $creator_id ] = array();
+				}
+
+				$creators[ $creator_id ][] = $campaign_donation;
+
+			}
+
+			/**
+			 * Send an email to every creator who just received a donation.
+			 */
+			foreach ( $creators as $creator_id => $campaign_donations ) {
+
+				$email = new Charitable_Ambassadors_Email_Creator_Donation_Notification( array(
+					'donation' => $donation,
+					'creator' => new Charitable_User( $creator_id ),
+					'campaign_donations' => $campaign_donations,
+				) );
+
+				/**
+				 * Don't resend the email.
+				 */
+				if ( $email->is_sent_already( $donation_id ) ) {
+					return false;
+				}
+
+				$sent = $email->send();
+
+				/**
+				 * Log that the email was sent.
+				 */
+				if ( apply_filters( 'charitable_log_email_send', true, self::get_email_id(), $email ) ) {
+					$email->log( $donation_id, $sent );
+				}
+			}
+
+			return true;
+		}
+
+		/**
+		 * Sends the email.
+		 *
+		 * @return  boolean
+		 * @access  public
+		 * @since   1.1.0
+		 */
+		public function send() {
+			if ( is_null( $this->creator ) ) {
+				_doing_it_wrong( __METHOD__, __( 'You cannot send a creator donation notification without a Charitable_User object for the campaign creator.', 'charitable-ambassadors' ), '1.1.0' );
+				return false;
+			}
+
+			if ( empty( $this->campaign_donations ) ) {
+				_doing_it_wrong( __METHOD__, __( 'You cannot send a creator donation notification without an array of campaign donations.', 'charitable-ambassadors' ), '1.1.0' );
+				return false;
+			}
+
+			return parent::send();
+		}
+
+		/**
+		 * Add creator content fields for this email.
+		 *
+		 * @param   array $fields
+		 * @param   Charitable_Email $email
+		 * @return  array
+		 * @access  public
+		 * @since   1.1.0
+		 */
+		public function add_creator_content_fields( $fields, Charitable_Email $email ) {
+			if ( ! $this->is_current_email( $email ) ) {
+				return $fields;
+			}
+
+			if ( ! in_array( 'creator', $this->object_types ) ) {
+				return $fields;
+			}
+
+			$fields['campaign_creator'] = array(
+				'description'   => __( 'The name of the campaign creator', 'charitable-ambassadors' ),
+				'callback'      => array( $this, 'get_campaign_creator' ),
+			);
+
+			return $fields;
+		}
+
+		/**
+		 * Add creator content fields for this email.
+		 *
+		 * @param   array $fields
+		 * @param   Charitable_Email $email
+		 * @return  array
+		 * @access  public
+		 * @since   1.1.0
+		 */
+		public function add_preview_creator_content_fields( $fields, Charitable_Email $email ) {
+			if ( ! $this->is_current_email( $email ) ) {
+				return $fields;
+			}
+
+			if ( ! in_array( 'creator', $this->object_types ) ) {
+				return $fields;
+			}
+
+			$fields['campaign_creator'] = 'Harry Ferguson';
+
+			return $fields;
+		}
+
+		/**
+		 * Return the campaign creator's name.
+		 *
+		 * @return  string
+		 * @access  public
+		 * @since   1.1.0
+		 */
+		public function get_campaign_creator() {
+			if ( is_null( $this->creator ) ) {
+				return '';
+			}
+
+			return $this->creator->get_name();
+		}
+
+		/**
+		 * Returns a summary of the donation, including only the campaigns that were donated to that belong to the campaign creator.
+		 *
+		 * @param   string $value
+		 * @param   mixed[] $args
+		 * @param   Charitable_Email $email
+		 * @return  string
+		 * @access  public
+		 * @since   1.1.0
+		 */
+		public function get_donation_summary( $value, $args, $email ) {
+			if ( ! $this->is_current_email( $email ) ) {
+				return parent::get_donation_summary( $value, $args, $email );
+			}
+
+			if ( empty( $this->campaign_donations ) ) {
+				return $value;
+			}
+
+			$output = '';
+
+			foreach ( $this->campaign_donations as $campaign_donation ) {
+
+				$line_item = sprintf( '%s: %s%s', $campaign_donation->campaign_name, charitable_format_money( $campaign_donation->amount ), PHP_EOL );
+
+				$output .= apply_filters( 'charitable_creator_donation_summary_line_item_email', $line_item, $campaign_donation, $args, $email );
+
+			}
+
+			return $output;
+		}
+
+		/**
+		 * Return the meta key used for the log.
+		 *
+		 * @return  string
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected function get_log_key() {
+			return '_email_' . $this->get_email_id() . '_' . $this->creator->ID . '_log';
+		}
+
+		/**
+		 * Return the default recipient for the email.
+		 *
+		 * @return  string
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected function get_default_recipient() {
+			return $this->creator->get_email();
+		}
+
+		/**
+		 * Return the default subject line for the email.
+		 *
+		 * @return  string
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected function get_default_subject() {
+			return __( 'You have received a new donation', 'charitable-ambassadors' );
+		}
+
+		/**
+		 * Return the default headline for the email.
+		 *
+		 * @return  string
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected function get_default_headline() {
+			return apply_filters( 'charitable_email_creator_donation_notification_default_headline', __( 'New Donation', 'charitable-ambassadors' ), $this );
+		}
+
+		/**
+		 * Return the default body for the email.
+		 *
+		 * @return  string
+		 * @access  protected
+		 * @since   1.1.0
+		 */
+		protected function get_default_body() {
+			ob_start();
+?>
+<p><?php _e( 'Dear [charitable_email show=campaign_creator],', 'charitable-ambassadors' ) ?></p>
+<p><?php _e( 'Congratulations! [charitable_email show=donor] has just made a donation to your campaign.', 'charitable-ambassadors' ) ?></p>
+<p><?php _e( '<strong>Summary</strong>', 'charitable-ambassadors' ) ?></p>
+<p>[charitable_email show=donation_summary]</p>
+<?php
+			$body = ob_get_clean();
+
+			return apply_filters( 'charitable_email_new_donation_default_body', $body, $this );
+		}
+	}
+
+endif; // End class_exists check

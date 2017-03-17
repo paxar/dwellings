@@ -1,0 +1,268 @@
+# Copyright (C) 2017 WPCharitable
+# This file is distributed under the same license as the Charitable - Stripe Payment Gateway package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Charitable - Stripe Payment Gateway 1.2.1\n"
+"Report-Msgid-Bugs-To: https://www.wpcharitable.com/\n"
+"POT-Creation-Date: 2017-03-16 06:31:38+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: WP-Translations (http://wp-translations.org/)\n"
+"Language-Team: WP-Translations <wpt@wp-translations.org>\n"
+"X-Generator: grunt-wp-i18n 0.4.9\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: includes/admin/class-charitable-extension-activation.php:45
+msgid "This plugin"
+msgstr ""
+
+#: includes/admin/class-charitable-extension-activation.php:81
+msgid "activate it"
+msgstr ""
+
+#: includes/admin/class-charitable-extension-activation.php:84
+msgid "install it"
+msgstr ""
+
+#: includes/admin/class-charitable-extension-activation.php:87
+msgid " requires Charitable! Please %s to continue!"
+msgstr ""
+
+#: includes/admin/class-charitable-stripe-admin.php:68
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-charitable-stripe-admin.php:78
+msgid "Activate Stripe Gateway"
+msgstr ""
+
+#: includes/class-charitable-stripe.php:347
+msgid "You must donate more than %s."
+msgstr ""
+
+#: includes/class-charitable-stripe.php:348
+msgid "The credit card passed is not valid."
+msgstr ""
+
+#: includes/class-charitable-stripe.php:349
+msgid "The credit card expiry date is not valid."
+msgstr ""
+
+#: includes/class-charitable-stripe.php:435
+#: includes/class-charitable-stripe.php:446
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:60
+#: includes/gateway/class-charitable-gateway-stripe.php:63
+msgid "Stripe"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:104
+msgid "Test Secret Key"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:111
+msgid "Test Publishable Key"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:118
+msgid "Live Secret Key"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:125
+msgid "Live Publishable Key"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:132
+msgid "Use Stripe Checkout"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:134
+msgid ""
+"When you enable Stripe Checkout, donors enter their credit card details "
+"into a secure popup window managed by Stripe. <a "
+"href=\"https://stripe.com/docs/checkout\" "
+"target=\"_blank\">https://stripe.com/docs/checkout</a>"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:434
+msgid "Missing keys for Stripe payment gateway. Unable to proceed with payment."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:442
+#: includes/gateway/class-charitable-gateway-stripe.php:1157
+msgid "Missing credit card details. Unable to proceed with payment."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:577
+msgid "Unable to retrieve customer."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:592
+msgid "Unable to set a payment source for the charge."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:631
+#: includes/gateway/class-charitable-gateway-stripe.php:730
+#: includes/gateway/class-charitable-gateway-stripe.php:831
+msgid "There was an error processing your payment. Please try again."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:645
+#: includes/gateway/class-charitable-gateway-stripe.php:743
+#: includes/gateway/class-charitable-gateway-stripe.php:841
+#: includes/recurring/class-charitable-stripe-recurring.php:130
+msgid ""
+"There was an error processing your payment, please ensure you have entered "
+"your card number correctly."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:655
+#: includes/gateway/class-charitable-gateway-stripe.php:753
+#: includes/gateway/class-charitable-gateway-stripe.php:851
+#: includes/recurring/class-charitable-stripe-recurring.php:140
+msgid ""
+"There was an error processing your payment (our payment gateways's API is "
+"down), please try again."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:667
+#: includes/gateway/class-charitable-gateway-stripe.php:679
+#: includes/gateway/class-charitable-gateway-stripe.php:765
+#: includes/gateway/class-charitable-gateway-stripe.php:777
+#: includes/gateway/class-charitable-gateway-stripe.php:863
+#: includes/gateway/class-charitable-gateway-stripe.php:875
+#: includes/recurring/class-charitable-stripe-recurring.php:152
+#: includes/recurring/class-charitable-stripe-recurring.php:164
+msgid "The payment gateway API request was invalid, please try again."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:691
+#: includes/gateway/class-charitable-gateway-stripe.php:789
+#: includes/gateway/class-charitable-gateway-stripe.php:887
+#: includes/recurring/class-charitable-stripe-recurring.php:176
+msgid "The API keys entered in settings are incorrect"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:701
+#: includes/gateway/class-charitable-gateway-stripe.php:711
+#: includes/gateway/class-charitable-gateway-stripe.php:799
+#: includes/gateway/class-charitable-gateway-stripe.php:809
+#: includes/gateway/class-charitable-gateway-stripe.php:897
+#: includes/gateway/class-charitable-gateway-stripe.php:907
+#: includes/gateway/class-charitable-gateway-stripe.php:1109
+#: includes/gateway/class-charitable-gateway-stripe.php:1204
+#: includes/recurring/class-charitable-stripe-recurring.php:186
+#: includes/recurring/class-charitable-stripe-recurring.php:196
+msgid "Something went wrong."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:975
+msgid "Missing Stripe event ID"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:990
+msgid "Test webhook successfully received."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:1004
+msgid "Error while retrieving event."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:1007
+msgid "Unknown error."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:1037
+msgid "Donation refunded from the Stripe dashboard."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-stripe.php:1091
+msgid "Donor for"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:120
+msgid "Stripe subscription ID: %s."
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:144
+msgid "Initial subscription payment failed."
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:205
+msgid "Initial subscription payment failed"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:306
+#: includes/recurring/class-charitable-stripe-recurring.php:350
+#: includes/recurring/class-charitable-stripe-recurring.php:383
+#: includes/recurring/class-charitable-stripe-recurring.php:414
+#: includes/recurring/class-charitable-stripe-recurring.php:447
+msgid "Recurring Donation IPN: Missing subscription"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:314
+msgid "Recurring Donation IPN: Initial donation completed"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:321
+msgid "Recurring Donation IPN: Recurring donation completed"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:327
+msgid "Stripe Transaction ID"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:356
+msgid "Recurring Donation IPN: Donation not found for failed payment."
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:363
+msgid "Payment for donation #%d failed. Stripe Transaction ID: %s"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:365
+msgid "Recurring Donation IPN: Failed payment status"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:389
+msgid "Recurring Donation IPN: Donation not found for successful payment."
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:396
+msgid "Recurring Donation IPN: Payment complete"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:429
+msgid "Recurring Donation IPN: Recurring donation updated"
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:452
+msgid "Recurring Donation IPN: Recurring donation cancelled"
+msgstr ""
+
+#: tests/helpers/edd/class-helper-payment.php:120
+msgid "PayPal Transaction ID: %s"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Adds the ability for your donors to make their donations through Stripe."
+msgstr ""
+
+#: includes/recurring/class-charitable-stripe-recurring.php:234
+msgctxt "campaign title — amount every period"
+msgid "%s - %s every %s"
+msgstr ""
