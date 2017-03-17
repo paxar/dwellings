@@ -56,6 +56,9 @@ function custom_breadcrumbs() {
 
         } else if ( is_single() ) {
 
+            echo '<li class="item-bread"><a class="bread-link" href="' .esc_url(get_permalink( get_option('page_for_posts') )).'" title="">' . get_the_title( get_option('page_for_posts', true) ). '</a></li>';
+            echo '<li class="separator"> ' . $separator . ' </li>';
+
             // If post is a custom post type
             $post_type = get_post_type();
 
@@ -71,24 +74,24 @@ function custom_breadcrumbs() {
             }
 
             // Get post category info
-            $category = get_the_category();
+//            $category = get_the_category();
 
             if(!empty($category)) {
-
-                // Get last category post is in
-                $last_category = end(array_values($category));
-
-                // Get parent any categories and create array
-                $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','),',');
-                $cat_parents = explode(',',$get_cat_parents);
-
-                // Loop through parent categories and store in variable $cat_display
-                $cat_display = '';
-                foreach($cat_parents as $parents) {
-                    $cat_display .= '<li class="item-cat">'.$parents.'</li>';
-                    $cat_display .= '<li class="separator"> ' . $separator . ' </li>';
-                }
-
+//
+//                // Get last category post is in
+//                $last_category = end(array_values($category));
+//
+//                // Get parent any categories and create array
+//                $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','),',');
+//                $cat_parents = explode(',',$get_cat_parents);
+//
+//                // Loop through parent categories and store in variable $cat_display
+//                $cat_display = '';
+//                foreach($cat_parents as $parents) {
+//                    $cat_display .= '<li class="item-cat">'.$parents.'</li>';
+//                    $cat_display .= '<li class="separator"> ' . $separator . ' </li>';
+//                }
+//
             }
 
             // If it's a custom post type within a custom taxonomy
@@ -105,7 +108,7 @@ function custom_breadcrumbs() {
 
             // Check if the post is in a category
             if(!empty($last_category)) {
-                echo $cat_display;
+//                echo $cat_display;
                 echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
 
                 // Else if post is in a custom taxonomy
@@ -117,7 +120,7 @@ function custom_breadcrumbs() {
 
             } else {
 
-                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+                echo '<li class="item-current special-title item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
 
             }
 
@@ -218,12 +221,12 @@ function custom_breadcrumbs() {
         } else if ( get_query_var('paged') ) {
 
             // Paginated archives
-            echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</strong></li>';
+//            echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</strong></li>';
 
         } else if ( is_search() ) {
 
             // Search results page
-            echo '<li class="item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: <span class="search-results-title">' . get_search_query() . '</span></strong></li>';
+//            echo '<li class="item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: <span class="search-results-title">' . get_search_query() . '</span></strong></li>';
 
         } elseif ( is_404() ) {
 
