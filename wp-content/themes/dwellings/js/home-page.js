@@ -19,18 +19,20 @@ $(document).ready(function () {
     $(window).scroll(function() {
         if( $(this).scrollTop() > hero ) {
             main_nav.addClass(fixed_scroll);
+            $('.header-wrap').addClass('container');
         }
 
         else {
-            main_nav.removeClass(fixed_scroll)
+            main_nav.removeClass(fixed_scroll);
+            $('.header-wrap').removeClass('container');
         }
     });
 });
 
 if ($('section.hero').length) {
     $('.site-header').removeClass('header-page');
-     $('#container').addClass('container');
-     $('.header-wrap').removeClass('container');
+    $('#container').addClass('container');
+    $('.header-wrap').removeClass('container');
     $('.container').css("position", "relative");
 }
 else {
@@ -39,7 +41,12 @@ else {
             page_nav.addClass(fixed_scroll);
         }
         else {
-            page_nav.removeClass(fixed_scroll)
+            page_nav.removeClass(fixed_scroll);
         }
     });
+
+
+    /*Tooltips by paxar*/
+    $('[data-toggle="tooltip"]').tooltip('show');
+
 }

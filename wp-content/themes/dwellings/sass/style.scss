@@ -27,6 +27,7 @@ Version: 1.0.0
 @import "components/pagination";
 @import "components/search-form";
 @import "components/breadcrumps";
+@import "components/gravity-form";
 
 /*--------------------------------------------------------------
 # Layout
@@ -43,7 +44,7 @@ Version: 1.0.0
 --------------------------------------------------------------*/
 @import "pages/home";
 @import "pages/blog-page";
-@import "pages/contact-us";
+@import "pages/_contact-us";
 @import "pages/donate";
 @import "pages/search-results";
 @import "pages/single-blog-post";

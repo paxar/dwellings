@@ -5,16 +5,17 @@
   border-radius: 6px;
   overflow: hidden;
   .information {
+    position: relative;
     width: 100%;
     box-sizing: content-box;
     background: $brand-color;
     color: #fff;
   }
   .intro {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   .contact-info {
-    padding: 40px 50px 60px 30px;
+    padding: 30px 50px 60px 30px;
     dt, dd, span, a, address {
       font: 700 16px/23px $lato;
       color: #fff;
@@ -30,7 +31,7 @@
   }
   .contact-form {
     width: 100%;
-    padding: 20px;
+    padding: 45px;
     border-radius: 0 0 6px 6px;
     border: 1px solid #e5e5e5;
     border-top: none;
@@ -49,6 +50,10 @@
       border-radius: 0 6px 6px 0;
       border: 1px solid #e5e5e5;
       border-left: none;
+    }
+    img {
+      position: absolute;
+      bottom: 0;
     }
   }
 }

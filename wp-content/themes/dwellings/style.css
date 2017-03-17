@@ -46,20 +46,20 @@ Version: 1.0.0
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
-.btn, .site-footer .subscribe input[type="submit"] {
+.btn, .gform_wrapper .gform_footer .gform_button, .site-footer .subscribe input[type="submit"] {
   padding: 17px 35px;
   height: 55px;
   text-align: center;
   border: 0;
   background-color: #fed52f;
-  border-radius: 4px;
+  border-radius: 5px;
   font: 400 16px "Lato", sans-serif;
   transition: 0.3s all ease-out;
   text-transform: uppercase;
   color: #000; }
-  .btn:focus, .site-footer .subscribe input[type="submit"]:focus {
+  .btn:focus, .gform_wrapper .gform_footer .gform_button:focus, .site-footer .subscribe input[type="submit"]:focus {
     outline: none; }
-  .btn:hover, .site-footer .subscribe input[type="submit"]:hover {
+  .btn:hover, .gform_wrapper .gform_footer .gform_button:hover, .site-footer .subscribe input[type="submit"]:hover {
     background: #fff; }
 
 .dwelling-pagination {
@@ -138,6 +138,35 @@ Version: 1.0.0
     .breadcrumbs .bread-link:hover {
       color: darkgrey; }
 
+.gform_wrapper {
+  margin: 0 !important; }
+  .gform_wrapper .gform_body .contact-name {
+    width: 100%; }
+  .gform_wrapper .gform_body label {
+    display: none !important; }
+  .gform_wrapper .gform_body li {
+    font: 700 16px/23px "Lato", sans-serif;
+    color: #000;
+    margin: 0 0 30px !important;
+    padding: 0 !important; }
+    .gform_wrapper .gform_body li .ginput_container {
+      margin: 0 !important; }
+    .gform_wrapper .gform_body li input, .gform_wrapper .gform_body li textarea {
+      width: 100% !important;
+      border: 1px solid #d2d2d2;
+      border-radius: 6px;
+      margin: 0 !important;
+      padding: 15px !important; }
+      .gform_wrapper .gform_body li input::-webkit-input-placeholder, .gform_wrapper .gform_body li textarea::-webkit-input-placeholder {
+        color: #000; }
+  .gform_wrapper .gform_footer {
+    padding: 0 !important; }
+    .gform_wrapper .gform_footer .gform_button {
+      padding: 15px 50px;
+      color: #fff; }
+      .gform_wrapper .gform_footer .gform_button:hover {
+        color: #000; }
+
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
@@ -183,6 +212,9 @@ Version: 1.0.0
       left: 0;
       padding: 20vh 0 0;
       z-index: -1; }
+      .site-header .main-nav .navigation li.current-menu-item a {
+        text-decoration: underline;
+        color: #fed52f; }
       .site-header .main-nav .navigation li {
         margin: 5vh 0; }
       .site-header .main-nav .navigation a {
@@ -241,7 +273,7 @@ Version: 1.0.0
     width: 80%;
     margin: 30px auto;
     font: 400 18px "Lato", sans-serif; }
-  .hero .btn, .hero .site-footer .subscribe input[type="submit"], .site-footer .subscribe .hero input[type="submit"] {
+  .hero .btn, .hero .gform_wrapper .gform_footer .gform_button, .gform_wrapper .gform_footer .hero .gform_button, .hero .site-footer .subscribe input[type="submit"], .site-footer .subscribe .hero input[type="submit"] {
     margin: 0 auto; }
 
 @media (min-width: 768px) {
@@ -479,14 +511,15 @@ Version: 1.0.0
   border-radius: 6px;
   overflow: hidden; }
   .contact-us .information {
+    position: relative;
     width: 100%;
     box-sizing: content-box;
     background: #fed52f;
     color: #fff; }
   .contact-us .intro {
-    margin-bottom: 30px; }
+    margin-bottom: 20px; }
   .contact-us .contact-info {
-    padding: 40px 50px 60px 30px; }
+    padding: 30px 50px 60px 30px; }
     .contact-us .contact-info dt, .contact-us .contact-info dd, .contact-us .contact-info span, .contact-us .contact-info a, .contact-us .contact-info address {
       font: 700 16px/23px "Lato", sans-serif;
       color: #fff; }
@@ -498,7 +531,7 @@ Version: 1.0.0
     width: 100%; }
   .contact-us .contact-form {
     width: 100%;
-    padding: 20px;
+    padding: 45px;
     border-radius: 0 0 6px 6px;
     border: 1px solid #e5e5e5;
     border-top: none; }
@@ -512,7 +545,10 @@ Version: 1.0.0
     width: 50%;
     border-radius: 0 6px 6px 0;
     border: 1px solid #e5e5e5;
-    border-left: none; } }
+    border-left: none; }
+  .contact-us img {
+    position: absolute;
+    bottom: 0; } }
 
 @media (min-width: 1200px) {
   .contact-us .contact-info {
