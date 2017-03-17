@@ -26,6 +26,12 @@ function custom_search_results($search, &$wp_query) {
            $search[] = $wpdb->prepare( "$wpdb->posts.post_date LIKE %s", $n . $wpdb->esc_like( date( "Y-m-j", $test_date_var )) . $n );
         $search = ' AND post_type="post" AND (' . implode( ' OR ', $search ).')';
     }
+    else {
+        if (isset($_REQUEST['s'])) {
+            wp_redirect( get_permalink( get_option('page_for_posts')));
+            exit;
+        }
+    }
 
     return $search;
 }
