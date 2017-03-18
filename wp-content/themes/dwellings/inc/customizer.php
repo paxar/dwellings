@@ -379,7 +379,7 @@ function custom_style() {
             background-color: <?php echo get_theme_mod('bg-footer') ?>;
         }
         .map-learn-more {
-            background: url(<?php echo get_theme_mod('bg-hero-learn') ?>);
+            background: url(<?php echo get_theme_mod('bg-hero-learn')  ?>) center center /cover no-repeat;
         }
     </style>
     <?php

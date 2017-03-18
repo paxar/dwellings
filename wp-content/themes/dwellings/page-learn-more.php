@@ -1,5 +1,5 @@
 <?php get_header() ?>
-<main id="content" class="site-content">
+<main id="content" class="learn-more-content">
     <section class="map-learn-more"></section>
     <?php get_template_part( 'template-parts/icongroup', 'none' ); ?>
     <div class="container">
