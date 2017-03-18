@@ -4,13 +4,23 @@
     <?php get_template_part( 'template-parts/icongroup', 'none' ); ?>
     <div class="container">
         <section class="right-image-section">
-            <div>
+            <div class="learn-image-box">
+                <img src="<?php echo get_theme_mod('right-image-section-image'); ?>" alt="">
+            </div>
+            <div class="section-info">
                 <h2 class="learn-section-title"><?php echo get_theme_mod('right-image-section-title'); ?></h2>
                 <p class="learn-paragraph"><?php echo get_theme_mod('right-image-section-paragraph1'); ?></p>
                 <p class="learn-paragraph"><?php echo get_theme_mod('right-image-section-paragraph2'); ?></p>
             </div>
+        </section>
+        <section class="left-image-section">
             <div class="learn-image-box">
-                <img src="" alt="">
+                <img src="<?php echo get_theme_mod('left-image-section-image'); ?>" alt="">
+            </div>
+            <div class="section-info">
+                <h2 class="learn-section-title"><?php echo get_theme_mod('left-image-section-title'); ?></h2>
+                <p class="learn-paragraph"><?php echo get_theme_mod('left-image-section-paragraph1'); ?></p>
+                <p class="learn-paragraph"><?php echo get_theme_mod('left-image-section-paragraph2'); ?></p>
             </div>
         </section>
     </div>

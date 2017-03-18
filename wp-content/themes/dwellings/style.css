@@ -437,6 +437,19 @@ Version: 1.0.0
       font: 400 16px/23px "Lato", sans-serif;
       color: #000; }
 
+.learn-more-contact {
+  padding: 60px 0;
+  background-color: #fbf7f4; }
+  .learn-more-contact .section-title {
+    color: black;
+    font: 700 40px/48px "Lato", sans-serif;
+    text-align: center; }
+  .learn-more-contact .section-description {
+    margin-bottom: 54px;
+    color: black;
+    font: 400 16px/27px "Lato", sans-serif;
+    text-align: center; }
+
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
@@ -680,5 +693,74 @@ Version: 1.0.0
 
 .map-learn-more {
   height: 451px; }
+
+.right-image-section,
+.left-image-section {
+  margin: 20px 0;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fbf7f4;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center; }
+  @media only screen and (min-width: 992px) {
+    .right-image-section,
+    .left-image-section {
+      -ms-flex-direction: row;
+          flex-direction: row; } }
+  @media only screen and (min-width: 1200px) {
+    .right-image-section,
+    .left-image-section {
+      -ms-flex-align: stretch;
+          align-items: stretch; } }
+
+@media only screen and (min-width: 768px) {
+  .right-image-section {
+    margin: 74px 0; } }
+
+@media only screen and (min-width: 992px) {
+  .right-image-section .learn-image-box {
+    -ms-flex-order: 2;
+        order: 2; } }
+
+@media only screen and (min-width: 768px) {
+  .left-image-section {
+    margin: 86px 0 100px; } }
+
+.section-info {
+  padding: 20px; }
+  @media only screen and (min-width: 992px) {
+    .section-info {
+      padding: 30px 48px; } }
+
+.learn-section-title {
+  margin-bottom: 30px;
+  color: black;
+  font: 700 30px/36px "Lato", sans-serif; }
+  .learn-section-title:after {
+    margin-top: 20px;
+    display: block;
+    content: '';
+    width: 65px;
+    height: 3px;
+    background-color: #fed52f; }
+
+.learn-paragraph {
+  color: black;
+  font: 400 16px/24px "Lato", sans-serif; }
+
+.section-info {
+  max-width: 534px; }
+  @media only screen and (min-width: 992px) {
+    .section-info {
+      max-width: 636px; } }
+
+.learn-image-box {
+  font-size: 0;
+  max-width: 534px; }
+  .learn-image-box img {
+    width: 100%;
+    height: 100%; }
 
 /*# sourceMappingURL=style.css.map */
