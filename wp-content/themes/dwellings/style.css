@@ -188,7 +188,7 @@ Version: 1.0.0
 .tooltip {
   position: relative;
   float: right;
-  top: -35px !important;
+  top: -37px !important;
   z-index: 0; }
 
 .tooltip > .tooltip-inner {
@@ -816,7 +816,7 @@ Version: 1.0.0
     height: 100%; }
 
 .projects-item {
-  margin: 50px 0;
+  margin: 20px 0;
   padding: 0;
   border-radius: 6px;
   border: 1px solid #e5e5e5;
@@ -849,7 +849,17 @@ Version: 1.0.0
   color: #fed52f; }
 
 .projects-item-donate-info {
+  position: relative;
   padding: 0 25px; }
+  .projects-item-donate-info:before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 30px;
+    display: block;
+    width: 1px;
+    height: 80%;
+    background-color: #e5e5e5; }
   .projects-item-donate-info .bar-wrapper {
     margin-top: 50px; }
   .projects-item-donate-info .projects-donate-button {
