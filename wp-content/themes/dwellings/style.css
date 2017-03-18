@@ -184,10 +184,6 @@ Version: 1.0.0
   border-right: 5px solid transparent;
   border-top: 5px solid #eebf3f; }
 
-section {
-  margin: 100px auto;
-  height: 1000px; }
-
 .progress {
   border-radius: 0;
   overflow: visible; }
