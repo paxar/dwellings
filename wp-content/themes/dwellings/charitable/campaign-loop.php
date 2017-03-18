@@ -36,55 +36,55 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
     <?php
     while ($campaigns->have_posts()) :
 
-        $campaigns->the_post();
-// variables for display custom fields
-        $campaign = charitable_get_current_campaign();
+    $campaigns->the_post();
+    // variables for display custom fields
+    $campaign = charitable_get_current_campaign();
+    $percent = number_format($campaign->get_percent_donated_raw(), 0) . '%';
+
+    ?>
+    <div class="projects-item">
+        <?php
+        // image
+        $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'medium');
+
+        if (has_post_thumbnail($campaign->ID)) :
+
+            echo get_the_post_thumbnail($campaign->ID, $thumbnail_size);
+
+        endif;
+        // end image
         ?>
-        <div class="projects-item">
-            <?php
-            // image
-            $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'medium');
-
-            if (has_post_thumbnail($campaign->ID)) :
-
-                echo get_the_post_thumbnail($campaign->ID, $thumbnail_size);
-
-            endif;
-            // end image
-            ?>
-            <h3><?php the_title() ?></h3>
+        <h3><?php the_title() ?></h3>
 
 
-            <div class="campaign-description">
-                <?php echo $campaign->description ?>
-            </div>
+        <div class="campaign-description">
+            <?php echo $campaign->description ?>
+        </div>
 
-            <a class="campaign-read-more" href="<?php the_permalink() ?>">Read more -></a>
+        <a class="campaign-read-more" href="<?php the_permalink() ?>">Read more -></a>
 
 
-            <?php
-            //progress bar
-            if (!$campaign->has_goal()) :
-                return;
-            endif;
 
-            ?>
-            <div class="campaign-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                 aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>">
-                <div class="bar-wrap" style="width: <?php echo $campaign->get_percent_donated_raw() ?>%; position: relative; height: 100%">
-                    <span class="bar" data-toggle="tooltip" title="<?php echo $campaign->get_percent_donated_raw() ?> $"
-                          style="width: <?php echo $campaign->get_percent_donated_raw() ?>%;"></span>
+
+        <!-- ***********************progress bar new-->
+        <div class="barWrapper">
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar"
+                     aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>" aria-valuemin="0"
+                     aria-valuemax="100">
+                    <span class="popOver" data-toggle="tooltip" data-placement="top"
+                          title="<?php echo $percent; ?>"> </span>
                 </div>
             </div>
+            <!-- ************************************-->
 
 
-            <?php
-            echo '<span class="amount">' . $currency_helper->get_monetary_amount($campaign->get_donated_amount()) . '</span>';
-            ?>
 
-            <?php
-            echo '<span class="goal-amount">' . $currency_helper->get_monetary_amount($campaign->get('goal')) . '</span>';
-            ?>
+            <span class="amount"><?php echo $currency_helper->get_monetary_amount($campaign->get_donated_amount())?></span>
+            <span class="goal-amount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal'))?></span>
+
+
 
 
             <a class="campaign-donate-button" href="<?php the_permalink() ?>">Read more -></a>
@@ -92,9 +92,9 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
         </div> <!--  projects-item      -->
 
         <?php
-    endwhile;
-    wp_reset_postdata();
-    ?>
-</div><!--projects-wrap-->
+        endwhile;
+        wp_reset_postdata();
+        ?>
+    </div><!--projects-wrap-->
 
 
