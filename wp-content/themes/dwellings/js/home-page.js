@@ -10,45 +10,40 @@ $(document).ready(function () {
         $('#close-nav').removeClass("remove-btn");
         $('#open-nav').addClass("remove-btn")
     });
-    var main_nav = $("#masthead");
-    page_nav = $("#container");
-    fixed_scroll = "fixed-scroll";
-    hero = $('.hero').outerHeight();
-    nav = $('.header-wrap').outerHeight();
 
-    $(window).scroll(function() {
-        if( $(this).scrollTop() > hero ) {
-            main_nav.addClass(fixed_scroll);
-            $('.header-wrap').addClass('container');
-        }
-
-        else {
-            main_nav.removeClass(fixed_scroll);
-            $('.header-wrap').removeClass('container');
-        }
-    });
 });
 
+var mainNav = $('#masthead');
+    headerWrap = $('.header-wrap');
+    fixedScroll = 'fixed-scroll';
+    hero = $('.hero').outerHeight();
+    siteHeader = $('.site-header');
+
 if ($('section.hero').length) {
-    $('.site-header').removeClass('header-page');
+    siteHeader.removeClass('header-page');
     $('#container').addClass('container');
-    $('.header-wrap').removeClass('container');
+    headerWrap.removeClass('container');
     $('.container').css("position", "relative");
-}
-else {
     $(window).scroll(function() {
-        if( $(this).scrollTop() > 0 ) {
-            page_nav.addClass(fixed_scroll);
-            nav.addClass('container');
+        if( $(this).scrollTop() > hero ) {
+            mainNav.addClass(fixedScroll);
+            headerWrap.addClass('container');
         }
         else {
-            page_nav.removeClass(fixed_scroll);
-            nav.removeClass('container');
+            mainNav.removeClass(fixedScroll);
+            headerWrap.removeClass('container');
         }
     });
-
-
-    /*Tooltips by paxar*/
-    $('[data-toggle="tooltip"]').tooltip('show');
-
 }
+else {
+    /*Tooltips by paxar*/
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip({trigger: 'manual'}).tooltip('show');
+    });
+
+    $(".progress-bar").each(function(){
+        each_bar_width = $(this).attr('aria-valuenow');
+        $(this).width(each_bar_width + '%');
+    });
+}
+
