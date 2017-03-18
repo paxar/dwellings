@@ -229,6 +229,19 @@ function dwellings_customize_register( $wp_customize ) {
             'panel' => 'contact_us_page'
         )
     );
+    $contact = array("title", "person", "email", "phone", "address",);
+    for ($i=0; $i<count($contact); $i++) {
+        $wp_customize->add_setting(
+            'contact_'.$contact[$i]
+        );
+        $wp_customize->add_control(
+            'contact_'.$contact[$i],
+            array(
+                'label' => esc_html__('Contact '.$contact[$i], 'dwellings'),
+                'section' => 'cover-contact-us'
+            )
+        );
+    }
     $wp_customize->add_setting(
         'cover-contact-img'
     );
