@@ -5,7 +5,7 @@
 }
 
 .projects-item{
-  margin: 50px 0; //temp
+  margin: 20px 0; //temp
   padding: 0;
   border-radius: 6px;
   border: 1px solid #e5e5e5;
@@ -31,25 +31,63 @@
   //padding: 15px 10px;
   .item-title{
     margin-top: 30px;
+    font: 900 24px/24px $lato;
     color: #000;
-    font-family: Lato;
-    font-size: 24px;
-    font-weight: 900;
-    line-height: 24px;
   }
   .item-info{
-    margin-top: 20px;
+    margin-top: 10px;
+    font: 400 16px/24px $lato;
     color: #000;
-    font-family: Lato;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
   }
+  .item-read-more{
+    display: block;
+    margin-top: 10px;
+    font: 400 18px/23px $lato;
+    color: $brand-color;
+
+  }
+
 }
 
 .projects-item-donate-info{
+  position: relative;
+  &:before{
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 30px;
+
+    display: block;
+
+    width: 1px;
+    height: 80%;
+    background-color: #e5e5e5;
+
+  }
+  padding: 0 25px;
   .bar-wrapper{
     margin-top: 50px;
     //position: relative;
+  }
+  .projects-donate-button{
+    margin-top: 30px;
+  }
+}
+.donate-info-wrap{
+  overflow: hidden;
+  .donate-text{
+    display: block;
+    font: 400 16px/23px $lato;
+    color: #000;
+  }
+  .amount{
+    float: left;
+    font: 700 24px/26px $lato;
+    color: #000;
+  }
+  .goal{
+    float: right;
+    font: 900 24px/26px $lato;
+    color: #000;
   }
 }
