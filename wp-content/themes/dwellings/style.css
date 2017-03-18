@@ -62,6 +62,23 @@ Version: 1.0.0
   .btn:hover, .gform_wrapper .gform_footer .gform_button:hover, .site-footer .subscribe input[type="submit"]:hover {
     background: #fff; }
 
+.projects-donate-button {
+  display: inline-block;
+  padding: 15px 50px;
+  font: 400 18px/23px "Lato", sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 2px solid #fed52f;
+  background-color: #fed52f;
+  color: #fff;
+  transition: 0.5s all ease-out; }
+  .projects-donate-button:hover {
+    background-color: #ffffff;
+    color: #000;
+    text-decoration: none; }
+
 .dwelling-pagination {
   padding: 25px 0; }
   .dwelling-pagination ul {
@@ -729,42 +746,6 @@ Version: 1.0.0
 .map-learn-more {
   height: 451px; }
 
-.projects-item {
-  margin: 50px 0;
-  padding: 0;
-  border-radius: 6px;
-  border: 1px solid #e5e5e5;
-  background-color: white; }
-
-.projects-item-image-wrap {
-  overflow: hidden;
-  height: 250px;
-  border-radius: inherit;
-  padding: 0; }
-  .projects-item-image-wrap img {
-    height: inherit;
-    width: auto;
-    border-radius: inherit; }
-
-.projects-item-description .item-title {
-  margin-top: 30px;
-  color: #000;
-  font-family: Lato;
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 24px; }
-
-.projects-item-description .item-info {
-  margin-top: 20px;
-  color: #000;
-  font-family: Lato;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px; }
-
-.projects-item-donate-info .bar-wrapper {
-  margin-top: 50px; }
-
 .right-image-section,
 .left-image-section {
   margin: 20px 0;
@@ -853,21 +834,40 @@ Version: 1.0.0
 
 .projects-item-description .item-title {
   margin-top: 30px;
-  color: #000;
-  font-family: Lato;
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 24px; }
+  font: 900 24px/24px "Lato", sans-serif;
+  color: #000; }
 
 .projects-item-description .item-info {
-  margin-top: 20px;
-  color: #000;
-  font-family: Lato;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px; }
+  margin-top: 10px;
+  font: 400 16px/24px "Lato", sans-serif;
+  color: #000; }
 
-.projects-item-donate-info .bar-wrapper {
-  margin-top: 50px; }
+.projects-item-description .item-read-more {
+  display: block;
+  margin-top: 10px;
+  font: 400 18px/23px "Lato", sans-serif;
+  color: #fed52f; }
+
+.projects-item-donate-info {
+  padding: 0 25px; }
+  .projects-item-donate-info .bar-wrapper {
+    margin-top: 50px; }
+  .projects-item-donate-info .projects-donate-button {
+    margin-top: 30px; }
+
+.donate-info-wrap {
+  overflow: hidden; }
+  .donate-info-wrap .donate-text {
+    display: block;
+    font: 400 16px/23px "Lato", sans-serif;
+    color: #000; }
+  .donate-info-wrap .amount {
+    float: left;
+    font: 700 24px/26px "Lato", sans-serif;
+    color: #000; }
+  .donate-info-wrap .goal {
+    float: right;
+    font: 900 24px/26px "Lato", sans-serif;
+    color: #000; }
 
 /*# sourceMappingURL=style.css.map */
