@@ -15,8 +15,8 @@
 				the_post_thumbnail();
 			}
 			else {
-				echo '<img src="' . get_bloginfo('stylesheet_directory')
-					. '/images/thumbnail-default.jpg" />';
+				echo '<a href="' . esc_url( get_permalink() ) . '"><img src="' . get_bloginfo('stylesheet_directory')
+					. '/images/thumbnail-default.jpg" /></a>';
 			}
 			?>
 	</div>
