@@ -502,6 +502,20 @@ Version: 1.0.0
     font: 400 16px/27px "Lato", sans-serif;
     text-align: center; }
 
+@media only screen and (min-width: 768px) {
+  .gform_wrapper .gform_body ul li.gf_one_third {
+    clear: none; }
+  .gform_wrapper .gform_body li.gf_one_third {
+    width: calc((100% - 60px) / 3);
+    float: left;
+    margin-right: 30px !important; }
+    .gform_wrapper .gform_body li.gf_one_third.third_element {
+      margin-right: 0 !important; }
+      .gform_wrapper .gform_body li.gf_one_third.third_element:after {
+        clear: left;
+        content: '';
+        display: block; } }
+
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
