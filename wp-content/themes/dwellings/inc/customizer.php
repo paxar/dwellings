@@ -302,6 +302,28 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
 
+    /*--------------------------------------------------------------
+    # Learn more -> Contact section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'learn-more-contact-section',
+        array(
+            'title' => esc_html__('Contact settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'learn_more_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'learn-more-contact-title'
+    );
+    $wp_customize->add_control(
+        'learn-more-contact-title',
+        array(
+            'label' => esc_html__('Title', 'dwellings'),
+            'section' => 'learn-more-contact-section'
+        )
+    );
+
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 

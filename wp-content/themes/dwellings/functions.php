@@ -123,6 +123,15 @@ function dwellings_widgets_init() {
         'before_title'  => '<h3 class="widget-contact-title">',
         'after_title'   => '</h3>',
     ) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Learn more widget', 'dwellings' ),
+        'id'            => 'sidebar-4',
+        'description'   => esc_html__( 'Add widgets form.', 'dwellings' ),
+        'before_widget' => '<div class="widget-learn-more">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-learn-more-title">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action( 'widgets_init', 'dwellings_widgets_init' );
 
