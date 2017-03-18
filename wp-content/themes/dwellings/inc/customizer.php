@@ -288,6 +288,19 @@ function dwellings_customize_register( $wp_customize ) {
             'section' => 'test-section'
         )
     );
+    $wp_customize->add_setting(
+        'bg-hero-learn'
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'bg-hero-learn',
+            array(
+                'label' => esc_html__('Background image', 'dwellings'),
+                'section' => 'test-section'
+            )
+        )
+    );
 
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
