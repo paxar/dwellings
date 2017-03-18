@@ -268,24 +268,14 @@ function dwellings_customize_register( $wp_customize ) {
     ) );
 
     /*--------------------------------------------------------------
-    # Test section
+    # Learn more - > Hero section
     --------------------------------------------------------------*/
     $wp_customize->add_section(
-        'test-section',
+        'learn-more-hero-section',
         array(
-            'title' => esc_html__('Test settings', 'dwellings'),
+            'title' => esc_html__('Hero settings', 'dwellings'),
             'priority' => 10,
             'panel' => 'learn_more_page',
-        )
-    );
-    $wp_customize->add_setting(
-        'section-title'
-    );
-    $wp_customize->add_control(
-        'section-title',
-        array(
-            'label' => esc_html__('Title', 'dwellings'),
-            'section' => 'test-section'
         )
     );
     $wp_customize->add_setting(
@@ -297,7 +287,7 @@ function dwellings_customize_register( $wp_customize ) {
             'bg-hero-learn',
             array(
                 'label' => esc_html__('Background image', 'dwellings'),
-                'section' => 'test-section'
+                'section' => 'learn-more-hero-section'
             )
         )
     );
@@ -323,6 +313,58 @@ function dwellings_customize_register( $wp_customize ) {
             'section' => 'learn-more-contact-section'
         )
     );
+    $wp_customize->add_setting(
+        'learn-more-contact-description'
+    );
+    $wp_customize->add_control(
+        'learn-more-contact-description',
+        array(
+            'label' => esc_html__('Description', 'dwellings'),
+            'section' => 'learn-more-contact-section'
+        )
+    );
+
+    /*--------------------------------------------------------------
+    # Learn more -> Right image section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'right-image-section',
+        array(
+            'title' => esc_html__('Right image section', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'learn_more_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'right-image-section-title'
+    );
+    $wp_customize->add_control(
+        'right-image-section-title',
+        array(
+            'label' => esc_html__('Title', 'dwellings'),
+            'section' => 'right-image-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'right-image-section-paragraph1'
+    );
+    $wp_customize->add_control(
+        'right-image-section-paragraph1',
+        array(
+            'label' => esc_html__('First paragraph', 'dwellings'),
+            'section' => 'right-image-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'right-image-section-paragraph2'
+    );
+    $wp_customize->add_control(
+        'right-image-section-paragraph2',
+        array(
+            'label' => esc_html__('Second paragraph', 'dwellings'),
+            'section' => 'right-image-section'
+        )
+    );
 
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
@@ -335,6 +377,9 @@ function custom_style() {
         }
         .site-footer {
             background-color: <?php echo get_theme_mod('bg-footer') ?>;
+        }
+        .map-learn-more {
+            background: url(<?php echo get_theme_mod('bg-hero-learn') ?>);
         }
     </style>
     <?php
