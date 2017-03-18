@@ -4,3 +4,82 @@
 .map-learn-more {
   height: 451px;
 }
+
+.right-image-section,
+.left-image-section {
+  margin: 20px 0;
+  display: flex;
+  background-color: #fbf7f4;
+  flex-direction: column;
+  align-items: center;
+
+  @media only screen and (min-width: 992px) {
+    flex-direction: row;
+  }
+  @media only screen and (min-width: 1200px) {
+    align-items: stretch;
+  }
+}
+
+.right-image-section {
+  @media only screen and (min-width: 768px) {
+    margin: 74px 0;
+  }
+  @media only screen and (min-width: 992px) {
+    .learn-image-box {
+      order: 2;
+    }
+  }
+}
+
+.left-image-section {
+  @media only screen and(min-width: 768px) {
+    margin: 86px 0 100px;
+  }
+}
+
+.section-info {
+  padding: 20px;
+
+  @media only screen and (min-width: 992px) {
+    padding: 30px 48px;
+  }
+}
+
+.learn-section-title {
+  margin-bottom: 30px;
+  color: black;
+  font: 700 30px/36px $lato;
+
+  &:after {
+    margin-top: 20px;
+    display: block;
+    content: '';
+    width: 65px;
+    height: 3px;
+    background-color: #fed52f;
+  }
+}
+
+.learn-paragraph {
+  color: black;
+  font: 400 16px/24px $lato;
+}
+
+.section-info {
+  max-width: 534px;
+  @media only screen and (min-width: 992px) {
+    max-width: 636px;
+  }
+}
+
+.learn-image-box {
+  font-size: 0;
+  max-width: 534px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
