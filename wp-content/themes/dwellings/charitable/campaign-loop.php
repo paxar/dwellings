@@ -42,52 +42,53 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
     $percent = number_format($campaign->get_percent_donated_raw(), 0) . '%';
 
     ?>
-    <div class="projects-item">
-        <?php
-        // image
-        $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'medium');
+    <div class="projects-item col-xs-12">
+        <div class="projects-item-image-wrap col-xs-12 col-md-3">
+            <?php
+            // image
+            $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'medium');
 
-        if (has_post_thumbnail($campaign->ID)) :
+            if (has_post_thumbnail($campaign->ID)) :
 
-            echo get_the_post_thumbnail($campaign->ID, $thumbnail_size);
+                echo get_the_post_thumbnail($campaign->ID, $thumbnail_size);
 
-        endif;
-        // end image
-        ?>
-        <h3><?php the_title() ?></h3>
+            endif;
+            // end image
+            ?>
+        </div>
+        <div class="project-item-description col-xs-12 col-md-4">
+            <h3><?php the_title() ?></h3>
 
 
-        <div class="campaign-description">
-            <?php echo $campaign->description ?>
+            <div class="campaign-description">
+                <?php echo $campaign->description ?>
+            </div>
+
+            <a class="campaign-read-more" href="<?php the_permalink() ?>">Read more -></a>
         </div>
 
-        <a class="campaign-read-more" href="<?php the_permalink() ?>">Read more -></a>
 
+        <div class="project-item-donate-info col-xs-12 col-md-5">
+            <!-- ***********************progress bar new-->
+            <div class="bar-wrapper">
 
-
-
-        <!-- ***********************progress bar new-->
-        <div class="barWrapper">
-
-            <div class="progress">
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>" aria-valuemin="0"
-                     aria-valuemax="100">
-                    <span class="popOver" data-toggle="tooltip" data-placement="top"
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar"
+                         aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>" aria-valuemin="0"
+                         aria-valuemax="100">
+                    <span class="pop" data-toggle="tooltip" data-placement="top"
                           title="<?php echo $percent; ?>"> </span>
+                    </div>
                 </div>
+                <!-- ************************************-->
+
+
+                <span class="amount"><?php echo $currency_helper->get_monetary_amount($campaign->get_donated_amount()) ?></span>
+                <span class="goal-amount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
+
+
+                <a class="campaign-donate-button" href="<?php the_permalink() ?>">Read more -></a>
             </div>
-            <!-- ************************************-->
-
-
-
-            <span class="amount"><?php echo $currency_helper->get_monetary_amount($campaign->get_donated_amount())?></span>
-            <span class="goal-amount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal'))?></span>
-
-
-
-
-            <a class="campaign-donate-button" href="<?php the_permalink() ?>">Read more -></a>
 
         </div> <!--  projects-item      -->
 

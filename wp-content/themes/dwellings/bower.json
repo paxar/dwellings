@@ -22,5 +22,7 @@
     "meyer-reset": "*",
     "font-awesome": "fontawesome#4.7.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
 }
