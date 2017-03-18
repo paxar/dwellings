@@ -3,6 +3,8 @@
 .tooltip{
   position:relative;
   float:right;
+  top: -35px !important;
+  z-index: 0;
 }
 .tooltip > .tooltip-inner {
   background-color: white;
