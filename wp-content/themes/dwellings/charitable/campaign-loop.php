@@ -20,6 +20,8 @@ $args = charitable_campaign_loop_args($view_args);
 $currency_helper = charitable_get_currency_helper();
 
 
+
+
 if (!$campaigns->have_posts()) :
     return;
 endif;
@@ -34,6 +36,8 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
 <div class="projects-wrap">
 
     <?php
+
+
     while ($campaigns->have_posts()) :
 
     $campaigns->the_post();
@@ -56,22 +60,20 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
             // end image
             ?>
         </div>
-        <div class="project-item-description col-xs-12 col-md-4">
-            <h3><?php the_title() ?></h3>
+        <div class="projects-item-description col-xs-12 col-md-4">
+            <h3 class="item-title"><?php the_title() ?> Family</h3>
 
-
-            <div class="campaign-description">
+            <div class="item-info">
                 <?php echo $campaign->description ?>
             </div>
 
-            <a class="campaign-read-more" href="<?php the_permalink() ?>">Read more -></a>
+            <a class="projects-read-more" href="<?php the_permalink() ?>">Read more -></a>
         </div>
 
 
-        <div class="project-item-donate-info col-xs-12 col-md-5">
+        <div class="projects-item-donate-info col-xs-12 col-md-5">
             <!-- ***********************progress bar new-->
             <div class="bar-wrapper">
-
                 <div class="progress">
                     <div class="progress-bar" role="progressbar"
                          aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>" aria-valuemin="0"
@@ -83,19 +85,24 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
                 <!-- ************************************-->
 
 
-                <span class="amount"><?php echo $currency_helper->get_monetary_amount($campaign->get_donated_amount()) ?></span>
-                <span class="goal-amount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
+                <span class="item-amount"><?php echo $currency_helper->get_monetary_amount($campaign->get_donated_amount()) ?></span>
+                <span class="item-goal"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
 
 
-                <a class="campaign-donate-button" href="<?php the_permalink() ?>">Read more -></a>
+                <a class="projects-donate-button" href="<?php the_permalink() ?>">Read more -></a>
             </div>
 
-        </div> <!--  projects-item      -->
-
+        </div>
+    </div><!--  projects-item      -->
         <?php
         endwhile;
+
+
         wp_reset_postdata();
         ?>
-    </div><!--projects-wrap-->
+
+
+
+</div><!--projects-wrap-->
 
 

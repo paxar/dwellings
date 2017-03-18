@@ -8,10 +8,14 @@ Description:  Projects_page
 
 <?php get_header() ?>
 
-<section class="projects">
+<main id="content" class="site-content projects-page">
     <div class="container">
 
-        <h2 class="title">Title page</h2>
+        <div class="top-part-content">
+            <?php
+            custom_breadcrumbs();
+            ?>
+        </div>
 
 
 
@@ -26,13 +30,13 @@ Description:  Projects_page
 
 
     </div>
-</section>
 
 
 
 
 
-<?php get_footer() ?>
+
+<?php get_footer();
 
 
 

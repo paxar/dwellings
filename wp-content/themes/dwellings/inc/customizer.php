@@ -215,7 +215,7 @@ function dwellings_customize_register( $wp_customize ) {
         'capability' => 'edit_theme_options',
         'theme_supports' => '',
         'title' => __( 'Contact-us page', 'dwellings' ),
-        'description' => __( 'Settings of ontact-us page.', 'dwellings' ),
+        'description' => __( 'Settings of contact-us page.', 'dwellings' ),
     ) );
 
     /*--------------------------------------------------------------
@@ -447,6 +447,39 @@ function dwellings_customize_register( $wp_customize ) {
                 'label' => esc_html__('Section image', 'dwellings'),
                 'section' => 'left-image-section'
             )
+        )
+    );
+
+    /*--------------------------------------------------------------
+    # About us page panel
+    --------------------------------------------------------------*/
+    $wp_customize->add_panel( 'about_us_page', array(
+        'priority' => 11,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'About-us page', 'dwellings' ),
+        'description' => __( 'Settings of about-us page.', 'dwellings' ),
+    ) );
+
+    /*--------------------------------------------------------------
+    # Contact-us section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'section-about-us',
+        array(
+            'title' => esc_html__('About us settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'about_us_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'title_testimonials'
+    );
+    $wp_customize->add_control(
+        'title_testimonials',
+        array(
+            'label' => esc_html__('Title ', 'dwellings'),
+            'section' => 'section-about-us'
         )
     );
 

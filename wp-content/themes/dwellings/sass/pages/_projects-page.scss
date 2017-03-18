@@ -1,0 +1,55 @@
+.projects-page{}
+
+.projects-wrap{
+  //overflow: hidden;
+}
+
+.projects-item{
+  margin: 50px 0; //temp
+  padding: 0;
+  border-radius: 6px;
+  border: 1px solid #e5e5e5;
+  background-color: white;
+}
+
+
+.projects-item-image-wrap{
+  overflow: hidden;
+  height: 250px;
+  //height: inherit;
+  border-radius: inherit;
+  padding: 0;
+  img{
+    height: inherit;
+    width: auto;
+    border-radius: inherit;
+
+  }
+}
+
+.projects-item-description{
+  //padding: 15px 10px;
+  .item-title{
+    margin-top: 30px;
+    color: #000;
+    font-family: Lato;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 24px;
+  }
+  .item-info{
+    margin-top: 20px;
+    color: #000;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+
+.projects-item-donate-info{
+  .bar-wrapper{
+    margin-top: 50px;
+    //position: relative;
+  }
+}
