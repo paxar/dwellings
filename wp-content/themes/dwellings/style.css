@@ -173,24 +173,48 @@ Version: 1.0.0
   float: right; }
 
 .tooltip > .tooltip-inner {
-  background-color: #eebf3f;
-  padding: 5px 15px;
-  color: #172c42;
-  font-weight: bold;
-  font-size: 13px; }
+  background-color: white;
+  padding: 3px 5px;
+  font: 700 16px/18px "Lato", sans-serif;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  color: #000000; }
 
-.popOver + .tooltip > .tooltip-arrow {
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #eebf3f; }
+.pop + .tooltip > .tooltip-arrow {
+  bottom: -2px;
+  margin-left: -8px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #dcdcdc; }
+  .pop + .tooltip > .tooltip-arrow:after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    display: block;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white; }
 
 .progress {
-  border-radius: 0;
-  overflow: visible; }
+  height: 12px;
+  width: inherit;
+  position: relative;
+  border-radius: 10px;
+  overflow: visible;
+  box-shadow: none;
+  border: 1px solid #dcdcdc;
+  background-color: transparent; }
 
 .progress-bar {
-  background: #172c3c;
-  transition: width 1.5s ease-in-out; }
+  height: inherit;
+  position: absolute;
+  left: -2px;
+  top: -1px;
+  background: #fed52f;
+  border-radius: 10px;
+  transition: width 1.5s ease-in-out;
+  box-shadow: none; }
 
 /*--------------------------------------------------------------
 # Layout
