@@ -164,6 +164,10 @@ function dwellings_scripts() {
 
     wp_enqueue_script('donate_page_js');
 
+    wp_register_script('learn_more_page_js', get_template_directory_uri() . '/js/learn-more-page.js', ['jquery'], '', true);
+
+    wp_enqueue_script('learn_more_page_js');
+
 }
 add_action( 'wp_enqueue_scripts', 'dwellings_scripts' );
 
