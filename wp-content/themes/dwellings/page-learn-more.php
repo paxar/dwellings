@@ -30,7 +30,7 @@
             <h2 class="section-title"><?php echo get_theme_mod('learn-more-contact-title'); ?></h2>
             <p class="section-description"><?php echo get_theme_mod('learn-more-contact-description'); ?></p>
             <div class="contact-form">
-                <?php dynamic_sidebar( 'sidebar-3' ); ?>
+                <?php dynamic_sidebar( 'sidebar-4' ); ?>
             </div>
         </div>
     </section>

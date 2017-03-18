@@ -15,3 +15,34 @@
     text-align: center;
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .gform_wrapper {
+    .gform_body {
+      ul {
+        li.gf_one_third {
+          clear: none;
+        }
+      }
+
+      li.gf_one_third {
+        width: calc((100% - 60px) / 3);
+        float: left;
+        margin-right: 30px !important;
+
+        &.third_element {
+          margin-right: 0 !important;
+          &:after {
+            clear: left;
+            content: '';
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+//.gform_wrapper.gform_validation_error .gform_body ul li.gfield.gfield_error:not(.gf_left_half):not(.gf_right_half) {
+//  max-width: 100% !important;
+//}
