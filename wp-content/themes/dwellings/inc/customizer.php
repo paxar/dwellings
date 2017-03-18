@@ -349,20 +349,28 @@ function dwellings_customize_register( $wp_customize ) {
         'right-image-section-paragraph1'
     );
     $wp_customize->add_control(
-        'right-image-section-paragraph1',
-        array(
-            'label' => esc_html__('First paragraph', 'dwellings'),
-            'section' => 'right-image-section'
+        new WP_Customize_Control(
+            $wp_customize,
+            'right-image-section-paragraph1',
+            array(
+                'label'          => __( 'First paragraph', 'dwellings' ),
+                'section'        => 'right-image-section',
+                'type'           => 'textarea'
+            )
         )
     );
     $wp_customize->add_setting(
         'right-image-section-paragraph2'
     );
     $wp_customize->add_control(
-        'right-image-section-paragraph2',
-        array(
-            'label' => esc_html__('Second paragraph', 'dwellings'),
-            'section' => 'right-image-section'
+        new WP_Customize_Control(
+            $wp_customize,
+            'right-image-section-paragraph2',
+            array(
+                'label'          => __( 'Second paragraph', 'dwellings' ),
+                'section'        => 'right-image-section',
+                'type'           => 'textarea'
+            )
         )
     );
     $wp_customize->add_setting(
@@ -404,20 +412,28 @@ function dwellings_customize_register( $wp_customize ) {
         'left-image-section-paragraph1'
     );
     $wp_customize->add_control(
-        'left-image-section-paragraph1',
-        array(
-            'label' => esc_html__('First paragraph', 'dwellings'),
-            'section' => 'left-image-section'
+        new WP_Customize_Control(
+            $wp_customize,
+            'left-image-section-paragraph1',
+            array(
+                'label'          => __( 'First paragraph', 'dwellings' ),
+                'section'        => 'left-image-section',
+                'type'           => 'textarea'
+            )
         )
     );
     $wp_customize->add_setting(
         'left-image-section-paragraph2'
     );
     $wp_customize->add_control(
-        'left-image-section-paragraph2',
-        array(
-            'label' => esc_html__('Second paragraph', 'dwellings'),
-            'section' => 'left-image-section'
+        new WP_Customize_Control(
+            $wp_customize,
+            'left-image-section-paragraph2',
+            array(
+                'label'          => __( 'Second paragraph', 'dwellings' ),
+                'section'        => 'left-image-section',
+                'type'           => 'textarea'
+            )
         )
     );
     $wp_customize->add_setting(
