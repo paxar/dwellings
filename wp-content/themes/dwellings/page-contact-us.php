@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
     <main id="content" class="site-content">
-    <div class="container">
-        <section class="contact-us">
+    <section class="contact-us">
+        <div class="container">
             <div class="information">
                 <div class="contact-info">
                     <h2 class="intro"><?php echo get_theme_mod('contact_title'); ?></h2>
@@ -26,7 +26,7 @@
             <div class="contact-form">
                 <?php dynamic_sidebar( 'sidebar-3' ); ?>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
 <?php get_footer();

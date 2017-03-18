@@ -10,7 +10,6 @@ $(document).ready(function () {
         $('#close-nav').removeClass("remove-btn");
         $('#open-nav').addClass("remove-btn")
     });
-
 });
 
 var mainNav = $('#masthead');
@@ -47,3 +46,16 @@ else {
     });
 }
 
+/*About us img circle*/
+widthImg = $('.avatar-quote').outerWidth();
+$('.avatar-quote').outerHeight(widthImg);
+
+/*About us block height*/
+var maxHeight = 0;
+$('.content-quote').each(function(){
+    if ( $(this).outerHeight() > maxHeight )
+    {
+        maxHeight = $(this).outerHeight();
+    }
+});
+$('.content-quote').outerHeight(maxHeight);
