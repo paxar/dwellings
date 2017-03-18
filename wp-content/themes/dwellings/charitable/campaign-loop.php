@@ -45,7 +45,7 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
 
         ?>
         <div class="projects-item col-xs-12">
-            <div class="projects-item-image-wrap col-xs-12 col-md-3">
+            <div class="projects-item-image-wrap col-xs-12 col-sm-6 col-md-3">
                 <?php
                 // image
                 $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'medium');
@@ -58,7 +58,7 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
                 // end image
                 ?>
             </div>
-            <div class="projects-item-description col-xs-12 col-md-4">
+            <div class="projects-item-description col-xs-12 col-sm-6 col-md-4">
                 <h3 class="item-title"><?php the_title() ?> Family</h3>
 
                 <div class="item-info">
@@ -69,8 +69,7 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
             </div>
 
 
-            <div class="projects-item-donate-info col-xs-12 col-md-5">
-                <!-- ***********************progress bar new-->
+            <div class="projects-item-donate-info col-xs-12 col-sm-12 col-md-5">
                 <div class="bar-wrapper">
                     <div class="progress">
                         <div class="progress-bar" role="progressbar"
@@ -80,7 +79,6 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
                           title="<?php echo $percent; ?>"> </span>
                         </div>
                     </div>
-                    <!-- ************************************-->
                     <div class="donate-info-wrap">
                         <div class="amount">
                             <span class="donate-text">Amount raised:</span>
