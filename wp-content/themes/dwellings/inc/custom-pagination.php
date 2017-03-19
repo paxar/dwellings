@@ -50,13 +50,12 @@ function custom_get_next_posts_link( $label = null, $max_page = 0 ) {
     }
 }
 
-function custom_numeric_posts_nav() {
+function custom_numeric_posts_nav($wp_query = false) {
 
-if( is_singular() )
-return;
-
-global $wp_query;
-
+if( is_singular() && !$wp_query)
+    return;
+if(!$wp_query)
+    global $wp_query;
 /** Stop execution if there's only 1 page */
 if( $wp_query->max_num_pages <= 1 )
 return;
@@ -117,38 +116,4 @@ echo '<div class="dwelling-pagination"><ul>' . "\n";
 
         echo '</ul></div>' . "\n";
 
-}
-
-/*Pagination for Projects page*/
-
-// paxar pagination
-function projects_pagination($pages = '', $range = 4)
-{
-    $showitems = ($range * 2)+1;
-
-    global $paged;
-    if(empty($paged)) $paged = 1;
-
-    if($pages == '')
-    {
-        global $wp_query;
-        $pages = $wp_query->max_num_pages;
-        if(!$pages)
-        {
-            $pages = 1;
-        }
-    }
-
-    if(1 != $pages)
-    {
-        echo "<div class=\"dwelling-pagination col-xs-12\"><ul>";
-        for ($i=1; $i <= $pages; $i++)
-        {
-            if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
-            {
-                echo ($paged == $i)? "<li class=\"active\">".$i."</li>":"<li><a href='".get_pagenum_link($i)."' class=\"active2\">".$i."</a></li>";
-            }
-        }
-        echo "</ul>\n";
-    }
 }

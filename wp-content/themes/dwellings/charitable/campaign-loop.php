@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = array(
     "post_type" => 'campaign',      // custom post type
-    'posts_per_page' => 7,         // 7 posts in mockup
+    'posts_per_page' => 3,         // 7 posts in mockup
     'paged' => $paged
 );
 $wp_query = new WP_Query($args);
@@ -88,7 +88,6 @@ if ($wp_query->have_posts()) :
         </div><!--  projects-item      -->
         <?php
     endwhile;
-
     else:
         get_template_part('template-parts/content', 'none');
     endif;
@@ -98,8 +97,6 @@ if ($wp_query->have_posts()) :
 </div><!--projects-wrap-->
 
 <?php /*Pagination*/
-if (function_exists("projects_pagination")) {
-    projects_pagination($wp_query->max_num_pages);
+if (function_exists("custom_numeric_posts_nav")) {
+    custom_numeric_posts_nav($wp_query);
 } ?>
-
-
