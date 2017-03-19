@@ -122,7 +122,7 @@ echo '<div class="dwelling-pagination"><ul>' . "\n";
 /*Pagination for Projects page*/
 
 // paxar pagination
-function pagination($pages = '', $range = 4)
+function projects_pagination($pages = '', $range = 4)
 {
     $showitems = ($range * 2)+1;
 
