@@ -50,13 +50,12 @@ function custom_get_next_posts_link( $label = null, $max_page = 0 ) {
     }
 }
 
-function custom_numeric_posts_nav() {
+function custom_numeric_posts_nav($wp_query = false) {
 
-if( is_singular() )
-return;
-
-global $wp_query;
-
+if( is_singular() && !$wp_query)
+    return;
+if(!$wp_query)
+    global $wp_query;
 /** Stop execution if there's only 1 page */
 if( $wp_query->max_num_pages <= 1 )
 return;
