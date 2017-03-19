@@ -96,7 +96,8 @@ Version: 1.0.0
       margin-left: 0; }
     .dwelling-pagination li.active, .dwelling-pagination li:hover {
       background-color: #fed52f;
-      border-radius: 6px; }
+      border-radius: 6px;
+      color: #fff; }
       .dwelling-pagination li.active a, .dwelling-pagination li:hover a {
         color: #fff; }
     .dwelling-pagination li a {
@@ -358,6 +359,18 @@ Version: 1.0.0
     .hero .intro-description {
       width: 60%;
       margin: 50px auto; } }
+
+.about-us {
+  position: relative;
+  padding-top: 70px;
+  background: #fed52f; }
+
+.about-cover img {
+  position: absolute;
+  width: 50%; }
+
+.container-fluid {
+  padding: 0; }
 
 .site-footer {
   padding: 30px 0; }

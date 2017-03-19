@@ -462,7 +462,7 @@ function dwellings_customize_register( $wp_customize ) {
     ) );
 
     /*--------------------------------------------------------------
-    # Contact-us section
+    # About-us section
     --------------------------------------------------------------*/
     $wp_customize->add_section(
         'section-about-us',
@@ -480,6 +480,19 @@ function dwellings_customize_register( $wp_customize ) {
         array(
             'label' => esc_html__('Title ', 'dwellings'),
             'section' => 'section-about-us'
+        )
+    );
+    $wp_customize->add_setting(
+        'about-cover-image'
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'about-cover-image',
+            array(
+                'label' => esc_html__('Section image', 'dwellings'),
+                'section' => 'section-about-us'
+            )
         )
     );
 

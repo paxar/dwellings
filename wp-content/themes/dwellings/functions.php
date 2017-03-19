@@ -220,3 +220,6 @@ require get_template_directory() . '/inc/custom-pagination.php';
  * Load custom Search file.
  */
 require get_template_directory() . '/inc/custom-search.php';
+
+
+
