@@ -96,7 +96,8 @@ Version: 1.0.0
       margin-left: 0; }
     .dwelling-pagination li.active, .dwelling-pagination li:hover {
       background-color: #fed52f;
-      border-radius: 6px; }
+      border-radius: 6px;
+      color: #fff; }
       .dwelling-pagination li.active a, .dwelling-pagination li:hover a {
         color: #fff; }
     .dwelling-pagination li a {

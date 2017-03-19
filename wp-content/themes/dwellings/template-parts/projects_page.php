@@ -18,11 +18,7 @@ Description:  Projects_page
         </div>
 
 
-
-
-
-
-        <?php echo do_shortcode( '[campaigns]' ); ?>
+            <?php echo do_shortcode( '[campaigns]' ); ?>
 <!--        /* this shortcode use theme_folder/charitable/campaign-loop.php  template */-->
 
 
@@ -30,6 +26,8 @@ Description:  Projects_page
 
 
     </div>
+<?php custom_numeric_posts_nav() ?>
+
 
 
 

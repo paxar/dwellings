@@ -19,26 +19,32 @@ $campaigns = $view_args['campaigns'];
 $args = charitable_campaign_loop_args($view_args);
 $currency_helper = charitable_get_currency_helper();
 
+// set up or arguments for our custom query
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+$args = array(
+    "post_type" => 'campaign',
+    'posts_per_page' => 1,
+    'paged' => $paged
+);
+
+$wp_query = new WP_Query( $args );
+
+
+
 
 if (!$campaigns->have_posts()) :
     return;
 endif;
-
-
-/**
- * @hook charitable_campaign_loop_before
- */
-do_action('charitable_campaign_loop_before', $campaigns, $args);
-
 ?>
 <div class="projects-wrap">
 
     <?php
 
 
-    while ($campaigns->have_posts()) :
+    while ($wp_query->have_posts()) :
 
-        $campaigns->the_post();
+        $wp_query->the_post();
         // variables for display custom fields
         $campaign = charitable_get_current_campaign();
         $percent = number_format($campaign->get_percent_donated_raw(), 0) . '%';
@@ -98,11 +104,27 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
         </div><!--  projects-item      -->
         <?php
     endwhile;
-
-
-    wp_reset_postdata();
     ?>
 
+
+    <?php if (function_exists("custom_numeric_posts_nav")) {
+        custom_numeric_posts_nav();
+    } ?>
+
+    <?php custom_numeric_posts_nav() ?>
+
+
+
+
+
+
+
+<?php
+    wp_reset_postdata();
+    ?>
+    <?php if (function_exists("pagination")) {
+        pagination($wp_query->max_num_pages);
+    } ?>
 
 </div><!--projects-wrap-->
 
