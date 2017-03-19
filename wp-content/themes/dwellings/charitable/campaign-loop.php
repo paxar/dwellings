@@ -14,46 +14,40 @@ if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
-$campaigns = $view_args['campaigns'];
-//$columns   = $view_args['columns'];
-$args = charitable_campaign_loop_args($view_args);
-$currency_helper = charitable_get_currency_helper();
+
+// set up or arguments for our custom query
+
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$args = array(
+    "post_type" => 'campaign',      // custom post type
+    'posts_per_page' => 7,         // 7 posts in mockup
+    'paged' => $paged
+);
+$wp_query = new WP_Query($args);
 
 
-if (!$campaigns->have_posts()) :
-    return;
-endif;
-
-
-/**
- * @hook charitable_campaign_loop_before
- */
-do_action('charitable_campaign_loop_before', $campaigns, $args);
-
+if ($wp_query->have_posts()) :
 ?>
+
 <div class="projects-wrap">
 
     <?php
+    while ($wp_query->have_posts()) :
+        $wp_query->the_post();
 
-
-    while ($campaigns->have_posts()) :
-
-        $campaigns->the_post();
-        // variables for display custom fields
+        /*     variables for display custom fields   */
         $campaign = charitable_get_current_campaign();
         $percent = number_format($campaign->get_percent_donated_raw(), 0) . '%';
+        $currency_helper = charitable_get_currency_helper();
 
         ?>
         <div class="projects-item col-xs-12">
             <div class="projects-item-image-wrap col-xs-12 col-sm-6 col-md-3">
                 <?php
                 // image
-                $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'medium');
-
+                $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'large');
                 if (has_post_thumbnail($campaign->ID)) :
-
                     echo get_the_post_thumbnail($campaign->ID, $thumbnail_size);
-
                 endif;
                 // end image
                 ?>
@@ -67,7 +61,6 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
 
                 <a class="item-read-more" href="<?php the_permalink() ?>">Read more</a>
             </div>
-
 
             <div class="projects-item-donate-info col-xs-12 col-sm-12 col-md-5">
                 <div class="bar-wrapper">
@@ -88,22 +81,25 @@ do_action('charitable_campaign_loop_before', $campaigns, $args);
                             <span class="donate-text">Goal</span>
                             <span class="goalcount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
                         </div>
-
-
                     </div>
                     <a class="projects-donate-button" href="<?php the_permalink() ?>">Donate</a>
                 </div>
-
             </div>
         </div><!--  projects-item      -->
         <?php
     endwhile;
 
-
+    else:
+        get_template_part('template-parts/content', 'none');
+    endif;
     wp_reset_postdata();
     ?>
 
-
 </div><!--projects-wrap-->
+
+<?php /*Pagination*/
+if (function_exists("projects_pagination")) {
+    projects_pagination($wp_query->max_num_pages);
+} ?>
 
 
