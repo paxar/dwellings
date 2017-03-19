@@ -588,6 +588,8 @@ Version: 1.0.0
       flex-direction: column;
   -ms-flex-align: center;
       align-items: center; }
+  .top-part-content:before, .top-part-content:after {
+    display: none; }
   @media only screen and (min-width: 768px) {
     .top-part-content {
       -ms-flex-direction: row;
