@@ -78,7 +78,7 @@ $links[] = $paged + 2;
 $links[] = $paged + 1;
 }
 
-echo '<div class="dwelling-pagination"><ul>' . "\n";
+echo '<div class="row dwelling-pagination"><ul>' . "\n";
 
         /**	Previous Post Link */
         if ( custom_get_prev_link() )

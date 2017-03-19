@@ -2,13 +2,13 @@
 get_header();?>
     <main id="content" class="site-content blog-page-main">
         <div class="container">
-            <div class="top-part-content">
+            <div class="row top-part-content">
                 <?php
                 custom_breadcrumbs();
                 get_search_form();
                 ?>
             </div>
-            <section class="blog-page-section">
+            <section class="row blog-page-section">
             <?php
             if ( have_posts() ) :
 

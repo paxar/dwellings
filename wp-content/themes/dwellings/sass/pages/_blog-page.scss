@@ -68,6 +68,11 @@
   flex-direction: column;
   align-items: center;
 
+  &:before,
+  &:after {
+    display: none;
+  }
+
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
