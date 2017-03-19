@@ -777,7 +777,8 @@ Version: 1.0.0
 
 .right-image-section,
 .left-image-section {
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: -ms-flexbox;
   display: flex;
   background-color: #fbf7f4;
@@ -798,7 +799,8 @@ Version: 1.0.0
 
 @media only screen and (min-width: 768px) {
   .right-image-section {
-    margin: 74px 0; } }
+    margin-top: 74px;
+    margin-bottom: 74px; } }
 
 @media only screen and (min-width: 992px) {
   .right-image-section .learn-image-box {
@@ -807,7 +809,8 @@ Version: 1.0.0
 
 @media only screen and (min-width: 768px) {
   .left-image-section {
-    margin: 86px 0 100px; } }
+    margin-top: 86px;
+    margin-bottom: 100px; } }
 
 .section-info {
   padding: 20px; }
