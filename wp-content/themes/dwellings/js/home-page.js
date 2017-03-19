@@ -50,7 +50,7 @@ else {
 widthImg = $('.avatar-quote').outerWidth();
 $('.avatar-quote').outerHeight(widthImg);
 
-/*About us block height*/
+/*About us testimonials height*/
 var maxHeight = 0;
 $('.content-quote').each(function(){
     if ( $(this).outerHeight() > maxHeight )
@@ -59,3 +59,13 @@ $('.content-quote').each(function(){
     }
 });
 $('.content-quote').outerHeight(maxHeight);
+
+/*About us block height*/
+var maxAboutHeight = 0;
+$('.about-cover img').each(function(){
+    if ( $(this).outerHeight() > maxAboutHeight )
+    {
+        maxAboutHeight = $(this).outerHeight();
+    }
+});
+$('.about-cover').outerHeight(maxAboutHeight);

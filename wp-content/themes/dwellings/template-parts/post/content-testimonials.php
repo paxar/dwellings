@@ -1,7 +1,7 @@
 <?php
 /**
  * Testimonials section
- * use in homepage and about us  pages
+ * use in homepage and about us pages
  */
 ?>
 
