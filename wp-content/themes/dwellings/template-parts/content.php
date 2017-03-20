@@ -12,7 +12,7 @@
 	<div class="image-box">
 		<?php
 			if ( has_post_thumbnail() ) {
-				the_post_thumbnail();
+				echo '<a href="' . esc_url( get_permalink() ) . '">' . get_the_post_thumbnail() . '</a>';
 			}
 			else {
 				echo '<a href="' . esc_url( get_permalink() ) . '"><img src="' . get_bloginfo('stylesheet_directory')
