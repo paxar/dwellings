@@ -1,3 +1,8 @@
+<?php
+/*
+Template Name: Template contact us page
+*/
+?>
 <?php get_header(); ?>
 
     <main id="content" class="site-content">

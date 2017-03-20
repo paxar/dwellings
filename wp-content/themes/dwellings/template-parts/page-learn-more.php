@@ -1,3 +1,8 @@
+<?php
+/*
+Template Name: Template learn more page
+*/
+?>
 <?php get_header() ?>
 <main id="content" class="learn-more-content">
     <section class="map-learn-more"></section>
