@@ -85,26 +85,25 @@ Version: 1.0.0
     display: -ms-flexbox;
     display: flex; }
   .dwelling-pagination li {
-    padding: 0 10px;
     margin-left: 4px;
     font: 400 16px/31px "Lato", sans-serif;
     text-align: center; }
-    @media only screen and (min-width: 768px) {
-      .dwelling-pagination li {
-        padding: 0 12px; } }
     .dwelling-pagination li:first-child {
       margin-left: 0; }
     .dwelling-pagination li.active, .dwelling-pagination li:hover {
       background-color: #fed52f;
-      border-radius: 6px;
-      color: #fff; }
+      border-radius: 6px; }
       .dwelling-pagination li.active a, .dwelling-pagination li:hover a {
         color: #fff; }
     .dwelling-pagination li a {
-      color: black; }
+      color: black;
+      padding: 0 10px; }
       .dwelling-pagination li a:hover {
         color: #fff;
         text-decoration: none; }
+      @media only screen and (min-width: 768px) {
+        .dwelling-pagination li a {
+          padding: 0 12px; } }
 
 .search-form {
   position: relative;
