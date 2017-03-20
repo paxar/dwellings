@@ -37,8 +37,11 @@
 		endif; ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php the_content(); ?>
+	<div class="entry-content bottom-link-block">
+		<?php
+			the_excerpt();
+			echo '<a class="more-link" href="' . get_permalink() . '">See more</a>';
+		?>
 
 		<?php
 

@@ -93,10 +93,11 @@
   flex-direction: column;
   position: relative;
 
-  p {
+  .bottom-link-block {
     display: flex;
     flex-direction: column;
-    align-content: space-between;
+    justify-content: space-between;
+    height: 100%;
   }
 }
 
@@ -132,7 +133,7 @@
     float: left;
     margin-right: 40px;
     margin-bottom: 0;
-    max-width: 365px;
+    width: 365px;
   }
 
   .content-post-wrap {

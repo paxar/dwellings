@@ -96,6 +96,7 @@ Version: 1.0.0
       .dwelling-pagination li.active a, .dwelling-pagination li:hover a {
         color: #fff; }
     .dwelling-pagination li a {
+      display: block;
       color: black;
       padding: 0 10px; }
       .dwelling-pagination li a:hover {
@@ -624,13 +625,14 @@ Version: 1.0.0
   -ms-flex-direction: column;
       flex-direction: column;
   position: relative; }
-  .content-post-wrap p {
+  .content-post-wrap .bottom-link-block {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
         flex-direction: column;
-    -ms-flex-line-pack: justify;
-        align-content: space-between; }
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    height: 100%; }
 
 .post-title {
   margin-top: -7px;
@@ -655,7 +657,7 @@ Version: 1.0.0
     float: left;
     margin-right: 40px;
     margin-bottom: 0;
-    max-width: 365px; }
+    width: 365px; }
   .content-post-wrap {
     width: 58%; }
     .content-post-wrap P .more-link {

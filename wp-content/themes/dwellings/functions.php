@@ -221,5 +221,15 @@ require get_template_directory() . '/inc/custom-pagination.php';
  */
 require get_template_directory() . '/inc/custom-search.php';
 
+/*
+ * Break text for blog page
+ */
+add_filter("the_excerpt", "break_text");
+function break_text($text){
+    $length = 120;
+    if(strlen($text)<$length+10) return $text;//don't cut if too short
 
-
+    $break_pos = strpos($text, ' ', $length);//find next space after desired length
+    $visible = substr($text, 0, $break_pos);
+    return balanceTags($visible) . " …</p>";
+}
