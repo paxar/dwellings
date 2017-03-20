@@ -2,17 +2,38 @@
   position: relative;
   padding-top: 70px;
   background: $brand-color;
-  .about-content {
-
+  color: #fff;
+  .title {
+    text-align: left;
+    margin-top: 45px;
+    color: #fff;
   }
+  .about-content {
+    p {
+      font: 700 16px/24px $lato;
+      margin-bottom: 30px;
+    }
+  }
+}
+.about-us-page {
+  padding: 70px 0 90px;
 }
 .about-cover {
   img {
     position: absolute;
-    width: 50%;
+    width: 100%;
+    right: 0;
   }
 }
 
 .container-fluid {
   padding: 0;
+}
+
+@media (min-width: 768px) {
+  .about-cover {
+    img {
+      width: 50%;
+    }
+  }
 }

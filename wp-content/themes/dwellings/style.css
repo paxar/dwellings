@@ -848,6 +848,9 @@ Version: 1.0.0
     width: 100%;
     height: 100%; }
 
+.projects-wrap {
+  overflow: hidden; }
+
 .projects-item {
   margin: 20px 0;
   padding: 0;
