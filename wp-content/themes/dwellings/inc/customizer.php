@@ -473,12 +473,22 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
     $wp_customize->add_setting(
+        'title_abut_us'
+    );
+    $wp_customize->add_control(
+        'title_abut_us',
+        array(
+            'label' => esc_html__('Title about us', 'dwellings'),
+            'section' => 'section-about-us'
+        )
+    );
+    $wp_customize->add_setting(
         'title_testimonials'
     );
     $wp_customize->add_control(
         'title_testimonials',
         array(
-            'label' => esc_html__('Title ', 'dwellings'),
+            'label' => esc_html__('Title testimonials', 'dwellings'),
             'section' => 'section-about-us'
         )
     );

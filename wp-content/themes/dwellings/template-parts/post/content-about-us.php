@@ -10,7 +10,7 @@
         <div class="about-content">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2 class="title title-decor"><?php echo get_theme_mod('title_testimonials'); ?></h2>
+                    <h2 class="title title-decor"><?php echo get_theme_mod('title_abut_us'); ?></h2>
                     <div class="about-content">
                         <p>Dwellings is a community of charity conscious businesses that want to make a difference by sharing with those in need of housing. Donations are made via products, discounts, services, and financial support.
                         </p>
