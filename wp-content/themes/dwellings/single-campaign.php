@@ -3,24 +3,23 @@
 ?>
 <?php get_header(); ?>
     <main id="content" class="site-content">
-<p>Single cammaign page !</p>
+    <p>Single cammaign page !</p>
 
-<div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
+    <main id="content" class="site-content projects-post">
+        <div class="container">
 
-        <?php
-        while ( have_posts() ) : the_post();
+            <?php
+            while (have_posts()) : the_post();
 
-           // get_template_part( 'charitable/content-campaign', get_post_format() );
-            the_content();
+                //get_template_part( 'charitable/content-campaign', get_post_format() );
+                the_content();
 
-        endwhile; // End of the loop.
-        ?>
+            endwhile; // End of the loop.
+            ?>
 
 
-
+        </div><!-- #primary -->
     </main><!-- #main -->
-</div><!-- #primary -->
 
 <?php
 get_sidebar();
