@@ -550,19 +550,19 @@ Version: 1.0.0
 .blog-page-main {
   padding-top: 105px; }
 
-.blog-page-section {
+.blog-posts-section {
   padding: 0 15px 10px;
   background-color: white;
   border: 1px solid #e5e5e5;
   border-radius: 6px; }
   @media only screen and (min-width: 700px) {
-    .blog-page-section {
+    .blog-posts-section {
       padding: 0 38px; } }
-  .blog-page-section p {
+  .blog-posts-section p {
     color: black;
     font: 16px/24px "Lato", sans-serif;
     word-wrap: break-word; }
-  .blog-page-section .blog-item {
+  .blog-posts-section .blog-item {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -570,13 +570,13 @@ Version: 1.0.0
     padding: 30px 0 50px;
     max-width: 886px;
     border-bottom: 1px solid #e5e5e5; }
-    .blog-page-section .blog-item:last-of-type {
+    .blog-posts-section .blog-item:last-of-type {
       border-bottom: none; }
-  .blog-page-section .entry-content ol {
+  .blog-posts-section .entry-content ol {
     list-style: decimal inside; }
-  .blog-page-section .entry-content ul {
+  .blog-posts-section .entry-content ul {
     list-style: disc inside; }
-  .blog-page-section .entry-content blockquote {
+  .blog-posts-section .entry-content blockquote {
     padding: 10px 20px; }
 
 .post-information {
@@ -648,7 +648,7 @@ Version: 1.0.0
     color: #fed52f; }
 
 @media only screen and (min-width: 992px) {
-  .blog-page-section .blog-item {
+  .blog-posts-section .blog-item {
     -ms-flex-direction: row;
         flex-direction: row; }
   .image-box {

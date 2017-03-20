@@ -21,7 +21,7 @@ get_header(); ?>
 			get_search_form();
 			?>
 		</div>
-		<section class="row blog-page-section">
+		<section class="row blog-posts-section">
 
 			<?php
 			if ( have_posts() ) :
@@ -51,7 +51,7 @@ get_header(); ?>
 				get_template_part( 'template-parts/content', 'none' );
 
 			endif; ?>
-
-	</main><!-- #main -->
-</div><!-- #primary -->
+		</section>
+		<?php custom_numeric_posts_nav() ?>
+	</div>
 <?php get_footer();

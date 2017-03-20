@@ -8,7 +8,7 @@ get_header();?>
                 get_search_form();
                 ?>
             </div>
-            <section class="row blog-page-section">
+            <section class="row blog-posts-section">
             <?php
             if ( have_posts() ) :
 
