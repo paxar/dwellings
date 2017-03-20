@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Displays the campaign content.
  *
@@ -12,13 +12,88 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
 
-$campaign = $view_args[ 'campaign' ];
+global $current_user;
+$campaign = charitable_get_current_campaign();
+$percent = number_format($campaign->get_percent_donated_raw(), 0) . '%';
+$currency_helper = charitable_get_currency_helper();
 $content = $view_args[ 'content' ];
+$video    = $campaign->video;
+$video_id = $campaign->video_id;
 
+if ( empty( $video ) ) {
+    return;
+}
+
+if ( $video_id ) {
+    $video_src        = wp_video_shortcode( array( 'src' => $video ) );
+} else {
+    $video_embed_args = apply_filters( 'charitable_campaign_video_embed_args', array(), $video, $campaign );
+    $video_src 		  = wp_oembed_get( $video, $video_embed_args );
+}
+
+
+
+?>
+<p>content-campaign.php</p>
+
+<div class="project-post-header">
+    <h3 class="item-title"><?php the_title() ?> Home, <?php the_date('F Y') ?></h3>
+
+
+        <div class="campaign-video col-xs-6"><?php echo $video_src ?></div>
+
+
+
+</div>
+
+
+<?php
+
+echo get_avatar( $current_user, 65 );
+//echo 'Username: ' . $current_user->user_login . '<br />';
+//echo 'User email: ' . $current_user->user_email . '<br />';
+//echo 'User first name: ' . $current_user->user_firstname . '<br />';
+//echo 'User last name: ' . $current_user->user_lastname . '<br />';
+//echo 'User display name: ' . $current_user->display_name . '<br />';
+echo 'User description: ' . $current_user->description . '<br />';
+//echo 'User ID: ' . $current_user->ID;
+?>
+
+
+
+    <div class="projects-item-donate-info">
+        <div class="bar-wrapper">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar"
+                     aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>" aria-valuemin="0"
+                     aria-valuemax="100">
+                    <span class="pop" data-toggle="tooltip" data-placement="top"
+                          title="<?php echo $percent; ?>"> </span>
+                </div>
+            </div>
+            <div class="donate-info-wrap">
+                <div class="amount">
+                    <span class="donate-text">Amount raised:</span>
+                    <span class="amount-count"><?php echo $currency_helper->get_monetary_amount($campaign->get_donated_amount()) ?></span>
+                </div>
+                <div class="goal">
+                    <span class="donate-text">Goal</span>
+                    <span class="goalcount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
+                </div>
+            </div>
+            <a class="projects-donate-button" href="<?php the_permalink() ?>">Donate</a>
+        </div>
+    </div>
+
+
+
+
+<p>****************************************************************************************</p>
+<?php
 /**
  * @hook charitable_campaign_content_before
  */
-do_action( 'charitable_campaign_content_before', $campaign ); 
+do_action( 'charitable_campaign_content_before', $campaign );
 
 echo $content;
 

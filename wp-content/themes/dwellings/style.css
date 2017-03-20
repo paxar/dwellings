@@ -604,6 +604,8 @@ Version: 1.0.0
       flex-direction: column;
   -ms-flex-align: center;
       align-items: center; }
+  .top-part-content:before, .top-part-content:after {
+    display: none; }
   @media only screen and (min-width: 768px) {
     .top-part-content {
       -ms-flex-direction: row;
@@ -791,7 +793,8 @@ Version: 1.0.0
 
 .right-image-section,
 .left-image-section {
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: -ms-flexbox;
   display: flex;
   background-color: #fbf7f4;
@@ -812,7 +815,8 @@ Version: 1.0.0
 
 @media only screen and (min-width: 768px) {
   .right-image-section {
-    margin: 74px 0; } }
+    margin-top: 74px;
+    margin-bottom: 74px; } }
 
 @media only screen and (min-width: 992px) {
   .right-image-section .learn-image-box {
@@ -821,16 +825,17 @@ Version: 1.0.0
 
 @media only screen and (min-width: 768px) {
   .left-image-section {
-    margin: 86px 0 100px; } }
+    margin-top: 86px;
+    margin-bottom: 100px; } }
 
 .section-info {
   padding: 20px; }
   @media only screen and (min-width: 992px) {
     .section-info {
-      padding: 30px 48px; } }
+      padding: 27px 48px; } }
 
 .learn-section-title {
-  margin-bottom: 30px;
+  margin-bottom: 27px;
   color: black;
   font: 700 30px/36px "Lato", sans-serif; }
   .learn-section-title:after {
@@ -842,6 +847,7 @@ Version: 1.0.0
     background-color: #fed52f; }
 
 .learn-paragraph {
+  margin-bottom: 28px;
   color: black;
   font: 400 16px/24px "Lato", sans-serif; }
 
@@ -857,6 +863,9 @@ Version: 1.0.0
   .learn-image-box img {
     width: 100%;
     height: 100%; }
+
+.projects-wrap {
+  overflow: hidden; }
 
 .projects-item {
   margin: 20px 0;

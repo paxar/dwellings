@@ -23,7 +23,7 @@ Description: Dwellings Projects_page
     </div>
 
 
-    <?php custom_numeric_posts_nav() ?> // dont work
+
 
 
 <?php get_footer();
