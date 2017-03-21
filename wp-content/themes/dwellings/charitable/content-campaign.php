@@ -15,12 +15,15 @@ if (!defined('ABSPATH')) {
 } // Exit if accessed directly
 
 global $current_user;
+
 $campaign = charitable_get_current_campaign();
 $percent = number_format($campaign->get_percent_donated_raw(), 0) . '%';
 $currency_helper = charitable_get_currency_helper();
 $content = $view_args['content'];
 $video = $campaign->video;
 $video_id = $campaign->video_id;
+$creator= $campaign->get_campaign_creator();
+$user_id = charitable_get_user($creator);
 
 
 if ($video_id) {
@@ -44,9 +47,19 @@ if (empty($video)) {
         <div class="post-video col-xs-6"><?php echo $video_src ?></div>
 
 
-
-
         <div class="projects-item-donate-info col-xs-6">
+            <div class="creator-info">
+                <div class="creator-avatar">
+                    <?php
+
+                    echo get_avatar($creator, 70);?>
+                </div>
+                <div class="creator-description">
+                    <span>Sponsor: </span>
+                    <p><?php echo $user_id->description; ?></p>
+
+                </div>
+            </div>
             <div class="bar-wrapper">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar"
@@ -66,6 +79,17 @@ if (empty($video)) {
                         <span class="goalcount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
                     </div>
                 </div>
+                <div class="project-social-icons">
+                        <!-- TODO  add links for social  -->
+
+                    <ul>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-tumblr "></i></a></li>
+                    </ul>
+                </div>
                 <a class="projects-donate-button" href="<?php the_permalink() ?>">Donate</a>
             </div>
         </div>
@@ -76,15 +100,51 @@ if (empty($video)) {
 
 <?php
 
-echo get_avatar($current_user, 65);
-//echo 'Username: ' . $current_user->user_login . '<br />';
-//echo 'User email: ' . $current_user->user_email . '<br />';
-//echo 'User first name: ' . $current_user->user_firstname . '<br />';
-//echo 'User last name: ' . $current_user->user_lastname . '<br />';
-//echo 'User display name: ' . $current_user->display_name . '<br />';
-echo 'User description: ' . $current_user->description . '<br />';
-//echo 'User ID: ' . $current_user->ID;
+
+
+
+
+
+
+
 ?>
+
+<?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?>
+
+
+
+
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#panel1">Description</a></li>
+        <li><a data-toggle="tab" href="#panel2">Updates</a></li>
+        <li><a data-toggle="tab" href="#panel3">Donors</a></li>
+        <li><a data-toggle="tab" href="#panel4">Map</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+        <div id="panel1" class="tab-pane fade in active">
+            <h3>Description</h3>
+            <p>Содержимое Description</p>
+        </div>
+        <div id="panel2" class="tab-pane fade">
+            <h3>Updates</h3>
+            <p>Содержимое Updates</p>
+        </div>
+        <div id="panel3" class="tab-pane fade">
+            <h3>Donors</h3>
+            <p>Содержимое Donors</p>
+        </div>
+        <div id="panel4" class="tab-pane fade">
+            <h3>Map</h3>
+            <p>Содержимое Map</p>
+        </div>
+    </div>
+
+
+
+
 
 
 

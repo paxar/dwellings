@@ -56,3 +56,12 @@
 
   box-shadow: none;
 }
+
+.project-post-header{
+  .tooltip > .tooltip-inner {
+    font: 900 24px/30px $lato ;
+  }
+  .tooltip{
+    top: -48px !important;
+  }
+}
