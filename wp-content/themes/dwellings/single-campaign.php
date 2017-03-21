@@ -7,7 +7,7 @@
 
     <main id="content" class="site-content projects-post">
         <div class="container">
-            <div class="row top-part-content">
+            <div class="top-part-content">
                 <?php
                 custom_breadcrumbs();
                 ?>

@@ -1,0 +1,34 @@
+/*Styles for
+single-campaign.php
+content-campaign.php
+*/
+
+.projects-post{}
+
+.project-post-header{
+  overflow: hidden;
+  padding: 20px;
+  background-color: #ffffff;
+
+  .item-title{
+    color: #000000;
+    font-family: Lato;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 45px;
+  }
+  .post-video{
+    position: relative;
+    padding-bottom: 25.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    iframe{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+    }
+  }
+}

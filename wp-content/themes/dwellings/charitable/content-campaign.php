@@ -47,9 +47,17 @@ if (empty($video)) {
         <div class="post-video col-xs-6"><?php echo $video_src ?></div>
 
 
-
-
         <div class="projects-item-donate-info col-xs-6">
+            <div class="creator-info">
+                <div class="creator-avatar">
+                    <?php echo get_avatar($creator, 65);?>
+                </div>
+                <div class="creator-description">
+                    <span>Sponsor: </span>
+                    <p><?php echo $user_id->description; ?></p>
+
+                </div>
+            </div>
             <div class="bar-wrapper">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar"
@@ -69,6 +77,11 @@ if (empty($video)) {
                         <span class="goalcount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
                     </div>
                 </div>
+                <div class="project-social-icons">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    </ul>
+                </div>
                 <a class="projects-donate-button" href="<?php the_permalink() ?>">Donate</a>
             </div>
         </div>
@@ -83,8 +96,8 @@ if (empty($video)) {
 
 
 
-echo get_avatar($creator, 65);
-echo $user_id->description;
+
+
 
 ?>
 
