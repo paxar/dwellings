@@ -19,7 +19,8 @@ content-campaign.php
   }
   .post-video{
     position: relative;
-    padding-bottom: 25.25%; /* 16:9 */
+    overflow: hidden;
+    padding-bottom: 33.25%; /* 16:9 */
     padding-top: 25px;
     height: 0;
     iframe{
@@ -30,10 +31,14 @@ content-campaign.php
       height: 100%;
 
     }
+    img{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+    }
   }
-  //donate info
-
-
   .creator-info{
     overflow: hidden;
     .creator-avatar{
@@ -61,6 +66,17 @@ content-campaign.php
         line-height: 32px;
 
       }
+    }
+  }
+  .donate-info-wrap{
+    .donate-text{
+      font: 400 18px/23px "Lato", sans-serif;
+    }
+    .amount-count{
+      font: 700 40px/42px "Lato", sans-serif;
+    }
+    .goalcount{
+      font: 900 40px/42px "Lato", sans-serif;
     }
   }
 }
