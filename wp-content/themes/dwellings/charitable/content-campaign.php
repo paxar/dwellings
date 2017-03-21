@@ -85,6 +85,7 @@ if (empty($video)) {
                     </div>
                 </div>
                 <div class="project-social-icons">
+                    <span>Share with:</span>
                         <!-- TODO  add links for social  -->
 
                     <ul>
