@@ -2,17 +2,22 @@
 /*Testing page*/
 ?>
 <?php get_header(); ?>
-    <main id="content" class="site-content">
+
     <p>Single cammaign page !</p>
 
     <main id="content" class="site-content projects-post">
         <div class="container">
+            <div class="row top-part-content">
+                <?php
+                custom_breadcrumbs();
+                ?>
+            </div>
 
             <?php
             while (have_posts()) : the_post();
 
-                //get_template_part( 'charitable/content-campaign', get_post_format() );
-                the_content();
+               get_template_part( 'charitable/content-campaign', get_post_format() );
+                //the_content();
 
             endwhile; // End of the loop.
             ?>

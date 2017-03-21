@@ -85,7 +85,11 @@ if (empty($video)) {
 
 echo get_avatar($creator, 65);
 echo $user_id->description;
+
 ?>
+
+<?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?>
+
 
 
 
