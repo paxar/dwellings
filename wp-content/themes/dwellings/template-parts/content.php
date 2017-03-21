@@ -40,7 +40,7 @@
 	<div class="entry-content bottom-link-block">
 		<?php
 			the_excerpt();
-			echo '<a class="more-link" href="' . get_permalink() . '">See more</a>';
+			echo '<a class="more-link" href="' . get_permalink() . '">' . esc_html__('See more', 'dwellings') . '</a>';
 		?>
 
 		<?php
