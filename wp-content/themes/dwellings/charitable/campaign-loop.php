@@ -39,6 +39,12 @@ if ($wp_query->have_posts()) :
         $campaign = charitable_get_current_campaign();
         $percent = number_format($campaign->get_percent_donated_raw(), 0) . '%';
         $currency_helper = charitable_get_currency_helper();
+        $value = $campaign->get_percent_donated_raw();
+
+
+        if ($value > 100) {
+            $value = 100;
+        }
 
         ?>
         <div class="projects-item col-xs-12">
@@ -66,7 +72,7 @@ if ($wp_query->have_posts()) :
                 <div class="bar-wrapper">
                     <div class="progress">
                         <div class="progress-bar" role="progressbar"
-                             aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>" aria-valuemin="0"
+                             aria-valuenow="<?php echo $value; ?>" aria-valuemin="0"
                              aria-valuemax="100">
                     <span class="pop" data-toggle="tooltip" data-placement="top"
                           title="<?php echo $percent; ?>"> </span>

@@ -1,12 +1,15 @@
 <?php
-/*Testing page*/
+/*
+ * Template Name: Template single-campaign
+ * Testing page*/
 ?>
 <?php get_header(); ?>
 
-    <p>Single cammaign page !</p>
+
 
     <main id="content" class="site-content projects-post">
         <div class="container">
+            <p>Single cammaign page !</p>
             <div class="top-part-content">
                 <?php
                 custom_breadcrumbs();
@@ -15,6 +18,7 @@
 
             <?php
             while (have_posts()) : the_post();
+
 
                get_template_part( 'charitable/content-campaign', get_post_format() );
                 //the_content();

@@ -19,6 +19,10 @@ Version: 1.0.0
   background: #fbf7f4;
   padding: 155px 0 60px; }
 
+@media only screen and (min-width: 1230px) {
+  .container {
+    width: 1200px; } }
+
 .intro {
   font: 800 30px "Lato", sans-serif; }
 
@@ -235,6 +239,13 @@ Version: 1.0.0
   border-radius: 10px;
   transition: width 2.0s ease-in-out;
   box-shadow: none; }
+
+.project-post-header .tooltip > .tooltip-inner {
+  padding: 3px 8px;
+  font: 900 24px/30px "Lato", sans-serif; }
+
+.project-post-header .tooltip {
+  top: -48px !important; }
 
 /*--------------------------------------------------------------
 # Layout
@@ -623,9 +634,7 @@ Version: 1.0.0
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-align: center;
-      align-items: center; }
+      flex-direction: column; }
   .top-part-content:before, .top-part-content:after {
     display: none; }
   @media only screen and (min-width: 768px) {
@@ -633,7 +642,9 @@ Version: 1.0.0
       -ms-flex-direction: row;
           flex-direction: row;
       -ms-flex-pack: justify;
-          justify-content: space-between; } }
+          justify-content: space-between;
+      -ms-flex-align: center;
+          align-items: center; } }
 
 .image-box {
   margin-bottom: 30px; }
@@ -971,7 +982,8 @@ content-campaign.php
     line-height: 45px; }
   .project-post-header .post-video {
     position: relative;
-    padding-bottom: 25.25%;
+    overflow: hidden;
+    padding-bottom: 33.25%;
     /* 16:9 */
     padding-top: 25px;
     height: 0; }
@@ -981,5 +993,38 @@ content-campaign.php
       left: 0;
       width: 100%;
       height: 100%; }
+    .project-post-header .post-video img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+  .project-post-header .creator-info {
+    overflow: hidden; }
+    .project-post-header .creator-info .creator-avatar {
+      float: left; }
+      .project-post-header .creator-info .creator-avatar img {
+        border-radius: 5px; }
+    .project-post-header .creator-info .creator-description {
+      float: left;
+      padding: 0 10px; }
+      .project-post-header .creator-info .creator-description span {
+        color: #000000;
+        font-family: Lato;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 32px; }
+      .project-post-header .creator-info .creator-description p {
+        color: #000000;
+        font-family: Lato;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 32px; }
+  .project-post-header .donate-info-wrap .donate-text {
+    font: 400 18px/23px "Lato", sans-serif; }
+  .project-post-header .donate-info-wrap .amount-count {
+    font: 700 40px/42px "Lato", sans-serif; }
+  .project-post-header .donate-info-wrap .goalcount {
+    font: 900 40px/42px "Lato", sans-serif; }
 
 /*# sourceMappingURL=style.css.map */

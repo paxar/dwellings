@@ -24,7 +24,12 @@ $video = $campaign->video;
 $video_id = $campaign->video_id;
 $creator= $campaign->get_campaign_creator();
 $user_id = charitable_get_user($creator);
+$value = $campaign->get_percent_donated_raw();
 
+
+if ($value > 100) {
+    $value = 100;
+}
 
 if ($video_id) {
     $video_src = wp_video_shortcode(array('src' => $video));
@@ -50,7 +55,9 @@ if (empty($video)) {
         <div class="projects-item-donate-info col-xs-6">
             <div class="creator-info">
                 <div class="creator-avatar">
-                    <?php echo get_avatar($creator, 65);?>
+                    <?php
+
+                    echo get_avatar($creator, 70);?>
                 </div>
                 <div class="creator-description">
                     <span>Sponsor: </span>
@@ -61,7 +68,7 @@ if (empty($video)) {
             <div class="bar-wrapper">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar"
-                         aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>" aria-valuemin="0"
+                         aria-valuenow="<?php echo $value ; ?>" aria-valuemin="0"
                          aria-valuemax="100">
                     <span class="pop" data-toggle="tooltip" data-placement="top"
                           title="<?php echo $percent; ?>"> </span>
@@ -78,8 +85,14 @@ if (empty($video)) {
                     </div>
                 </div>
                 <div class="project-social-icons">
+                        <!-- TODO  add links for social  -->
+
                     <ul>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-tumblr "></i></a></li>
                     </ul>
                 </div>
                 <a class="projects-donate-button" href="<?php the_permalink() ?>">Donate</a>
