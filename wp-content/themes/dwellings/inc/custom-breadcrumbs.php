@@ -57,14 +57,16 @@ function custom_breadcrumbs() {
 
         } else if ( is_single() ) {
 
-            echo '<li class="item-bread"><a class="bread-link" href="' .esc_url(get_permalink( get_option('page_for_posts') )).'" title="">' . get_the_title( get_option('page_for_posts', true) ). '</a></li>';
-            echo '<li class="separator"> ' . $separator . ' </li>';
-
-            // If post is a custom post type
             $post_type = get_post_type();
 
+            if ($post_type == 'post') {
+
+                echo '<li class="item-bread"><a class="bread-link" href="' . esc_url(get_permalink(get_option('page_for_posts'))) . '" title="">' . get_the_title(get_option('page_for_posts', true)) . '</a></li>';
+                echo '<li class="separator"> ' . $separator . ' </li>';
+            }
+
             // If it is a custom post type display name and link
-            if($post_type != 'post') {
+            else {
 
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);

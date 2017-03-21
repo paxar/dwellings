@@ -7,15 +7,15 @@ content-campaign.php
 
 .project-post-header{
   overflow: hidden;
-  padding: 20px;
+  padding: 0 20px 60px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
   background-color: #ffffff;
 
   .item-title{
+    padding: 20px 0 27px;
+    font: 600 40px/45px $lato;
     color: #000000;
-    font-family: Lato;
-    font-size: 40px;
-    font-weight: bold;
-    line-height: 45px;
   }
   .post-video{
     position: relative;
@@ -50,31 +50,83 @@ content-campaign.php
       float: left;
       padding: 0 10px;
       span{
+        font: 400 18px/32px $lato;
         color: #000000;
-        font-family: Lato;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 32px;
       }
       p{
+        font: 800 24px/32px $lato;
         color: #000000;
-        font-family: Lato;
-        font-size: 24px;
-        font-weight: 800;
-        line-height: 32px;
-
       }
     }
   }
+  .bar-wrapper{
+    margin-top: 65px;
+  }
   .donate-info-wrap{
+    margin-top: 20px;
     .donate-text{
-      font: 400 18px/23px "Lato", sans-serif;
+      font: 400 18px/23px $lato;
     }
     .amount-count{
-      font: 700 40px/42px "Lato", sans-serif;
+      font: 700 40px/42px $lato;
     }
     .goalcount{
-      font: 900 40px/42px "Lato", sans-serif;
+      font: 900 40px/42px $lato;
     }
+  }
+  .project-social-icons{
+    float: left;
+    margin-top: 70px;
+    span{
+      font: 400 18px/23px $lato;
+
+    }
+    ul{
+      list-style: none;
+      margin-top: 20px;
+      padding: 0;
+    }
+    li{
+      display: inline-block;
+    }
+    a{
+    text-decoration: none;
+      &:hover .fa{
+        background-color: $brand-color;
+        transition: 0.5s;
+
+      }
+    }
+    .fa{
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin-right: 6px;
+      text-align: center;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 20px;
+      line-height: 40px;
+      transition: 0.5s;
+    }
+    .fa-twitter{
+      background-color: #26a6d1;
+    }
+    .fa-facebook{
+      background-color: #3b5998;
+    }
+    .fa-google-plus{
+      background-color: #dd4b39;
+    }
+    .fa-linkedin{
+      background-color: #007ab9;
+    }
+    .fa-tumblr{
+      background-color: #000000;
+    }
+  }
+  .projects-donate-button{
+    float: right;
+    margin-top: 100px;
   }
 }

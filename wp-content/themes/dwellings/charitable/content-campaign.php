@@ -22,7 +22,7 @@ $currency_helper = charitable_get_currency_helper();
 $content = $view_args['content'];
 $video = $campaign->video;
 $video_id = $campaign->video_id;
-$creator= $campaign->get_campaign_creator();
+$creator = $campaign->get_campaign_creator();
 $user_id = charitable_get_user($creator);
 $value = $campaign->get_percent_donated_raw();
 
@@ -57,7 +57,7 @@ if (empty($video)) {
                 <div class="creator-avatar">
                     <?php
 
-                    echo get_avatar($creator, 70);?>
+                    echo get_avatar($creator, 70); ?>
                 </div>
                 <div class="creator-description">
                     <span>Sponsor: </span>
@@ -68,7 +68,7 @@ if (empty($video)) {
             <div class="bar-wrapper">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar"
-                         aria-valuenow="<?php echo $value ; ?>" aria-valuemin="0"
+                         aria-valuenow="<?php echo $value; ?>" aria-valuemin="0"
                          aria-valuemax="100">
                     <span class="pop" data-toggle="tooltip" data-placement="top"
                           title="<?php echo $percent; ?>"> </span>
@@ -85,9 +85,9 @@ if (empty($video)) {
                     </div>
                 </div>
                 <div class="project-social-icons">
-                        <!-- TODO  add links for social  -->
+                    <span>Share with:</span>
 
-                    <ul>
+                    <ul><!--TODO add links for social  -->
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -102,54 +102,44 @@ if (empty($video)) {
 
     </div>
 
+    <div class="project-post-tabs col-xs-8">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#panel1">Description</a></li>
+            <li><a data-toggle="tab" href="#panel2">Updates</a></li>
+            <li><a data-toggle="tab" href="#panel3">Donors</a></li>
+            <li><a data-toggle="tab" href="#panel4">Map</a></li>
+
+        </ul>
+
+        <div class="tab-content">
+            <div id="panel1" class="tab-pane fade in active">
+                <h3>Description</h3>
+                <p>Содержимое Description</p>
+            </div>
+            <div id="panel2" class="tab-pane fade">
+                <h3>Updates</h3>
+                <p>Содержимое Updates</p>
+            </div>
+            <div id="panel3" class="tab-pane fade">
+                <h3>Donors</h3>
+                <p>Содержимое Donors</p>
+            </div>
+            <div id="panel4" class="tab-pane fade">
+                <h3>Map</h3>
+                <p>Содержимое Map</p>
+            </div>
+        </div>
+
+
+    </div>
+
 
 <?php
 
 
-
-
-
-
-
-
 ?>
 
-<?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?>
-
-
-
-
-
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#panel1">Description</a></li>
-        <li><a data-toggle="tab" href="#panel2">Updates</a></li>
-        <li><a data-toggle="tab" href="#panel3">Donors</a></li>
-        <li><a data-toggle="tab" href="#panel4">Map</a></li>
-
-    </ul>
-
-    <div class="tab-content">
-        <div id="panel1" class="tab-pane fade in active">
-            <h3>Description</h3>
-            <p>Содержимое Description</p>
-        </div>
-        <div id="panel2" class="tab-pane fade">
-            <h3>Updates</h3>
-            <p>Содержимое Updates</p>
-        </div>
-        <div id="panel3" class="tab-pane fade">
-            <h3>Donors</h3>
-            <p>Содержимое Donors</p>
-        </div>
-        <div id="panel4" class="tab-pane fade">
-            <h3>Map</h3>
-            <p>Содержимое Map</p>
-        </div>
-    </div>
-
-
-
-
+<?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago'; ?>
 
 
 
