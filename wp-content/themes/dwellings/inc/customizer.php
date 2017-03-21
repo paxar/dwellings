@@ -301,7 +301,7 @@ function dwellings_customize_register( $wp_customize ) {
         'learn-more-hero-show',
         array(
             'section'   => 'learn-more-hero-section',
-            'label'     => 'Display Section?',
+            'label'     => esc_html__('Display Section?', 'dwellings' ),
             'type'      => 'checkbox'
         )
     );
@@ -377,7 +377,7 @@ function dwellings_customize_register( $wp_customize ) {
         'learn-more-right-show',
         array(
             'section'   => 'right-image-section',
-            'label'     => 'Display Section?',
+            'label'     => esc_html__('Display Section?', 'dwellings' ),
             'type'      => 'checkbox'
         )
     );
@@ -453,7 +453,7 @@ function dwellings_customize_register( $wp_customize ) {
         'learn-more-left-show',
         array(
             'section'   => 'left-image-section',
-            'label'     => 'Display Section?',
+            'label'     => esc_html__('Display Section?', 'dwellings' ),
             'type'      => 'checkbox'
         )
     );
@@ -502,7 +502,7 @@ function dwellings_customize_register( $wp_customize ) {
         'learn-more-contact-show',
         array(
             'section'   => 'learn-more-contact-section',
-            'label'     => 'Display Section?',
+            'label'     => esc_html__('Display Section?', 'dwellings' ),
             'type'      => 'checkbox'
         )
     );

@@ -8,7 +8,7 @@ Template Name: Template learn more page
     <section class="map-learn-more"></section>
     <div class="container">
         <?php get_template_part( 'template-parts/icongroup', 'none' ); ?>
-        <section class="row right-image-section">
+        <section class="right-image-section">
             <div class="learn-image-box">
                 <img src="<?php echo get_theme_mod('right-image-section-image'); ?>" alt="">
             </div>
@@ -18,7 +18,7 @@ Template Name: Template learn more page
                 <p class="learn-paragraph"><?php echo get_theme_mod('right-image-section-paragraph2'); ?></p>
             </div>
         </section>
-        <section class="row left-image-section">
+        <section class="left-image-section">
             <div class="learn-image-box">
                 <img src="<?php echo get_theme_mod('left-image-section-image'); ?>" alt="">
             </div>
@@ -34,7 +34,7 @@ Template Name: Template learn more page
         <div class="container">
             <h2 class="section-title"><?php echo get_theme_mod('learn-more-contact-title'); ?></h2>
             <p class="section-description"><?php echo get_theme_mod('learn-more-contact-description'); ?></p>
-            <div class="row contact-form">
+            <div class="contact-form">
                 <?php dynamic_sidebar( 'sidebar-4' ); ?>
             </div>
         </div>
