@@ -1,5 +1,7 @@
 <?php
-/*Testing page*/
+/*
+ * Template Name: Template single-campaign
+ * Testing page*/
 ?>
 <?php get_header(); ?>
 

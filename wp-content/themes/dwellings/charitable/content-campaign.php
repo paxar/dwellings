@@ -50,7 +50,9 @@ if (empty($video)) {
         <div class="projects-item-donate-info col-xs-6">
             <div class="creator-info">
                 <div class="creator-avatar">
-                    <?php echo get_avatar($creator, 65);?>
+                    <?php
+
+                    echo get_avatar($creator, 70);?>
                 </div>
                 <div class="creator-description">
                     <span>Sponsor: </span>
@@ -78,8 +80,14 @@ if (empty($video)) {
                     </div>
                 </div>
                 <div class="project-social-icons">
+                        <!-- TODO  add links for social  -->
+
                     <ul>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-tumblr "></i></a></li>
                     </ul>
                 </div>
                 <a class="projects-donate-button" href="<?php the_permalink() ?>">Donate</a>
