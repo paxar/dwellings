@@ -132,6 +132,24 @@ function dwellings_widgets_init() {
         'before_title'  => '<h3 class="widget-learn-more-title">',
         'after_title'   => '</h3>',
     ) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Tabs widget', 'dwellings' ),
+        'id'            => 'sidebar-tabs-1',
+        'description'   => esc_html__( 'Single campaign tabs donors-list', 'dwellings' ),
+        'before_widget' => '<div class="widget-donors">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-donors-title">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Tabs widget', 'dwellings' ),
+        'id'            => 'sidebar-tabs-2',
+        'description'   => esc_html__( 'Single campaign tabs updates-list', 'dwellings' ),
+        'before_widget' => '<div class="widget-updates">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-updates-title">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action( 'widgets_init', 'dwellings_widgets_init' );
 

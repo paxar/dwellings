@@ -49,7 +49,7 @@ if ( $donors->count() ) :
 
 				<?php
 
-				echo $donor->get_avatar();
+				//echo $donor->get_avatar();
 
 				if ( $view_args['show_name'] ) : ?>
 
