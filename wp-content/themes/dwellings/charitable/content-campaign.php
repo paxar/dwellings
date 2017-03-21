@@ -22,6 +22,8 @@ $currency_helper = charitable_get_currency_helper();
 $content = $view_args['content'];
 $video = $campaign->video;
 $video_id = $campaign->video_id;
+$creator= $campaign->get_campaign_creator();
+$user_id = charitable_get_user($creator);
 
 
 if ($video_id) {
@@ -77,20 +79,47 @@ if (empty($video)) {
 
 <?php
 
-$creator= $campaign->get_campaign_creator();
-$user_id = charitable_get_user($creator);
 
-echo 'creator' . $creator;
+
+
 
 echo get_avatar($creator, 65);
-//echo 'Username: ' . $current_user->user_login . '<br />';
-//echo 'User email: ' . $current_user->user_email . '<br />';
-//echo 'User first name: ' . $current_user->user_firstname . '<br />';
-//echo 'User last name: ' . $current_user->user_lastname . '<br />';
-//echo 'User display name: ' . $current_user->display_name . '<br />';
-echo 'User description: ' . $user_id->description . '<br />';
-//echo 'User ID: ' . $current_user->ID;
+echo $user_id->description;
 ?>
+
+
+
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#panel1">Description</a></li>
+        <li><a data-toggle="tab" href="#panel2">Updates</a></li>
+        <li><a data-toggle="tab" href="#panel3">Donors</a></li>
+        <li><a data-toggle="tab" href="#panel4">Map</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+        <div id="panel1" class="tab-pane fade in active">
+            <h3>Description</h3>
+            <p>Содержимое Description</p>
+        </div>
+        <div id="panel2" class="tab-pane fade">
+            <h3>Updates</h3>
+            <p>Содержимое Updates</p>
+        </div>
+        <div id="panel3" class="tab-pane fade">
+            <h3>Donors</h3>
+            <p>Содержимое Donors</p>
+        </div>
+        <div id="panel4" class="tab-pane fade">
+            <h3>Map</h3>
+            <p>Содержимое Map</p>
+        </div>
+    </div>
+
+
+
+
 
 
 
