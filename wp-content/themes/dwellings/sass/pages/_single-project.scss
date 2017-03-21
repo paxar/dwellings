@@ -7,11 +7,14 @@ content-campaign.php
 
 .project-post-header{
   overflow: hidden;
-  padding: 20px;
+  padding: 0 20px 60px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
   background-color: #ffffff;
 
   .item-title{
-    font: 800 40px/45px $lato;
+    padding: 20px 0 27px;
+    font: 600 40px/45px $lato;
     color: #000000;
   }
   .post-video{
@@ -73,7 +76,7 @@ content-campaign.php
   }
   .project-social-icons{
     float: left;
-    margin-top: 30px;
+    margin-top: 70px;
     span{
       font: 400 18px/23px $lato;
 
@@ -98,9 +101,9 @@ content-campaign.php
       display: block;
       width: 40px;
       height: 40px;
+      margin-right: 6px;
       text-align: center;
       border-radius: 50%;
-      background-color: red;
       color: #ffffff;
       font-size: 20px;
       line-height: 40px;
@@ -124,5 +127,6 @@ content-campaign.php
   }
   .projects-donate-button{
     float: right;
+    margin-top: 100px;
   }
 }
