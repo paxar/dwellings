@@ -48,4 +48,28 @@
 
 		});
 	});
+
+	wp.customize( 'learn-more-hero-show', function( value ) {
+		value.bind( function( to ) {
+			false === to ? $( '.map-learn-more' ).hide() : $( '.map-learn-more' ).show();
+		} );
+	} );
+
+	wp.customize( 'learn-more-left-show', function( value ) {
+		value.bind( function( to ) {
+			false === to ? $( '.left-image-section' ).hide() : $( '.left-image-section' ).show();
+		} );
+	} );
+
+	wp.customize( 'learn-more-right-show', function( value ) {
+		value.bind( function( to ) {
+			false === to ? $( '.right-image-section' ).hide() : $( '.right-image-section' ).show();
+		} );
+	} );
+
+	wp.customize( 'learn-more-contact-show', function( value ) {
+		value.bind( function( to ) {
+			false === to ? $( '.learn-more-contact' ).hide() : $( '.learn-more-contact' ).show();
+		} );
+	} );
 } )( jQuery );
