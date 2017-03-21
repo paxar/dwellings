@@ -81,3 +81,14 @@ function resizeFunc() {
 }
 resizeFunc();
 $(window).resize(resizeFunc);
+
+/*Contact us block height*/
+if (window.matchMedia("(min-width: 768px)").matches) {
+    var contactHeight = 400;
+    $('.contact-info').each(function () {
+        if ($(this).height() > contactHeight) {
+            contactHeight = $(this).height();
+        }
+    });
+    $('.contact-info').height(contactHeight);
+}

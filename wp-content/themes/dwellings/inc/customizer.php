@@ -65,7 +65,8 @@ function dwellings_customize_register( $wp_customize ) {
         'btn_url',
         array(
             'label' => esc_html__('Button URL', 'dwellings'),
-            'section' => 'hero-section'
+            'section' => 'hero-section',
+            'type'     => 'dropdown-pages'
         )
     );
     $wp_customize->add_setting(

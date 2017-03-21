@@ -700,15 +700,15 @@ Version: 1.0.0
 .contact-us {
   width: 100%;
   display: table;
-  background: #fff;
-  border-radius: 6px;
   overflow: hidden; }
   .contact-us .information {
     position: relative;
     width: 100%;
+    border-radius: 6px 6px 0 0;
     box-sizing: content-box;
     background: #fed52f;
-    color: #fff; }
+    color: #fff;
+    overflow: hidden; }
   .contact-us .intro {
     margin-bottom: 30px; }
   .contact-us .contact-info {
@@ -724,6 +724,7 @@ Version: 1.0.0
     width: 100%; }
   .contact-us .contact-form {
     width: 100%;
+    background-color: #fff;
     padding: 45px;
     border-radius: 0 0 6px 6px;
     border: 1px solid #e5e5e5;
@@ -732,7 +733,9 @@ Version: 1.0.0
 @media (min-width: 768px) {
   .contact-us .information {
     display: table-cell;
-    width: 50%; }
+    width: 50%;
+    border-radius: 6px 0 0 6px;
+    overflow: hidden; }
   .contact-us .contact-form {
     display: table-cell;
     width: 50%;
@@ -755,52 +758,23 @@ Version: 1.0.0
     .contact-us .address dt {
       float: none; } }
 
-.donation-wrap {
-  position: relative;
-  border: 1px solid black; }
-  .donation-wrap .form-headers {
-    display: -ms-flexbox;
-    display: flex;
-    margin-bottom: 20px; }
-    .donation-wrap .form-headers .form-header {
-      -ms-flex: 1;
-          flex: 1;
-      text-align: center;
-      border-top: 3px solid gray;
-      margin: 0 10px;
-      cursor: pointer; }
-      .donation-wrap .form-headers .form-header.current {
-        border-color: yellow; }
-  .donation-wrap #amounts {
-    margin-bottom: 20px; }
-    .donation-wrap #amounts .first-row {
-      display: -ms-flexbox;
-      display: flex; }
-      .donation-wrap #amounts .first-row label {
-        -ms-flex: 1;
-            flex: 1;
-        margin: 0 10px; }
-    .donation-wrap #amounts .second-row {
-      display: -ms-flexbox;
-      display: flex; }
-      .donation-wrap #amounts .second-row label {
-        -ms-flex: 1;
-            flex: 1;
-        margin-top: 5px; }
-      .donation-wrap #amounts .second-row input.custom-amount {
-        -ms-flex: 1;
-            flex: 1;
-        visibility: hidden; }
-    .donation-wrap #amounts input[type=radio] {
-      display: none; }
-    .donation-wrap #amounts label {
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      border: 1px solid black;
-      cursor: pointer; }
-    .donation-wrap #amounts input:checked + label {
-      background-color: yellow; }
+.donation .donation-block {
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  overflow: hidden; }
+  .donation .donation-block .organization-wrap {
+    margin-right: 15px; }
+    .donation .donation-block .organization-wrap .title-cover {
+      padding: 30px 0;
+      font: 700 40px/50px "Lato", sans-serif;
+      color: #000; }
+    .donation .donation-block .organization-wrap .description-cover {
+      font: 700 16px/27px "Lato", sans-serif;
+      color: #010000; }
+  .donation .donation-block .donation-wrap {
+    margin-left: 15px; }
 
 .no-results,
 .not-found {
@@ -972,14 +946,14 @@ content-campaign.php
 */
 .project-post-header {
   overflow: hidden;
-  padding: 20px;
+  padding: 0 20px 60px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
   background-color: #ffffff; }
   .project-post-header .item-title {
-    color: #000000;
-    font-family: Lato;
-    font-size: 40px;
-    font-weight: bold;
-    line-height: 45px; }
+    padding: 20px 0 27px;
+    font: 600 40px/45px "Lato", sans-serif;
+    color: #000000; }
   .project-post-header .post-video {
     position: relative;
     overflow: hidden;
@@ -1009,22 +983,60 @@ content-campaign.php
       float: left;
       padding: 0 10px; }
       .project-post-header .creator-info .creator-description span {
-        color: #000000;
-        font-family: Lato;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 32px; }
+        font: 400 18px/32px "Lato", sans-serif;
+        color: #000000; }
       .project-post-header .creator-info .creator-description p {
-        color: #000000;
-        font-family: Lato;
-        font-size: 24px;
-        font-weight: 800;
-        line-height: 32px; }
-  .project-post-header .donate-info-wrap .donate-text {
-    font: 400 18px/23px "Lato", sans-serif; }
-  .project-post-header .donate-info-wrap .amount-count {
-    font: 700 40px/42px "Lato", sans-serif; }
-  .project-post-header .donate-info-wrap .goalcount {
-    font: 900 40px/42px "Lato", sans-serif; }
+        font: 800 24px/32px "Lato", sans-serif;
+        color: #000000; }
+  .project-post-header .bar-wrapper {
+    margin-top: 65px; }
+  .project-post-header .donate-info-wrap {
+    margin-top: 20px; }
+    .project-post-header .donate-info-wrap .donate-text {
+      font: 400 18px/23px "Lato", sans-serif; }
+    .project-post-header .donate-info-wrap .amount-count {
+      font: 700 40px/42px "Lato", sans-serif; }
+    .project-post-header .donate-info-wrap .goalcount {
+      font: 900 40px/42px "Lato", sans-serif; }
+  .project-post-header .project-social-icons {
+    float: left;
+    margin-top: 70px; }
+    .project-post-header .project-social-icons span {
+      font: 400 18px/23px "Lato", sans-serif; }
+    .project-post-header .project-social-icons ul {
+      list-style: none;
+      margin-top: 20px;
+      padding: 0; }
+    .project-post-header .project-social-icons li {
+      display: inline-block; }
+    .project-post-header .project-social-icons a {
+      text-decoration: none; }
+      .project-post-header .project-social-icons a:hover .fa {
+        background-color: #fed52f;
+        transition: 0.5s; }
+    .project-post-header .project-social-icons .fa {
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin-right: 6px;
+      text-align: center;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 20px;
+      line-height: 40px;
+      transition: 0.5s; }
+    .project-post-header .project-social-icons .fa-twitter {
+      background-color: #26a6d1; }
+    .project-post-header .project-social-icons .fa-facebook {
+      background-color: #3b5998; }
+    .project-post-header .project-social-icons .fa-google-plus {
+      background-color: #dd4b39; }
+    .project-post-header .project-social-icons .fa-linkedin {
+      background-color: #007ab9; }
+    .project-post-header .project-social-icons .fa-tumblr {
+      background-color: #000000; }
+  .project-post-header .projects-donate-button {
+    float: right;
+    margin-top: 100px; }
 
 /*# sourceMappingURL=style.css.map */
