@@ -18,11 +18,10 @@
 .about-us-page {
   padding: 70px 0 90px;
 }
-.about-cover {
+.about-wrap-img {
   img {
-    position: absolute;
+    display: block;
     width: 100%;
-    right: 0;
   }
 }
 
@@ -31,9 +30,34 @@
 }
 
 @media (min-width: 768px) {
-  .about-cover {
+  .about-wrap-img {
+    width: 50%;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    overflow: hidden;
     img {
-      width: 50%;
+      position: absolute;
+      bottom: 0;
+      width: auto;
+      height: 100%;
+      transform: translateX(-35%);
+    }
+  }
+}
+@media (min-width: 992px) {
+  .about-wrap-img {
+    img {
+      transform: translateX(-10%);
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .about-wrap-img {
+    img {
+      width: 100%;
+      height: auto;
+      transform: translateX(0);
     }
   }
 }
