@@ -1,15 +1,15 @@
 .contact-us {
   width: 100%;
   display: table;
-  background: #fff;
-  border-radius: 6px;
   overflow: hidden;
   .information {
     position: relative;
     width: 100%;
+    border-radius: 6px 6px 0 0;
     box-sizing: content-box;
     background: $brand-color;
     color: #fff;
+    overflow: hidden;
   }
   .intro {
     margin-bottom: 30px;
@@ -31,6 +31,7 @@
   }
   .contact-form {
     width: 100%;
+    background-color: #fff;
     padding: 45px;
     border-radius: 0 0 6px 6px;
     border: 1px solid #e5e5e5;
@@ -43,6 +44,8 @@
     .information {
       display: table-cell;
       width: 50%;
+      border-radius: 6px 0 0 6px;
+      overflow: hidden;
     }
     .contact-form {
       display: table-cell;
