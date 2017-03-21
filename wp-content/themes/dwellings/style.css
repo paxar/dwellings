@@ -385,7 +385,7 @@ Version: 1.0.0
     margin-bottom: 30px; }
 
 .about-us-page {
-  padding: 70px 0 90px; }
+  padding: 70px 0 40px; }
 
 .about-wrap-img img {
   display: block;
@@ -518,11 +518,11 @@ Version: 1.0.0
       font: 400 16px/23px "Lato", sans-serif;
       color: #000; }
 
-.testimonials ul {
+.testimonials .wrap-quote {
   padding-top: 60px; }
 
-.testimonials li {
-  padding: 30px 15px; }
+.testimonials .single-quote {
+  padding: 40px 15px 10px; }
 
 .testimonials .avatar-quote {
   background: #fff;
