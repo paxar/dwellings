@@ -70,10 +70,14 @@ $('.content-quote').outerHeight(maxHeight);
 /*About us block height*/
 
 function resizeFunc() {
-    heghtImg = $('.about-cover img').outerHeight();
-    $('.about-cover').outerHeight(heghtImg);
+    if (window.matchMedia("(min-width: 1400px)").matches) {
+        heghtImgCover = $('.about-wrap-img img').outerHeight();
+        $('.about-us').outerHeight(heghtImgCover);
+    }
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        heghtImg = $('.about-us').outerHeight();
+        $('.about-wrap-img').outerHeight(heghtImg);
+    }
 }
-
 resizeFunc();
-
 $(window).resize(resizeFunc);

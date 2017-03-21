@@ -8,17 +8,18 @@
 <section class="testimonials">
     <div class="container">
         <h2 class="title title-decor"><?php echo get_theme_mod('title_testimonials'); ?></h2>
-        <ul class="row">
+        <ul class="row wrap-quote">
 
             <?php
             $args = array(
                 'post_type' => 'section-testimonials',
-                'posts_per_page' => 10
+                'posts_per_page' => 10,
+                'paged' => $paged
             );
             $the_query = new WP_Query($args);
             if ( $the_query -> have_posts() ) : while ( $the_query -> have_posts() ) : $the_query -> the_post(); ?>
 
-                <li class="col-xs-12 col-md-6">
+                <li class="col-xs-12 col-md-6 single-quote">
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="avatar-quote">
@@ -46,5 +47,6 @@
             <?php endif; ?>
 
         </ul>
+        <?php custom_numeric_posts_nav($the_query); ?>
     </div>
 </section>

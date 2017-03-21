@@ -24,7 +24,12 @@ $video = $campaign->video;
 $video_id = $campaign->video_id;
 $creator= $campaign->get_campaign_creator();
 $user_id = charitable_get_user($creator);
+$value = $campaign->get_percent_donated_raw();
 
+
+if ($value > 100) {
+    $value = 100;
+}
 
 if ($video_id) {
     $video_src = wp_video_shortcode(array('src' => $video));
@@ -63,7 +68,7 @@ if (empty($video)) {
             <div class="bar-wrapper">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar"
-                         aria-valuenow="<?php echo $campaign->get_percent_donated_raw(); ?>" aria-valuemin="0"
+                         aria-valuenow="<?php echo $value ; ?>" aria-valuemin="0"
                          aria-valuemax="100">
                     <span class="pop" data-toggle="tooltip" data-placement="top"
                           title="<?php echo $percent; ?>"> </span>

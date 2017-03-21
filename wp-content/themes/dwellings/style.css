@@ -385,19 +385,41 @@ Version: 1.0.0
     margin-bottom: 30px; }
 
 .about-us-page {
-  padding: 70px 0 90px; }
+  padding: 70px 0 40px; }
 
-.about-cover img {
-  position: absolute;
-  width: 100%;
-  right: 0; }
+.about-wrap-img img {
+  display: block;
+  width: 100%; }
 
 .container-fluid {
   padding: 0; }
 
 @media (min-width: 768px) {
-  .about-cover img {
-    width: 50%; } }
+  .about-wrap-img {
+    width: 50%;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    overflow: hidden; }
+    .about-wrap-img img {
+      position: absolute;
+      bottom: 0;
+      width: auto;
+      height: 100%;
+      -ms-transform: translateX(-35%);
+          transform: translateX(-35%); } }
+
+@media (min-width: 992px) {
+  .about-wrap-img img {
+    -ms-transform: translateX(-10%);
+        transform: translateX(-10%); } }
+
+@media (min-width: 1200px) {
+  .about-wrap-img img {
+    width: 100%;
+    height: auto;
+    -ms-transform: translateX(0);
+        transform: translateX(0); } }
 
 .site-footer {
   padding: 30px 0; }
@@ -496,11 +518,11 @@ Version: 1.0.0
       font: 400 16px/23px "Lato", sans-serif;
       color: #000; }
 
-.testimonials ul {
+.testimonials .wrap-quote {
   padding-top: 60px; }
 
-.testimonials li {
-  padding: 30px 15px; }
+.testimonials .single-quote {
+  padding: 40px 15px 10px; }
 
 .testimonials .avatar-quote {
   background: #fff;
