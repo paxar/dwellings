@@ -15,6 +15,7 @@ if (!defined('ABSPATH')) {
 } // Exit if accessed directly
 
 global $current_user;
+
 $campaign = charitable_get_current_campaign();
 $percent = number_format($campaign->get_percent_donated_raw(), 0) . '%';
 $currency_helper = charitable_get_currency_helper();
@@ -76,13 +77,18 @@ if (empty($video)) {
 
 <?php
 
-echo get_avatar($current_user, 65);
+$creator= $campaign->get_campaign_creator();
+$user_id = charitable_get_user($creator);
+
+echo 'creator' . $creator;
+
+echo get_avatar($creator, 65);
 //echo 'Username: ' . $current_user->user_login . '<br />';
 //echo 'User email: ' . $current_user->user_email . '<br />';
 //echo 'User first name: ' . $current_user->user_firstname . '<br />';
 //echo 'User last name: ' . $current_user->user_lastname . '<br />';
 //echo 'User display name: ' . $current_user->display_name . '<br />';
-echo 'User description: ' . $current_user->description . '<br />';
+echo 'User description: ' . $user_id->description . '<br />';
 //echo 'User ID: ' . $current_user->ID;
 ?>
 
