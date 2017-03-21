@@ -67,17 +67,21 @@ function custom_breadcrumbs() {
 
             // If it is a custom post type display name and link
             else {
-
+                if ($post_type == 'campaign') {
+                    $GLOBALS['wp_post_types']['campaign']->has_archive=true;
+                    $GLOBALS['wp_post_types']['campaign']->labels->name= __('Candidate families', 'dwelling');
+                    $GLOBALS['wp_post_types']['campaign']->rewrite['slug']='candidate-families';
+                }
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);
 
-                echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
+                echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-link bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
                 echo '<li class="separator"> ' . $separator . ' </li>';
 
             }
 
             // Get post category info
-//            $category = get_the_category();
+            $category = get_the_category();
 
             if(!empty($category)) {
 //
