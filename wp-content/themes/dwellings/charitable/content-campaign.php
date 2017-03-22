@@ -120,6 +120,7 @@ if (empty($video)) {
 
         </ul>
 
+
         <div class="tab-content">
             <div id="panel1" class="tab-pane fade in active">
                 <h3>Description</h3>
@@ -161,5 +162,5 @@ if (empty($video)) {
 
 
 
-    <p>****************************************************************************************</p>
+
 

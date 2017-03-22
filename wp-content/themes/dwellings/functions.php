@@ -251,3 +251,6 @@ function break_text($text){
     $visible = substr($text, 0, $break_pos);
     return balanceTags($visible) . " …</p>";
 }
+
+
+
