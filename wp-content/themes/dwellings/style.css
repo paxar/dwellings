@@ -264,7 +264,63 @@ Version: 1.0.0
   border-top: 15px solid #fed52f; }
   .charitable-campaign-map-marker img {
     width: 50%;
-    margin-top: 10px; }
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px; }
+  .charitable-campaign-map-marker h3 {
+    margin: 0;
+    padding: 5px; }
+    .charitable-campaign-map-marker h3 a {
+      font: 600 24px "Lato", sans-serif;
+      text-decoration: none;
+      color: #000;
+      transition: 0.5s; }
+      .charitable-campaign-map-marker h3 a:hover {
+        color: #fed52f;
+        transition: 0.5s; }
+  .charitable-campaign-map-marker .campaign-description {
+    font: 400 14px/16px "Lato", sans-serif; }
+
+/*tabs for page single campaign*/
+.project-post-tabs .tab-content > .tab-pane {
+  display: block;
+  height: 0;
+  overflow: hidden; }
+
+.project-post-tabs .tab-content > .active {
+  display: block;
+  height: auto; }
+
+.project-post-tabs .nav-tabs > .active a {
+  position: relative;
+  border-bottom: none;
+  font: 600 18px/23px "Lato", sans-serif; }
+  .project-post-tabs .nav-tabs > .active a:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #fed52f; }
+
+.project-post-tabs .nav-tabs {
+  border: none; }
+
+.project-post-tabs .nav-tabs > li {
+  width: 25%;
+  text-align: center; }
+  .project-post-tabs .nav-tabs > li a {
+    margin-right: 0;
+    font: 400 18px/23px "Lato", sans-serif;
+    border: 1px solid #ddd;
+    color: #010000; }
+
+.project-post-tabs .tab-content {
+  border: 1px solid #ddd;
+  border-top: none;
+  background-color: #ffffff; }
 
 /*--------------------------------------------------------------
 # Layout
@@ -1058,14 +1114,19 @@ content-campaign.php
     float: right;
     margin-top: 100px; }
 
-.project-post-tabs .tab-content > .tab-pane {
-  display: block;
-  height: 0;
-  overflow: hidden; }
-
-.project-post-tabs .tab-content > .active {
-  display: block;
-  height: auto; }
+.project-post-tabs {
+  margin-top: 30px; }
+  .project-post-tabs .tab-content #panel1 {
+    padding: 25px; }
+    .project-post-tabs .tab-content #panel1 img {
+      float: left;
+      margin: 10px 10px 10px 0; }
+  .project-post-tabs .tab-content .description {
+    font: 600 18px/23px "Lato", sans-serif;
+    text-align: center; }
+  .project-post-tabs .tab-content .extended-description {
+    font: 400 18px/23px "Lato", sans-serif;
+    text-align: justify; }
 
 .thank .thank-block {
   padding: 100px 0 150px;
