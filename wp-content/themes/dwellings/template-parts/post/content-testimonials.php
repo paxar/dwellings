@@ -7,7 +7,9 @@
 
 <section class="testimonials">
     <div class="container">
+        <?php if (get_theme_mod('title_testimonials') != ''): ?>
         <h2 class="title title-decor"><?php echo get_theme_mod('title_testimonials'); ?></h2>
+        <?php endif; ?>
         <ul class="row wrap-quote">
 
             <?php
@@ -23,7 +25,11 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="avatar-quote">
-                                <?= the_post_thumbnail(); ?>
+                                <?php
+                                if ( has_post_thumbnail() ) {
+                                    the_post_thumbnail();
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="col-xs-10">
@@ -47,6 +53,9 @@
             <?php endif; ?>
 
         </ul>
-        <?php custom_numeric_posts_nav($the_query); ?>
+        <?php /*Pagination*/
+        if (function_exists("custom_numeric_posts_nav")) {
+            custom_numeric_posts_nav($the_query);
+        } ?>
     </div>
 </section>

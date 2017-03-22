@@ -72,11 +72,15 @@ $('.content-quote').each(function(){
 $('.content-quote').outerHeight(maxHeight);
 
 /*About us block height*/
-
 function resizeFunc() {
     if (window.matchMedia("(min-width: 1400px)").matches) {
-        heghtImgCover = $('.about-wrap-img img').outerHeight();
-        $('.about-us').outerHeight(heghtImgCover);
+        var maxHeight = $('.about-wrap-img img').outerHeight();
+        $('.about-us').each(function(){
+            if ( $(this).outerHeight() < maxHeight )
+            {
+                $('.about-us').outerHeight(maxHeight);
+            }
+        });
     }
     if (window.matchMedia("(min-width: 768px)").matches) {
         heghtImg = $('.about-us').outerHeight();
