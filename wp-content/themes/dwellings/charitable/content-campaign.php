@@ -106,12 +106,17 @@ if (empty($video)) {
 
     </div>
 
+
     <div class="project-post-tabs col-xs-8">
+        <script type="text/javascript">
+
+
+        </script>
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#panel1">Description</a></li>
+            <li class="active" ><a data-toggle="tab" href="#panel1">Description</a></li>
             <li><a data-toggle="tab" href="#panel2">Updates</a></li>
             <li><a data-toggle="tab" href="#panel3">Donors</a></li>
-            <li><a data-toggle="tab" href="#panel4">Map</a></li>
+            <li ><a id="kort" data-toggle="tab" href="#panel4">Map</a></li>
 
         </ul>
 
@@ -136,6 +141,9 @@ if (empty($video)) {
             <div id="panel4" class="tab-pane fade">
                 <h3>Map</h3>
                 <p>Coming soon...</p>
+
+                <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
+
             </div>
         </div>
 

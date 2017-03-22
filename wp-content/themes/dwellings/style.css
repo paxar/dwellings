@@ -1039,4 +1039,13 @@ content-campaign.php
     float: right;
     margin-top: 100px; }
 
+.project-post-tabs .tab-content > .tab-pane {
+  display: block;
+  height: 0;
+  overflow: hidden; }
+
+.project-post-tabs .tab-content > .active {
+  display: block;
+  height: auto; }
+
 /*# sourceMappingURL=style.css.map */
