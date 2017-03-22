@@ -35,4 +35,7 @@ function create_post_type() {
             'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'custom-fields'),
         )
     );
+
+
+
 }
