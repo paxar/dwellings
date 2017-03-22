@@ -1,3 +1,26 @@
 .thank {
+  .thank-block {
+    padding: 100px 0 150px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    img {
+      margin: 0 auto;
+      display: block;
+    }
+    h2 {
+      text-align: center;
+      padding: 10px 0;
+      font: 700 40px/50px $lato;
+      color: #000;
+    }
+  }
+}
 
+@media (min-width: 992px) {
+  .thank {
+    .thank-block {
+      padding: 150px 0 200px;
+    }
+  }
 }
