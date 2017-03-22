@@ -132,14 +132,24 @@ content-campaign.php
 }
 
 .project-post-tabs{
-  .tab-content > .tab-pane {
-    display: block;
-    height:0;
-    overflow:hidden;
+  margin-top: 30px;
+  .tab-content{
+    #panel1{
+      padding: 25px;
+      img{
+        float: left;
+        margin: 10px 10px 10px 0;
+      }
+    }
+    .description{
+      font: 600 18px/23px $lato;
+      text-align: center;
+
+    }
+    .extended-description{
+      font: 400 18px/23px $lato;
+      text-align: justify;
+    }
   }
 
-  .tab-content > .active {
-    display: block;
-    height:auto;
-  }
 }
