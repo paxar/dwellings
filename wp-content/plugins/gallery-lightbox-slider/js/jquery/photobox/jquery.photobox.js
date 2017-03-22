@@ -1,15 +1,16 @@
 /*!
-    photobox v1.9.9
-    (c) 2013 Yair Even Or <http://dropthebit.com>
-
-    MIT-style license.
-*/
+ photobox v1.9.2
+ (c) 2012 Yair Even Or
+ Do not sell this software or use it as part of a package which is sold
+ */
 
 
 ;(function($, doc, win){
     "use strict";
 
     var Photobox, photobox, options, images=[], imageLinks, activeImage = -1, activeURL, lastActive, activeType, prevImage, nextImage, thumbsStripe, docElm, APControl, changeImage,
+        $doc = $(doc),
+        $win = $(win),
         isOldIE = !('placeholder' in doc.createElement('input')),
         noPointerEvents = (function(){ var el = $('<p>')[0]; el.style.cssText = 'pointer-events:auto'; return !el.style.pointerEvents})(),
         isTouchDevice = false, // assume "false" unless there's a touch
@@ -18,12 +19,12 @@
         transformOrigin = getPrefixed('transformOrigin'),
         transition = getPrefixed('transition'),
         transitionend = "transitionend webkitTransitionEnd oTransitionEnd otransitionend",
-          // Normalize rAF
+        // Normalize rAF
         raf = window.requestAnimationFrame
-           || window.webkitRequestAnimationFrame
-           || window.mozRequestAnimationFrame
-           || window.msRequestAnimationFrame
-           || function(cb) { return window.setTimeout(cb, 1000 / 60); },
+            || window.webkitRequestAnimationFrame
+            || window.mozRequestAnimationFrame
+            || window.msRequestAnimationFrame
+            || function(cb) { return window.setTimeout(cb, 1000 / 60); },
 
         // Preload images
         preload = {}, preloadPrev = new Image(), preloadNext = new Image(),
@@ -38,13 +39,13 @@
             thumb         : null,         // A relative path from the link to the thumbnail (if it's not inside the link)
             thumbs        : true,         // Show gallery thumbnails below the presented photo
             thumbAttr     : 'data-src',   // Attribute to get the image for the thumbnail from
-            counter       : "(A/B)",      // Counts which piece of content is being viewed, relative to the total count of items in the photobox set. ["false","String"]
-            title         : true,         // show the original alt or title attribute of the image's thumbnail. (path to image, relative to the element which triggers photobox)
+            captionTmpl   : '<div class="title">{title}</div><div class="counter">({currentImageIdx}/{totalImagesCount})</div>',
             autoplay      : false,        // should autoplay on first time or not
             time          : 3000,         // autoplay interval, in miliseconds (less than 1000 will hide the autoplay button)
             history       : false,        // should use history hashing if possible (HTML5 API)
             hideFlash     : true,         // Hides flash elements on the page when photobox is activated. NOTE: flash elements must have wmode parameter set to "opaque" or "transparent" if this is set to false
             zoomable      : true,         // disable/enable mousewheel image zooming
+            rotatable     : true,         // allow rotation of the image
             wheelNextPrev : true,         // change image using mousewheel left/right
             keys          : {
                 close : [27, 88, 67],    // keycodes to close photobox, default: esc (27), 'x' (88), 'c' (67)
@@ -53,26 +54,28 @@
             }
         },
 
+
         // DOM structure
-        overlay =   $('<div id="pbOverlay">').append(
-                        thumbsToggler = $('<input type="checkbox" id="pbThumbsToggler" checked hidden>'),
-                        pbLoader = $('<div class="pbLoader"><b></b><b></b><b></b></div>'),
-                        prevBtn = $('<div id="pbPrevBtn" class="prevNext"><b></b></div>').on('click', next_prev),
-                        nextBtn = $('<div id="pbNextBtn" class="prevNext"><b></b></div>').on('click', next_prev),
-                        wrapper = $('<div class="pbWrapper">').append(  // gives Perspective
-                            image = $('<img>'),
-                            video = $('<div>')
-                        ),
-                        closeBtn = $('<div id="pbCloseBtn">').on('click', close)[0],
-                        autoplayBtn = $('<div id="pbAutoplayBtn">').append(
-                            $('<div class="pbProgress">')
-                        ),
-                        caption = $('<div id="pbCaption">').append(
-                            '<label for="pbThumbsToggler" title="thumbnails on/off"></label>',
-                            captionText = $('<div class="pbCaptionText">').append('<div class="title"></div><div class="counter">'),
-                            thumbs = $('<div>').addClass('pbThumbs')
-                        )
-                    );
+        overlay = $('<div id="pbOverlay">').append(
+            thumbsToggler = $('<input type="checkbox" id="pbThumbsToggler" checked hidden>'),
+            pbLoader = $('<div class="pbLoader"><b></b><b></b><b></b></div>'),
+            prevBtn = $('<div id="pbPrevBtn" class="prevNext"><b></b></div>').on('click', next_prev),
+            nextBtn = $('<div id="pbNextBtn" class="prevNext"><b></b></div>').on('click', next_prev),
+            wrapper = $('<div class="pbWrapper">').append(  // gives Perspective
+                image = $('<img>'),
+                video = $('<div class="pbVideo">')
+            ),
+            closeBtn = $('<div id="pbCloseBtn">').on('click', close)[0],
+            autoplayBtn = $('<div id="pbAutoplayBtn">').append(
+                $('<div class="pbProgress">')
+            ),
+            caption = $('<div id="pbCaption">').append(
+                '<label for="pbThumbsToggler" title="Show/hide thumbnails"></label>',
+                '<button title="Rotate right" class="rotateBtn">&#10227;</button>',
+                captionText = $('<div class="pbCaptionText">'),
+                thumbs = $('<div>').addClass('pbThumbs')
+            )
+        );
 
     ///////////////////////////////////////////////
     // Should remove this and use underscore/lodash if possible
@@ -91,11 +94,15 @@
     ///////////////////////////////////////////////
     // Initialization (on DOM ready)
 
-    function prepareDOM(){
+    function prepareDOM( force ){
+        // do not procceed if already called, unless forced to
+        if( document.body.contains(overlay[0]) && !force )
+            return;
+
         noPointerEvents && overlay.hide();
 
-        $(doc).on('touchstart.testMouse', function(){
-            $(doc).off('touchstart.testMouse');
+        $doc.on('touchstart.testMouse', function(){
+            $doc.off('touchstart.testMouse');
             isTouchDevice = true;
             overlay.addClass('mobile');
         });
@@ -119,9 +126,10 @@
 
     // @param [List of elements to work on, Custom settings, Callback after image is loaded]
     $.fn.photobox = function(target, settings, callback){
+        prepareDOM();
+
         return this.each(function(){
-            var o,
-                PB_data = $(this).data('_photobox');
+            var PB_data = $(this).data('_photobox');
 
             if( PB_data ){ // don't initiate the plugin more than once on the same element
                 if( target === 'destroy')
@@ -134,15 +142,19 @@
                 target = 'a';
 
             if( target === 'prepareDOM' ){
-                prepareDOM();
+                prepareDOM( true );
                 return this;
             }
 
-            o = $.extend({}, defaults, settings || {});
-            photobox = new Photobox(o, this, target);
+            // merge the user settings with the default settings object
+            settings = $.extend({}, defaults, settings || {});
+
+            // create an instance og Photobox
+            photobox = new Photobox(settings, this, target);
 
             // Saves the insance on the gallery's target element
             $(this).data('_photobox', photobox);
+
             // add a callback to the specific gallery
             photobox.callback = callback;
         });
@@ -164,80 +176,48 @@
 
     Photobox.prototype = {
         init : function(){
-            var that = this;
+            // Cache DOM elements for this instance
+            this.DOM = this.DOM();
 
-            // only generates the thumbStripe once, and listen for any DOM changes on the selector element, if so, re-generate
-            // This is done on "mouseenter" so images will not get called unless it's liekly that they would be needed
-            this.selector.one('mouseenter.photobox', this.target, function(e){
-                that.thumbsList = thumbsStripe.generate.apply(that);
-            });
-
-            this.selector.on('click.photobox', this.target, function(e){
-                e.preventDefault();
-                that.open(this);
-            });
+            this.DOM.rotateBtn.toggleClass('show', this.options.rotatable);
 
             // if any node was added or removed from the Selector of the gallery
             this.observerTimeout = null;
-
-            if( !isOldIE && this.selector[0].nodeType == 1 ) // observe normal nodes
-                this.observeDOM( this.selector[0], this.onDOMchanges.bind(this));
+            this.events.binding.call(this);
         },
 
-        onDOMchanges : function(){
-            var that = this;
-             // use a timeout to prevent more than one DOM change event firing at once, and also to overcome the fact that IE's DOMNodeRemoved is fired BEFORE elements were actually removed
-            clearTimeout(this.observerTimeout);
-            that.observerTimeout = setTimeout( function(){
-                var filtered = that.imageLinksFilter( that.selector.find(that.target) ),
-                    activeIndex = 0,
-                    isActiveUrl = false,
-                    i;
+        // happens only once
+        DOM : function(){
+            var DOM = {}
 
-                // Make sure that ONLY DOM changes in the photobox number of items will trigger a change
-                if(that.imageLinks.length == filtered[0].length)
-                    return;
+            DOM.scope     = overlay;
+            DOM.rotateBtn = DOM.scope.find('.rotateBtn');
 
-                that.imageLinks = filtered[0];
-                that.images = filtered[1];
-
-                // if photobox is opened
-                if( photobox ){
-                    // if gallery which was changed is the currently viewed one:
-                    if( that.selector == photobox.selector ){
-                        images = that.images;
-                        imageLinks = that.imageLinks;
-                        // check if the currently VIEWED photo has been detached from a photobox set
-                        // if so, remove navigation arrows
-                        // TODO: fix the "images" to be an object and not an array.
-                        for( i = images.length; i--; ){
-                            if( images[i][0] == activeURL )
-                                isActiveUrl = true;
-                            // if not exits any more
-                        }
-                       // if( isActiveUrl ){
-                       //     overlay.removeClass('hasArrows');
-                       // }
-                    }
-                }
-
-                // if this gallery has thumbs
-                //if( that.options.thumbs ){
-                    that.thumbsList = thumbsStripe.generate.apply(that);
-                    thumbs.html( that.thumbsList );
-                //}
-
-                if( that.images.length && activeURL && that.options.thumbs ){
-                    activeIndex = that.thumbsList.find('a[href="'+activeURL+'"]').eq(0).parent().index();
-
-                    if( activeIndex == -1 )
-                        activeIndex = 0;
-
-                    // updateIndexes(activeIndex);
-                    thumbsStripe.changeActive(activeIndex, 0);
-                }
-            }, 50);
+            return DOM;
         },
+
+        //check if DOM nodes were added or removed, to re-build the imageLinks and thumbnails
+        observeDOM : (function(){
+            var MutationObserver = win.MutationObserver || win.WebKitMutationObserver,
+                eventListenerSupported = win.addEventListener;
+
+            return function(obj, callback){
+                if( MutationObserver ){
+                    var that = this,
+                        // define a new observer
+                        obs = new MutationObserver(function(mutations, observer){
+                            if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
+                                callback(that);
+                        });
+                    // have the observer observe for changes in children
+                    obs.observe( obj, { childList:true, subtree:true });
+                }
+                else if( eventListenerSupported ){
+                    obj.addEventListener('DOMNodeInserted', $.proxy( callback, that ), false);
+                    obj.addEventListener('DOMNodeRemoved', $.proxy( callback, that ), false);
+                }
+            }
+        })(),
 
         open : function(link){
             var startImage = $.inArray(link, this.imageLinks);
@@ -264,13 +244,13 @@
             return false;
         },
 
-        imageLinksFilter : function(obj){
+        imageLinksFilter : function(linksObj){
             var that = this,
                 images = [],
                 caption = {},
                 captionlink;
 
-            return [obj.filter(function(i){
+            function linksObjFiler(i){
                 // search for the thumb inside the link, if not found then see if there's a 'that.settings.thumb' pointer to the thumbnail
                 var link = $(this),
                     thumbImg,
@@ -311,31 +291,10 @@
                 images.push( [link[0].href, caption.content, thumbSrc] );
 
                 return true;
-            }), images];
-        },
-
-        //check if DOM nodes were added or removed, to re-build the imageLinks and thumbnails
-        observeDOM : (function(){
-            var MutationObserver = win.MutationObserver || win.WebKitMutationObserver,
-                eventListenerSupported = win.addEventListener;
-
-            return function(obj, callback){
-                if( MutationObserver ){
-                    var that = this,
-                        // define a new observer
-                        obs = new MutationObserver(function(mutations, observer){
-                            if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-                                callback(that);
-                        });
-                    // have the observer observe for changes in children
-                    obs.observe( obj, { childList:true, subtree:true });
-                }
-                else if( eventListenerSupported ){
-                    obj.addEventListener('DOMNodeInserted', callback.bind(that), false);
-                    obj.addEventListener('DOMNodeRemoved', callback.bind(that), false);
-                }
             }
-        })(),
+
+            return [linksObj.filter(linksObjFiler), images];
+        },
 
         // things that should happen every time the gallery opens or closes (some messed up code below..)
         setup : function (open){
@@ -345,7 +304,7 @@
             if( options.thumbs ){
                 if( !isTouchDevice ){
                     thumbs[fn]('mouseenter.photobox', thumbsStripe.calc)
-                          [fn]('mousemove.photobox', thumbsStripe.move);
+                        [fn]('mousemove.photobox', thumbsStripe.move);
                 }
             }
 
@@ -386,10 +345,10 @@
                 options.hideFlash && $('iframe, object, embed').css('visibility', 'hidden');
 
             } else {
-                $(win).off('resize.photobox');
+                $win.off('resize.photobox');
             }
 
-            $(doc).off("keydown.photobox")[fn]({ "keydown.photobox": keyDown });
+            $doc.off("keydown.photobox")[fn]({ "keydown.photobox": keyDown });
 
             if( isTouchDevice ){
                 overlay.removeClass('hasArrows'); // no need for Arrows on touch-enabled
@@ -397,7 +356,7 @@
             }
 
             if( options.zoomable ){
-                overlay[fn]({"mousewheel.photobox": scrollZoom });
+                overlay[fn]({"mousewheel.photobox": $.proxy(this.events.callbacks.onScrollZoom, this) });
                 if( !isOldIE) thumbs[fn]({"mousewheel.photobox": thumbsResize });
             }
 
@@ -413,6 +372,170 @@
                 .removeData('_photobox');
 
             close();
+        },
+
+        events : {
+            binding : function(){
+                var that = this;
+
+                // only generates the thumbStripe once, and listen for any DOM changes on the selector element, if so, re-generate
+                // This is done on "mouseenter" so images will not get called unless it's liekly that they would be needed
+                this.selector.one('mouseenter.photobox', this.target, function(e){
+                    that.thumbsList = thumbsStripe.generate.apply(that);
+                });
+
+                this.selector.on('click.photobox', this.target, function(e){
+                    e.preventDefault();
+                    that.open(this);
+                });
+
+                if( !isOldIE && this.selector[0].nodeType == 1 ) // observe normal nodes
+                    this.observeDOM( this.selector[0], $.proxy( this.events.callbacks.onDOMchanges, this ));
+
+                this.DOM.rotateBtn.on('click', this.events.callbacks.onRotateBtnClick);
+            },
+
+            callbacks : {
+                onDOMchanges : function(){
+                    var that = this;
+                    // use a timeout to prevent more than one DOM change event firing at once, and also to overcome the fact that IE's DOMNodeRemoved is fired BEFORE elements were actually removed
+                    clearTimeout(this.observerTimeout);
+                    that.observerTimeout = setTimeout( function(){
+                        var filtered = that.imageLinksFilter( that.selector.find(that.target) ),
+                            activeIndex = 0,
+                            isActiveUrl = false,
+                            i;
+
+                        // Make sure that ONLY DOM changes in the photobox number of items will trigger a change
+                        if(that.imageLinks.length == filtered[0].length)
+                            return;
+
+                        that.imageLinks = filtered[0];
+                        that.images = filtered[1];
+
+                        // if photobox is opened
+                        if( photobox ){
+                            // if gallery which was changed is the currently viewed one:
+                            if( that.selector == photobox.selector ){
+                                images = that.images;
+                                imageLinks = that.imageLinks;
+                                // check if the currently VIEWED photo has been detached from a photobox set
+                                // if so, remove navigation arrows
+                                // TODO: fix the "images" to be an object and not an array.
+                                for( i = images.length; i--; ){
+                                    if( images[i][0] == activeURL )
+                                        isActiveUrl = true;
+                                    // if not exits any more
+                                }
+                                // if( isActiveUrl ){
+                                //     overlay.removeClass('hasArrows');
+                                // }
+                            }
+                        }
+
+                        // if this gallery has thumbs
+                        //if( that.options.thumbs ){
+                        that.thumbsList = thumbsStripe.generate.apply(that);
+                        thumbs.html( that.thumbsList );
+                        //}
+
+                        if( that.images.length && activeURL && that.options.thumbs ){
+                            activeIndex = that.thumbsList.find('a[href="'+activeURL+'"]').eq(0).parent().index();
+
+                            if( activeIndex == -1 )
+                                activeIndex = 0;
+
+                            // updateIndexes(activeIndex);
+                            thumbsStripe.changeActive(activeIndex, 0);
+                        }
+                    }, 50);
+                },
+
+                onRotateBtnClick : function(){
+                    var rotation = image.data('rotation') || 0, // in "deg"
+                        imgScale = image.data('zoom') || 1
+
+                    rotation += 90;
+
+                    image.removeClass('zoomable').addClass('rotating');
+
+                    image.css('transform', 'rotate('+ rotation +'deg) scale('+ imgScale + ')')
+                        .data('rotation', rotation)
+                        .on(transitionend, function(){
+                            image.addClass('zoomable').removeClass('rotating');
+                        });
+                },
+
+                onScrollZoom : function(e, deltaY, deltaX){
+                    if( deltaX ) return false;
+
+                    var that = this;
+
+                    if( activeType == 'video' ){
+                        var zoomLevel = video.data('zoom') || 1;
+                        zoomLevel += (deltaY / 10);
+                        if( zoomLevel < 0.5 )
+                            return false;
+
+                        video.data('zoom', zoomLevel).css({width:624*zoomLevel, height:351*zoomLevel});
+                    }
+                    else{
+                        raf(function() {
+                            var zoomLevel = image.data('zoom') || 1,
+                                rotation  = image.data('rotation') || 0,
+                                position  = image.data('position') || '50% 50%',
+                                boundingClientRect = image[0].getBoundingClientRect(),
+                                value;
+
+                            zoomLevel += (deltaY / 10);
+
+                            if( zoomLevel < 0.1 )
+                                zoomLevel = 0.1;
+
+                            image.data('zoom', zoomLevel);
+
+                            value = 'scale('+ zoomLevel +') rotate('+ rotation +'deg)';
+
+                            // if the image was zoomed and now is larger than the window size, allow mouse movemenet reposition
+                            if( boundingClientRect.height > docElm.clientHeight || boundingClientRect.width > docElm.clientWidth ){
+                                $doc.on('mousemove.photobox', that.events.callbacks.onMouseMoveimageReposition);
+                                value += ' translate('+ position +')';
+                            }
+                            else{
+                                $doc.off('mousemove.photobox');
+                                // image[0].style[transformOrigin] = '50% 50%';
+                            }
+
+                            image.css({ 'transform':value });
+                        });
+                    }
+                    return false;
+                },
+
+                // moves the image around during zoom mode on mousemove event
+                onMouseMoveimageReposition : function(e){
+                    raf(function() {
+                        var //y = (e.clientY / docElm.clientHeight) * (docElm.clientHeight + 200) - 100, // extend the range of the Y axis by 100 each side
+                            sensitivity = 1.5, // 1 = same as mouse more, and higher value is less sensitive to mouse move
+                            yDelta = (e.clientY / docElm.clientHeight * 100 - 50) / sensitivity, // subtract 50 because the real center is at "0%"
+                            xDelta = (e.clientX / docElm.clientWidth * 100 - 50) / sensitivity, // subtract 50 because the real center is at "0%"
+                            position,
+                            rotationAngel = image.data('rotation') || 0,
+                            rotation = (rotationAngel/90)%4 || 0,
+                            imgScale = image.data('zoom') || 1;
+
+                        if( rotation == 1 || rotation == 3 )
+                            position = yDelta.toFixed(2)+'%, ' + -xDelta.toFixed(2) +'%';
+                        else
+                            position = xDelta.toFixed(2)+'%, ' + yDelta.toFixed(2) +'%';
+
+                        image.data('position', position);
+
+                        // image[0].style[transformOrigin] = origin;
+                        image[0].style.transform = 'rotate('+ rotationAngel +'deg) scale('+ imgScale + ') translate(' + position + ')';
+                    });
+                }
+            }
         }
     }
 
@@ -448,7 +571,7 @@
             generate : function(){
                 var thumbsList = $('<ul>'),
                     elements   = [],
-                    len        = this.imageLinks.size(),
+                    len        = this.imageLinks.length,
                     title, thumbSrc, link, type, i;
 
                 for( i = 0; i < len; i++ ){
@@ -479,8 +602,8 @@
 
             changeActiveTimeout : null,
             /** Highlights the thumb which represents the photo and centres the thumbs viewer on it.
-            **  @thumbClick - if a user clicked on a thumbnail, don't center on it
-            */
+             **  @thumbClick - if a user clicked on a thumbnail, don't center on it
+             */
             changeActive : function(index, delay, thumbClick){
                 if( !options.thumbs )
                     return;
@@ -599,8 +722,8 @@
         var code = event.keyCode, ok = options.keys, result;
         // Prevent default keyboard action (like navigating inside the page)
         return $.inArray(code, ok.close) >= 0 && close() ||
-               $.inArray(code, ok.next) >= 0 && !options.single && loophole(nextImage) ||
-               $.inArray(code, ok.prev) >= 0 && !options.single && loophole(prevImage) || true;
+            $.inArray(code, ok.next) >= 0 && !options.single && loophole(nextImage) ||
+            $.inArray(code, ok.prev) >= 0 && !options.single && loophole(prevImage) || true;
     }
 
     function wheelNextPrev(e, dY, dX){
@@ -656,6 +779,8 @@
             timer = setTimeout(function(){
                 timer = null;
             }, 150);
+
+            $doc.off('mousemove.photobox');
 
             if( !imageIndex || imageIndex < 0 )
                 imageIndex = 0;
@@ -733,21 +858,17 @@
 
     // show the item's Title & Counter
     function captionTextChange(){
+        var tmpl;
         captionText.off(transitionend).removeClass('change');
-        // change caption's text
-        if( options.counter ){
-            try{
-                var value = options.counter.replace('A', activeImage + 1).replace('B', images.length);
-            }
-            // if, for some reason, the above has failed from a bad "counter" value, reset and retry
-            catch(err){
-                options.counter = '(A/B)';
-                captionTextChange();
-            }
-            caption.find('.counter').text(value);
+
+        if( options.captionTmpl ){
+            tmpl = options.captionTmpl
+                .replace(/{title}/g, images[activeImage][1])
+                .replace(/{currentImageIdx}/g, activeImage + 1)
+                .replace(/{totalImagesCount}/g, images.length);
+
+            captionText.html(tmpl);
         }
-        if( options.title )
-            caption.find('.title').html('<span>' + images[activeImage][1] + '</span>');
     }
 
     // Handles the history states when changing images
@@ -801,12 +922,16 @@
         });
         overlay.addClass('pbHide');
 
-        image.add(video).removeAttr('style').removeClass('zoomable'); // while transitioning an image, do not apply the 'zoomable' class
+        image.add(video).removeClass('zoomable'); // while transitioning an image, do not apply the 'zoomable' class
 
         // check which element needs to transition-out:
-        if( !firstTime && imageLinks[lastActive].rel == 'video' ){
-            out = video;
-            image.addClass('prepare');
+        if(imageLinks[lastActive]!=undefined){
+            if( !firstTime && imageLinks[lastActive].rel == 'video' ){
+                out = video;
+                image.addClass('prepare');
+            }
+            else
+                out = image;
         }
         else
             out = image;
@@ -819,26 +944,27 @@
         // in case the 'transitionend' didn't fire
         // after hiding the last seen image, show the new one
         function show(){
+            wrapper.removeAttr('style');
             clearTimeout(showSaftyTimer);
-            out.off(transitionend).css({'transition':'none'});
             overlay.removeClass('video');
+
             if( activeType == 'video' ){
-                image[0].src = blankImg;
+                image.attr('src', blankImg);
+                out.off(transitionend).css({'transition':'none'});
                 video.addClass('prepare');
                 overlay.addClass('video');
             }
-            else
-                image.prop({ 'src':activeURL, 'class':'prepare' });
+            else{
+                // create a new image element (cannot modify the same image SRC due to google chrome stupid bugs showing the previous image even after the SRC had changed)
+                image.replaceWith( image = $('<img src="'+ activeURL +'" class="prepare">') )
+            }
 
             // filthy hack for the transitionend event, but cannot work without it:
             setTimeout(function(){
-                image.add(video).removeAttr('style').removeClass('prepare');
                 overlay.removeClass('pbHide next prev');
-                setTimeout(function(){
-                    image.add(video).on(transitionend, showDone);
-                    if(isOldIE) showDone(); // IE9 and below don't support transitionEnd...
-                }, 0);
-            },50);
+                image.add(video).removeAttr('style').removeClass('prepare').on(transitionend, showDone);
+                if(isOldIE) showDone();
+            }, 50);
         }
     }
 
@@ -850,45 +976,11 @@
         else{
             autoplayBtn && options.autoplay && APControl.play();
         }
-        if( photobox && typeof photobox.callback == 'function' )
-            photobox.callback.apply(imageLinks[activeImage]);
+        if( photobox && typeof photobox.callback == 'function' ){
+            photobox.callback(imageLinks[activeImage]);
+        }
     }
 
-    function scrollZoom(e, deltaY, deltaX){
-        if( deltaX ) return false;
-
-        if( activeType == 'video' ){
-            var zoomLevel = video.data('zoom') || 1;
-            zoomLevel += (deltaY / 10);
-            if( zoomLevel < 0.5 )
-                return false;
-
-            video.data('zoom', zoomLevel).css({width:624*zoomLevel, height:351*zoomLevel});
-        }
-        else{
-            var zoomLevel = image.data('zoom') || 1,
-                getSize = image[0].getBoundingClientRect();
-
-            zoomLevel += (deltaY / 10);
-
-            if( zoomLevel < 0.1 )
-                zoomLevel = 0.1;
-
-            raf(function() {
-                image.data('zoom', zoomLevel).css({'transform':'scale('+ zoomLevel +')'});
-            });
-
-            // check if image (by mouse) movement should take effect (if image is larger than the window
-            if( getSize.height > docElm.clientHeight || getSize.width > docElm.clientWidth ){
-                $(doc).on('mousemove.photobox', imageReposition);
-            }
-            else{
-                $(doc).off('mousemove.photobox');
-                image[0].style[transformOrigin] = '50% 50%';
-            }
-        }
-        return false;
-    }
 
     function thumbsResize(e, delta){
         e.preventDefault();
@@ -901,21 +993,9 @@
         //thumbs.trigger('mouseenter').trigger('mousemove');
     }
 
-    // moves the image around during zoom mode on mousemove event
-    function imageReposition(e){
-        var y = (e.clientY / docElm.clientHeight) * (docElm.clientHeight + 200) - 100, // extend the range of the Y axis by 100 each side
-            yDelta = y / docElm.clientHeight * 100,
-            xDelta = e.clientX / docElm.clientWidth * 100,
-            origin = xDelta.toFixed(2)+'% ' + yDelta.toFixed(2) +'%';
-
-        raf(function() {
-            image[0].style[transformOrigin] = origin;
-        });
-    }
-
     function stop(){
         clearTimeout(APControl.autoPlayTimer);
-        $(doc).off('mousemove.photobox');
+        $doc.off('mousemove.photobox');
         preload.onload = function(){};
         preload.src = preloadPrev.src = preloadNext.src = activeURL;
     }
@@ -964,11 +1044,11 @@
 
 
     /**
-    * jQuery Plugin to add basic "swipe" support on touch-enabled devices
-    *
-    * @author Yair Even Or
-    * @version 1.0.0 (March 20, 2013)
-    */
+     * jQuery Plugin to add basic "swipe" support on touch-enabled devices
+     *
+     * @author Yair Even Or
+     * @version 1.0.0 (March 20, 2013)
+     */
     $.event.special.swipe = {
         setup: function(){
             $(this).bind('touchstart', $.event.special.swipe.handler);
@@ -1029,9 +1109,6 @@
      * Requires: jQuery 1.2.2+
      */
     !function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a:a(jQuery)}(function(a){function b(b){var g=b||window.event,h=i.call(arguments,1),j=0,l=0,m=0,n=0,o=0,p=0;if(b=a.event.fix(g),b.type="mousewheel","detail"in g&&(m=-1*g.detail),"wheelDelta"in g&&(m=g.wheelDelta),"wheelDeltaY"in g&&(m=g.wheelDeltaY),"wheelDeltaX"in g&&(l=-1*g.wheelDeltaX),"axis"in g&&g.axis===g.HORIZONTAL_AXIS&&(l=-1*m,m=0),j=0===m?l:m,"deltaY"in g&&(m=-1*g.deltaY,j=m),"deltaX"in g&&(l=g.deltaX,0===m&&(j=-1*l)),0!==m||0!==l){if(1===g.deltaMode){var q=a.data(this,"mousewheel-line-height");j*=q,m*=q,l*=q}else if(2===g.deltaMode){var r=a.data(this,"mousewheel-page-height");j*=r,m*=r,l*=r}if(n=Math.max(Math.abs(m),Math.abs(l)),(!f||f>n)&&(f=n,d(g,n)&&(f/=40)),d(g,n)&&(j/=40,l/=40,m/=40),j=Math[j>=1?"floor":"ceil"](j/f),l=Math[l>=1?"floor":"ceil"](l/f),m=Math[m>=1?"floor":"ceil"](m/f),k.settings.normalizeOffset&&this.getBoundingClientRect){var s=this.getBoundingClientRect();o=b.clientX-s.left,p=b.clientY-s.top}return b.deltaX=l,b.deltaY=m,b.deltaFactor=f,b.offsetX=o,b.offsetY=p,b.deltaMode=0,h.unshift(b,j,l,m),e&&clearTimeout(e),e=setTimeout(c,200),(a.event.dispatch||a.event.handle).apply(this,h)}}function c(){f=null}function d(a,b){return k.settings.adjustOldDeltas&&"mousewheel"===a.type&&b%120===0}var e,f,g=["wheel","mousewheel","DOMMouseScroll","MozMousePixelScroll"],h="onwheel"in document||document.documentMode>=9?["wheel"]:["mousewheel","DomMouseScroll","MozMousePixelScroll"],i=Array.prototype.slice;if(a.event.fixHooks)for(var j=g.length;j;)a.event.fixHooks[g[--j]]=a.event.mouseHooks;var k=a.event.special.mousewheel={version:"3.1.11",setup:function(){if(this.addEventListener)for(var c=h.length;c;)this.addEventListener(h[--c],b,!1);else this.onmousewheel=b;a.data(this,"mousewheel-line-height",k.getLineHeight(this)),a.data(this,"mousewheel-page-height",k.getPageHeight(this))},teardown:function(){if(this.removeEventListener)for(var c=h.length;c;)this.removeEventListener(h[--c],b,!1);else this.onmousewheel=null;a.removeData(this,"mousewheel-line-height"),a.removeData(this,"mousewheel-page-height")},getLineHeight:function(b){var c=a(b)["offsetParent"in a.fn?"offsetParent":"parent"]();return c.length||(c=a("body")),parseInt(c.css("fontSize"),10)},getPageHeight:function(b){return a(b).height()},settings:{adjustOldDeltas:!0,normalizeOffset:!0}};a.fn.extend({mousewheel:function(a){return a?this.bind("mousewheel",a):this.trigger("mousewheel")},unmousewheel:function(a){return this.unbind("mousewheel",a)}})});
-
-    ////////////// ON DOCUMENT READY /////////////////
-    $(doc).ready(prepareDOM);
 
     // Expose:
     window._photobox = {
