@@ -247,6 +247,18 @@ Version: 1.0.0
 .project-post-header .tooltip {
   top: -48px !important; }
 
+.gallery {
+  padding: 15px 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  .gallery .gallery-item {
+    margin: 15px;
+    padding: 5px;
+    border: 1px solid darkgrey;
+    border-radius: 5px; }
+
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
