@@ -10,6 +10,10 @@ $(document).ready(function () {
         $('#close-nav').removeClass("remove-btn");
         $('#open-nav').addClass("remove-btn")
     });
+
+
+
+
 });
 
 var mainNav = $('#masthead');

@@ -574,6 +574,39 @@ function dwellings_customize_register( $wp_customize ) {
             )
         )
     );
+    /*--------------------------------------------------------------
+    # Thank section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'thank-section',
+        array(
+            'title' => esc_html__('Thank settings', 'dwellings'),
+            'priority' => 10
+        )
+    );
+    $wp_customize->add_setting(
+        'title_thank'
+    );
+    $wp_customize->add_control(
+        'title_thank',
+        array(
+            'label' => esc_html__('Gratitude', 'dwellings'),
+            'section' => 'thank-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'thank-setting'
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'thank-setting',
+            array(
+                'label' => esc_html__('Thank image', 'dwellings'),
+                'section' => 'thank-section'
+            )
+        )
+    );
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 
