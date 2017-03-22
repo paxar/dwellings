@@ -11,13 +11,13 @@ get_header(); ?>
 
 		<main id="main" class="site-content blog-page-main" role="main">
 			<div class="container">
-				<div class="row top-part-content">
+				<div class="top-part-content">
 					<?php
 					custom_breadcrumbs();
 					get_search_form();
 					?>
 				</div>
-				<section class="row blog-page-section">
+				<section class="blog-posts-section">
 		<?php
 		if ( have_posts() ) : ?>
 
