@@ -130,3 +130,16 @@ content-campaign.php
     margin-top: 100px;
   }
 }
+
+.project-post-tabs{
+  .tab-content > .tab-pane {
+    display: block;
+    height:0;
+    overflow:hidden;
+  }
+
+  .tab-content > .active {
+    display: block;
+    height:auto;
+  }
+}

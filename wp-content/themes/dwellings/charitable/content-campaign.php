@@ -95,19 +95,28 @@ if (empty($video)) {
                         <li><a href="#"><i class="fa fa-tumblr "></i></a></li>
                     </ul>
                 </div>
-                <a class="projects-donate-button" href="<?php the_permalink() ?>">Donate</a>
+                <a data-trigger-modal="charitable-donation-form-modal"
+                   class="projects-donate-button"
+                   href="<?php echo charitable_get_permalink( 'campaign_donation_page', array( 'campaign_id' => $campaign->ID ) ) ?>"
+                   aria-label="<?php printf( esc_attr_x( 'Make a donation to %s', 'make a donation to campaign', 'charitable' ), get_the_title( $campaign->ID ) ) ?>">
+                    <?php _e( 'Donate', 'charitable' ) ?></a>
             </div>
         </div>
 
 
     </div>
 
+
     <div class="project-post-tabs col-xs-8">
+        <script type="text/javascript">
+
+
+        </script>
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#panel1">Description</a></li>
+            <li class="active" ><a data-toggle="tab" href="#panel1">Description</a></li>
             <li><a data-toggle="tab" href="#panel2">Updates</a></li>
             <li><a data-toggle="tab" href="#panel3">Donors</a></li>
-            <li><a data-toggle="tab" href="#panel4">Map</a></li>
+            <li ><a id="kort" data-toggle="tab" href="#panel4">Map</a></li>
 
         </ul>
 
@@ -115,18 +124,26 @@ if (empty($video)) {
             <div id="panel1" class="tab-pane fade in active">
                 <h3>Description</h3>
                 <p>Содержимое Description</p>
+                <div class="item-info">
+                    <?php echo $campaign->description ?>
+                </div>
             </div>
             <div id="panel2" class="tab-pane fade">
                 <h3>Updates</h3>
-                <p>Содержимое Updates</p>
+
+                <?php dynamic_sidebar( 'sidebar-tabs-2' ); ?>
+
             </div>
             <div id="panel3" class="tab-pane fade">
-                <h3>Donors</h3>
-                <p>Содержимое Donors</p>
+
+                <?php dynamic_sidebar( 'sidebar-tabs-1' ); ?>
             </div>
             <div id="panel4" class="tab-pane fade">
                 <h3>Map</h3>
-                <p>Содержимое Map</p>
+                <p>Coming soon...</p>
+
+                <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
+
             </div>
         </div>
 
@@ -139,22 +156,10 @@ if (empty($video)) {
 
 ?>
 
-<?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago'; ?>
 
 
 
 
 
     <p>****************************************************************************************</p>
-<?php
-/**
- * @hook charitable_campaign_content_before
- */
-do_action('charitable_campaign_content_before', $campaign);
 
-echo $content;
-
-/**
- * @hook charitable_campaign_content_after
- */
-do_action('charitable_campaign_content_after', $campaign);
