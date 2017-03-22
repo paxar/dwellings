@@ -259,6 +259,13 @@ Version: 1.0.0
     border: 1px solid darkgrey;
     border-radius: 5px; }
 
+/* Google map in campaign page styles*/
+.charitable-campaign-map-marker {
+  border-top: 15px solid #fed52f; }
+  .charitable-campaign-map-marker img {
+    width: 50%;
+    margin-top: 10px; }
+
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
