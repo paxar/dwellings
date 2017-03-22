@@ -1,0 +1,13 @@
+.gallery {
+  padding: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  .gallery-item {
+    margin: 15px;
+    padding: 5px;
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+  }
+}
+
