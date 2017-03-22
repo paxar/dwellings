@@ -1,0 +1,56 @@
+/*tabs for page single campaign*/
+
+.project-post-tabs {
+  .tab-content > .tab-pane {
+    display: block;
+    height:0; // fix for google maps
+    overflow:hidden;
+  }
+  .tab-content > .active {
+    display: block;
+    height:auto;
+
+  }
+  .nav-tabs >.active {
+    a{
+      position: relative;
+      //border-top: 5px solid $brand-color;
+      border-bottom: none;
+      font: 600 18px/23px $lato;
+      &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: $brand-color;
+      }
+
+    }
+
+
+  }
+  .nav-tabs{
+    border: none;
+  }
+  .nav-tabs > li {
+    width: 25%;
+    text-align: center;
+    //border: 1px solid #ddd;
+
+    a{
+      margin-right: 0;
+      font: 400 18px/23px $lato;
+      border: 1px solid #ddd;
+
+      color: #010000;
+    }
+  }
+  .tab-content{
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #ffffff;
+  }
+}

@@ -259,6 +259,13 @@ Version: 1.0.0
     border: 1px solid darkgrey;
     border-radius: 5px; }
 
+/* Google map in campaign page styles*/
+.charitable-campaign-map-marker {
+  border-top: 15px solid #fed52f; }
+  .charitable-campaign-map-marker img {
+    width: 50%;
+    margin-top: 10px; }
+
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
@@ -1059,5 +1066,23 @@ content-campaign.php
 .project-post-tabs .tab-content > .active {
   display: block;
   height: auto; }
+
+.thank .thank-block {
+  padding: 100px 0 150px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px; }
+  .thank .thank-block img {
+    margin: 0 auto;
+    display: block; }
+  .thank .thank-block h2 {
+    text-align: center;
+    padding: 10px 0;
+    font: 700 40px/50px "Lato", sans-serif;
+    color: #000; }
+
+@media (min-width: 992px) {
+  .thank .thank-block {
+    padding: 150px 0 200px; } }
 
 /*# sourceMappingURL=style.css.map */

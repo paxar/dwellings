@@ -108,24 +108,23 @@ if (empty($video)) {
 
 
     <div class="project-post-tabs col-xs-8">
-        <script type="text/javascript">
 
-
-        </script>
         <ul class="nav nav-tabs">
             <li class="active" ><a data-toggle="tab" href="#panel1">Description</a></li>
             <li><a data-toggle="tab" href="#panel2">Updates</a></li>
             <li><a data-toggle="tab" href="#panel3">Donors</a></li>
-            <li ><a id="kort" data-toggle="tab" href="#panel4">Map</a></li>
+            <li ><a data-toggle="tab" href="#panel4">Map</a></li>
 
         </ul>
 
+
         <div class="tab-content">
             <div id="panel1" class="tab-pane fade in active">
-                <h3>Description</h3>
-                <p>Содержимое Description</p>
-                <div class="item-info">
-                    <?php echo $campaign->description ?>
+
+                <h3 class="description"> <?php echo $campaign->description ?></h3>
+                   <p class="extended-description"><?php echo $campaign->post_content ?></p>
+
+
                 </div>
             </div>
             <div id="panel2" class="tab-pane fade">
@@ -139,8 +138,6 @@ if (empty($video)) {
                 <?php dynamic_sidebar( 'sidebar-tabs-1' ); ?>
             </div>
             <div id="panel4" class="tab-pane fade">
-                <h3>Map</h3>
-                <p>Coming soon...</p>
 
                 <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
 
@@ -161,5 +158,5 @@ if (empty($video)) {
 
 
 
-    <p>****************************************************************************************</p>
+
 

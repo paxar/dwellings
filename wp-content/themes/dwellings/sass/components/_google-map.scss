@@ -1,0 +1,31 @@
+/* Google map in campaign page styles*/
+
+.charitable-campaign-map-marker{
+  border-top: 15px solid $brand-color;
+
+  img{
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  h3{
+    margin: 0;
+    padding: 5px;
+    a{
+      font: 600 24px $lato;
+      text-decoration: none;
+      color: #000;
+      transition: 0.5s;
+
+      &:hover{
+        color: $brand-color;
+        transition: 0.5s;
+      }
+    }
+  }
+  .campaign-description{
+    font: 400 14px/16px $lato;
+  }
+
+}
