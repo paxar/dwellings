@@ -18,9 +18,30 @@
     }
   }
   .content-quote {
+    position: relative;
     padding: 25px 35px 15px;
     border: 1px solid #f0f0f0;
+    border-radius: 6px;
     background: #fff;
+    &:after, &:before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      margin-left: -20px;
+      top: 5%;
+      width: 0;
+    }
+    &:before {
+      border-right: 17px solid #f0f0f0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+    }
+    &:after {
+      border-right: 17px solid #fff;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: -18px;
+    }
     p {
       font: 700 16px/24px $lato;
       color: #3a2405;
@@ -35,6 +56,46 @@
     }
     .author-quote {
       padding: 20px 0;
+    }
+  }
+}
+
+@media (min-width: 460px) {
+  .testimonials {
+    .content-quote {
+      &:after, &:before {
+        top: 10%;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .testimonials {
+    .content-quote {
+      &:after, &:before {
+        top: 15%;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .testimonials {
+    .content-quote {
+      &:after, &:before {
+        top: 5%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .testimonials {
+    .content-quote {
+      &:after, &:before {
+        top: 8%;
+      }
     }
   }
 }

@@ -133,6 +133,7 @@ content-campaign.php
 
 .project-post-tabs{
   margin-top: 30px;
+  padding: 0;
   .tab-content{
 
     .description{
@@ -146,6 +147,20 @@ content-campaign.php
       font: 400 18px/23px $lato;
 
     }
+  }
+  .widget-updates-title{
+    margin: 1em;
+    font: 600 22px/26px $lato;
+    text-align: center;
+  }
+  .campaign-updates{
+
+    p{
+      margin: 1em;
+      font: 400 18px/23px $lato;
+
+    }
+
   }
 
 }

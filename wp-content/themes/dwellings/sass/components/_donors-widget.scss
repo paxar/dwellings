@@ -1,0 +1,37 @@
+/* Styles for donors widget cheritable in single-campaign page */
+.donors-list{
+  li{
+    padding: 20px;
+    overflow: hidden;
+    border-bottom: 1px solid #dcdcdc;
+    .donor-name{
+      float: left;
+      font: 800 24px/32px $lato;
+      color: #000000;
+
+    }
+    .donor-location{
+      float: left;
+      margin-top: 5px;
+      margin-left: 5px;
+      font: 400 18px/26px $lato;
+      color: #000000;
+    }
+    .donor-donation-amount{
+      float: right;
+      text-align: right;
+      .amount{
+        display: block;
+        font: 800 24px/32px $lato;
+        color: #000000;
+      }
+      .timestamp{
+        display: block;
+        font: 400 16px/23px $lato;
+        color: #000000;
+
+      }
+    }
+
+  }
+}
