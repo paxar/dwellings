@@ -252,8 +252,6 @@ function break_text($text){
     return balanceTags($visible) . " …</p>";
 }
 
-
-
 function modify_products() {
     if ( post_type_exists( 'campaign' ) ) {
         global $wp_post_types;
@@ -263,3 +261,8 @@ function modify_products() {
     }
 }
 add_action( 'init', 'modify_products', 100 );
+
+add_filter('document_title_parts', function( $parts ){
+    if( isset($parts['site']) ) unset($parts['site']);
+    return $parts;
+});

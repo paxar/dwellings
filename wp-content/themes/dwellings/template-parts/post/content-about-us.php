@@ -10,9 +10,9 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="about-content">
-                    <?php if (get_theme_mod('title_abut_us') != ''): ?>
-                    <h2 class="title title-decor"><?php echo get_theme_mod('title_abut_us'); ?></h2>
-                    <?php endif; ?>
+
+                    <h2 class="title title-decor"><h2 class="intro"><?php echo wp_get_document_title(); ?></h2></h2>
+
                     <div class="about-content">
                         <p><?php echo get_theme_mod('description_abut_us') ?></p>
                     </div>
