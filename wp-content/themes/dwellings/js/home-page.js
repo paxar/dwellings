@@ -10,10 +10,6 @@ $(document).ready(function () {
         $('#close-nav').removeClass("remove-btn");
         $('#open-nav').addClass("remove-btn")
     });
-
-
-
-
 });
 
 var mainNav = $('#masthead');
@@ -48,6 +44,7 @@ else {
         each_bar_width = $(this).attr('aria-valuenow');
         $(this).width(each_bar_width + '%');
     });
+
 }
 
 /*About us img circle*/

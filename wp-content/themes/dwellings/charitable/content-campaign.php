@@ -45,107 +45,110 @@ if (empty($video)) {
     endif;
 }
 ?>
-    <p>content-campaign.php</p>
+<p>content-campaign.php</p>
 
-    <div class="project-post-header">
-        <h3 class="item-title"><?php the_title() ?> Home, <?php the_date('F Y') ?></h3>
-        <div class="post-video col-xs-6"><?php echo $video_src ?></div>
+<div class="project-post-header">
+    <h3 class="item-title"><?php the_title() ?> Home, <?php the_date('F Y') ?></h3>
+    <div class="post-video col-xs-6"><?php echo $video_src ?></div>
 
 
-        <div class="projects-item-donate-info col-xs-6">
-            <div class="creator-info">
-                <div class="creator-avatar">
-                    <?php
+    <div class="projects-item-donate-info col-xs-6">
+        <div class="creator-info">
+            <div class="creator-avatar">
+                <?php
 
-                    echo get_avatar($creator, 70); ?>
-                </div>
-                <div class="creator-description">
-                    <span>Sponsor: </span>
-                    <p><?php echo $user_id->description; ?></p>
-
-                </div>
+                echo get_avatar($creator, 70); ?>
             </div>
-            <div class="bar-wrapper">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar"
-                         aria-valuenow="<?php echo $value; ?>" aria-valuemin="0"
-                         aria-valuemax="100">
+            <div class="creator-description">
+                <span>Sponsor: </span>
+                <p><?php echo $user_id->description; ?></p>
+
+            </div>
+        </div>
+        <div class="bar-wrapper">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar"
+                     aria-valuenow="<?php echo $value; ?>" aria-valuemin="0"
+                     aria-valuemax="100">
                     <span class="pop" data-toggle="tooltip" data-placement="top"
                           title="<?php echo $percent; ?>"> </span>
-                    </div>
                 </div>
-                <div class="donate-info-wrap">
-                    <div class="amount">
-                        <span class="donate-text">Amount raised:</span>
-                        <span class="amount-count"><?php echo $currency_helper->get_monetary_amount($campaign->get_donated_amount()) ?></span>
-                    </div>
-                    <div class="goal">
-                        <span class="donate-text">Goal</span>
-                        <span class="goalcount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
-                    </div>
-                </div>
-                <div class="project-social-icons">
-                    <span>Share with:</span>
-
-                    <ul><!--TODO add links for social  -->
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-tumblr "></i></a></li>
-                    </ul>
-                </div>
-                <a data-trigger-modal="charitable-donation-form-modal"
-                   class="projects-donate-button"
-                   href="<?php echo charitable_get_permalink( 'campaign_donation_page', array( 'campaign_id' => $campaign->ID ) ) ?>"
-                   aria-label="<?php printf( esc_attr_x( 'Make a donation to %s', 'make a donation to campaign', 'charitable' ), get_the_title( $campaign->ID ) ) ?>">
-                    <?php _e( 'Donate', 'charitable' ) ?></a>
             </div>
+            <div class="donate-info-wrap">
+                <div class="amount">
+                    <span class="donate-text">Amount raised:</span>
+                    <span class="amount-count"><?php echo $currency_helper->get_monetary_amount($campaign->get_donated_amount()) ?></span>
+                </div>
+                <div class="goal">
+                    <span class="donate-text">Goal</span>
+                    <span class="goalcount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
+                </div>
+            </div>
+            <div class="project-social-icons">
+                <span>Share with:</span>
+
+                <ul><!--TODO add links for social  -->
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-tumblr "></i></a></li>
+                </ul>
+            </div>
+            <a data-trigger-modal="charitable-donation-form-modal"
+               class="projects-donate-button"
+               href="<?php echo charitable_get_permalink('campaign_donation_page', array('campaign_id' => $campaign->ID)) ?>"
+               aria-label="<?php printf(esc_attr_x('Make a donation to %s', 'make a donation to campaign', 'charitable'), get_the_title($campaign->ID)) ?>">
+                <?php _e('Donate', 'charitable') ?></a>
         </div>
-
-
     </div>
 
 
-    <div class="project-post-tabs col-xs-8">
-
-        <ul class="nav nav-tabs">
-            <li class="active" ><a data-toggle="tab" href="#panel1">Description</a></li>
-            <li><a data-toggle="tab" href="#panel2">Updates</a></li>
-            <li><a data-toggle="tab" href="#panel3">Donors</a></li>
-            <li ><a data-toggle="tab" href="#panel4">Map</a></li>
-
-        </ul>
+</div>
 
 
-        <div class="tab-content">
-            <div id="panel1" class="tab-pane fade in active">
+<div class="project-post-tabs col-xs-8">
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#panel1">Description</a></li>
+        <li><a data-toggle="tab" href="#panel2">Updates</a></li>
+        <li><a data-toggle="tab" href="#panel3">Donors</a></li>
+        <li><a data-toggle="tab" href="#panel4">Map</a></li>
+
+    </ul>
+
+
+    <div class="tab-content">
+        <div id="panel1" class="tab-pane fade in active">
+            <div>
 
                 <h3 class="description"> <?php echo $campaign->description ?></h3>
-                   <p class="extended-description"><?php echo $campaign->post_content ?></p>
-
-
-                </div>
-            </div>
-            <div id="panel2" class="tab-pane fade">
-                <h3>Updates</h3>
-
-                <?php dynamic_sidebar( 'sidebar-tabs-2' ); ?>
-
-            </div>
-            <div id="panel3" class="tab-pane fade">
-
-                <?php dynamic_sidebar( 'sidebar-tabs-1' ); ?>
-            </div>
-            <div id="panel4" class="tab-pane fade">
-
-                <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
-
+                <p class="extended-description"><?php echo $campaign->post_content ?></p>
             </div>
         </div>
+        <div id="panel2" class="tab-pane fade">
+            <h3 class="de">Updates</h3>
 
+            <?php dynamic_sidebar('sidebar-tabs-2'); ?>
+
+        </div>
+        <div id="panel3" class="tab-pane fade">
+
+            <?php dynamic_sidebar('sidebar-tabs-1'); ?>
+        </div>
+        <div id="panel4" class="tab-pane fade">
+
+            <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
+
+        </div>
 
     </div>
+
+
+</div>
+
+
+
 
 
 <?php
