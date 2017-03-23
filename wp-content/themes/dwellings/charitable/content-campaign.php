@@ -147,6 +147,14 @@ if (empty($video)) {
 
 </div>
 
+<div class="project-involved-wrap col-xs-12 col-md-4">
+    <div class="project-involved ">
+        <p class="involved-text">You can build a home for a family in need</p>
+        <a class="projects-donate-button" href="#">GET INVOLVED</a>
+
+    </div>
+</div>
+
 
 
 
