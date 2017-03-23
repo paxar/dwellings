@@ -67,11 +67,6 @@ function custom_breadcrumbs() {
 
             // If it is a custom post type display name and link
             else {
-                if ($post_type == 'campaign') {
-                    $GLOBALS['wp_post_types']['campaign']->has_archive=true;
-                    $GLOBALS['wp_post_types']['campaign']->labels->name= __('Candidate families', 'dwelling');
-                    $GLOBALS['wp_post_types']['campaign']->rewrite['slug']='candidate-families';
-                }
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);
 

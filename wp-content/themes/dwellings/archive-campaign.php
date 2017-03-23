@@ -1,7 +1,5 @@
 <?php
-/*
-Template Name: Archive-campaign
-*/
+
 get_header();
 ?>
 
