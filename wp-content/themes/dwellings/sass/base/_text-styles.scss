@@ -19,7 +19,8 @@ em{
   display: block;
 }
 
-.extended-description{
+.extended-description,
+.campaign-updates{
   h1{
     font: 600 22px/26px $lato;
   }
@@ -42,8 +43,6 @@ em{
   ul{
     padding-left: 1em;
     li{
-      //list-style: square;
-      //display: list-item;
       position: relative;
       margin-left: 1em;
       &:before{
@@ -86,6 +85,36 @@ em{
 
 
   }
+}
+.campaign-updates{ // fix p inside blockquote
+  blockquote{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    &:before{
+      content: '';
+    }
+    &:after{
+      content: '';
+    }
+  }
+
+  blockquote > p{
+    display: inline-block;
+    margin: 1em 2em !important;
+    padding: 5px;
+    background-color: #fbf7f4;
+    &:before{
+      content: '"';
+    }
+    &:after{
+      content: '"';
+    }
+  }
+  h1,h2,h3,h4,h5,h6{
+  margin: 0 1em ;
+}
+
 }
 
 /************************************/

@@ -49,10 +49,10 @@ if (empty($video)) {
 
 <div class="project-post-header">
     <h3 class="item-title"><?php the_title() ?> Home, <?php the_date('F Y') ?></h3>
-    <div class="post-video col-xs-6"><?php echo $video_src ?></div>
+    <div class="post-video col-xs-12 col-sm-6"><?php echo $video_src ?></div>
 
 
-    <div class="projects-item-donate-info col-xs-6">
+    <div class="projects-item-donate-info col-xs-12 col-sm-6">
         <div class="creator-info">
             <div class="creator-avatar">
                 <?php
@@ -107,7 +107,7 @@ if (empty($video)) {
 </div>
 
 
-<div class="project-post-tabs col-xs-8">
+<div class="project-post-tabs col-xs-12 col-md-8">
 
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#panel1">Description</a></li>
@@ -127,7 +127,7 @@ if (empty($video)) {
             </div>
         </div>
         <div id="panel2" class="tab-pane fade">
-            <h3 class="de">Updates</h3>
+
 
             <?php dynamic_sidebar('sidebar-tabs-2'); ?>
 

@@ -43,59 +43,98 @@ em {
 .alignnone {
   display: block; }
 
-.extended-description h1 {
+.extended-description h1,
+.campaign-updates h1 {
   font: 600 22px/26px "Lato", sans-serif; }
 
-.extended-description h2 {
+.extended-description h2,
+.campaign-updates h2 {
   font: 600 20px/25px "Lato", sans-serif; }
 
-.extended-description h3 {
+.extended-description h3,
+.campaign-updates h3 {
   font: 600 18px/23px "Lato", sans-serif; }
 
-.extended-description h4 {
+.extended-description h4,
+.campaign-updates h4 {
   font: 600 16px/20px "Lato", sans-serif; }
 
-.extended-description h5 {
+.extended-description h5,
+.campaign-updates h5 {
   font: 600 14px/18px "Lato", sans-serif; }
 
-.extended-description h6 {
+.extended-description h6,
+.campaign-updates h6 {
   font: 600 12px/16px "Lato", sans-serif; }
 
-.extended-description ul {
+.extended-description ul,
+.campaign-updates ul {
   padding-left: 1em; }
-  .extended-description ul li {
+  .extended-description ul li,
+  .campaign-updates ul li {
     position: relative;
     margin-left: 1em; }
-    .extended-description ul li:before {
+    .extended-description ul li:before,
+    .campaign-updates ul li:before {
       content: "-";
       position: absolute;
       left: -18px; }
 
-.extended-description ol {
+.extended-description ol,
+.campaign-updates ol {
   padding-left: 1em; }
-  .extended-description ol li {
+  .extended-description ol li,
+  .campaign-updates ol li {
     list-style: decimal;
     display: list-item;
     margin-left: 1em; }
 
-.extended-description hr {
+.extended-description hr,
+.campaign-updates hr {
   margin: 20px; }
 
-.extended-description blockquote {
+.extended-description blockquote,
+.campaign-updates blockquote {
   margin: 1em;
   padding: 5px;
   background-color: #fbf7f4; }
-  .extended-description blockquote:before {
+  .extended-description blockquote:before,
+  .campaign-updates blockquote:before {
     content: '"'; }
-  .extended-description blockquote:after {
+  .extended-description blockquote:after,
+  .campaign-updates blockquote:after {
     content: '"'; }
 
-.extended-description a {
+.extended-description a,
+.campaign-updates a {
   font: inherit;
   text-decoration: underline;
   color: inherit; }
-  .extended-description a:hover {
+  .extended-description a:hover,
+  .campaign-updates a:hover {
     color: #fed52f; }
+
+.campaign-updates blockquote {
+  margin: 0;
+  padding: 0;
+  background-color: transparent; }
+  .campaign-updates blockquote:before {
+    content: ''; }
+  .campaign-updates blockquote:after {
+    content: ''; }
+
+.campaign-updates blockquote > p {
+  display: inline-block;
+  margin: 1em 2em !important;
+  padding: 5px;
+  background-color: #fbf7f4; }
+  .campaign-updates blockquote > p:before {
+    content: '"'; }
+  .campaign-updates blockquote > p:after {
+    content: '"'; }
+
+.campaign-updates h1, .campaign-updates h2, .campaign-updates h3, .campaign-updates h4, .campaign-updates h5, .campaign-updates h6 {
+  margin: 0 1em; }
 
 /************************************/
 .intro {
@@ -1195,12 +1234,16 @@ content-campaign.php
     margin-top: 100px; }
 
 .project-post-tabs {
-  margin-top: 30px; }
+  margin-top: 30px;
+  padding: 0; }
   .project-post-tabs .tab-content .description {
     margin: 1em;
     font: 600 18px/23px "Lato", sans-serif;
     text-align: center; }
   .project-post-tabs .tab-content .extended-description {
+    margin: 1em;
+    font: 400 18px/23px "Lato", sans-serif; }
+  .project-post-tabs .campaign-updates p {
     margin: 1em;
     font: 400 18px/23px "Lato", sans-serif; }
 
