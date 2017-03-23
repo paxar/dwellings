@@ -40,6 +40,30 @@
     blockquote {
       padding: 10px 20px;
     }
+    a {
+      color: $brand-color;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    h1 {
+      font: 700 24px/32px $lato;
+    }
+    h2 {
+      font: 700 22px/28px $lato;
+    }
+    h3 {
+      font: 700 20px/26px $lato;
+    }
+    h4 {
+      font: 700 18px/24px $lato;
+    }
+    h5 {
+      font: 700 16px/22px $lato;
+    }
+    h6 {
+      font: 700 14px/20px $lato;
+    }
   }
 }
 
