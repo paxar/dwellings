@@ -9,7 +9,7 @@
 
     <main id="content" class="site-content projects-post">
         <div class="container">
-            <p>Single cammaign page !</p>
+
             <div class="top-part-content">
                 <?php
                 custom_breadcrumbs();

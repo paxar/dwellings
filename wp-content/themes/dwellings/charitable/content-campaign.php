@@ -45,7 +45,7 @@ if (empty($video)) {
     endif;
 }
 ?>
-<p>content-campaign.php</p>
+
 
 <div class="project-post-header">
     <h3 class="item-title"><?php the_title() ?> Home, <?php the_date('F Y') ?></h3>
