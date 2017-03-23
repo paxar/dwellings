@@ -134,21 +134,17 @@ content-campaign.php
 .project-post-tabs{
   margin-top: 30px;
   .tab-content{
-    #panel1{
-      padding: 25px;
-      img{
-        float: left;
-        margin: 10px 10px 10px 0;
-      }
-    }
+
     .description{
+      margin: 1em;
       font: 600 18px/23px $lato;
       text-align: center;
 
     }
     .extended-description{
+      margin: 1em;
       font: 400 18px/23px $lato;
-      text-align: justify;
+
     }
   }
 

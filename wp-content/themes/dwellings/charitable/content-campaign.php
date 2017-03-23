@@ -123,7 +123,7 @@ if (empty($video)) {
             <div>
 
                 <h3 class="description"> <?php echo $campaign->description ?></h3>
-                <p class="extended-description"><?php echo $campaign->post_content ?></p>
+                <div class="extended-description"><?php echo $campaign->post_content ?></div>
             </div>
         </div>
         <div id="panel2" class="tab-pane fade">
