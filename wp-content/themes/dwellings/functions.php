@@ -254,3 +254,12 @@ function break_text($text){
 
 
 
+function modify_products() {
+    if ( post_type_exists( 'campaign' ) ) {
+        global $wp_post_types;
+        $wp_post_types['campaign']->has_archive=true;
+        $wp_post_types['campaign']->labels->name= __('Candidate families', 'dwelling');
+        $wp_post_types['campaign']->rewrite['slug']='candidate-families';
+    }
+}
+add_action( 'init', 'modify_products', 100 );
