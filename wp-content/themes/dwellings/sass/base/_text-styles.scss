@@ -1,3 +1,97 @@
+/*textstyles after visual text editor*/
+strong{
+  font-weight: bold;
+}
+em{
+  font-style: italic;
+}
+.alignleft{
+  float: left;
+}
+.alignright{
+  float: right;
+}
+.aligncenter{
+  display: block;
+  margin: 10px auto;
+}
+.alignnone{
+  display: block;
+}
+
+.extended-description{
+  h1{
+    font: 600 22px/26px $lato;
+  }
+  h2{
+    font: 600 20px/25px $lato;
+  }
+  h3{
+    font: 600 18px/23px $lato;
+
+  }
+  h4{
+    font: 600 16px/20px $lato;
+  }
+  h5{
+    font: 600 14px/18px $lato;
+  }
+  h6{
+    font: 600 12px/16px $lato;
+  }
+  ul{
+    padding-left: 1em;
+    li{
+      //list-style: square;
+      //display: list-item;
+      position: relative;
+      margin-left: 1em;
+      &:before{
+        content:  "-";
+        position: absolute;
+        left:     -18px;
+      }
+    }
+  }
+  ol{
+    padding-left: 1em;
+    li{
+      list-style: decimal;
+      display: list-item;
+
+      margin-left: 1em;
+    }
+  }
+  hr{
+    margin: 20px;
+  }
+  blockquote{
+    margin: 1em;
+    padding: 5px;
+    background-color: #fbf7f4;
+    &:before{
+      content: '"';
+    }
+    &:after{
+      content: '"';
+    }
+  }
+  a{
+    font: inherit;
+   text-decoration: underline;
+    color: inherit;
+    &:hover{
+      color: $brand-color;
+    }
+
+
+  }
+}
+
+/************************************/
+
+
+
 .intro {
   font: 800 30px $lato;
 }

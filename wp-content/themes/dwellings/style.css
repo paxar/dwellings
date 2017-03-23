@@ -23,6 +23,81 @@ Version: 1.0.0
   .container {
     width: 1200px; } }
 
+/*textstyles after visual text editor*/
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+.alignleft {
+  float: left; }
+
+.alignright {
+  float: right; }
+
+.aligncenter {
+  display: block;
+  margin: 10px auto; }
+
+.alignnone {
+  display: block; }
+
+.extended-description h1 {
+  font: 600 22px/26px "Lato", sans-serif; }
+
+.extended-description h2 {
+  font: 600 20px/25px "Lato", sans-serif; }
+
+.extended-description h3 {
+  font: 600 18px/23px "Lato", sans-serif; }
+
+.extended-description h4 {
+  font: 600 16px/20px "Lato", sans-serif; }
+
+.extended-description h5 {
+  font: 600 14px/18px "Lato", sans-serif; }
+
+.extended-description h6 {
+  font: 600 12px/16px "Lato", sans-serif; }
+
+.extended-description ul {
+  padding-left: 1em; }
+  .extended-description ul li {
+    position: relative;
+    margin-left: 1em; }
+    .extended-description ul li:before {
+      content: "-";
+      position: absolute;
+      left: -18px; }
+
+.extended-description ol {
+  padding-left: 1em; }
+  .extended-description ol li {
+    list-style: decimal;
+    display: list-item;
+    margin-left: 1em; }
+
+.extended-description hr {
+  margin: 20px; }
+
+.extended-description blockquote {
+  margin: 1em;
+  padding: 5px;
+  background-color: #fbf7f4; }
+  .extended-description blockquote:before {
+    content: '"'; }
+  .extended-description blockquote:after {
+    content: '"'; }
+
+.extended-description a {
+  font: inherit;
+  text-decoration: underline;
+  color: inherit; }
+  .extended-description a:hover {
+    color: #fed52f; }
+
+/************************************/
 .intro {
   font: 800 30px "Lato", sans-serif; }
 
@@ -261,11 +336,14 @@ Version: 1.0.0
     border: 1px solid darkgrey;
     border-radius: 5px; }
 
+.pbCaptionText .title {
+  font: 600 14px/20px "Lato", sans-serif; }
+
 /* Google map in campaign page styles*/
 .charitable-campaign-map-marker {
   border-top: 15px solid #fed52f; }
   .charitable-campaign-map-marker img {
-    width: 50%;
+    width: 100px;
     margin-top: 10px;
     margin-bottom: 5px;
     border-radius: 5px; }
@@ -1118,17 +1196,13 @@ content-campaign.php
 
 .project-post-tabs {
   margin-top: 30px; }
-  .project-post-tabs .tab-content #panel1 {
-    padding: 25px; }
-    .project-post-tabs .tab-content #panel1 img {
-      float: left;
-      margin: 10px 10px 10px 0; }
   .project-post-tabs .tab-content .description {
+    margin: 1em;
     font: 600 18px/23px "Lato", sans-serif;
     text-align: center; }
   .project-post-tabs .tab-content .extended-description {
-    font: 400 18px/23px "Lato", sans-serif;
-    text-align: justify; }
+    margin: 1em;
+    font: 400 18px/23px "Lato", sans-serif; }
 
 .thank .thank-block {
   padding: 100px 0 150px;
