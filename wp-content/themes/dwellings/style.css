@@ -574,9 +574,11 @@ em {
     text-align: left;
     margin-top: 45px;
     color: #fff; }
-  .about-us .about-content p {
-    font: 700 16px/24px "Lato", sans-serif;
-    margin-bottom: 30px; }
+  .about-us .about-content {
+    padding: 10px 0 30px; }
+    .about-us .about-content p {
+      font: 700 16px/24px "Lato", sans-serif;
+      margin-bottom: 30px; }
 
 .about-us-page {
   padding: 70px 0 40px; }
@@ -730,9 +732,27 @@ em {
     border-radius: 50%; }
 
 .testimonials .content-quote {
+  position: relative;
   padding: 25px 35px 15px;
   border: 1px solid #f0f0f0;
+  border-radius: 6px;
   background: #fff; }
+  .testimonials .content-quote:after, .testimonials .content-quote:before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    margin-left: -20px;
+    top: 5%;
+    width: 0; }
+  .testimonials .content-quote:before {
+    border-right: 17px solid #f0f0f0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent; }
+  .testimonials .content-quote:after {
+    border-right: 17px solid #fff;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: -18px; }
   .testimonials .content-quote p {
     font: 700 16px/24px "Lato", sans-serif;
     color: #3a2405; }
@@ -744,6 +764,22 @@ em {
     color: #fed52f; }
   .testimonials .content-quote .author-quote {
     padding: 20px 0; }
+
+@media (min-width: 460px) {
+  .testimonials .content-quote:after, .testimonials .content-quote:before {
+    top: 10%; } }
+
+@media (min-width: 768px) {
+  .testimonials .content-quote:after, .testimonials .content-quote:before {
+    top: 15%; } }
+
+@media (min-width: 992px) {
+  .testimonials .content-quote:after, .testimonials .content-quote:before {
+    top: 5%; } }
+
+@media (min-width: 1200px) {
+  .testimonials .content-quote:after, .testimonials .content-quote:before {
+    top: 8%; } }
 
 .learn-more-contact {
   padding: 60px 0;
