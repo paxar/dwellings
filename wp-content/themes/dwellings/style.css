@@ -334,11 +334,14 @@ em {
     border: 1px solid darkgrey;
     border-radius: 5px; }
 
+.pbCaptionText .title {
+  font: 600 14px/20px "Lato", sans-serif; }
+
 /* Google map in campaign page styles*/
 .charitable-campaign-map-marker {
   border-top: 15px solid #fed52f; }
   .charitable-campaign-map-marker img {
-    width: 50%;
+    width: 100px;
     margin-top: 10px;
     margin-bottom: 5px;
     border-radius: 5px; }
