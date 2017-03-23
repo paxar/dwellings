@@ -442,6 +442,32 @@ em {
   background-color: #ffffff; }
 
 /* Styles for donors widget cheritable in single-campaign page */
+.donors-list li {
+  padding: 20px;
+  overflow: hidden;
+  border-bottom: 1px solid #dcdcdc; }
+  .donors-list li .donor-name {
+    float: left;
+    font: 800 24px/32px "Lato", sans-serif;
+    color: #000000; }
+  .donors-list li .donor-location {
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    font: 400 18px/26px "Lato", sans-serif;
+    color: #000000; }
+  .donors-list li .donor-donation-amount {
+    float: right;
+    text-align: right; }
+    .donors-list li .donor-donation-amount .amount {
+      display: block;
+      font: 800 24px/32px "Lato", sans-serif;
+      color: #000000; }
+    .donors-list li .donor-donation-amount .timestamp {
+      display: block;
+      font: 400 16px/23px "Lato", sans-serif;
+      color: #000000; }
+
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
@@ -1280,6 +1306,10 @@ content-campaign.php
   .project-post-tabs .tab-content .extended-description {
     margin: 1em;
     font: 400 18px/23px "Lato", sans-serif; }
+  .project-post-tabs .widget-updates-title {
+    margin: 1em;
+    font: 600 22px/26px "Lato", sans-serif;
+    text-align: center; }
   .project-post-tabs .campaign-updates p {
     margin: 1em;
     font: 400 18px/23px "Lato", sans-serif; }

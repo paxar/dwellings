@@ -61,7 +61,7 @@ if ( $donors->count() ) :
 
 				if ( $view_args['show_location'] && strlen( $donor->get_location() ) ) : ?>
 
-					<div class="donor-location"><?php echo $donor->get_location() ?></div>
+					<div class="donor-location"><?php echo ',' . $donor->get_location() ?></div>
 
 				<?php
 
@@ -69,12 +69,13 @@ if ( $donors->count() ) :
 
 				if ( $view_args['show_amount'] ) : ?>
 
-					<div class="donor-donation-amount"><?php echo charitable_format_money( $donor->get_amount( $campaign_id ) ) ?></div>
+                    <div class="donor-donation-amount">
+                        <span class="amount"><?php echo charitable_format_money( $donor->get_amount( $campaign_id ) ) ?></span>
+                        <span class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
+                    </div>
+
 
 				<?php endif ?>
-            <p>
-                <?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?>
-            </p>
 
 			</li>
 
