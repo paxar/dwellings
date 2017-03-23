@@ -767,6 +767,22 @@ em {
     list-style: disc inside; }
   .blog-posts-section .entry-content blockquote {
     padding: 10px 20px; }
+  .blog-posts-section .entry-content a {
+    color: #fed52f; }
+    .blog-posts-section .entry-content a:hover {
+      text-decoration: underline; }
+  .blog-posts-section .entry-content h1 {
+    font: 700 24px/32px "Lato", sans-serif; }
+  .blog-posts-section .entry-content h2 {
+    font: 700 22px/28px "Lato", sans-serif; }
+  .blog-posts-section .entry-content h3 {
+    font: 700 20px/26px "Lato", sans-serif; }
+  .blog-posts-section .entry-content h4 {
+    font: 700 18px/24px "Lato", sans-serif; }
+  .blog-posts-section .entry-content h5 {
+    font: 700 16px/22px "Lato", sans-serif; }
+  .blog-posts-section .entry-content h6 {
+    font: 700 14px/20px "Lato", sans-serif; }
 
 .post-information {
   margin-bottom: 17px;
