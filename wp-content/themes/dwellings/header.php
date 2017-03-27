@@ -1,5 +1,5 @@
 <?php
-session_start();  /*Starting session for send variables   Added paxar*/
+//session_start();  /*Starting session for send variables   Added paxar*/
 ?>
 
 <?php
