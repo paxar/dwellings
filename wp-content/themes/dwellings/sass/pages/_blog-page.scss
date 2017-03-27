@@ -31,6 +31,11 @@
   }
 
   .entry-content {
+    img {
+      margin: 5px;
+      max-width: 100%;
+      height: auto;
+    }
     ol {
       list-style: decimal inside;
     }
