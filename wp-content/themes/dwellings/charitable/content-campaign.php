@@ -27,6 +27,15 @@ $user_id = charitable_get_user($creator);
 $value = $campaign->get_percent_donated_raw();
 
 
+//print_r($campaign) ;
+
+
+session_start();
+$_SESSION['sender'] = $campaign;
+
+
+
+
 if ($value > 100) {
     $value = 100;
 }
@@ -100,6 +109,7 @@ if (empty($video)) {
                href="<?php echo charitable_get_permalink('campaign_donation_page', array('campaign_id' => $campaign->ID)) ?>"
                aria-label="<?php printf(esc_attr_x('Make a donation to %s', 'make a donation to campaign', 'charitable'), get_the_title($campaign->ID)) ?>">
                 <?php _e('Donate', 'charitable') ?></a>
+
         </div>
     </div>
 
@@ -137,8 +147,10 @@ if (empty($video)) {
             <?php dynamic_sidebar('sidebar-tabs-1'); ?>
         </div>
         <div id="panel4" class="tab-pane fade">
-
             <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
+
+
+
 
         </div>
 
@@ -154,15 +166,6 @@ if (empty($video)) {
 
     </div>
 </div>
-
-
-
-
-
-<?php
-
-
-?>
 
 
 
