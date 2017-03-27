@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Displays the campaign content.
  *
@@ -30,7 +31,7 @@ $value = $campaign->get_percent_donated_raw();
 //print_r($campaign) ;
 
 
-session_start();
+
 $_SESSION['sender'] = $campaign;
 
 
