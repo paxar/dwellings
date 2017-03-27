@@ -31,10 +31,15 @@
                         </span>
                         <div class="implementers">
                             <span class="design">
-                                Design by Maria Osadcha
+                                <?php
+                                echo esc_html__('Design by Maria Osadcha', 'dwellings');
+                                ?>
                             </span>
                             <span class="dev">
-                                Developed by Geekhub <a href="http://geekhub.ck.ua/" target="_blank">geekhub.ck.ua</a>
+                                <?php
+                                echo esc_html__('Developed by Geekhub', 'dwellings');
+                                ?>
+                                <a href="http://geekhub.ck.ua/" target="_blank">geekhub.ck.ua</a>
                             </span>
                         </div>
 

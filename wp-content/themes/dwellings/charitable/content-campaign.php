@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Displays the campaign content.
  *
@@ -25,6 +26,15 @@ $video_id = $campaign->video_id;
 $creator = $campaign->get_campaign_creator();
 $user_id = charitable_get_user($creator);
 $value = $campaign->get_percent_donated_raw();
+
+
+//print_r($campaign) ;
+
+
+
+$_SESSION['sender'] = $campaign;
+
+
 
 
 if ($value > 100) {
@@ -100,6 +110,7 @@ if (empty($video)) {
                href="<?php echo charitable_get_permalink('campaign_donation_page', array('campaign_id' => $campaign->ID)) ?>"
                aria-label="<?php printf(esc_attr_x('Make a donation to %s', 'make a donation to campaign', 'charitable'), get_the_title($campaign->ID)) ?>">
                 <?php _e('Donate', 'charitable') ?></a>
+
         </div>
     </div>
 
@@ -137,8 +148,10 @@ if (empty($video)) {
             <?php dynamic_sidebar('sidebar-tabs-1'); ?>
         </div>
         <div id="panel4" class="tab-pane fade">
-
             <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
+
+
+
 
         </div>
 
@@ -147,14 +160,13 @@ if (empty($video)) {
 
 </div>
 
+<div class="project-involved-wrap col-xs-12 col-md-4">
+    <div class="project-involved ">
+        <p class="involved-text">You can build a home for a family in need</p>
+        <a class="projects-donate-button" href="#">GET INVOLVED</a>
 
-
-
-
-<?php
-
-
-?>
+    </div>
+</div>
 
 
 

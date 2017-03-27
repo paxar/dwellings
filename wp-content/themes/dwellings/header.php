@@ -1,4 +1,8 @@
 <?php
+session_start();  /*Starting session for send variables   Added paxar*/
+?>
+
+<?php
 /**
  * The header for our theme
  *

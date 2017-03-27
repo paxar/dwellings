@@ -1,4 +1,7 @@
 <?php
+session_start();  /*Starting session for send variables   Added paxar*/
+?>
+<?php
 /*
 Template Name: Template main page
 */

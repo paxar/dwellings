@@ -11,9 +11,7 @@ Template Name: Template contact us page
             <div class="information">
                 <div class="contact-info">
 
-                    <?php if (get_theme_mod('contact_title') != ''): ?>
-                        <h2 class="intro"><?php echo get_theme_mod('contact_title'); ?></h2>
-                    <?php endif; ?>
+                        <h2 class="intro"><?php echo wp_get_document_title(); ?></h2>
 
                     <dl class="contacts">
                         <dt>Contact Person:</dt>
