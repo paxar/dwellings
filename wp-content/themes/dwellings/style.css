@@ -863,6 +863,10 @@ em {
     border-bottom: 1px solid #e5e5e5; }
     .blog-posts-section .blog-item:last-of-type {
       border-bottom: none; }
+  .blog-posts-section .entry-content img {
+    margin: 5px;
+    max-width: 100%;
+    height: auto; }
   .blog-posts-section .entry-content ol {
     list-style: decimal inside; }
   .blog-posts-section .entry-content ul {
