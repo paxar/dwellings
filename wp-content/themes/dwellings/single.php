@@ -26,6 +26,12 @@ get_header(); ?>
 
 				endwhile; // End of the loop.
 				?>
+
+<?php
+
+if (comments_open()) : ?>
+	<div id="disqus_thread"></div>
+<?php endif; // comments_open ?>
 			</section>
 		</div><!-- #primary -->
 	</main><!-- #main -->
