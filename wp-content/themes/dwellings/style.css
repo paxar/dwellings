@@ -952,6 +952,9 @@ em {
   .image-box img {
     width: 100%;
     height: auto; }
+    @media only screen and (min-width: 992px) {
+      .image-box img {
+        min-width: 365px; } }
 
 .content-post-wrap {
   display: -ms-flexbox;
