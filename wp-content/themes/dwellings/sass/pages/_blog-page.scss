@@ -114,6 +114,9 @@
   img {
     width: 100%;
     height: auto;
+    @media only screen and (min-width: 992px) {
+      min-width: 365px;
+    }
   }
 }
 

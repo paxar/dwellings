@@ -985,6 +985,9 @@ em {
   .image-box img {
     width: 100%;
     height: auto; }
+    @media only screen and (min-width: 992px) {
+      .image-box img {
+        min-width: 365px; } }
 
 .content-post-wrap {
   display: -ms-flexbox;
@@ -1127,12 +1130,21 @@ em {
     display: block;
     clear: left; }
 
+.single-article-post {
+  margin-bottom: 30px; }
+  @media only screen and (min-width: 768px) {
+    .single-article-post {
+      margin-bottom: 50px; } }
+
 #disqus_thread {
   max-width: 886px;
   padding-bottom: 35px; }
 
 .learn-more-content {
-  padding-top: 83px; }
+  padding-top: 81px; }
+  @media only screen and (min-width: 768px) {
+    .learn-more-content {
+      padding-top: 83px; } }
   .learn-more-content .icongroup {
     padding-top: 56px; }
 
