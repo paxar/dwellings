@@ -8,7 +8,7 @@
  */
 
 get_header() ?>
-<main id="content" class="site-content">
+<main id="content" class="site-content blog-page-main">
 
     <section class="thank not-found">
         <div class="container">
