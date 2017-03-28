@@ -1,15 +1,46 @@
-.info{
-  .info-wrapper{
+.info {
+  .info-wrapper {
     padding: 150px 0;
   }
-  .info-title{
+  .info-title {
     font: 900 60px/65px $lato;
     color: #000000;
   }
-  .info-description{
+  .info-description {
     margin: 40px 0;
     font: 600 18px/27px $lato;
     color: #000000;
   }
-  .btn{}
+  .btn {
+  }
+}
+
+.about {
+  position: relative;
+  padding: 60px 0 100px;
+  .about-wrapper {
+    z-index: 10;
+  }
+  .about-description {
+    font: 400 16px/27px $lato;
+    color: #010000;
+  }
+  .about-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    transform: translateX(0);
+  }
+
+}
+
+@media (min-width: 768px) {
+  .about {
+    .about-image {
+      width: 50%;
+    }
+
+  }
 }
