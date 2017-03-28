@@ -175,15 +175,13 @@ em {
   padding: 17px 35px;
   height: 55px;
   text-align: center;
-  border: 0;
   background-color: #fed52f;
   border-radius: 5px;
-  font: 400 16px "Lato", sans-serif;
+  border: 2px solid #fed52f;
+  font: 600 16px/18px "Lato", sans-serif;
   transition: 0.3s all ease-out;
   text-transform: uppercase;
   color: #000; }
-  .btn:focus, .gform_wrapper .gform_footer .gform_button:focus, .site-footer .subscribe input[type="submit"]:focus {
-    outline: none; }
   .btn:hover, .gform_wrapper .gform_footer .gform_button:hover, .site-footer .subscribe input[type="submit"]:hover {
     background: #fff; }
 

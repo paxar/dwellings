@@ -2,15 +2,15 @@
   padding: 17px 35px;
   height: 55px;
   text-align: center;
-  border: 0;
   background-color: $brand-color;
   border-radius: 5px;
-  font: 400 16px $lato;
+  border: 2px solid $brand-color;
+  font: 600 16px/18px $lato;
   transition: 0.3s all ease-out;
   text-transform: uppercase;
   color: #000;
   &:focus {
-    outline: none;
+    //outline: none;
   }
   &:hover {
     background: #fff;
