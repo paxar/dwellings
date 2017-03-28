@@ -251,7 +251,6 @@ function dwellings_customize_register( $wp_customize ) {
     );
 
 
-
     /*--------------------------------------------------------------
     # Example section
     --------------------------------------------------------------*/
@@ -753,6 +752,29 @@ function dwellings_customize_register( $wp_customize ) {
             array(
                 'label' => esc_html__('Thank image', 'dwellings'),
                 'section' => 'thank-section'
+            )
+        )
+    );
+    /*--------------------------------------------------------------
+   # Contact-us section
+   --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'not-found-page',
+        array(
+            'title' => esc_html__('Error 404', 'dwellings'),
+            'priority' => 200
+        )
+    );
+    $wp_customize->add_setting(
+        'not-found'
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'not-found',
+            array(
+                'label' => esc_html__('Icon 404 page', 'dwellings'),
+                'section' => 'not-found-page'
             )
         )
     );
