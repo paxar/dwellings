@@ -1105,7 +1105,10 @@ em {
   padding-bottom: 35px; }
 
 .learn-more-content {
-  padding-top: 83px; }
+  padding-top: 81px; }
+  @media only screen and (min-width: 768px) {
+    .learn-more-content {
+      padding-top: 83px; } }
   .learn-more-content .icongroup {
     padding-top: 56px; }
 
