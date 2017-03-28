@@ -37,7 +37,7 @@ body.logged-in .header-page {
   font-weight: normal;
   font-style: normal; }
 
-i {
+.own-icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
