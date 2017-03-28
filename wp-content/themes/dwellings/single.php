@@ -17,7 +17,7 @@ get_header(); ?>
 				get_search_form();
 				?>
 			</div>
-			<section class="blog-posts-section">
+			<section class="blog-posts-section single-article-post">
 
 				<?php
 				while ( have_posts() ) : the_post();

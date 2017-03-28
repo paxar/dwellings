@@ -1094,6 +1094,12 @@ em {
     display: block;
     clear: left; }
 
+.single-article-post {
+  margin-bottom: 30px; }
+  @media only screen and (min-width: 768px) {
+    .single-article-post {
+      margin-bottom: 50px; } }
+
 #disqus_thread {
   max-width: 886px;
   padding-bottom: 35px; }
