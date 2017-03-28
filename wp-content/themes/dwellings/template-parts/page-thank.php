@@ -4,7 +4,7 @@ Template Name: Template thank page
 */
 ?>
 <?php get_header() ?>
-    <main id="content" class="site-content">
+    <main id="content" class="site-content blog-page-main">
 
     <section class="thank">
         <div class="container">
