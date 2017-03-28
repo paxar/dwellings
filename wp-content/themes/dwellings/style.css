@@ -152,11 +152,23 @@ em {
   color: #000000;
   text-align: center; }
 
+.title-left {
+  font: 900 40px/50px "Lato", sans-serif;
+  color: #000000; }
+
 .title-decor:after {
   content: '';
   display: block;
   margin: 20px auto 0;
   width: 103px;
+  height: 3px;
+  background-color: #fed52f; }
+
+.title-small-decor:after {
+  content: '';
+  display: block;
+  margin: 20px 0;
+  width: 65px;
   height: 3px;
   background-color: #fed52f; }
 
