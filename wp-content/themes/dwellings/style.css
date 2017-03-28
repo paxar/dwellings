@@ -621,9 +621,9 @@ em {
   padding-top: 70px;
   background: #fed52f;
   color: #fff; }
-  .about-us .title {
+  .about-us .intro {
     text-align: left;
-    margin-top: 45px;
+    margin: 45px 0 20px;
     color: #fff; }
   .about-us .about-content {
     padding: 10px 0 30px; }
@@ -1033,6 +1033,7 @@ em {
 
 .contact-us {
   width: 100%;
+  padding-bottom: 70px;
   display: table;
   overflow: hidden; }
   .contact-us .information {
@@ -1092,23 +1093,25 @@ em {
     .contact-us .address dt {
       float: none; } }
 
-.donation .donation-block {
-  padding: 40px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 6px;
-  overflow: hidden; }
-  .donation .donation-block .organization-wrap {
-    margin-right: 15px; }
-    .donation .donation-block .organization-wrap .title-cover {
-      padding: 30px 0;
-      font: 700 40px/50px "Lato", sans-serif;
-      color: #000; }
-    .donation .donation-block .organization-wrap .description-cover {
-      font: 700 16px/27px "Lato", sans-serif;
-      color: #010000; }
-  .donation .donation-block .donation-wrap {
-    margin-left: 15px; }
+.donation {
+  padding-bottom: 70px; }
+  .donation .donation-block {
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    overflow: hidden; }
+    .donation .donation-block .organization-wrap {
+      margin-right: 15px; }
+      .donation .donation-block .organization-wrap .title-cover {
+        padding: 30px 0;
+        font: 700 40px/50px "Lato", sans-serif;
+        color: #000; }
+      .donation .donation-block .organization-wrap .description-cover {
+        font: 700 16px/27px "Lato", sans-serif;
+        color: #010000; }
+    .donation .donation-block .donation-wrap {
+      margin-left: 15px; }
 
 .no-results,
 .not-found {
