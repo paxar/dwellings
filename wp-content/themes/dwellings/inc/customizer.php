@@ -230,7 +230,7 @@ function dwellings_customize_register( $wp_customize ) {
             'panel' => 'contact_us_page'
         )
     );
-    $contact = array("title", "person", "email", "phone", "address",);
+    $contact = array("person", "email", "phone", "address",);
     for ($i=0; $i<count($contact); $i++) {
         $wp_customize->add_setting(
             'contact_'.$contact[$i]
@@ -528,16 +528,6 @@ function dwellings_customize_register( $wp_customize ) {
             'title' => esc_html__('About us settings', 'dwellings'),
             'priority' => 10,
             'panel' => 'about_us_page',
-        )
-    );
-    $wp_customize->add_setting(
-        'title_abut_us'
-    );
-    $wp_customize->add_control(
-        'title_abut_us',
-        array(
-            'label' => esc_html__('Title about us', 'dwellings'),
-            'section' => 'section-about-us'
         )
     );
     $wp_customize->add_setting(
