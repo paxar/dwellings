@@ -92,6 +92,84 @@ function dwellings_customize_register( $wp_customize ) {
             )
         )
     );
+    /*--------------------------------------------------------------
+    # about section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'about-section',
+        array(
+            'title' => esc_html__('About settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'main_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'about-title'
+    );
+    $wp_customize->add_control(
+        'about-title',
+        array(
+            'label' => esc_html__('About title', 'dwellings'),
+            'section' => 'about-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'about_description'
+    );
+    $wp_customize->add_control(
+        'about_description',
+        array(
+            'label' => esc_html__('About description', 'dwellings'),
+            'section' => 'about-section',
+            'type' => 'textarea'
+        )
+    );
+    $wp_customize->add_setting(
+        'about_btn_text'
+    );
+    $wp_customize->add_control(
+        'about_btn_text',
+        array(
+            'label' => esc_html__('About button text', 'dwellings'),
+            'section' => 'about-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'about_btn_url'
+    );
+    $wp_customize->add_control(
+        'about_btn_url',
+        array(
+            'label' => esc_html__('About button URL', 'dwellings'),
+            'section' => 'about-section',
+            'type'     => 'dropdown-pages'
+        )
+    );
+
+    $wp_customize->add_setting(
+        'bg-about'
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'bg-about',
+            array(
+                'label' => esc_html__('Background image', 'dwellings'),
+                'section' => 'about-section'
+            )
+        )
+    );
+    $wp_customize->add_setting(
+        'about_hide'
+    );
+    $wp_customize->add_control(
+        'about_hide',
+        array(
+            'label' => esc_html__('Show section', 'dwellings'),
+            'section' => 'about-section',
+            'type'     => 'checkbox'
+        )
+    );
 
     /*--------------------------------------------------------------
    # Info section
@@ -172,84 +250,7 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
 
-    /*--------------------------------------------------------------
-  # about section
-  --------------------------------------------------------------*/
-    $wp_customize->add_section(
-        'about-section',
-        array(
-            'title' => esc_html__('About settings', 'dwellings'),
-            'priority' => 10,
-            'panel' => 'main_page',
-        )
-    );
-    $wp_customize->add_setting(
-        'about-title'
-    );
-    $wp_customize->add_control(
-        'about-title',
-        array(
-            'label' => esc_html__('About title', 'dwellings'),
-            'section' => 'about-section'
-        )
-    );
-    $wp_customize->add_setting(
-        'about_description'
-    );
-    $wp_customize->add_control(
-        'about_description',
-        array(
-            'label' => esc_html__('About description', 'dwellings'),
-            'section' => 'about-section',
-            'type' => 'textarea'
-        )
-    );
-    $wp_customize->add_setting(
-        'about_btn_text'
-    );
-    $wp_customize->add_control(
-        'about_btn_text',
-        array(
-            'label' => esc_html__('About button text', 'dwellings'),
-            'section' => 'about-section'
-        )
-    );
-    $wp_customize->add_setting(
-        'about_btn_url'
-    );
-    $wp_customize->add_control(
-        'about_btn_url',
-        array(
-            'label' => esc_html__('About button URL', 'dwellings'),
-            'section' => 'about-section',
-            'type'     => 'dropdown-pages'
-        )
-    );
 
-    $wp_customize->add_setting(
-        'bg-about'
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Image_Control(
-            $wp_customize,
-            'bg-about',
-            array(
-                'label' => esc_html__('Background image', 'dwellings'),
-                'section' => 'about-section'
-            )
-        )
-    );
-    $wp_customize->add_setting(
-        'info_hide'
-    );
-    $wp_customize->add_control(
-        'info_hide',
-        array(
-            'label' => esc_html__('Show section', 'dwellings'),
-            'section' => 'about-section',
-            'type'     => 'checkbox'
-        )
-    );
 
     /*--------------------------------------------------------------
     # Example section
@@ -790,6 +791,9 @@ function custom_style() {
         .map-learn-more {
             background: url(<?php echo get_theme_mod('bg-hero-learn')  ?>) center center /cover no-repeat;
         }
+        <?php if( false === get_theme_mod( 'about_hide' ) ) { ?>
+        .about { display: none; }
+        <?php } // end if ?>
         <?php if( false === get_theme_mod( 'info_hide' ) ) { ?>
         .info { display: none; }
         <?php } // end if ?>

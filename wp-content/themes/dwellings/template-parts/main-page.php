@@ -40,16 +40,16 @@ Template Name: Template main page
 
         <div class="container">
             <div class="about-wrapper col-xs-12 col-sm-6 col-lg-6">
-                <?php if (get_theme_mod('info-title') != ''): ?>
+                <?php if (get_theme_mod('about-title') != ''): ?>
                     <h2 class="title-left title-small-decor"><?php echo get_theme_mod('about-title'); ?></h2>
                 <?php endif; ?>
-                <?php if (get_theme_mod('info_description') != ''): ?>
+                <?php if (get_theme_mod('about_description') != ''): ?>
                     <p class="about-description"><?php echo get_theme_mod('about_description'); ?></p>
                 <?php endif; ?>
 
-                <?php if (get_theme_mod('info_btn_text') != ''): ?>
-                    <a href="<?php echo get_permalink(get_theme_mod('info_btn_url')); ?>"
-                       class="more-link"><?php echo get_theme_mod('info_btn_text'); ?></a>
+                <?php if (get_theme_mod('about_btn_text') != ''): ?>
+                    <a href="<?php echo get_permalink(get_theme_mod('about_btn_url')); ?>"
+                       class="more-link"><?php echo get_theme_mod('about_btn_text'); ?></a>
                 <?php endif; ?>
 
             </div>
