@@ -5,7 +5,7 @@
  */
 ?>
 
-<section class="icongroup">
+<section class="icongroup main-icongroup">
     <div class="container">
         <div class="row">
 

@@ -27,7 +27,7 @@ Template Name: Template main page
 
         </div>
     </section>
-    <main id="content" class="site-content">
+    <main id="content" class="">
 
 
 
@@ -53,26 +53,126 @@ Template Name: Template main page
                 <?php endif; ?>
 
             </div>
-
-
         </div>
         <div class="about-image">
 
         </div>
 
 
-
         <!-- TODO add custom fields there       -->
     </section>
 
     <section class="families">
+        <div class="container">
+            <div class="row">
+            <?php if (get_theme_mod('title_families') != ''): ?>
+                <h2 class="title title-decor"><?php echo get_theme_mod('title_families'); ?></h2>
+            <?php endif; ?>
 
-        <!-- TODO add loop there       -->
+            <?php
+            $args = array(
+                'post_type' => 'campaign',
+                'posts_per_page' => 3,
+                'paged' => $paged
+            );
+            $the_query = new WP_Query($args);
+            if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
+                $campaign = charitable_get_current_campaign();
+                ?>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="families-item ">
+                        <div class="img-wrap">
+                            <?php
+                            // image
+                            $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'large');
+                            if (has_post_thumbnail($campaign->ID)) :
+                                echo get_the_post_thumbnail($campaign->ID, $thumbnail_size);
+                            endif;
+                            // end image
+                            ?>
+                        </div>
+                        <div class="families-item-description">
+                            <h3 class="item-title"><?php the_title() ?> Family</h3>
+
+                            <div class="item-info">
+                                <?php echo $campaign->description ?>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            <?php endwhile; ?>
+                <?php wp_reset_postdata(); ?>
+            <?php endif; ?>
+
+
+        </div>
+            <?php if (get_theme_mod('families_btn_text') != ''): ?>
+                <a href="<?php echo get_permalink(get_theme_mod('families_btn_url')); ?>"
+                   class="more-link"><?php echo get_theme_mod('families_btn_text'); ?></a>
+            <?php endif; ?>
+        </div>
+
     </section>
 
-    <section class="testimonials">
+    <section class="testimonials main-testimonials">
+        <div class="container">
+            <?php if (get_theme_mod('title_testimonials') != ''): ?>
+                <h2 class="title title-decor"><?php echo get_theme_mod('title_testimonials'); ?></h2>
+            <?php endif; ?>
+            <ul class="row wrap-quote">
 
-        <!-- TODO add loop there       -->
+                <?php
+                $args = array(
+                    'post_type' => 'section-testimonials',
+                    'posts_per_page' => 2,
+                    'paged' => $paged
+                );
+                $the_query = new WP_Query($args);
+                if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+
+                    <li class="col-xs-12 col-md-6 single-quote">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <div class="avatar-quote">
+                                    <?php
+                                    if (has_post_thumbnail()) {
+                                        the_post_thumbnail();
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="col-xs-10">
+                                <div class="content-quote">
+                                    <?php the_content(); ?>
+                                    <div class="author-quote">
+                                    <span class="name-author">
+                                        <?= get_post_meta($post->ID, 'author_quote', true) ?>
+                                    </span>
+                                        <span class="name-organization">
+                                         - <?= get_post_meta($post->ID, 'name_organization', true) ?>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                <?php endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
+                <?php endif; ?>
+
+            </ul>
+            <?php if (get_theme_mod('about_btn_text') != ''): ?>
+                <a href="<?php echo get_permalink(get_theme_mod('about_btn_url')); ?>"
+                   class="more-link"><?php echo get_theme_mod('about_btn_text'); ?></a>
+            <?php endif; ?>
+        </div>
     </section>
 
     <section class="info">
