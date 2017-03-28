@@ -94,6 +94,85 @@ function dwellings_customize_register( $wp_customize ) {
     );
 
     /*--------------------------------------------------------------
+   # Info section
+   --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'info-section',
+        array(
+            'title' => esc_html__('Info settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'main_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'info-title'
+    );
+    $wp_customize->add_control(
+        'info-title',
+        array(
+            'label' => esc_html__('info title', 'dwellings'),
+            'section' => 'info-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'info_description'
+    );
+    $wp_customize->add_control(
+        'info_description',
+        array(
+            'label' => esc_html__('Info description', 'dwellings'),
+            'section' => 'info-section',
+            'type' => 'textarea'
+        )
+    );
+    $wp_customize->add_setting(
+        'info_btn_text'
+    );
+    $wp_customize->add_control(
+        'info_btn_text',
+        array(
+            'label' => esc_html__('Info button text', 'dwellings'),
+            'section' => 'info-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'info_btn_url'
+    );
+    $wp_customize->add_control(
+        'info_btn_url',
+        array(
+            'label' => esc_html__('Info button URL', 'dwellings'),
+            'section' => 'info-section',
+            'type'     => 'dropdown-pages'
+        )
+    );
+
+    $wp_customize->add_setting(
+        'bg-info'
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'bg-info',
+            array(
+                'label' => esc_html__('Background image', 'dwellings'),
+                'section' => 'info-section'
+            )
+        )
+    );
+    $wp_customize->add_setting(
+        'info_hide'
+    );
+    $wp_customize->add_control(
+        'info_hide',
+        array(
+            'label' => esc_html__('Show section', 'dwellings'),
+            'section' => 'info-section',
+            'type'     => 'checkbox'
+        )
+    );
+
+    /*--------------------------------------------------------------
     # Example section
     --------------------------------------------------------------*/
     $wp_customize->add_section( 'section_test', array(
@@ -616,12 +695,20 @@ function custom_style() {
         .hero {
             background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(<?php echo get_theme_mod('bg-hero') ?>) 50% 0 /cover no-repeat;
         }
+        .info {
+            background: url(<?php echo get_theme_mod('bg-info') ?>)center /cover no-repeat;
+
+
+        }
         .site-footer {
             background-color: <?php echo get_theme_mod('bg-footer') ?>;
         }
         .map-learn-more {
             background: url(<?php echo get_theme_mod('bg-hero-learn')  ?>) center center /cover no-repeat;
         }
+        <?php if( false === get_theme_mod( 'info_hide' ) ) { ?>
+        .info { display: none; }
+        <?php } // end if ?>
         <?php if( false === get_theme_mod( 'learn-more-hero-show' ) ) { ?>
         .map-learn-more { display: none; }
         <?php } // end if ?>

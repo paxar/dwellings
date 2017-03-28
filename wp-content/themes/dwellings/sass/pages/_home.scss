@@ -1,0 +1,17 @@
+.info{
+  border: 1px dotted darkgray;
+
+  .info-wrapper{
+    padding: 100px 0;
+  }
+  .info-title{
+    font: 900 60px/65px $lato;
+    color: #000000;
+  }
+  .info-description{
+    margin: 40px 0;
+    font: 600 18px/27px $lato;
+    color: #000000;
+  }
+  .btn{}
+}

@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = array(
     "post_type" => 'campaign',      // custom post type
-    'posts_per_page' => 1,         // 7 posts in mockup
+    'posts_per_page' => 7,         // 7 posts in mockup
     'paged' => $paged
 );
 $wp_query = new WP_Query($args);
