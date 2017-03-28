@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <div class="about-content">
 
-                    <h2 class="title title-decor"><h2 class="intro"><?php echo wp_get_document_title(); ?></h2></h2>
+                    <h2 class="intro"><?php echo wp_get_document_title(); ?></h2>
 
                     <div class="about-content">
                         <p><?php echo get_theme_mod('description_abut_us') ?></p>
