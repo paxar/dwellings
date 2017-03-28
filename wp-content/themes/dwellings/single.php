@@ -23,15 +23,15 @@ get_header(); ?>
 				while ( have_posts() ) : the_post();
 
 					get_template_part( 'template-parts/content-single', get_post_format() );
+					if ( comments_open() || get_comments_number() ) :
+						comments_template();
+					endif;
 
 				endwhile; // End of the loop.
 				?>
 
-<?php
 
-if (comments_open()) : ?>
-	<div id="disqus_thread"></div>
-<?php endif; // comments_open ?>
+
 			</section>
 		</div><!-- #primary -->
 	</main><!-- #main -->
