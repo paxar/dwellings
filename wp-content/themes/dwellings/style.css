@@ -17,7 +17,7 @@ Version: 1.0.0
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
 .site-content {
   background: #fbf7f4;
-  padding: 155px 0 60px; }
+  padding: 155px 0 0; }
 
 body.logged-in .header-page {
   margin-top: 46px; }
@@ -850,17 +850,17 @@ em {
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
-.info {
-  border: 1px dotted darkgray; }
-  .info .info-wrapper {
-    padding: 100px 0; }
-  .info .info-title {
-    font: 900 60px/65px "Lato", sans-serif;
-    color: #000000; }
-  .info .info-description {
-    margin: 40px 0;
-    font: 600 18px/27px "Lato", sans-serif;
-    color: #000000; }
+.info .info-wrapper {
+  padding: 150px 0; }
+
+.info .info-title {
+  font: 900 60px/65px "Lato", sans-serif;
+  color: #000000; }
+
+.info .info-description {
+  margin: 40px 0;
+  font: 600 18px/27px "Lato", sans-serif;
+  color: #000000; }
 
 .blog-page-main {
   padding-top: 105px; }

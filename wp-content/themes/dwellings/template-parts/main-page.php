@@ -21,7 +21,7 @@ Template Name: Template main page
             <?php endif; ?>
 
             <?php if (get_theme_mod('btn_text') != ''): ?>
-                <a href="<?php echo get_permalink(get_theme_mod('btn_url')) ; ?>"
+                <a href="<?php echo get_permalink(get_theme_mod('btn_url')); ?>"
                    class="btn"><?php echo get_theme_mod('btn_text'); ?></a>
             <?php endif; ?>
 
@@ -55,6 +55,7 @@ Template Name: Template main page
 
         <div class="container">
 
+
             <div class="info-wrapper col-xs-12 col-md-5 col-lg-4">
                 <?php if (get_theme_mod('hero-intro') != ''): ?>
                     <h2 class="info-title"><?php echo get_theme_mod('info-title'); ?></h2>
@@ -64,11 +65,12 @@ Template Name: Template main page
                 <?php endif; ?>
 
                 <?php if (get_theme_mod('info_btn_text') != ''): ?>
-                    <a href="<?php echo get_permalink(get_theme_mod('info_btn_url')) ; ?>"
+                    <a href="<?php echo get_permalink(get_theme_mod('info_btn_url')); ?>"
                        class="btn"><?php echo get_theme_mod('info_btn_text'); ?></a>
                 <?php endif; ?>
 
             </div>
+
         </div>
 
         <!-- TODO add custom fields there       -->
