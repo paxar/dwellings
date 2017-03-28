@@ -148,6 +148,17 @@
   font: 14px/23px $lato;
   text-transform: uppercase;
   color: #fed52f;
+  &:after {
+    margin-left: 5px;
+    content: "\e900";
+    width: 20px;
+    height: 14px;
+    font: 14px/14px "Icomoon", sans-serif;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 
   &:hover {
     color: #fed52f;
