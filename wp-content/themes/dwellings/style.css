@@ -17,7 +17,7 @@ Version: 1.0.0
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
 .site-content {
   background: #fbf7f4;
-  padding: 155px 0 60px; }
+  padding: 155px 0 0; }
 
 body.logged-in .header-page {
   margin-top: 46px; }
@@ -175,15 +175,13 @@ em {
   padding: 17px 35px;
   height: 55px;
   text-align: center;
-  border: 0;
   background-color: #fed52f;
   border-radius: 5px;
-  font: 400 16px "Lato", sans-serif;
+  border: 2px solid #fed52f;
+  font: 600 16px/18px "Lato", sans-serif;
   transition: 0.3s all ease-out;
   text-transform: uppercase;
   color: #000; }
-  .btn:focus, .gform_wrapper .gform_footer .gform_button:focus, .site-footer .subscribe input[type="submit"]:focus {
-    outline: none; }
   .btn:hover, .gform_wrapper .gform_footer .gform_button:hover, .site-footer .subscribe input[type="submit"]:hover {
     background: #fff; }
 
@@ -852,6 +850,18 @@ em {
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
+.info .info-wrapper {
+  padding: 150px 0; }
+
+.info .info-title {
+  font: 900 60px/65px "Lato", sans-serif;
+  color: #000000; }
+
+.info .info-description {
+  margin: 40px 0;
+  font: 600 18px/27px "Lato", sans-serif;
+  color: #000000; }
+
 .blog-page-main {
   padding-top: 105px; }
 
