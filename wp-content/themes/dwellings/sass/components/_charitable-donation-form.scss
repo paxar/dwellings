@@ -1,0 +1,59 @@
+#charitable-donation-form-modal,
+#charitable-donation-form{
+  .charitable-form-header{
+    font: 400 24px/26px $lato;
+    color: $brand-color;
+  }
+  label{
+    font: 400 16px/18px $lato;
+  }
+  input[type="text"],
+  input[type="email"]{
+    padding: 5px;
+    font: 400 16px/18px $lato;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    outline: none;
+  }
+  input.custom-donation-input{
+    font: 600 20px/22px $lato;
+    max-width: 300px;
+  }
+  select{
+    padding: 3px 5px;
+    font: 400 16px/18px $lato;
+    border-radius: 4px;
+    border: 1px solid #e5e5e5;
+    outline: none;
+  }
+  li{
+    font: 400 16px/18px $lato;
+  }
+  .button{
+    display: inline-block;
+    padding: 15px 50px;
+    font: 400 18px/23px $lato;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 2px solid $brand-color;
+    background-color: $brand-color;
+    color: #fff;
+    transition: 0.5s all ease-out;
+    &:hover{
+      background-color: #ffffff;
+      color: #000;
+      text-decoration: none;
+    }
+
+  }
+}
+.campaign{
+ h1{
+   padding: 0 30px;
+   font: 600 28px/30px $lato;
+
+
+ }
+}
