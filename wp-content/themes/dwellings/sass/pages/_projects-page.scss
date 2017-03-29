@@ -1,10 +1,11 @@
-.projects-page{}
+.projects-page {
+}
 
-.projects-wrap{
+.projects-wrap {
   overflow: hidden;
 }
 
-.projects-item{
+.projects-item {
   margin: 20px 0; //temp
   padding: 0;
   border-radius: 6px;
@@ -12,14 +13,13 @@
   background-color: white;
 }
 
-
-.projects-item-image-wrap{
+.projects-item-image-wrap {
   overflow: hidden;
   height: 250px;
   //height: inherit;
   border-radius: inherit;
   padding: 0;
-  img{
+  img {
     height: inherit;
     width: auto;
     border-radius: inherit;
@@ -27,19 +27,18 @@
   }
 }
 
-.projects-item-description{
-  //padding: 15px 10px;
-  .item-title{
+.projects-item-description {
+  .item-title {
     margin-top: 30px;
     font: 900 24px/24px $lato;
     color: #000;
   }
-  .item-info{
+  .item-info {
     margin-top: 10px;
     font: 400 16px/24px $lato;
     color: #000;
   }
-  .item-read-more{
+  .item-read-more {
     display: block;
     margin-top: 10px;
     font: 400 18px/23px $lato;
@@ -49,45 +48,51 @@
 
 }
 
-.projects-item-donate-info{
+.projects-item-donate-info {
   position: relative;
-  &:before{
-    content: '';
-    position: absolute;
-    left: 2px;
-    top: 30px;
 
-    display: block;
-
-    width: 1px;
-    height: 80%;
-    background-color: #e5e5e5;
-
-  }
   padding: 0 25px;
-  .bar-wrapper{
+  .bar-wrapper {
     margin-top: 50px;
     //position: relative;
   }
-  .projects-donate-button{
-    margin-top: 30px;
+  .projects-donate-button {
+    margin: 30px 0;
   }
 }
-.donate-info-wrap{
+
+.donate-info-wrap {
   overflow: hidden;
-  .donate-text{
+  .donate-text {
     display: block;
     font: 400 16px/23px $lato;
     color: #000;
   }
-  .amount{
+  .amount {
     float: left;
     font: 700 24px/26px $lato;
     color: #000;
   }
-  .goal{
+  .goal {
     float: right;
     font: 900 24px/26px $lato;
     color: #000;
+  }
+}
+
+@media (min-width: 992px) {
+  .projects-item-donate-info {
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 30px;
+      display: block;
+      width: 1px;
+      height: 80%;
+      background-color: #e5e5e5;
+
+    }
   }
 }

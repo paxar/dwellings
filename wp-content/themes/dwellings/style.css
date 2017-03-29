@@ -1402,19 +1402,10 @@ em {
 .projects-item-donate-info {
   position: relative;
   padding: 0 25px; }
-  .projects-item-donate-info:before {
-    content: '';
-    position: absolute;
-    left: 2px;
-    top: 30px;
-    display: block;
-    width: 1px;
-    height: 80%;
-    background-color: #e5e5e5; }
   .projects-item-donate-info .bar-wrapper {
     margin-top: 50px; }
   .projects-item-donate-info .projects-donate-button {
-    margin-top: 30px; }
+    margin: 30px 0; }
 
 .donate-info-wrap {
   overflow: hidden; }
@@ -1430,6 +1421,17 @@ em {
     float: right;
     font: 900 24px/26px "Lato", sans-serif;
     color: #000; }
+
+@media (min-width: 992px) {
+  .projects-item-donate-info:before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 30px;
+    display: block;
+    width: 1px;
+    height: 80%;
+    background-color: #e5e5e5; } }
 
 /*Styles for
 single-campaign.php
