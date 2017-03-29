@@ -111,7 +111,14 @@ Template Name: Template main page
             <?php endif; ?>
 
 
+
+
         </div>
+
+            <div class="families-map">
+                <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
+            </div>
+
             <?php if (get_theme_mod('families_btn_text') != ''): ?>
                 <a href="<?php echo get_permalink(get_theme_mod('families_btn_url')); ?>"
                    class="more-link"><?php echo get_theme_mod('families_btn_text'); ?></a>

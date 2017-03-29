@@ -224,7 +224,17 @@ function dwellings_customize_register( $wp_customize ) {
             'type'     => 'dropdown-pages'
         )
     );
-
+    $wp_customize->add_setting(
+        'families_map_hide'
+    );
+    $wp_customize->add_control(
+        'families_map_hide',
+        array(
+            'label' => esc_html__('Show map', 'dwellings'),
+            'section' => 'families-section',
+            'type'     => 'checkbox'
+        )
+    );
 
     $wp_customize->add_setting(
         'families_hide'
@@ -935,11 +945,15 @@ function custom_style() {
         .map-learn-more {
             background: url(<?php echo get_theme_mod('bg-hero-learn')  ?>) center center /cover no-repeat;
         }
+
         <?php if( false === get_theme_mod( 'testimonials_hide' ) ) { ?>
         .main-testimonials { display: none; }
         <?php } // end if ?>
         <?php if( false === get_theme_mod( 'families_hide' ) ) { ?>
         .families { display: none; }
+        <?php } // end if ?>
+        <?php if( false === get_theme_mod( 'families_map_hide' ) ) { ?>
+        .families-map { display: none; }
         <?php } // end if ?>
         <?php if( false === get_theme_mod( 'about_hide' ) ) { ?>
         .about { display: none; }
