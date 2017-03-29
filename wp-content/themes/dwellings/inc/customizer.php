@@ -238,6 +238,72 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
     /*--------------------------------------------------------------
+   # Testimonials section
+   --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'testimonials-section',
+        array(
+            'title' => esc_html__('Testimonials settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'main_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'testimonials-title'
+    );
+    $wp_customize->add_control(
+        'testimonials-title',
+        array(
+            'label' => esc_html__('Testimonials title', 'dwellings'),
+            'section' => 'testimonials-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'testimonials-posts'
+    );
+    $wp_customize->add_control(
+        'testimonials-posts',
+        array(
+            'label' => esc_html__('Testimonials post count', 'dwellings'),
+            'section' => 'testimonials-section'
+        )
+    );
+
+    $wp_customize->add_setting(
+        'testimonials_btn_text'
+    );
+    $wp_customize->add_control(
+        'testimonials_btn_text',
+        array(
+            'label' => esc_html__('Testimonials button text', 'dwellings'),
+            'section' => 'testimonials-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'testimonials_btn_url'
+    );
+    $wp_customize->add_control(
+        'testimonials_btn_url',
+        array(
+            'label' => esc_html__('Testimonials button URL', 'dwellings'),
+            'section' => 'testimonials-section',
+            'type'     => 'dropdown-pages'
+        )
+    );
+
+
+    $wp_customize->add_setting(
+        'testimonials_hide'
+    );
+    $wp_customize->add_control(
+        'testimonials_hide',
+        array(
+            'label' => esc_html__('Show section', 'dwellings'),
+            'section' => 'testimonials-section',
+            'type'     => 'checkbox'
+        )
+    );
+    /*--------------------------------------------------------------
    # Info section
    --------------------------------------------------------------*/
     $wp_customize->add_section(
@@ -869,6 +935,9 @@ function custom_style() {
         .map-learn-more {
             background: url(<?php echo get_theme_mod('bg-hero-learn')  ?>) center center /cover no-repeat;
         }
+        <?php if( false === get_theme_mod( 'testimonials_hide' ) ) { ?>
+        .main-testimonials { display: none; }
+        <?php } // end if ?>
         <?php if( false === get_theme_mod( 'families_hide' ) ) { ?>
         .families { display: none; }
         <?php } // end if ?>

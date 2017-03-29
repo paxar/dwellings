@@ -59,7 +59,7 @@ Template Name: Template main page
         </div>
 
 
-        <!-- TODO add custom fields there       -->
+
     </section>
 
     <section class="families">
@@ -122,15 +122,15 @@ Template Name: Template main page
 
     <section class="testimonials main-testimonials">
         <div class="container">
-            <?php if (get_theme_mod('title_testimonials') != ''): ?>
-                <h2 class="title title-decor"><?php echo get_theme_mod('title_testimonials'); ?></h2>
+            <?php if (get_theme_mod('testimonials-title') != ''): ?>
+                <h2 class="title title-decor"><?php echo get_theme_mod('testimonials-title'); ?></h2>
             <?php endif; ?>
             <ul class="row wrap-quote">
 
                 <?php
                 $args = array(
                     'post_type' => 'section-testimonials',
-                    'posts_per_page' => 2,
+                    'posts_per_page' => get_theme_mod('testimonials-posts'),
                     'paged' => $paged
                 );
                 $the_query = new WP_Query($args);
@@ -168,9 +168,9 @@ Template Name: Template main page
                 <?php endif; ?>
 
             </ul>
-            <?php if (get_theme_mod('about_btn_text') != ''): ?>
-                <a href="<?php echo get_permalink(get_theme_mod('about_btn_url')); ?>"
-                   class="more-link"><?php echo get_theme_mod('about_btn_text'); ?></a>
+            <?php if (get_theme_mod('testimonials_btn_text') != ''): ?>
+                <a href="<?php echo get_permalink(get_theme_mod('testimonials_btn_url')); ?>"
+                   class="more-link"><?php echo get_theme_mod('testimonials_btn_text'); ?></a>
             <?php endif; ?>
         </div>
     </section>
