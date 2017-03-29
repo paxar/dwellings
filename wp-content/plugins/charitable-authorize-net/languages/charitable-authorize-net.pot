@@ -1,0 +1,263 @@
+# Copyright (C) 2017 WP Charitable
+# This file is distributed under the same license as the Charitable - Authorize.Net package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Charitable - Authorize.Net 1.1.3\n"
+"Report-Msgid-Bugs-To: https://www.wpcharitable.com/\n"
+"POT-Creation-Date: 2017-03-29 06:47:30+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: WP-Translations (http://wp-translations.org/)\n"
+"Language-Team: WP-Translations <wpt@wp-translations.org>\n"
+"X-Generator: grunt-wp-i18n 0.4.9\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: includes/admin/class-charitable-authorize-net-admin.php:68
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-charitable-authorize-net-admin.php:78
+msgid "Activate Authorize.Net"
+msgstr ""
+
+#: includes/admin/class-charitable-extension-activation.php:45
+msgid "This plugin"
+msgstr ""
+
+#: includes/admin/class-charitable-extension-activation.php:81
+msgid "activate it"
+msgstr ""
+
+#: includes/admin/class-charitable-extension-activation.php:84
+msgid "install it"
+msgstr ""
+
+#: includes/admin/views/settings/sync-tool.php:20
+#: includes/gateway/class-charitable-gateway-authorize-net.php:141
+msgid "Sync Settings with Authorize.Net Account"
+msgstr ""
+
+#: includes/admin/views/settings/sync-tool.php:25
+msgid ""
+"You can choose which form fields are required for payments in your "
+"Authorize.Net account under Account > Payment Form > Form Fields. If you "
+"have used this option, the Sync tool will  your Charitable donation form "
+"with your Authorize.Net settings."
+msgstr ""
+
+#: includes/admin/views/settings/sync-tool.php:30
+msgid "Sync Settings"
+msgstr ""
+
+#: includes/class-charitable-authorize-net.php:328
+msgid "Syncing"
+msgstr ""
+
+#: includes/class-charitable-authorize-net.php:329
+msgid "Last synced: Just now"
+msgstr ""
+
+#: includes/class-charitable-authorize-net.php:424
+#: includes/class-charitable-authorize-net.php:435
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:41
+#: includes/gateway/class-charitable-gateway-authorize-net.php:44
+msgid "Authorize.Net"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:98
+msgid "API Login ID"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:101
+msgid ""
+"You can find your API Login ID in your Authorize.Net account by going to "
+"Account > API Credentials & Keys."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:106
+msgid "Transaction Key"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:109
+msgid ""
+"If you do not remember your current Transaction Key, you can set a new one "
+"in your Authorize.Net account by going to Account > API Credentials & Keys."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:114
+msgid "Public Client Key"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:117
+msgid ""
+"You can set your Public Client Key by going to Account > Manage Public "
+"Client Key and clicking on Create New Public Client Key. It is recommended, "
+"as it helps provide an extra layer of security for your credit card "
+"transactions."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:123
+msgid "Last synced: %s ago"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:125
+msgid "Last synced: Never"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:137
+msgid "Sync Required Fields"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:139
+msgid ""
+"You can choose which form fields are required for payments in your "
+"Authorize.Net account under Account > Payment Form > Form Fields. Use this "
+"tool to sync your Charitable donation form with your Authorize.Net settings."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:163
+msgid "Card Number"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:170
+msgid "CVV Number"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:177
+msgid "Expiration"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:406
+msgid ""
+"Missing keys for Authorize.Net payment gateway. Unable to proceed with "
+"payment."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:414
+#: includes/gateway/class-charitable-gateway-authorize-net.php:688
+msgid "Missing credit card details. Unable to proceed with payment."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:490
+msgid "<strong>ERROR:</strong> %s %s"
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:502
+msgid "We were unable to verify your payment. Please try again."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:516
+msgid "There was an error charging your credit card. Please try again."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:527
+msgid "The Authorize.Net transaction is complete. Transaction ID: %s."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:539
+msgid "The Authorize.Net transaction was declined. Transaction ID: %s."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:543
+msgid ""
+"Your credit card details were declined by our payment processor. Please "
+"double-check they are correct and try again."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:552
+msgid "The Authorize.Net transaction failed with an error. Transaction ID: %s."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:556
+msgid "Your credit card payment failed. Please try again."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:565
+msgid "The Authorize.Net transaction is held for review. Transaction ID: %s."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:631
+msgid ""
+"Unable to test Authorize.Net gateway response. NULL response or mismatched "
+"reference ID."
+msgstr ""
+
+#: includes/gateway/class-charitable-gateway-authorize-net.php:637
+msgid "Unable to test Authorize.Net gateway response. NULL transaction response."
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:62
+msgid "MD5 Hash"
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:65
+msgid ""
+"<strong>Recommended for recurring donations.</strong> You can set your MD5 "
+"Hash in your Authorize.Net account by going to Account > MD5-Hash. The hash "
+"can be any value you choose, as long as it's the same in your Authorize.Net "
+"as it is here."
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:95
+msgid "Subscription #%d"
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:157
+msgid "The Authorize.Net transaction is complete. Subscription ID: %s."
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:168
+msgid "Authorize.Net subscription ID: %s."
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:282
+msgid "Recurring Donation IPN: Security check failed"
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:289
+msgid "Recurring Donation IPN: Missing subscription ID"
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:299
+msgid "Recurring Donation IPN: Missing subscription"
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:307
+msgid "Recurring Donation IPN: Donation completed"
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:315
+msgid "Payment failed. Reason provided by gateway: %s"
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:319
+msgid "Recurring payment was declined."
+msgstr ""
+
+#: includes/recurring/class-charitable-authorize-net-recurring.php:321
+msgid "Recurring Donation IPN: Donation failed"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Accept donations with Authorize.Net."
+msgstr ""
+
+#: includes/admin/class-charitable-extension-activation.php:87
+msgctxt "Plugin requires Charitable! Please install/activate it to continue!"
+msgid "%s requires Charitable! Please %s to continue!"
+msgstr ""
