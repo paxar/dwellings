@@ -172,6 +172,72 @@ function dwellings_customize_register( $wp_customize ) {
     );
 
     /*--------------------------------------------------------------
+    # Families section
+    --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'families-section',
+        array(
+            'title' => esc_html__('Families settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'main_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'families-title'
+    );
+    $wp_customize->add_control(
+        'families-title',
+        array(
+            'label' => esc_html__('Families title', 'dwellings'),
+            'section' => 'families-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'families-posts'
+    );
+    $wp_customize->add_control(
+        'families-posts',
+        array(
+            'label' => esc_html__('Families post count', 'dwellings'),
+            'section' => 'families-section'
+        )
+    );
+
+    $wp_customize->add_setting(
+        'families_btn_text'
+    );
+    $wp_customize->add_control(
+        'families_btn_text',
+        array(
+            'label' => esc_html__('Families button text', 'dwellings'),
+            'section' => 'families-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'families_btn_url'
+    );
+    $wp_customize->add_control(
+        'families_btn_url',
+        array(
+            'label' => esc_html__('Families button URL', 'dwellings'),
+            'section' => 'families-section',
+            'type'     => 'dropdown-pages'
+        )
+    );
+
+
+    $wp_customize->add_setting(
+        'families_hide'
+    );
+    $wp_customize->add_control(
+        'families_hide',
+        array(
+            'label' => esc_html__('Show section', 'dwellings'),
+            'section' => 'families-section',
+            'type'     => 'checkbox'
+        )
+    );
+    /*--------------------------------------------------------------
    # Info section
    --------------------------------------------------------------*/
     $wp_customize->add_section(
@@ -803,6 +869,9 @@ function custom_style() {
         .map-learn-more {
             background: url(<?php echo get_theme_mod('bg-hero-learn')  ?>) center center /cover no-repeat;
         }
+        <?php if( false === get_theme_mod( 'families_hide' ) ) { ?>
+        .families { display: none; }
+        <?php } // end if ?>
         <?php if( false === get_theme_mod( 'about_hide' ) ) { ?>
         .about { display: none; }
         <?php } // end if ?>

@@ -65,14 +65,14 @@ Template Name: Template main page
     <section class="families">
         <div class="container">
             <div class="row">
-            <?php if (get_theme_mod('title_families') != ''): ?>
-                <h2 class="title title-decor"><?php echo get_theme_mod('title_families'); ?></h2>
+            <?php if (get_theme_mod('families-title') != ''): ?>
+                <h2 class="title title-decor"><?php echo get_theme_mod('families-title'); ?></h2>
             <?php endif; ?>
 
             <?php
             $args = array(
                 'post_type' => 'campaign',
-                'posts_per_page' => 3,
+                'posts_per_page' => get_theme_mod('families-posts'),
                 'paged' => $paged
             );
             $the_query = new WP_Query($args);
