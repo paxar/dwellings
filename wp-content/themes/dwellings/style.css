@@ -234,6 +234,21 @@ em {
     color: #000;
     text-decoration: none; }
 
+.hover-button {
+  display: inline-block;
+  padding: 8px 25px;
+  border-radius: 4px;
+  background-color: #fff;
+  font: 600 16px/23px "Lato", sans-serif;
+  color: #fed52f;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.5s all ease-out; }
+  .hover-button:hover {
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #000000; }
+
 .dwelling-pagination {
   padding: 25px 0; }
   .dwelling-pagination ul {
@@ -531,18 +546,22 @@ em {
       color: #000000; }
 
 #charitable-donation-form-modal .charitable-form-header,
-#charitable-donation-form .charitable-form-header {
+#charitable-donation-form .charitable-form-header,
+#charitable-campaign-submission-form .charitable-form-header {
   font: 400 24px/26px "Lato", sans-serif;
   color: #fed52f; }
 
 #charitable-donation-form-modal label,
-#charitable-donation-form label {
+#charitable-donation-form label,
+#charitable-campaign-submission-form label {
   font: 400 16px/18px "Lato", sans-serif; }
 
 #charitable-donation-form-modal input[type="text"],
 #charitable-donation-form-modal input[type="email"],
 #charitable-donation-form input[type="text"],
-#charitable-donation-form input[type="email"] {
+#charitable-donation-form input[type="email"],
+#charitable-campaign-submission-form input[type="text"],
+#charitable-campaign-submission-form input[type="email"] {
   padding: 5px;
   font: 400 16px/18px "Lato", sans-serif;
   border-radius: 4px;
@@ -550,12 +569,14 @@ em {
   outline: none; }
 
 #charitable-donation-form-modal input.custom-donation-input,
-#charitable-donation-form input.custom-donation-input {
+#charitable-donation-form input.custom-donation-input,
+#charitable-campaign-submission-form input.custom-donation-input {
   font: 600 20px/22px "Lato", sans-serif;
   max-width: 300px; }
 
 #charitable-donation-form-modal select,
-#charitable-donation-form select {
+#charitable-donation-form select,
+#charitable-campaign-submission-form select {
   padding: 3px 5px;
   font: 400 16px/18px "Lato", sans-serif;
   border-radius: 4px;
@@ -563,11 +584,23 @@ em {
   outline: none; }
 
 #charitable-donation-form-modal li,
-#charitable-donation-form li {
+#charitable-donation-form li,
+#charitable-campaign-submission-form li {
   font: 400 16px/18px "Lato", sans-serif; }
 
+#charitable-donation-form-modal p,
+#charitable-donation-form p,
+#charitable-campaign-submission-form p {
+  font: 400 16px/18px "Lato", sans-serif; }
+
+#charitable-donation-form-modal fieldset,
+#charitable-donation-form fieldset,
+#charitable-campaign-submission-form fieldset {
+  background-color: #ffffff; }
+
 #charitable-donation-form-modal .button,
-#charitable-donation-form .button {
+#charitable-donation-form .button,
+#charitable-campaign-submission-form .button {
   display: inline-block;
   padding: 15px 50px;
   font: 400 18px/23px "Lato", sans-serif;
@@ -580,10 +613,58 @@ em {
   color: #fff;
   transition: 0.5s all ease-out; }
   #charitable-donation-form-modal .button:hover,
-  #charitable-donation-form .button:hover {
+  #charitable-donation-form .button:hover,
+  #charitable-campaign-submission-form .button:hover {
     background-color: #ffffff;
     color: #000;
     text-decoration: none; }
+
+#charitable-donation-form-modal .button.remove-image,
+#charitable-donation-form .button.remove-image,
+#charitable-campaign-submission-form .button.remove-image {
+  display: inline-block;
+  padding: 3px;
+  font: 400 10px/12px "Lato", sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 2px solid #fed52f;
+  background-color: #fed52f;
+  color: #fff;
+  transition: 0.5s all ease-out; }
+  #charitable-donation-form-modal .button.remove-image:hover,
+  #charitable-donation-form .button.remove-image:hover,
+  #charitable-campaign-submission-form .button.remove-image:hover {
+    background-color: #ffffff;
+    color: #000;
+    text-decoration: none; }
+
+#charitable-donation-form-modal .button.insert-media,
+#charitable-donation-form .button.insert-media,
+#charitable-campaign-submission-form .button.insert-media {
+  display: inline-block;
+  padding: 3px 20px;
+  font: 400 16px/18px "Lato", sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 2px solid #fed52f;
+  background-color: #fed52f;
+  color: #fff;
+  transition: 0.5s all ease-out; }
+  #charitable-donation-form-modal .button.insert-media:hover,
+  #charitable-donation-form .button.insert-media:hover,
+  #charitable-campaign-submission-form .button.insert-media:hover {
+    background-color: #ffffff;
+    color: #000;
+    text-decoration: none; }
+
+#charitable-donation-form-modal .add-row,
+#charitable-donation-form .add-row,
+#charitable-campaign-submission-form .add-row {
+  font: 400 16px/18px "Lato", sans-serif; }
 
 .campaign h1 {
   padding: 0 30px;
@@ -981,7 +1062,7 @@ em {
   .about .about-wrapper {
     z-index: 10; }
   .about .about-description {
-    font: 400 16px/27px "Lato", sans-serif;
+    font: 600 16px/27px "Lato", sans-serif;
     color: #010000; }
   .about .about-image {
     position: absolute;
@@ -997,7 +1078,9 @@ em {
 
 @media (min-width: 768px) {
   .about .about-image {
-    width: 50%; } }
+    width: 50%; }
+  .about .about-description {
+    font: 400 16px/27px "Lato", sans-serif; } }
 
 .main-testimonials {
   padding: 100px 0;
@@ -1027,10 +1110,34 @@ em {
     position: relative;
     overflow: hidden;
     height: 220px; }
+    .families-item .img-wrap:hover .hover {
+      opacity: 0.90; }
     .families-item .img-wrap img {
       position: absolute;
       width: 100%;
       height: auto; }
+    @media (min-width: 768px) {
+      .families-item .img-wrap img {
+        width: auto;
+        height: 100%; } }
+    @media (min-width: 990px) {
+      .families-item .img-wrap img {
+        width: 100%;
+        height: auto; } }
+    .families-item .img-wrap .hover {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fed52f;
+      opacity: 0;
+      transition: 0.5s all ease-out; }
+    .families-item .img-wrap .hover-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
   .families-item .families-item-description {
     padding: 15px; }
     .families-item .families-item-description .item-title {
@@ -1457,18 +1564,27 @@ content-campaign.php
 */
 .project-post-header {
   overflow: hidden;
-  padding: 0 20px 60px;
+  padding: 0 20px 0px;
   border-radius: 6px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff; }
+  .project-post-header .projects-item-donate-info {
+    padding: 0; }
+  @media (min-width: 768px) {
+    .project-post-header .projects-item-donate-info {
+      padding: 0 25px; } }
   .project-post-header .item-title {
     padding: 20px 0 27px;
-    font: 600 40px/45px "Lato", sans-serif;
+    font: 600 25px/30px "Lato", sans-serif;
     color: #000000; }
+  @media (min-width: 768px) {
+    .project-post-header .item-title {
+      font: 600 40px/45px "Lato", sans-serif; } }
   .project-post-header .post-video {
     position: relative;
     overflow: hidden;
-    padding-bottom: 33.25%;
+    margin-bottom: 20px;
+    padding-bottom: 60%;
     /* 16:9 */
     padding-top: 25px;
     height: 0; }
@@ -1484,6 +1600,10 @@ content-campaign.php
       left: 50%;
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
+  @media (min-width: 768px) {
+    .project-post-header .post-video {
+      padding-bottom: 33.25%;
+      /* 16:9 */ } }
   .project-post-header .creator-info {
     overflow: hidden; }
     .project-post-header .creator-info .creator-avatar {
@@ -1502,16 +1622,24 @@ content-campaign.php
   .project-post-header .bar-wrapper {
     margin-top: 65px; }
   .project-post-header .donate-info-wrap {
-    margin-top: 20px; }
+    margin-top: 20px;
+    margin-bottom: 20px; }
     .project-post-header .donate-info-wrap .donate-text {
-      font: 400 18px/23px "Lato", sans-serif; }
+      font: 400 16px/20px "Lato", sans-serif; }
     .project-post-header .donate-info-wrap .amount-count {
-      font: 700 40px/42px "Lato", sans-serif; }
+      font: 700 25px/27px "Lato", sans-serif; }
     .project-post-header .donate-info-wrap .goalcount {
-      font: 900 40px/42px "Lato", sans-serif; }
+      font: 900 25px/27px "Lato", sans-serif; }
+    @media (min-width: 500px) {
+      .project-post-header .donate-info-wrap .donate-text {
+        font: 400 18px/23px "Lato", sans-serif; }
+      .project-post-header .donate-info-wrap .amount-count {
+        font: 700 40px/42px "Lato", sans-serif; }
+      .project-post-header .donate-info-wrap .goalcount {
+        font: 900 40px/42px "Lato", sans-serif; } }
   .project-post-header .project-social-icons {
     float: left;
-    margin-top: 70px; }
+    margin-top: 10px; }
     .project-post-header .project-social-icons span {
       font: 400 18px/23px "Lato", sans-serif; }
     .project-post-header .project-social-icons ul {
@@ -1548,7 +1676,15 @@ content-campaign.php
       background-color: #000000; }
   .project-post-header .projects-donate-button {
     float: right;
-    margin-top: 100px; }
+    margin-top: 43px; }
+  @media (min-width: 768px) {
+    .project-post-header .projects-donate-button {
+      float: left;
+      margin-top: 20px; } }
+  @media (min-width: 1200px) {
+    .project-post-header .projects-donate-button {
+      float: right;
+      margin-top: 40px; } }
 
 .project-post-tabs {
   margin-top: 30px;
@@ -1568,21 +1704,27 @@ content-campaign.php
     margin: 1em;
     font: 400 18px/23px "Lato", sans-serif; }
 
-.project-involved-wrap {
+.project-involved-wrap,
+.project-start-wrap {
   padding: 0; }
 
-.project-involved {
+.project-involved,
+.project-start {
   margin-top: 30px;
   margin-left: 20px;
   padding: 20px;
   border-radius: 6px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff; }
-  .project-involved .involved-text {
+  .project-involved .involved-text,
+  .project-involved .start-text,
+  .project-start .involved-text,
+  .project-start .start-text {
     padding-right: 70px;
     font: 600 24px/32px "Lato", sans-serif;
     color: #000000; }
-  .project-involved .projects-donate-button {
+  .project-involved .projects-donate-button,
+  .project-start .projects-donate-button {
     margin: 10px 0;
     padding: 15px 30px; }
 

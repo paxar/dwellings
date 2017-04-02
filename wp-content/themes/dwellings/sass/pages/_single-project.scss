@@ -3,100 +3,134 @@ single-campaign.php
 content-campaign.php
 */
 
-.projects-post{}
+.projects-post {
+}
 
-.project-post-header{
+.project-post-header {
   overflow: hidden;
-  padding: 0 20px 60px;
+  padding: 0 20px 0px;
   border-radius: 6px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff;
 
-  .item-title{
+  .projects-item-donate-info {
+    padding: 0;
+  }
+  @media (min-width: 768px) {
+    .projects-item-donate-info {
+      padding: 0 25px;
+    }
+  }
+
+  .item-title {
     padding: 20px 0 27px;
-    font: 600 40px/45px $lato;
+    font: 600 25px/30px $lato;
     color: #000000;
   }
-  .post-video{
+  @media (min-width: 768px) {
+    .item-title {
+      font: 600 40px/45px $lato;
+    }
+  }
+  .post-video {
     position: relative;
     overflow: hidden;
-    padding-bottom: 33.25%; /* 16:9 */
+    margin-bottom: 20px;
+    padding-bottom: 60%; /* 16:9 */
     padding-top: 25px;
     height: 0;
-    iframe{
+    iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
     }
-    img{
+    img {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
   }
-  .creator-info{
+  @media (min-width: 768px) {
+    .post-video {
+      padding-bottom: 33.25%; /* 16:9 */
+    }
+  }
+  .creator-info {
     overflow: hidden;
-    .creator-avatar{
+    .creator-avatar {
       float: left;
-      img{
+      img {
         border-radius: 5px;
       }
     }
-    .creator-description{
+    .creator-description {
       float: left;
       padding: 0 10px;
-      span{
+      span {
         font: 400 18px/32px $lato;
         color: #000000;
       }
-      p{
+      p {
         font: 800 24px/32px $lato;
         color: #000000;
       }
     }
   }
-  .bar-wrapper{
+  .bar-wrapper {
     margin-top: 65px;
   }
-  .donate-info-wrap{
+  .donate-info-wrap {
     margin-top: 20px;
-    .donate-text{
-      font: 400 18px/23px $lato;
+    margin-bottom: 20px;
+    .donate-text {
+      font: 400 16px/20px $lato;
     }
-    .amount-count{
-      font: 700 40px/42px $lato;
+    .amount-count {
+      font: 700 25px/27px $lato;
     }
-    .goalcount{
-      font: 900 40px/42px $lato;
+    .goalcount {
+      font: 900 25px/27px $lato;
+    }
+    @media (min-width: 500px) {
+      .donate-text {
+        font: 400 18px/23px $lato;
+      }
+      .amount-count {
+        font: 700 40px/42px $lato;
+      }
+      .goalcount {
+        font: 900 40px/42px $lato;
+      }
     }
   }
-  .project-social-icons{
+
+  .project-social-icons {
     float: left;
-    margin-top: 70px;
-    span{
+    margin-top: 10px;
+    span {
       font: 400 18px/23px $lato;
 
     }
-    ul{
+    ul {
       list-style: none;
       margin-top: 20px;
       padding: 0;
     }
-    li{
+    li {
       display: inline-block;
     }
-    a{
-    text-decoration: none;
-      &:hover .fa{
+    a {
+      text-decoration: none;
+      &:hover .fa {
         background-color: $brand-color;
         transition: 0.5s;
 
       }
     }
-    .fa{
+    .fa {
       display: block;
       width: 40px;
       height: 40px;
@@ -108,71 +142,89 @@ content-campaign.php
       line-height: 40px;
       transition: 0.5s;
     }
-    .fa-twitter{
+    .fa-twitter {
       background-color: #26a6d1;
     }
-    .fa-facebook{
+    .fa-facebook {
       background-color: #3b5998;
     }
-    .fa-google-plus{
+    .fa-google-plus {
       background-color: #dd4b39;
     }
-    .fa-linkedin{
+    .fa-linkedin {
       background-color: #007ab9;
     }
-    .fa-tumblr{
+    .fa-tumblr {
       background-color: #000000;
     }
   }
-  .projects-donate-button{
+  .projects-donate-button {
     float: right;
-    margin-top: 100px;
+    margin-top: 43px;
   }
+  @media (min-width: 768px) {
+    .projects-donate-button {
+      float: left;
+      margin-top: 20px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .projects-donate-button {
+      float: right;
+      margin-top: 40px;
+    }
+  }
+
 }
 
-.project-post-tabs{
+.project-post-tabs {
   margin-top: 30px;
   padding: 0;
-  .tab-content{
-    .description{
+  .tab-content {
+    .description {
       margin: 1em;
       font: 600 18px/23px $lato;
       text-align: center;
     }
-    .extended-description{
+    .extended-description {
       margin: 1em;
       font: 400 18px/23px $lato;
     }
   }
-  .widget-updates-title{
+  .widget-updates-title {
     margin: 1em;
     font: 600 22px/26px $lato;
     text-align: center;
   }
-  .campaign-updates{
-    p{
+  .campaign-updates {
+    p {
       margin: 1em;
       font: 400 18px/23px $lato;
     }
   }
 }
-.project-involved-wrap{
+
+.project-involved-wrap,
+.project-start-wrap {
   padding: 0;
 }
-.project-involved{
+
+.project-involved,
+.project-start {
   margin-top: 30px;
   margin-left: 20px;
   padding: 20px;
   border-radius: 6px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff;
-  .involved-text{
+  .involved-text,
+  .start-text {
     padding-right: 70px;
     font: 600 24px/32px $lato;
-
     color: #000000;
   }
-  .projects-donate-button{
+  .projects-donate-button {
     margin: 10px 0;
     padding: 15px 30px;
   }

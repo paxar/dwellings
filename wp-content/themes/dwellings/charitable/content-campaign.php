@@ -65,9 +65,7 @@ if (empty($video)) {
     <div class="projects-item-donate-info col-xs-12 col-sm-6">
         <div class="creator-info">
             <div class="creator-avatar">
-                <?php
-
-                echo get_avatar($creator, 70); ?>
+                <?php echo get_avatar($creator, 70); ?>
             </div>
             <div class="creator-description">
                 <span>Sponsor: </span>
@@ -98,11 +96,11 @@ if (empty($video)) {
                 <span>Share with:</span>
 
                 <ul><!--TODO add links for social  -->
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-tumblr "></i></a></li>
+                    <li><a href="https://twitter.com/share"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/sharer.php?u=<?php the_permalink();?>"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://plus.google.com/share?url=<?php the_permalink();?>"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink();?>"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="http://www.tumblr.com/share/link?url=<?php the_permalink();?>"><i class="fa fa-tumblr "></i></a></li>
                 </ul>
             </div>
             <a data-trigger-modal="charitable-donation-form-modal"
@@ -162,8 +160,15 @@ if (empty($video)) {
 
 <div class="project-involved-wrap col-xs-12 col-md-4">
     <div class="project-involved ">
-        <p class="involved-text">You can build a home for a family in need</p>
-        <a class="projects-donate-button" href="#">GET INVOLVED</a>
+        <p class="involved-text"><?php echo get_theme_mod('block1_description'); ?></p>
+        <a class="projects-donate-button" href="<?php echo get_permalink(get_theme_mod('block1_btn_url')) ; ?>"><?php echo get_theme_mod('block1_btn_text'); ?></a>
+
+    </div>
+</div>
+<div class="project-start-wrap col-xs-12 col-md-4">
+    <div class="project-start">
+        <p class="start-text"><?php echo get_theme_mod('block2_description'); ?></p>
+        <a class="projects-donate-button" href="<?php echo get_permalink(get_theme_mod('block2_btn_url')) ; ?>"><?php echo get_theme_mod('block2_btn_text'); ?></a>
 
     </div>
 </div>
