@@ -98,11 +98,11 @@ if (empty($video)) {
                 <span>Share with:</span>
 
                 <ul><!--TODO add links for social  -->
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-tumblr "></i></a></li>
+                    <li><a href="https://twitter.com/share"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/sharer.php?u=<?php the_permalink();?>"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://plus.google.com/share?url=<?php the_permalink();?>"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink();?>"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="http://www.tumblr.com/share/link?url=<?php the_permalink();?>"><i class="fa fa-tumblr "></i></a></li>
                 </ul>
             </div>
             <a data-trigger-modal="charitable-donation-form-modal"
