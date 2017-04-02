@@ -156,20 +156,22 @@ content-campaign.php
     }
   }
 }
-.project-involved-wrap{
+.project-involved-wrap,
+.project-start-wrap{
   padding: 0;
 }
-.project-involved{
+.project-involved,
+.project-start{
   margin-top: 30px;
   margin-left: 20px;
   padding: 20px;
   border-radius: 6px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff;
-  .involved-text{
+  .involved-text ,
+  .start-text{
     padding-right: 70px;
     font: 600 24px/32px $lato;
-
     color: #000000;
   }
   .projects-donate-button{

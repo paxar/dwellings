@@ -167,6 +167,13 @@ if (empty($video)) {
 
     </div>
 </div>
+<div class="project-start-wrap col-xs-12 col-md-4">
+    <div class="project-start">
+        <p class="start-text">You can start your own campaign</p>
+        <a class="projects-donate-button" href="#">start company</a>
+
+    </div>
+</div>
 
 
 

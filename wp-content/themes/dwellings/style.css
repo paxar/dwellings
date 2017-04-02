@@ -1591,21 +1591,27 @@ content-campaign.php
     margin: 1em;
     font: 400 18px/23px "Lato", sans-serif; }
 
-.project-involved-wrap {
+.project-involved-wrap,
+.project-start-wrap {
   padding: 0; }
 
-.project-involved {
+.project-involved,
+.project-start {
   margin-top: 30px;
   margin-left: 20px;
   padding: 20px;
   border-radius: 6px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff; }
-  .project-involved .involved-text {
+  .project-involved .involved-text,
+  .project-involved .start-text,
+  .project-start .involved-text,
+  .project-start .start-text {
     padding-right: 70px;
     font: 600 24px/32px "Lato", sans-serif;
     color: #000000; }
-  .project-involved .projects-donate-button {
+  .project-involved .projects-donate-button,
+  .project-start .projects-donate-button {
     margin: 10px 0;
     padding: 15px 30px; }
 

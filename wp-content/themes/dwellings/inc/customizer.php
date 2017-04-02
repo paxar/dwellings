@@ -920,6 +920,41 @@ function dwellings_customize_register( $wp_customize ) {
             )
         )
     );
+    /*--------------------------------------------------------------
+   # Families page panel
+   --------------------------------------------------------------*/
+    $wp_customize->add_panel( 'families_page', array(
+        'priority' => 11,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Families page', 'dwellings' ),
+        'description' => __( 'Settings of families page.', 'dwellings' ),
+    ) );
+    /*--------------------------------------------------------------
+  # Candidate families loop section
+  --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'families-loop-section',
+        array(
+            'title' => esc_html__('Families list settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'families_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'families_btn_text'
+    );
+    $wp_customize->add_control(
+        'families_btn_text',
+        array(
+            'label' => esc_html__('Donate button text', 'dwellings'),
+            'section' => 'families-loop-section'
+        )
+    );
+
+
+
+
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 
