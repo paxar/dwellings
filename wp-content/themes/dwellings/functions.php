@@ -267,6 +267,4 @@ add_filter('document_title_parts', function( $parts ){
     return $parts;
 });
 
-add_filter( 'gform_confirmation_anchor_2', function() {
-    return 2000;
-} );
+add_filter( 'gform_confirmation_anchor_2', '__return_true' );
