@@ -65,9 +65,7 @@ if (empty($video)) {
     <div class="projects-item-donate-info col-xs-12 col-sm-6">
         <div class="creator-info">
             <div class="creator-avatar">
-                <?php
-
-                echo get_avatar($creator, 70); ?>
+                <?php echo get_avatar($creator, 70); ?>
             </div>
             <div class="creator-description">
                 <span>Sponsor: </span>
