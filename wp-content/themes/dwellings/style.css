@@ -575,6 +575,11 @@ em {
 #charitable-campaign-submission-form p {
   font: 400 16px/18px "Lato", sans-serif; }
 
+#charitable-donation-form-modal fieldset,
+#charitable-donation-form fieldset,
+#charitable-campaign-submission-form fieldset {
+  background-color: #ffffff; }
+
 #charitable-donation-form-modal .button,
 #charitable-donation-form .button,
 #charitable-campaign-submission-form .button {
@@ -1541,18 +1546,27 @@ content-campaign.php
 */
 .project-post-header {
   overflow: hidden;
-  padding: 0 20px 60px;
+  padding: 0 20px 0px;
   border-radius: 6px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff; }
+  .project-post-header .projects-item-donate-info {
+    padding: 0; }
+  @media (min-width: 768px) {
+    .project-post-header .projects-item-donate-info {
+      padding: 0 25px; } }
   .project-post-header .item-title {
     padding: 20px 0 27px;
-    font: 600 40px/45px "Lato", sans-serif;
+    font: 600 25px/30px "Lato", sans-serif;
     color: #000000; }
+  @media (min-width: 768px) {
+    .project-post-header .item-title {
+      font: 600 40px/45px "Lato", sans-serif; } }
   .project-post-header .post-video {
     position: relative;
     overflow: hidden;
-    padding-bottom: 33.25%;
+    margin-bottom: 20px;
+    padding-bottom: 60%;
     /* 16:9 */
     padding-top: 25px;
     height: 0; }
@@ -1568,6 +1582,10 @@ content-campaign.php
       left: 50%;
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
+  @media (min-width: 768px) {
+    .project-post-header .post-video {
+      padding-bottom: 33.25%;
+      /* 16:9 */ } }
   .project-post-header .creator-info {
     overflow: hidden; }
     .project-post-header .creator-info .creator-avatar {
@@ -1586,16 +1604,24 @@ content-campaign.php
   .project-post-header .bar-wrapper {
     margin-top: 65px; }
   .project-post-header .donate-info-wrap {
-    margin-top: 20px; }
+    margin-top: 20px;
+    margin-bottom: 20px; }
     .project-post-header .donate-info-wrap .donate-text {
-      font: 400 18px/23px "Lato", sans-serif; }
+      font: 400 16px/20px "Lato", sans-serif; }
     .project-post-header .donate-info-wrap .amount-count {
-      font: 700 40px/42px "Lato", sans-serif; }
+      font: 700 25px/27px "Lato", sans-serif; }
     .project-post-header .donate-info-wrap .goalcount {
-      font: 900 40px/42px "Lato", sans-serif; }
+      font: 900 25px/27px "Lato", sans-serif; }
+    @media (min-width: 500px) {
+      .project-post-header .donate-info-wrap .donate-text {
+        font: 400 18px/23px "Lato", sans-serif; }
+      .project-post-header .donate-info-wrap .amount-count {
+        font: 700 40px/42px "Lato", sans-serif; }
+      .project-post-header .donate-info-wrap .goalcount {
+        font: 900 40px/42px "Lato", sans-serif; } }
   .project-post-header .project-social-icons {
     float: left;
-    margin-top: 70px; }
+    margin-top: 10px; }
     .project-post-header .project-social-icons span {
       font: 400 18px/23px "Lato", sans-serif; }
     .project-post-header .project-social-icons ul {
@@ -1632,7 +1658,15 @@ content-campaign.php
       background-color: #000000; }
   .project-post-header .projects-donate-button {
     float: right;
-    margin-top: 100px; }
+    margin-top: 43px; }
+  @media (min-width: 768px) {
+    .project-post-header .projects-donate-button {
+      float: left;
+      margin-top: 20px; } }
+  @media (min-width: 1200px) {
+    .project-post-header .projects-donate-button {
+      float: right;
+      margin-top: 40px; } }
 
 .project-post-tabs {
   margin-top: 30px;
