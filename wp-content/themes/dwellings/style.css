@@ -234,6 +234,21 @@ em {
     color: #000;
     text-decoration: none; }
 
+.hover-button {
+  display: inline-block;
+  padding: 8px 25px;
+  border-radius: 4px;
+  background-color: #fff;
+  font: 600 16px/23px "Lato", sans-serif;
+  color: #fed52f;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.5s all ease-out; }
+  .hover-button:hover {
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #000000; }
+
 .dwelling-pagination {
   padding: 25px 0; }
   .dwelling-pagination ul {
@@ -963,7 +978,7 @@ em {
   .about .about-wrapper {
     z-index: 10; }
   .about .about-description {
-    font: 400 16px/27px "Lato", sans-serif;
+    font: 600 16px/27px "Lato", sans-serif;
     color: #010000; }
   .about .about-image {
     position: absolute;
@@ -979,7 +994,9 @@ em {
 
 @media (min-width: 768px) {
   .about .about-image {
-    width: 50%; } }
+    width: 50%; }
+  .about .about-description {
+    font: 400 16px/27px "Lato", sans-serif; } }
 
 .main-testimonials {
   padding: 100px 0;
@@ -1009,10 +1026,34 @@ em {
     position: relative;
     overflow: hidden;
     height: 220px; }
+    .families-item .img-wrap:hover .hover {
+      opacity: 0.90; }
     .families-item .img-wrap img {
       position: absolute;
       width: 100%;
       height: auto; }
+    @media (min-width: 768px) {
+      .families-item .img-wrap img {
+        width: auto;
+        height: 100%; } }
+    @media (min-width: 990px) {
+      .families-item .img-wrap img {
+        width: 100%;
+        height: auto; } }
+    .families-item .img-wrap .hover {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fed52f;
+      opacity: 0;
+      transition: 0.5s all ease-out; }
+    .families-item .img-wrap .hover-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
   .families-item .families-item-description {
     padding: 15px; }
     .families-item .families-item-description .item-title {

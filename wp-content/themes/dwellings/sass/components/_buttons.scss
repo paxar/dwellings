@@ -34,8 +34,23 @@
     color: #000;
     text-decoration: none;
   }
+}
 
+.hover-button{
+  display: inline-block;
+  padding: 8px 25px;
+  border-radius: 4px;
+  background-color: #fff;
+  font: 600 16px/23px $lato;
+  color: #fed52f;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.5s all ease-out;
 
+  &:hover{
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #000000;
 
-
+  }
 }

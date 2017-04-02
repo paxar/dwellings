@@ -27,7 +27,7 @@ Template Name: Template main page
 
         </div>
     </section>
-    <main id="content" class="">
+    <main id="content" class="main-page">
 
 
 
@@ -90,6 +90,9 @@ Template Name: Template main page
                             endif;
                             // end image
                             ?>
+                            <div class="hover">
+                                <a class="hover-button" href="<?php the_permalink() ?> ">Explore</a>
+                            </div>
                         </div>
                         <div class="families-item-description">
                             <h3 class="item-title"><?php the_title() ?> Family</h3>
