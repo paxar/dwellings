@@ -942,10 +942,10 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
     $wp_customize->add_setting(
-        'families_btn_text'
+        'families_loop_btn_text'
     );
     $wp_customize->add_control(
-        'families_btn_text',
+        'families_loop_btn_text',
         array(
             'label' => esc_html__('Donate button text', 'dwellings'),
             'section' => 'families-loop-section'
