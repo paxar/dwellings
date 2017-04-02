@@ -162,15 +162,15 @@ if (empty($video)) {
 
 <div class="project-involved-wrap col-xs-12 col-md-4">
     <div class="project-involved ">
-        <p class="involved-text">You can build a home for a family in need</p>
-        <a class="projects-donate-button" href="#">GET INVOLVED</a>
+        <p class="involved-text"><?php echo get_theme_mod('block1_description'); ?></p>
+        <a class="projects-donate-button" href="<?php echo get_permalink(get_theme_mod('block1_btn_url')) ; ?>"><?php echo get_theme_mod('block1_btn_text'); ?></a>
 
     </div>
 </div>
 <div class="project-start-wrap col-xs-12 col-md-4">
     <div class="project-start">
-        <p class="start-text">You can start your own campaign</p>
-        <a class="projects-donate-button" href="#">start company</a>
+        <p class="start-text"><?php echo get_theme_mod('block2_description'); ?></p>
+        <a class="projects-donate-button" href="<?php echo get_permalink(get_theme_mod('block2_btn_url')) ; ?>"><?php echo get_theme_mod('block2_btn_text'); ?></a>
 
     </div>
 </div>
