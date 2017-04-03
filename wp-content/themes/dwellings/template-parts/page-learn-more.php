@@ -48,6 +48,7 @@ Template Name: Template learn more page
 
     <section class="learn-more-contact">
         <div class="container">
+            <a href="#form"></a>
             <?php if (get_theme_mod('learn-more-contact-title')) : ?>
                 <h2 class="section-title"><?php echo get_theme_mod('learn-more-contact-title'); ?></h2>
             <?php endif; ?>

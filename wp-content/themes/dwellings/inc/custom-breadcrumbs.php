@@ -155,7 +155,9 @@ function custom_breadcrumbs() {
         }
         else if ( is_search() ) {
             // Search results page
-            echo '<li class="item-current item-current"><strong class="bread-current bread-current" title="Search results for: ' . get_search_query() . '">Search results for: <span class="search-results-title">' . get_search_query() . '</span></strong></li>';
+            echo '<li class="item-bread"><a class="bread-link" href="' . esc_url(get_permalink(get_option('page_for_posts'))) . '" title="">' . get_the_title(get_option('page_for_posts', true)) . '</a></li>';
+//            echo '<li class="separator"> ' . $separator . ' </li>';
+            echo '<li class="item-current item-current search-result-bread-crumb"><strong class="bread-current bread-current" title="Search results for: ' . get_search_query() . '">Search results for: <span class="search-results-title">' . get_search_query() . '</span></strong></li>';
         }
         else if ( get_query_var('paged') ) {
             // Paginated archives
