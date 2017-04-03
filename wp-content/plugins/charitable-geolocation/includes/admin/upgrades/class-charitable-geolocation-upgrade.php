@@ -4,14 +4,14 @@
  *
  * The responsibility of this class is to manage migrations between versions of Charitable Geolocation.
  *
- * @package     Charitable Geolocation
- * @subpackage  Charitable Geolocation/Upgrade
- * @copyright   Copyright (c) 2016, Eric Daams
+ * @package     Charitable Geolocation/Upgrade
+ * @copyright   Copyright (c) 2017, Eric Daams
  * @license     http://opensource.org/licenses/gpl-1.0.0.php GNU Public License
  * @since       1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! class_exists( 'Charitable_Geolocation_Upgrade' ) ) :
 

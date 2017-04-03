@@ -1,17 +1,18 @@
-<?php 
+<?php
 /**
- * Charitable Geolocation Template Hooks. 
+ * Charitable Geolocation Template Hooks.
  *
  * Action/filter hooks used for Charitable Geolocation functions/templates
- * 
+ *
  * @package     Charitable Geolocation/Functions/Templates
  * @version     1.0.0
  * @author      Eric Daams
- * @copyright   Copyright (c) 2014, Studio 164a
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License  
+ * @copyright   Copyright (c) 2017, Studio 164a
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /**
  * Campaigns loop, after the main title.
