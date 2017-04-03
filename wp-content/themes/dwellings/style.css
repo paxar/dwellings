@@ -327,6 +327,8 @@ em {
     color: darkgrey; }
     .breadcrumbs .bread-link:hover {
       color: darkgrey; }
+  .breadcrumbs .search-result-bread-crumb {
+    width: 100%; }
 
 .gform_wrapper {
   margin: 0 !important; }
