@@ -25,7 +25,7 @@ if ( ! class_exists( 'Charitable_Geolocation' ) ) :
 		/**
 		 * @var string
 		 */
-		const VERSION = '1.1.0';
+		const VERSION = '1.1.2';
 
 		/**
 		 * @var string  A date in the format: YYYYMMDD

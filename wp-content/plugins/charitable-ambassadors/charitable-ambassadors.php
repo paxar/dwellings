@@ -3,11 +3,11 @@
  * Plugin Name: 		Charitable - Ambassadors
  * Plugin URI: 			https://wpcharitable.com/extensions/charitable-ambassadors/
  * Description: 		Transform your website into a platform for peer to peer fundraising or crowdfunding.
- * Version: 			1.1.11
+ * Version: 			1.1.13
  * Author: 				WP Charitable
  * Author URI: 			https://wpcharitable.com
  * Requires at least: 	4.1
- * Tested up to: 		4.7.2
+ * Tested up to: 		4.7.3
  *
  * Text Domain: 		charitable-ambassadors
  * Domain Path: 		/languages/
