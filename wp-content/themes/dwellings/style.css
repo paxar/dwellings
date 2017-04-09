@@ -555,8 +555,9 @@ em {
 #charitable-donation-form-modal input.custom-donation-input,
 #charitable-donation-form input.custom-donation-input,
 #charitable-campaign-submission-form input.custom-donation-input {
-  font: 600 20px/22px "Lato", sans-serif;
-  max-width: 300px; }
+  font: 600 16px/22px "Lato", sans-serif;
+  max-width: 220px;
+  color: #000000; }
 
 #charitable-donation-form-modal select,
 #charitable-donation-form select,
