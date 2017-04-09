@@ -1835,6 +1835,10 @@ content-campaign.php
     margin: 10px 0;
     padding: 15px 30px; }
 
+@media (min-width: 990px) {
+  .project-start-wrap {
+    float: right; } }
+
 .thank .thank-block {
   padding: 100px 0 150px;
   background-color: #fff;
