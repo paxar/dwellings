@@ -531,38 +531,98 @@ em {
 
 #charitable-donation-form-modal .charitable-form-header,
 #charitable-donation-form .charitable-form-header,
-#charitable-campaign-submission-form .charitable-form-header {
+#charitable-campaign-submission-form .charitable-form-header,
+#charitable-profile-form .charitable-form-header,
+#charitable-registration-form .charitable-form-header,
+#lostpasswordform .charitable-form-header,
+.charitable-login-form .charitable-form-header {
   font: 400 24px/26px "Lato", sans-serif;
   color: #fed52f; }
 
 #charitable-donation-form-modal label,
 #charitable-donation-form label,
-#charitable-campaign-submission-form label {
+#charitable-campaign-submission-form label,
+#charitable-profile-form label,
+#charitable-registration-form label,
+#lostpasswordform label,
+.charitable-login-form label {
   font: 400 16px/18px "Lato", sans-serif; }
 
 #charitable-donation-form-modal input[type="text"],
 #charitable-donation-form-modal input[type="email"],
+#charitable-donation-form-modal input[type="password"],
+#charitable-donation-form-modal input[type="url"],
 #charitable-donation-form input[type="text"],
 #charitable-donation-form input[type="email"],
+#charitable-donation-form input[type="password"],
+#charitable-donation-form input[type="url"],
 #charitable-campaign-submission-form input[type="text"],
-#charitable-campaign-submission-form input[type="email"] {
+#charitable-campaign-submission-form input[type="email"],
+#charitable-campaign-submission-form input[type="password"],
+#charitable-campaign-submission-form input[type="url"],
+#charitable-profile-form input[type="text"],
+#charitable-profile-form input[type="email"],
+#charitable-profile-form input[type="password"],
+#charitable-profile-form input[type="url"],
+#charitable-registration-form input[type="text"],
+#charitable-registration-form input[type="email"],
+#charitable-registration-form input[type="password"],
+#charitable-registration-form input[type="url"],
+#lostpasswordform input[type="text"],
+#lostpasswordform input[type="email"],
+#lostpasswordform input[type="password"],
+#lostpasswordform input[type="url"],
+.charitable-login-form input[type="text"],
+.charitable-login-form input[type="email"],
+.charitable-login-form input[type="password"],
+.charitable-login-form input[type="url"] {
   padding: 5px;
   font: 400 16px/18px "Lato", sans-serif;
   border-radius: 4px;
   border: 1px solid #e5e5e5;
   outline: none; }
 
+#charitable-donation-form-modal input[type="password"],
+#charitable-donation-form input[type="password"],
+#charitable-campaign-submission-form input[type="password"],
+#charitable-profile-form input[type="password"],
+#charitable-registration-form input[type="password"],
+#lostpasswordform input[type="password"],
+.charitable-login-form input[type="password"] {
+  max-width: 220px; }
+
 #charitable-donation-form-modal input.custom-donation-input,
 #charitable-donation-form input.custom-donation-input,
-#charitable-campaign-submission-form input.custom-donation-input {
+#charitable-campaign-submission-form input.custom-donation-input,
+#charitable-profile-form input.custom-donation-input,
+#charitable-registration-form input.custom-donation-input,
+#lostpasswordform input.custom-donation-input,
+.charitable-login-form input.custom-donation-input {
   font: 600 16px/22px "Lato", sans-serif;
   max-width: 220px;
   color: #000000; }
 
 #charitable-donation-form-modal select,
 #charitable-donation-form select,
-#charitable-campaign-submission-form select {
+#charitable-campaign-submission-form select,
+#charitable-profile-form select,
+#charitable-registration-form select,
+#lostpasswordform select,
+.charitable-login-form select {
   padding: 3px 5px;
+  font: 400 16px/18px "Lato", sans-serif;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+  outline: none; }
+
+#charitable-donation-form-modal textarea,
+#charitable-donation-form textarea,
+#charitable-campaign-submission-form textarea,
+#charitable-profile-form textarea,
+#charitable-registration-form textarea,
+#lostpasswordform textarea,
+.charitable-login-form textarea {
+  padding: 5px;
   font: 400 16px/18px "Lato", sans-serif;
   border-radius: 4px;
   border: 1px solid #e5e5e5;
@@ -570,22 +630,38 @@ em {
 
 #charitable-donation-form-modal li,
 #charitable-donation-form li,
-#charitable-campaign-submission-form li {
+#charitable-campaign-submission-form li,
+#charitable-profile-form li,
+#charitable-registration-form li,
+#lostpasswordform li,
+.charitable-login-form li {
   font: 400 16px/18px "Lato", sans-serif; }
 
 #charitable-donation-form-modal p,
 #charitable-donation-form p,
-#charitable-campaign-submission-form p {
+#charitable-campaign-submission-form p,
+#charitable-profile-form p,
+#charitable-registration-form p,
+#lostpasswordform p,
+.charitable-login-form p {
   font: 400 16px/18px "Lato", sans-serif; }
 
 #charitable-donation-form-modal fieldset,
 #charitable-donation-form fieldset,
-#charitable-campaign-submission-form fieldset {
+#charitable-campaign-submission-form fieldset,
+#charitable-profile-form fieldset,
+#charitable-registration-form fieldset,
+#lostpasswordform fieldset,
+.charitable-login-form fieldset {
   background-color: #ffffff; }
 
 #charitable-donation-form-modal .button,
 #charitable-donation-form .button,
-#charitable-campaign-submission-form .button {
+#charitable-campaign-submission-form .button,
+#charitable-profile-form .button,
+#charitable-registration-form .button,
+#lostpasswordform .button,
+.charitable-login-form .button {
   display: inline-block;
   padding: 15px 50px;
   font: 400 18px/23px "Lato", sans-serif;
@@ -599,14 +675,22 @@ em {
   transition: 0.5s all ease-out; }
   #charitable-donation-form-modal .button:hover,
   #charitable-donation-form .button:hover,
-  #charitable-campaign-submission-form .button:hover {
+  #charitable-campaign-submission-form .button:hover,
+  #charitable-profile-form .button:hover,
+  #charitable-registration-form .button:hover,
+  #lostpasswordform .button:hover,
+  .charitable-login-form .button:hover {
     background-color: #ffffff;
     color: #000;
     text-decoration: none; }
 
 #charitable-donation-form-modal .button.remove-image,
 #charitable-donation-form .button.remove-image,
-#charitable-campaign-submission-form .button.remove-image {
+#charitable-campaign-submission-form .button.remove-image,
+#charitable-profile-form .button.remove-image,
+#charitable-registration-form .button.remove-image,
+#lostpasswordform .button.remove-image,
+.charitable-login-form .button.remove-image {
   display: inline-block;
   padding: 3px;
   font: 400 10px/12px "Lato", sans-serif;
@@ -620,14 +704,22 @@ em {
   transition: 0.5s all ease-out; }
   #charitable-donation-form-modal .button.remove-image:hover,
   #charitable-donation-form .button.remove-image:hover,
-  #charitable-campaign-submission-form .button.remove-image:hover {
+  #charitable-campaign-submission-form .button.remove-image:hover,
+  #charitable-profile-form .button.remove-image:hover,
+  #charitable-registration-form .button.remove-image:hover,
+  #lostpasswordform .button.remove-image:hover,
+  .charitable-login-form .button.remove-image:hover {
     background-color: #ffffff;
     color: #000;
     text-decoration: none; }
 
 #charitable-donation-form-modal .button.insert-media,
 #charitable-donation-form .button.insert-media,
-#charitable-campaign-submission-form .button.insert-media {
+#charitable-campaign-submission-form .button.insert-media,
+#charitable-profile-form .button.insert-media,
+#charitable-registration-form .button.insert-media,
+#lostpasswordform .button.insert-media,
+.charitable-login-form .button.insert-media {
   display: inline-block;
   padding: 3px 20px;
   font: 400 16px/18px "Lato", sans-serif;
@@ -641,19 +733,49 @@ em {
   transition: 0.5s all ease-out; }
   #charitable-donation-form-modal .button.insert-media:hover,
   #charitable-donation-form .button.insert-media:hover,
-  #charitable-campaign-submission-form .button.insert-media:hover {
+  #charitable-campaign-submission-form .button.insert-media:hover,
+  #charitable-profile-form .button.insert-media:hover,
+  #charitable-registration-form .button.insert-media:hover,
+  #lostpasswordform .button.insert-media:hover,
+  .charitable-login-form .button.insert-media:hover {
     background-color: #ffffff;
     color: #000;
     text-decoration: none; }
 
 #charitable-donation-form-modal .add-row,
 #charitable-donation-form .add-row,
-#charitable-campaign-submission-form .add-row {
+#charitable-campaign-submission-form .add-row,
+#charitable-profile-form .add-row,
+#charitable-registration-form .add-row,
+#lostpasswordform .add-row,
+.charitable-login-form .add-row {
   font: 400 16px/18px "Lato", sans-serif; }
 
 .campaign h1 {
   padding: 0 30px;
   font: 600 28px/30px "Lato", sans-serif; }
+
+#charitable-donation-form,
+#charitable-profile-form,
+#charitable-registration-form,
+#lostpasswordform {
+  max-width: 500px;
+  margin: 0 auto; }
+
+#charitable-campaign-submission-form {
+  max-width: 650px;
+  margin: 0 auto; }
+  #charitable-campaign-submission-form .button {
+    margin: 10px 0; }
+
+.charitable-login-form {
+  padding: 30px 0;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #ffffff; }
+  .charitable-login-form .button {
+    margin: 15px 0; }
 
 /*--------------------------------------------------------------
 # Layout
