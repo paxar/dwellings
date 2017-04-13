@@ -2,11 +2,13 @@
 /**
  * Renders the location field for the Campaign post type.
  *
+ * @package Charitable Geolocation/Admin/Views
  * @author  Studio 164a
  * @since   1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 global $post;
 

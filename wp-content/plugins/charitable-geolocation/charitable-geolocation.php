@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: 		Charitable - Geolocation
- * Plugin URI:
+ * Plugin URI:          https://www.wpcharitable.com/extensions/charitable-geolocation/
  * Description:			Adds a Location field to Charitable campaigns.
- * Version: 			1.1.0
+ * Version: 			1.1.2
  * Author: 				WP Charitable
  * Author URI: 			https://www.wpcharitable.com
  * Requires at least: 	4.2
- * Tested up to: 		4.6.1
+ * Tested up to: 		4.7.3
  *
  * Text Domain: 		charitable-geolocation
  * Domain Path: 		/languages/
@@ -17,7 +17,8 @@
  * @author 				WP Charitable
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /**
  * Load plugin class, but only if Charitable is found and activated.

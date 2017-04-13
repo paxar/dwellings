@@ -1,3 +1,4 @@
+
 .main-icongroup{
   padding: 50px 0;
 }
@@ -15,8 +16,6 @@
     font: 600 18px/27px $lato;
     color: #000000;
   }
-  .btn {
-  }
 }
 
 .about {
@@ -27,9 +26,10 @@
     z-index: 10;
   }
   .about-description {
-    font: 400 16px/27px $lato;
+    font: 600 16px/27px $lato;
     color: #010000;
   }
+
   .about-image {
     position: absolute;
     width: 100%;
@@ -42,8 +42,6 @@
     margin-top: 20px;
     font: 600 16px/23px $lato;
   }
-
-
 }
 
 @media (min-width: 768px) {
@@ -51,7 +49,10 @@
     .about-image {
       width: 50%;
     }
+    .about-description{
+      font: 400 16px/27px $lato;
 
+    }
   }
 }
 
@@ -63,14 +64,12 @@
     text-align: center;
     font: 600 16px/23px $lato;
   }
-
 }
 
 .families{
   padding: 100px 0;
   .title{
     margin-bottom: 30px;
-
   }
   .more-link{
     margin-top: 30px;
@@ -79,7 +78,6 @@
   .families-map{
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.07);
     border-radius: 6px;
-
   }
 }
 .families-item{
@@ -91,11 +89,40 @@
     position: relative;
     overflow: hidden;
     height: 220px;
+    &:hover .hover{
+      opacity: 0.90;
+    }
     img{
       position: absolute;
       width: 100%;
       height: auto;
-
+    }
+    @media (min-width: 768px) {
+      img{
+        width: auto;
+        height: 100%;
+      }
+    }
+    @media (min-width: 990px) {
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+      .hover{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $brand-color;
+      opacity: 0;
+      transition: 0.5s all ease-out;
+    }
+    .hover-button{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
   .families-item-description{

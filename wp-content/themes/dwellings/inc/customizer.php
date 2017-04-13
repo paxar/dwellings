@@ -920,6 +920,141 @@ function dwellings_customize_register( $wp_customize ) {
             )
         )
     );
+    /*--------------------------------------------------------------
+   # Families page panel
+   --------------------------------------------------------------*/
+    $wp_customize->add_panel( 'families_page', array(
+        'priority' => 11,
+        'capability' => 'edit_theme_options',
+        'theme_supports' => '',
+        'title' => __( 'Families page', 'dwellings' ),
+        'description' => __( 'Settings of families page.', 'dwellings' ),
+    ) );
+    /*--------------------------------------------------------------
+  # Candidate families loop section
+  --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'families-loop-section',
+        array(
+            'title' => esc_html__('Families list settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'families_page',
+        )
+    );
+    $wp_customize->add_setting(
+        'families_loop_btn_text'
+    );
+    $wp_customize->add_control(
+        'families_loop_btn_text',
+        array(
+            'label' => esc_html__('Donate button text', 'dwellings'),
+            'section' => 'families-loop-section'
+        )
+    );
+    /*--------------------------------------------------------------
+  # Current family page
+  --------------------------------------------------------------*/
+    $wp_customize->add_section(
+        'family-single-section',
+        array(
+            'title' => esc_html__('Single family settings', 'dwellings'),
+            'priority' => 10,
+            'panel' => 'families_page',
+        )
+    );
+    
+    $wp_customize->add_setting(
+        'block1_description'
+    );
+    $wp_customize->add_control(
+        'block1_description',
+        array(
+            'label' => esc_html__('Block 1 description', 'dwellings'),
+            'section' => 'family-single-section',
+            'type' => 'textarea'
+        )
+    );
+    $wp_customize->add_setting(
+        'block1_btn_text'
+    );
+    $wp_customize->add_control(
+        'block1_btn_text',
+        array(
+            'label' => esc_html__('Block 1 button text', 'dwellings'),
+            'section' => 'family-single-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'block1_btn_url'
+    );
+    $wp_customize->add_control(
+        'block1_btn_url',
+        array(
+            'label' => esc_html__('Block 1 button URL', 'dwellings'),
+            'section' => 'family-single-section',
+            'type'     => 'dropdown-pages'
+        )
+    );
+    $wp_customize->add_setting(
+        'block1_hide'
+    );
+    $wp_customize->add_control(
+        'block1_hide',
+        array(
+            'label' => esc_html__('Show section', 'dwellings'),
+            'section' => 'family-single-section',
+            'type'     => 'checkbox'
+        )
+    );
+
+    $wp_customize->add_setting(
+        'block2_description'
+    );
+    $wp_customize->add_control(
+        'block2_description',
+        array(
+            'label' => esc_html__('Block 2 description', 'dwellings'),
+            'section' => 'family-single-section',
+            'type' => 'textarea'
+        )
+    );
+    $wp_customize->add_setting(
+        'block2_btn_text'
+    );
+    $wp_customize->add_control(
+        'block2_btn_text',
+        array(
+            'label' => esc_html__('Block 2 button text', 'dwellings'),
+            'section' => 'family-single-section'
+        )
+    );
+    $wp_customize->add_setting(
+        'block2_btn_url'
+    );
+    $wp_customize->add_control(
+        'block2_btn_url',
+        array(
+            'label' => esc_html__('Block 2 button URL', 'dwellings'),
+            'section' => 'family-single-section',
+            'type'     => 'dropdown-pages'
+        )
+    );
+    $wp_customize->add_setting(
+        'block2_hide'
+    );
+    $wp_customize->add_control(
+        'block2_hide',
+        array(
+            'label' => esc_html__('Show section', 'dwellings'),
+            'section' => 'family-single-section',
+            'type'     => 'checkbox'
+        )
+    );
+
+
+
+
+
 }
 add_action( 'customize_register', 'dwellings_customize_register' );
 
@@ -946,6 +1081,13 @@ function custom_style() {
             background: url(<?php echo get_theme_mod('bg-hero-learn')  ?>) center center /cover no-repeat;
         }
 
+
+        <?php if( false === get_theme_mod( 'block1_hide' ) ) { ?>
+        .project-involved-wrap { display: none; }
+        <?php } // end if ?>
+        <?php if( false === get_theme_mod( 'block2_hide' ) ) { ?>
+        .project-start-wrap { display: none; }
+        <?php } // end if ?>
         <?php if( false === get_theme_mod( 'testimonials_hide' ) ) { ?>
         .main-testimonials { display: none; }
         <?php } // end if ?>

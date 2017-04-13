@@ -2,6 +2,7 @@
 /**
  * The template used to display map form fields.
  *
+ * @package Charitable Geolocation/Templates
  * @author  Studio 164a
  * @since   1.1.0
  * @version 1.1.0
@@ -24,10 +25,7 @@ $value       = array_key_exists( 'value', $field ) ? $field['value'] : '';
 $latitude    = array_key_exists( 'latitude', $field ) ? $field['latitude'] : '';
 $longitude   = array_key_exists( 'longitude', $field ) ? $field['longitude'] : '';
 $place_id    = array_key_exists( 'place_id', $field ) ? $field['place_id'] : '';
-
-if ( $longitude && $latitude ) {
-	$zoom    = 'data-zoom="17"';
-}
+$zoom        = ( $longitude && $latitude ) ? 'data-zoom="17"' : 'data-zoom="0"';
 
 ?>
 <div id="charitable_field_<?php echo $field['key'] ?>" class="<?php echo $classes ?>">

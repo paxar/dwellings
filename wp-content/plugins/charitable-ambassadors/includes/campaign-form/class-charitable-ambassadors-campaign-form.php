@@ -9,7 +9,8 @@
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 
@@ -1184,9 +1185,17 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 			/* A length is set, so parse the end date based on that. */
 			if ( array_key_exists( 'length', $submitted ) ) {
 
-				$end_date = strtotime( sprintf( '+%d day', $submitted['length'] ), current_time( 'timestamp' ) );
+				if ( '0' == $submitted['length'] ) {
 
-				$submitted['end_date'] = date( 'Y-m-d 00:00:00', $end_date );			
+					/* This is an endless campaign. */
+					$submitted['end_date'] = 0;
+
+				} else {
+
+					$end_date = strtotime( sprintf( '+%d day', $submitted['length'] ), current_time( 'timestamp' ) );
+					$submitted['end_date'] = date( 'Y-m-d 00:00:00', $end_date );
+
+				}
 
 			/* An end_date field has been submitted. */
 			} elseif ( array_key_exists( 'end_date', $submitted ) ) {
@@ -1206,7 +1215,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 
 				$submitted['end_date'] = 0;
 
-			}
+			}//end if
 
 			return $submitted;
 		}

@@ -43,7 +43,7 @@ if ($wp_query->have_posts()) :
 
 
         if ($value > 100) {
-            $value = 100;
+            $value = 100; // max progress-bar range
         }
 
         ?>
@@ -88,7 +88,7 @@ if ($wp_query->have_posts()) :
                             <span class="goalcount"> <?php echo $currency_helper->get_monetary_amount($campaign->get('goal')) ?></span>
                         </div>
                     </div>
-                    <a class="projects-donate-button" href="<?php the_permalink() ?>">Donate</a>
+                    <a class="projects-donate-button" href="<?php the_permalink() ?>"><?php echo get_theme_mod('families_loop_btn_text'); ?></a>
                 </div>
             </div>
         </div><!--  projects-item      -->

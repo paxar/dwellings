@@ -2,11 +2,13 @@
 /**
  * Displays the campaign map.
  *
+ * @package Charitable Geolocation/Templates/Shortcodes
  * @author  Studio 164a
  * @since   1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 $campaigns = $view_args['campaigns'];
 $zoom      = 'auto' == $view_args['zoom'] ? 0 : $view_args['zoom'];

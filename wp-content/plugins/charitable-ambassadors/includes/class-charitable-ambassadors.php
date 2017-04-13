@@ -24,7 +24,7 @@ if ( ! class_exists( 'Charitable_Ambassadors' ) ) :
 		/**
 		 * @var string
 		 */
-		const VERSION = '1.1.11';
+		const VERSION = '1.1.13';
 
 		/**
 		 * @var string  A date in the format: YYYYMMDD
