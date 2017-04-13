@@ -38,6 +38,17 @@ function dwellings_customize_register( $wp_customize ) {
         )
     );
     $wp_customize->add_setting(
+        'url_login'
+    );
+    $wp_customize->add_control(
+        'url_login',
+        array(
+            'label' => esc_html__('URL login', 'dwellings'),
+            'section' => 'hero-section',
+            'type'     => 'dropdown-pages'
+        )
+    );
+    $wp_customize->add_setting(
         'hero-intro'
     );
     $wp_customize->add_control(

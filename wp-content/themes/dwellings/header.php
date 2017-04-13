@@ -41,6 +41,9 @@ session_start();  /*Starting session for send variables   Added paxar*/
                 <button class="nav-btn close-btn remove-btn" id="close-nav">
                     <i class="fa fa-times"></i>
                 </button>
+                <a href="<?php echo get_permalink(get_theme_mod('url_login')); ?>" class="login sign-in"><i class="fa fa-user"></i>
+                <a href="<?php echo wp_logout_url(home_url()); ?>" class="login sign-out"><i class="fa fa-sign-out"></i>
+                </a>
                 <?php wp_nav_menu(array('them_location' => 'menu-1', 'container' => false, 'menu_class' => 'navigation')) ?>
         </div>
 

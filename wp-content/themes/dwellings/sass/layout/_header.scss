@@ -77,6 +77,18 @@
   z-index: 99;
 }
 
+.login {
+  display: none;
+}
+
+.logged-in .sign-out {
+  display: block;
+}
+
+.logged-in .sign-in {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .site-header {
     .main-nav {
@@ -84,6 +96,7 @@
         display: none;
       }
       .navigation {
+        float: right;
         display: flex;
         position: relative;
         width: auto;
@@ -95,7 +108,7 @@
         z-index: 1;
         li {
           margin: 0;
-          padding: 0 18px;
+          padding: 0 15px;
           &:last-child {
             padding-right: 0;
           }
@@ -105,6 +118,22 @@
         }
       }
     }
+    .sign-in {
+      display: block;
+    }
+    .login {
+      float: right;
+      padding: 25px 0;
+      margin-left: 20px;
+      color: #fff;
+      font-size: 20px;
+      &:hover {
+        color: $brand-color;
+      }
+    }
+  }
+  .logged-in .sign-in {
+    display: none;
   }
 }
 
@@ -115,6 +144,9 @@
         li {
           padding: 0 30px;
         }
+      }
+      .login {
+        margin-left: 50px;
       }
     }
   }

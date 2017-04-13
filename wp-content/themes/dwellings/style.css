@@ -845,10 +845,20 @@ em {
   transition: 0.5s;
   z-index: 99; }
 
+.login {
+  display: none; }
+
+.logged-in .sign-out {
+  display: block; }
+
+.logged-in .sign-in {
+  display: none; }
+
 @media (min-width: 768px) {
   .site-header .main-nav .nav-btn {
     display: none; }
   .site-header .main-nav .navigation {
+    float: right;
     display: -ms-flexbox;
     display: flex;
     position: relative;
@@ -861,15 +871,29 @@ em {
     z-index: 1; }
     .site-header .main-nav .navigation li {
       margin: 0;
-      padding: 0 18px; }
+      padding: 0 15px; }
       .site-header .main-nav .navigation li:last-child {
         padding-right: 0; }
       .site-header .main-nav .navigation li:first-child {
-        padding-left: 0; } }
+        padding-left: 0; }
+  .site-header .sign-in {
+    display: block; }
+  .site-header .login {
+    float: right;
+    padding: 25px 0;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 20px; }
+    .site-header .login:hover {
+      color: #fed52f; }
+  .logged-in .sign-in {
+    display: none; } }
 
 @media (min-width: 992px) {
   .site-header .main-nav .navigation li {
-    padding: 0 30px; } }
+    padding: 0 30px; }
+  .site-header .main-nav .login {
+    margin-left: 50px; } }
 
 .hero {
   position: relative;
