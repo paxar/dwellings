@@ -20,7 +20,7 @@ Version: 1.0.0
   padding: 155px 0 60px; }
 
 @media (min-width: 782px) {
-  body.logged-in .header-page {
+  body.logged-in .header-page, body.logged-in .fixed-scroll {
     margin-top: 32px; } }
 
 @media only screen and (min-width: 1230px) {
