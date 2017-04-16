@@ -85,6 +85,10 @@
   display: block;
 }
 
+.logged-in .username {
+  display: block;
+}
+
 .logged-in .sign-in {
   display: none;
 }
@@ -121,7 +125,11 @@
     .sign-in {
       display: block;
     }
-    .login {
+    .login-wrap{
+      float: right;
+    }
+    .sign-in,
+    .sign-out{
       float: right;
       padding: 25px 0;
       margin-left: 20px;
@@ -129,6 +137,18 @@
       font-size: 20px;
       &:hover {
         color: $brand-color;
+      }
+    }
+    .username {
+      float: left;
+      padding: 25px 0;
+      font: 700 16px $lato;
+      color: #fff;
+      //text-decoration: underline;
+      transition: 0.3s all ease-out;
+      &:hover {
+        color: $brand-color;
+
       }
     }
   }
@@ -148,6 +168,10 @@
       .login {
         margin-left: 50px;
       }
+      .sign-out{
+        margin-left: 10px;
+      }
+
     }
   }
 }
