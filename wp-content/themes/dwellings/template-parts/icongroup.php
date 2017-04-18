@@ -18,7 +18,8 @@
 
         $args = array(
             'post_type' => 'icons-section',
-            'order' => 'ASC'
+            'order' => 'ASC',
+            'posts_per_page' => 3
 
         );
 

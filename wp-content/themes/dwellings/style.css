@@ -1244,7 +1244,7 @@ em {
   .families .title {
     margin-bottom: 30px; }
   .families .more-link {
-    margin-top: 30px;
+    margin: 30px 0;
     text-align: center; }
   .families .families-map {
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.07);
