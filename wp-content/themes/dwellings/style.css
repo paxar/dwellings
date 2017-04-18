@@ -475,7 +475,7 @@ em {
 .project-post-tabs .nav-tabs > .active a {
   position: relative;
   border-bottom: none;
-  font: 600 10px/24px "Lato", sans-serif; }
+  font: 600 18px/23px "Lato", sans-serif; }
   .project-post-tabs .nav-tabs > .active a:before {
     content: '';
     display: block;
@@ -486,10 +486,6 @@ em {
     height: 5px;
     background-color: #fed52f; }
 
-@media (min-width: 600px) {
-  .project-post-tabs .nav-tabs > .active a {
-    font: 600 18px/23px "Lato", sans-serif; } }
-
 .project-post-tabs .nav-tabs {
   border: none; }
 
@@ -498,12 +494,9 @@ em {
   text-align: center; }
   .project-post-tabs .nav-tabs > li a {
     margin-right: 0;
-    font: 400 10px/23px "Lato", sans-serif;
+    font: 400 18px/23px "Lato", sans-serif;
     border: 1px solid #ddd;
     color: #010000; }
-  @media (min-width: 600px) {
-    .project-post-tabs .nav-tabs > li a {
-      font: 400 18px/23px "Lato", sans-serif; } }
 
 .project-post-tabs .tab-content {
   border: 1px solid #ddd;
@@ -1251,7 +1244,7 @@ em {
   .families .title {
     margin-bottom: 30px; }
   .families .more-link {
-    margin: 30px 0;
+    margin-top: 30px;
     text-align: center; }
   .families .families-map {
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.07);
