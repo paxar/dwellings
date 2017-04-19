@@ -1,0 +1,92 @@
+.entry-title {
+  margin: 20px 0;
+  font: 600 26px/28px $lato;
+  text-align: center;
+  color: $brand-color;
+}
+
+.charitable-campaign {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 25px 0 !important;
+  background-color: #ffffff;
+  img {
+    border-radius: 5px;
+  }
+
+  .campaign-title {
+    a {
+      display: block;
+      margin-bottom: 15px;
+      font: 600 20px/24px $lato;
+      color: $brand-color;
+    }
+
+  }
+
+  .campaign-stats {
+    li {
+      margin-left: 5px;
+      padding: 5px;
+      font: 400 16px/18px $lato;
+    }
+    .goal-amount {
+      font: 600 16px/18px $lato;
+    }
+    span {
+      margin-right: 5px;
+    }
+
+  }
+
+  .campaign-actions {
+    border-top: none !important;
+  }
+
+  .edit-campaign {
+    a {
+      margin: 10px 0;
+      padding: 10px 25px;
+      height: 55px;
+      text-align: center;
+      background-color: $brand-color;
+      border-radius: 5px;
+      border: 2px solid $brand-color;
+      font: 600 16px/18px $lato;
+      transition: 0.3s all ease-out;
+      text-transform: uppercase;
+      color: #000;
+      &:focus {
+        //outline: none;
+      }
+      &:hover {
+        background: #fff;
+      }
+    }
+  }
+
+}
+
+.start-campaign {
+  max-width: 768px;
+  margin: 30px auto;
+  a {
+
+    padding: 17px 35px;
+    height: 55px;
+    text-align: center;
+    background-color: $brand-color;
+    border-radius: 5px;
+    border: 2px solid $brand-color;
+    font: 600 16px/18px $lato;
+    transition: 0.3s all ease-out;
+    text-transform: uppercase;
+    color: #000;
+    &:focus {
+      //outline: none;
+    }
+    &:hover {
+      background: #fff;
+    }
+  }
+}

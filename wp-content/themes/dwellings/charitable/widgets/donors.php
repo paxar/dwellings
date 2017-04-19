@@ -71,7 +71,7 @@ if ( $donors->count() ) :
 
                     <div class="donor-donation-amount">
                         <span class="amount"><?php echo charitable_format_money( $donor->get_amount( $campaign_id ) ) ?></span>
-                        <span class="timestamp"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
+<!--                        <span class="timestamp">--><?php //echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?><!--</span>-->
                     </div>
 
 

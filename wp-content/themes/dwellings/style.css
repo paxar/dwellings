@@ -475,7 +475,7 @@ em {
 .project-post-tabs .nav-tabs > .active a {
   position: relative;
   border-bottom: none;
-  font: 600 18px/23px "Lato", sans-serif; }
+  font: 600 10px/24px "Lato", sans-serif; }
   .project-post-tabs .nav-tabs > .active a:before {
     content: '';
     display: block;
@@ -486,6 +486,10 @@ em {
     height: 5px;
     background-color: #fed52f; }
 
+@media (min-width: 600px) {
+  .project-post-tabs .nav-tabs > .active a {
+    font: 600 18px/23px "Lato", sans-serif; } }
+
 .project-post-tabs .nav-tabs {
   border: none; }
 
@@ -494,9 +498,12 @@ em {
   text-align: center; }
   .project-post-tabs .nav-tabs > li a {
     margin-right: 0;
-    font: 400 18px/23px "Lato", sans-serif;
+    font: 400 10px/23px "Lato", sans-serif;
     border: 1px solid #ddd;
     color: #010000; }
+  @media (min-width: 600px) {
+    .project-post-tabs .nav-tabs > li a {
+      font: 400 18px/23px "Lato", sans-serif; } }
 
 .project-post-tabs .tab-content {
   border: 1px solid #ddd;
@@ -1244,7 +1251,7 @@ em {
   .families .title {
     margin-bottom: 30px; }
   .families .more-link {
-    margin-top: 30px;
+    margin: 30px 0;
     text-align: center; }
   .families .families-map {
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.07);
@@ -1758,6 +1765,8 @@ content-campaign.php
     .project-post-header .creator-info .creator-avatar {
       float: left; }
       .project-post-header .creator-info .creator-avatar img {
+        width: 70px;
+        height: 70px;
         border-radius: 5px; }
     .project-post-header .creator-info .creator-description {
       float: left;
@@ -1898,5 +1907,65 @@ content-campaign.php
 @media (min-width: 992px) {
   .thank .thank-block {
     padding: 150px 0 200px; } }
+
+.entry-title {
+  margin: 20px 0;
+  font: 600 26px/28px "Lato", sans-serif;
+  text-align: center;
+  color: #fed52f; }
+
+.charitable-campaign {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 25px 0 !important;
+  background-color: #ffffff; }
+  .charitable-campaign img {
+    border-radius: 5px; }
+  .charitable-campaign .campaign-title a {
+    display: block;
+    margin-bottom: 15px;
+    font: 600 20px/24px "Lato", sans-serif;
+    color: #fed52f; }
+  .charitable-campaign .campaign-stats li {
+    margin-left: 5px;
+    padding: 5px;
+    font: 400 16px/18px "Lato", sans-serif; }
+  .charitable-campaign .campaign-stats .goal-amount {
+    font: 600 16px/18px "Lato", sans-serif; }
+  .charitable-campaign .campaign-stats span {
+    margin-right: 5px; }
+  .charitable-campaign .campaign-actions {
+    border-top: none !important; }
+  .charitable-campaign .edit-campaign a {
+    margin: 10px 0;
+    padding: 10px 25px;
+    height: 55px;
+    text-align: center;
+    background-color: #fed52f;
+    border-radius: 5px;
+    border: 2px solid #fed52f;
+    font: 600 16px/18px "Lato", sans-serif;
+    transition: 0.3s all ease-out;
+    text-transform: uppercase;
+    color: #000; }
+    .charitable-campaign .edit-campaign a:hover {
+      background: #fff; }
+
+.start-campaign {
+  max-width: 768px;
+  margin: 30px auto; }
+  .start-campaign a {
+    padding: 17px 35px;
+    height: 55px;
+    text-align: center;
+    background-color: #fed52f;
+    border-radius: 5px;
+    border: 2px solid #fed52f;
+    font: 600 16px/18px "Lato", sans-serif;
+    transition: 0.3s all ease-out;
+    text-transform: uppercase;
+    color: #000; }
+    .start-campaign a:hover {
+      background: #fff; }
 
 /*# sourceMappingURL=style.css.map */
