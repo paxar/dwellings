@@ -1968,4 +1968,11 @@ content-campaign.php
     .start-campaign a:hover {
       background: #fff; }
 
+.charitable-creator-donations {
+  background-color: #ffffff; }
+  .charitable-creator-donations thead {
+    font: 600 16px/18px "Lato", sans-serif; }
+  .charitable-creator-donations tbody {
+    font: 400 16px/18px "Lato", sans-serif; }
+
 /*# sourceMappingURL=style.css.map */

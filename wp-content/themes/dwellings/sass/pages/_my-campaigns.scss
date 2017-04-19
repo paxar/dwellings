@@ -21,7 +21,6 @@
       font: 600 20px/24px $lato;
       color: $brand-color;
     }
-
   }
 
   .campaign-stats {
@@ -36,7 +35,6 @@
     span {
       margin-right: 5px;
     }
-
   }
 
   .campaign-actions {
@@ -64,7 +62,6 @@
       }
     }
   }
-
 }
 
 .start-campaign {
@@ -88,5 +85,16 @@
     &:hover {
       background: #fff;
     }
+  }
+}
+
+.charitable-creator-donations{
+  background-color: #ffffff;
+  thead{
+    font: 600 16px/18px $lato;
+  }
+  tbody{
+    font: 400 16px/18px $lato;
+
   }
 }
