@@ -806,6 +806,7 @@ em {
   .site-header .main-nav {
     float: right; }
     .site-header .main-nav .nav-btn {
+      float: right;
       background: transparent;
       margin: 20px 15px;
       border: none;
@@ -841,6 +842,29 @@ em {
         transition: 0.3s all ease-out; }
         .site-header .main-nav .navigation a:hover {
           color: #fed52f; }
+  .site-header .sign-in {
+    margin-top: 22px;
+    margin-right: 15px;
+    display: block; }
+  .site-header .sign-in,
+  .site-header .sign-out {
+    float: right;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 20px; }
+    .site-header .sign-in:hover,
+    .site-header .sign-out:hover {
+      color: #fed52f; }
+  .site-header .username {
+    float: left;
+    margin-left: 10px;
+    font: 700 16px "Lato", sans-serif;
+    color: #fff;
+    transition: 0.3s all ease-out; }
+    .site-header .username:hover {
+      color: #fed52f; }
+  .site-header .logged-in .sign-in {
+    display: none; }
 
 .header-page {
   position: fixed;
@@ -887,32 +911,17 @@ em {
         padding-right: 0; }
       .site-header .main-nav .navigation li:first-child {
         padding-left: 0; }
-  .site-header .sign-in {
-    display: block; }
-  .site-header .login-wrap {
-    float: right; }
   .site-header .sign-in,
   .site-header .sign-out {
-    float: right;
-    padding: 25px 0;
-    margin-left: 20px;
-    color: #fff;
-    font-size: 20px; }
-    .site-header .sign-in:hover,
-    .site-header .sign-out:hover {
-      color: #fed52f; }
+    padding: 25px 0; }
+  .site-header .sign-in {
+    margin: 0 10px; }
   .site-header .username {
-    float: left;
-    padding: 25px 0;
-    font: 700 16px "Lato", sans-serif;
-    color: #fff;
-    transition: 0.3s all ease-out; }
-    .site-header .username:hover {
-      color: #fed52f; }
-  .logged-in .sign-in {
-    display: none; } }
+    padding: 25px 0; }
+  .site-header .login-wrap {
+    float: right; } }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) and (min-width: 992px) {
   .site-header .main-nav .navigation li {
     padding: 0 30px; }
   .site-header .main-nav .login {

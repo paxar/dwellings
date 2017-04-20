@@ -1,6 +1,7 @@
 .container {
   position: static;
 }
+
 .site-header {
   width: 100%;
   position: absolute;
@@ -17,6 +18,7 @@
   .main-nav {
     float: right;
     .nav-btn {
+      float: right;
       background: transparent;
       margin: 20px 15px;
       border: none;
@@ -40,7 +42,7 @@
       width: 100%;
       height: 100vh;
       text-align: center;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(0, 0, 0, 0.9);
       top: 0;
       left: 0;
       padding: 20vh 0 0;
@@ -62,6 +64,42 @@
       }
     }
   }
+
+  .sign-in {
+    margin-top: 22px;
+    margin-right: 15px;
+    display: block;
+  }
+  .login-wrap {
+    //float: right;
+  }
+  .sign-in,
+  .sign-out {
+    float: right;
+    //padding: 25px 0;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 20px;
+    &:hover {
+      color: $brand-color;
+    }
+  }
+  .username {
+    float: left;
+    margin-left: 10px;
+    //padding: 25px 0;
+    font: 700 16px $lato;
+    color: #fff;
+    //text-decoration: underline;
+    transition: 0.3s all ease-out;
+    &:hover {
+      color: $brand-color;
+    }
+  }
+  .logged-in .sign-in {
+    display: none;
+  }
+
 }
 
 .header-page {
@@ -122,56 +160,37 @@
         }
       }
     }
-    .sign-in {
-      display: block;
-    }
-    .login-wrap{
-      float: right;
-    }
     .sign-in,
-    .sign-out{
-      float: right;
+    .sign-out {
       padding: 25px 0;
-      margin-left: 20px;
-      color: #fff;
-      font-size: 20px;
-      &:hover {
-        color: $brand-color;
-      }
+    }
+    .sign-in {
+      margin: 0 10px;
     }
     .username {
-      float: left;
-      padding: 25px 0;
-      font: 700 16px $lato;
-      color: #fff;
-      //text-decoration: underline;
-      transition: 0.3s all ease-out;
-      &:hover {
-        color: $brand-color;
+     padding: 25px 0;
+    }
 
-      }
+    .login-wrap {
+      float: right;
     }
   }
-  .logged-in .sign-in {
-    display: none;
-  }
-}
 
-@media (min-width: 992px) {
-  .site-header {
-    .main-nav {
-      .navigation {
-        li {
-          padding: 0 30px;
+  @media (min-width: 992px) {
+    .site-header {
+      .main-nav {
+        .navigation {
+          li {
+            padding: 0 30px;
+          }
+        }
+        .login {
+          margin-left: 50px;
+        }
+        .sign-out {
+          margin-left: 10px;
         }
       }
-      .login {
-        margin-left: 50px;
-      }
-      .sign-out{
-        margin-left: 10px;
-      }
-
     }
   }
 }
