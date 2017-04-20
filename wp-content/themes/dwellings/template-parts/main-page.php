@@ -98,7 +98,9 @@ Template Name: Template main page
                             <h3 class="item-title"><?php the_title() ?> Family</h3>
 
                             <div class="item-info">
-                                <?php echo $campaign->description ?>
+                                <?php $text = $campaign->description; ?>
+                                <?php echo wp_trim_words( $text, 20, '<a href="'. get_permalink() .'"> ...</a>' );; ?>
+
                             </div>
 
 
@@ -118,14 +120,16 @@ Template Name: Template main page
 
         </div>
 
-            <div class="families-map">
-                <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
-            </div>
-
             <?php if (get_theme_mod('families_btn_text') != ''): ?>
                 <a href="<?php echo get_permalink(get_theme_mod('families_btn_url')); ?>"
                    class="more-link"><?php echo get_theme_mod('families_btn_text'); ?></a>
             <?php endif; ?>
+
+            <div class="families-map">
+                <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
+            </div>
+
+
         </div>
 
     </section>

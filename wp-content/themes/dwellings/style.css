@@ -19,10 +19,6 @@ Version: 1.0.0
   background: #fbf7f4;
   padding: 155px 0 60px; }
 
-@media (min-width: 782px) {
-  body.logged-in .header-page, body.logged-in .fixed-scroll {
-    margin-top: 32px; } }
-
 @media only screen and (min-width: 1230px) {
   .container {
     width: 1200px; } }
@@ -217,6 +213,12 @@ em {
   .btn:hover, .gform_wrapper .gform_footer .gform_button:hover, .site-footer .subscribe input[type="submit"]:hover {
     background: #fff; }
 
+.buttons-wrap {
+  text-align: center; }
+
+.btn-profile {
+  margin: 10px auto; }
+
 .projects-donate-button {
   display: inline-block;
   padding: 15px 50px;
@@ -227,7 +229,6 @@ em {
   border-radius: 4px;
   border: 2px solid #fed52f;
   background-color: #fed52f;
-  color: #fff;
   transition: 0.5s all ease-out; }
   .projects-donate-button:hover {
     background-color: #ffffff;
@@ -474,7 +475,7 @@ em {
 .project-post-tabs .nav-tabs > .active a {
   position: relative;
   border-bottom: none;
-  font: 600 18px/23px "Lato", sans-serif; }
+  font: 600 10px/24px "Lato", sans-serif; }
   .project-post-tabs .nav-tabs > .active a:before {
     content: '';
     display: block;
@@ -485,6 +486,10 @@ em {
     height: 5px;
     background-color: #fed52f; }
 
+@media (min-width: 600px) {
+  .project-post-tabs .nav-tabs > .active a {
+    font: 600 18px/23px "Lato", sans-serif; } }
+
 .project-post-tabs .nav-tabs {
   border: none; }
 
@@ -493,9 +498,12 @@ em {
   text-align: center; }
   .project-post-tabs .nav-tabs > li a {
     margin-right: 0;
-    font: 400 18px/23px "Lato", sans-serif;
+    font: 400 10px/23px "Lato", sans-serif;
     border: 1px solid #ddd;
     color: #010000; }
+  @media (min-width: 600px) {
+    .project-post-tabs .nav-tabs > li a {
+      font: 400 18px/23px "Lato", sans-serif; } }
 
 .project-post-tabs .tab-content {
   border: 1px solid #ddd;
@@ -798,6 +806,7 @@ em {
   .site-header .main-nav {
     float: right; }
     .site-header .main-nav .nav-btn {
+      float: right;
       background: transparent;
       margin: 20px 15px;
       border: none;
@@ -833,6 +842,29 @@ em {
         transition: 0.3s all ease-out; }
         .site-header .main-nav .navigation a:hover {
           color: #fed52f; }
+  .site-header .sign-in {
+    margin-top: 22px;
+    margin-right: 15px;
+    display: block; }
+  .site-header .sign-in,
+  .site-header .sign-out {
+    float: right;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 20px; }
+    .site-header .sign-in:hover,
+    .site-header .sign-out:hover {
+      color: #fed52f; }
+  .site-header .username {
+    float: left;
+    margin-left: 10px;
+    font: 700 16px "Lato", sans-serif;
+    color: #fff;
+    transition: 0.3s all ease-out; }
+    .site-header .username:hover {
+      color: #fed52f; }
+  .site-header .logged-in .sign-in {
+    display: none; }
 
 .header-page {
   position: fixed;
@@ -849,6 +881,9 @@ em {
   display: none; }
 
 .logged-in .sign-out {
+  display: block; }
+
+.logged-in .username {
   display: block; }
 
 .logged-in .sign-in {
@@ -876,24 +911,23 @@ em {
         padding-right: 0; }
       .site-header .main-nav .navigation li:first-child {
         padding-left: 0; }
+  .site-header .sign-in,
+  .site-header .sign-out {
+    padding: 25px 0; }
   .site-header .sign-in {
-    display: block; }
-  .site-header .login {
-    float: right;
-    padding: 25px 0;
-    margin-left: 20px;
-    color: #fff;
-    font-size: 20px; }
-    .site-header .login:hover {
-      color: #fed52f; }
-  .logged-in .sign-in {
-    display: none; } }
+    margin: 0 10px; }
+  .site-header .username {
+    padding: 25px 0; }
+  .site-header .login-wrap {
+    float: right; } }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) and (min-width: 992px) {
   .site-header .main-nav .navigation li {
     padding: 0 30px; }
   .site-header .main-nav .login {
-    margin-left: 50px; } }
+    margin-left: 50px; }
+  .site-header .main-nav .sign-out {
+    margin-left: 10px; } }
 
 .hero {
   position: relative;
@@ -1226,7 +1260,7 @@ em {
   .families .title {
     margin-bottom: 30px; }
   .families .more-link {
-    margin-top: 30px;
+    margin: 30px 0;
     text-align: center; }
   .families .families-map {
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.07);
@@ -1740,6 +1774,8 @@ content-campaign.php
     .project-post-header .creator-info .creator-avatar {
       float: left; }
       .project-post-header .creator-info .creator-avatar img {
+        width: 70px;
+        height: 70px;
         border-radius: 5px; }
     .project-post-header .creator-info .creator-description {
       float: left;
@@ -1880,5 +1916,72 @@ content-campaign.php
 @media (min-width: 992px) {
   .thank .thank-block {
     padding: 150px 0 200px; } }
+
+.entry-title {
+  margin: 20px 0;
+  font: 600 26px/28px "Lato", sans-serif;
+  text-align: center;
+  color: #fed52f; }
+
+.charitable-campaign {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 25px 0 !important;
+  background-color: #ffffff; }
+  .charitable-campaign img {
+    border-radius: 5px; }
+  .charitable-campaign .campaign-title a {
+    display: block;
+    margin-bottom: 15px;
+    font: 600 20px/24px "Lato", sans-serif;
+    color: #fed52f; }
+  .charitable-campaign .campaign-stats li {
+    margin-left: 5px;
+    padding: 5px;
+    font: 400 16px/18px "Lato", sans-serif; }
+  .charitable-campaign .campaign-stats .goal-amount {
+    font: 600 16px/18px "Lato", sans-serif; }
+  .charitable-campaign .campaign-stats span {
+    margin-right: 5px; }
+  .charitable-campaign .campaign-actions {
+    border-top: none !important; }
+  .charitable-campaign .edit-campaign a {
+    margin: 10px 0;
+    padding: 10px 25px;
+    height: 55px;
+    text-align: center;
+    background-color: #fed52f;
+    border-radius: 5px;
+    border: 2px solid #fed52f;
+    font: 600 16px/18px "Lato", sans-serif;
+    transition: 0.3s all ease-out;
+    text-transform: uppercase;
+    color: #000; }
+    .charitable-campaign .edit-campaign a:hover {
+      background: #fff; }
+
+.start-campaign {
+  max-width: 768px;
+  margin: 30px auto; }
+  .start-campaign a {
+    padding: 17px 35px;
+    height: 55px;
+    text-align: center;
+    background-color: #fed52f;
+    border-radius: 5px;
+    border: 2px solid #fed52f;
+    font: 600 16px/18px "Lato", sans-serif;
+    transition: 0.3s all ease-out;
+    text-transform: uppercase;
+    color: #000; }
+    .start-campaign a:hover {
+      background: #fff; }
+
+.charitable-creator-donations {
+  background-color: #ffffff; }
+  .charitable-creator-donations thead {
+    font: 600 16px/18px "Lato", sans-serif; }
+  .charitable-creator-donations tbody {
+    font: 400 16px/18px "Lato", sans-serif; }
 
 /*# sourceMappingURL=style.css.map */

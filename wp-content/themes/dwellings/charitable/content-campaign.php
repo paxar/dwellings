@@ -27,6 +27,7 @@ $creator = $campaign->get_campaign_creator();
 $user_id = charitable_get_user($creator);
 $value = $campaign->get_percent_donated_raw();
 
+$creator        = new Charitable_User( $campaign->get_campaign_creator() );
 
 //print_r($campaign) ;
 
@@ -65,11 +66,14 @@ if (empty($video)) {
     <div class="projects-item-donate-info col-xs-12 col-sm-6">
         <div class="creator-info">
             <div class="creator-avatar">
-                <?php echo get_avatar($creator, 70); ?>
+<!--                --><?php //echo get_avatar($creator, 70); ?>
+
+	            <?php echo $creator->get_avatar(); ?>
             </div>
             <div class="creator-description">
                 <span>Sponsor: </span>
                 <p><?php echo $user_id->description; ?></p>
+
 
             </div>
         </div>

@@ -49,6 +49,7 @@ if ($wp_query->have_posts()) :
         ?>
         <div class="projects-item col-xs-12">
             <div class="projects-item-image-wrap col-xs-12 col-sm-6 col-md-3">
+                <a href="<?php the_permalink() ?> ">
                 <?php
                 // image
                 $thumbnail_size = apply_filters('charitable_campaign_loop_thumbnail_size', 'large');
@@ -57,6 +58,7 @@ if ($wp_query->have_posts()) :
                 endif;
                 // end image
                 ?>
+                </a>
             </div>
             <div class="projects-item-description col-xs-12 col-sm-6 col-md-4">
                 <h3 class="item-title"><?php the_title() ?> Family</h3>
