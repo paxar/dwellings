@@ -12,21 +12,38 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
 
-$content = $view_args[ 'content' ];
+$donation = $view_args[ 'donation' ];
 
-if ( is_user_logged_in() ) :
 ?>
+<h3 class="charitable-header"><?php _e( 'Your Donation', 'charitable' ) ?></h3>
+<table class="donation-details charitable-table">
+    <thead>
+    <tr>
+        <th><?php _e( 'Campaign', 'charitable' ) ?></th>
+        <th><?php _e( 'Total', 'charitable' ) ?></th>
+    </tr>
+    </thead>
+    <tbody>
+	<?php foreach ( $donation->get_campaign_donations() as $campaign_donation ) : ?>
+        <tr>
+            <td class="campaign-name"><?php
+				echo $campaign_donation->campaign_name;
 
-<div class="charitable-notice">
-    <?php _e( 'You do not have access to this donation receipt.', 'charitable' ) ?>    
-</div>
+				/**
+				 * @hook charitable_donation_receipt_after_campaign_name
+				 */
+				do_action( 'charitable_donation_receipt_after_campaign_name', $campaign_donation, $donation );
 
-<?php /*else : */?><!--
-
-<div class="charitable-notice">
-    <?php /*_e( 'You must be logged in to access your donation receipt.', 'charitable' ) */?>
-</div>
-
---><?php /*charitable_template( 'shortcodes/login.php', array( 'redirect' => charitable_get_current_url() ) ) */?>
-
-<?php endif ?>
+				?>
+            </td>
+            <td class="donation-amount"><?php echo charitable_format_money( $campaign_donation->amount ) ?></td>
+        </tr>
+	<?php endforeach ?>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td><?php _e( 'Total', 'charitable' ) ?></td>
+        <td><?php echo charitable_format_money( $donation->get_total_donation_amount() ) ?></td>
+    </tr>
+    </tfoot>
+</table>
