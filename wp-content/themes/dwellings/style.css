@@ -1288,7 +1288,7 @@ em {
     @media (min-width: 990px) {
       .families-item .img-wrap img {
         width: 100%;
-        height: auto; } }
+        height: 100%; } }
     .families-item .img-wrap .hover {
       position: absolute;
       top: 0;
