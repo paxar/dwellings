@@ -27,6 +27,6 @@ if ( is_user_logged_in() ) :
     <?php _e( 'You must be logged in to access your donation receipt.', 'charitable' ) ?>
 </div>
 
-<?php charitable_template( 'content-donation-receipt.php', array( 'redirect' => charitable_get_current_url() ) ) ?>
+<?php charitable_template( 'shortcodes/login.php', array( 'redirect' => charitable_get_current_url() ) ) ?>
 
 <?php endif ?>
