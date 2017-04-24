@@ -24,7 +24,7 @@ $args = array(
 "post_type" => 'campaign',      // custom post type
 'posts_per_page' => 7,         // 7 posts in mockup
 'paged' => $paged,
-'status' => 'ended'
+
 );
 $wp_query = new WP_Query($args);
 
