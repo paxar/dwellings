@@ -908,6 +908,7 @@ function dwellings_customize_register( $wp_customize ) {
             )
         )
     );
+
     /*--------------------------------------------------------------
    # Contact-us section
    --------------------------------------------------------------*/
@@ -1061,6 +1062,51 @@ function dwellings_customize_register( $wp_customize ) {
             'type'     => 'checkbox'
         )
     );
+
+	/*--------------------------------------------------------------
+	# Thank section
+	--------------------------------------------------------------*/
+	$wp_customize->add_section(
+		'thank-campaign-section',
+		array(
+			'title' => esc_html__('Thank new campaign settings', 'dwellings'),
+			'priority' => 10
+		)
+	);
+	$wp_customize->add_setting(
+		'thank_setting_new_campaign'
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'thank_setting_new_campaign',
+			array(
+				'label' => esc_html__('Thank image', 'dwellings'),
+				'section' => 'thank-campaign-section'
+			)
+		)
+	);
+	$wp_customize->add_setting(
+		'title_thank_new_campaign'
+	);
+	$wp_customize->add_control(
+		'title_thank_new_campaign',
+		array(
+			'label' => esc_html__('Title', 'dwellings'),
+			'section' => 'thank-campaign-section'
+		)
+	);
+	$wp_customize->add_setting(
+		'subtitle_thank_new_campaign'
+	);
+	$wp_customize->add_control(
+		'subtitle_thank_new_campaign',
+		array(
+			'label' => esc_html__('Message', 'dwellings'),
+			'section' => 'thank-campaign-section'
+		)
+	);
+
 
 
 

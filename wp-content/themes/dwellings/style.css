@@ -1913,6 +1913,11 @@ content-campaign.php
     padding: 10px 0;
     font: 700 40px/50px "Lato", sans-serif;
     color: #000; }
+  .thank .thank-block p {
+    text-align: center;
+    padding: 10px 0;
+    font: 400 20px/25px "Lato", sans-serif;
+    color: #000; }
 
 @media (min-width: 992px) {
   .thank .thank-block {
