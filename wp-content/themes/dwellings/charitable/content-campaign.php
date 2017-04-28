@@ -26,7 +26,7 @@ $video_id = $campaign->video_id;
 $creator = $campaign->get_campaign_creator();
 $user_id = charitable_get_user($creator);
 $value = $campaign->get_percent_donated_raw();
-
+$ended = $campaign->get_time_since_ended();
 $creator        = new Charitable_User( $campaign->get_campaign_creator() );
 
 //print_r($campaign) ;
@@ -107,11 +107,16 @@ if (empty($video)) {
                     <li><a href="http://www.tumblr.com/share/link?url=<?php the_permalink();?>"><i class="fa fa-tumblr "></i></a></li>
                 </ul>
             </div>
+	        <?php
+	        if ( !$ended > 0){?>
             <a data-trigger-modal="charitable-donation-form-modal"
                class="projects-donate-button"
                href="<?php echo charitable_get_permalink('campaign_donation_page', array('campaign_id' => $campaign->ID)) ?>"
                aria-label="<?php printf(esc_attr_x('Make a donation to %s', 'make a donation to campaign', 'charitable'), get_the_title($campaign->ID)) ?>">
                 <?php _e('Donate', 'charitable') ?></a>
+		        <?php
+	        }
+	        ?>
 
         </div>
     </div>
