@@ -87,6 +87,23 @@ content-campaign.php
   .bar-wrapper {
     margin-top: 65px;
   }
+  .campaign-timestamp{
+    font: 400 16px/20px $lato;
+    .timestamp-time{
+      float: left;
+      margin-right: 10px;
+      span{
+        font: 900 16px/20px $lato;
+        color: $brand-color;
+      }
+    }
+    .timestamp-date{
+      span{
+        font: 900 16px/20px $lato;
+      }
+    }
+
+  }
   .donate-info-wrap {
     margin-top: 20px;
     margin-bottom: 20px;

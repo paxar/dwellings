@@ -1789,6 +1789,16 @@ content-campaign.php
         color: #000000; }
   .project-post-header .bar-wrapper {
     margin-top: 65px; }
+  .project-post-header .campaign-timestamp {
+    font: 400 16px/20px "Lato", sans-serif; }
+    .project-post-header .campaign-timestamp .timestamp-time {
+      float: left;
+      margin-right: 10px; }
+      .project-post-header .campaign-timestamp .timestamp-time span {
+        font: 900 16px/20px "Lato", sans-serif;
+        color: #fed52f; }
+    .project-post-header .campaign-timestamp .timestamp-date span {
+      font: 900 16px/20px "Lato", sans-serif; }
   .project-post-header .donate-info-wrap {
     margin-top: 20px;
     margin-bottom: 20px; }

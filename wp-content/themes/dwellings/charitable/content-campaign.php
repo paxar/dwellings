@@ -27,9 +27,12 @@ $creator = $campaign->get_campaign_creator();
 $user_id = charitable_get_user($creator);
 $value = $campaign->get_percent_donated_raw();
 $ended = $campaign->get_time_since_ended();
-$creator        = new Charitable_User( $campaign->get_campaign_creator() );
+$time_end = $campaign->get_time_left();
+$date_end = $campaign->get_end_date();
+$creator  = new Charitable_User( $campaign->get_campaign_creator() );
 
-//print_r($campaign) ;
+//print_r($time_end) ;
+
 
 
 
@@ -85,6 +88,11 @@ if (empty($video)) {
                     <span class="pop" data-toggle="tooltip" data-placement="top"
                           title="<?php echo $percent; ?>"> </span>
                 </div>
+            </div>
+            <div class="campaign-timestamp">
+                <div class="timestamp-time"> <?php echo $time_end; ?></div>
+                <p class="timestamp-date"> End date <span><?php echo $date_end; ?></span> </p>
+
             </div>
             <div class="donate-info-wrap">
                 <div class="amount">
