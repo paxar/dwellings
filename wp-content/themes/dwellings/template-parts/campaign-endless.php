@@ -15,7 +15,9 @@ Template Name: Template campaign endless
 			custom_breadcrumbs();
 			?>
 		</div>
-<?php
+        <a class="projects-donate-button" href="<?php echo home_url() . '/candidate-families/';?>">Get active campaigns</a>
+
+        <?php
 
 // set up or arguments for our custom query
 

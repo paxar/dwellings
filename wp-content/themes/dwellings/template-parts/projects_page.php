@@ -18,6 +18,8 @@ Description: Dwellings Projects_page
             custom_breadcrumbs();
             ?>
         </div>
+        <a class="projects-donate-button" href="<?php echo home_url() . '/finished-campaigns/';?>">Get finished campaigns</a>
+
 
         <?php echo do_shortcode('[campaigns]'); ?>
         <!--        /* this shortcode use theme_folder/charitable/campaign-loop.php  template */-->
