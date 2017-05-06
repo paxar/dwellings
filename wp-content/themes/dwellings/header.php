@@ -48,7 +48,7 @@ session_start();  /*Starting session for send variables   Added paxar*/
                         <a href="<?php echo get_permalink( get_theme_mod( 'url_login' ) ); ?>" class="login sign-in"><i
                                     class="fa fa-user"></i></a>
                         <div class="login-wrap">
-                            <a href="<?php echo home_url() . '/charitable-profile/'  ?>" class="login username"><?php echo $user_identity; ?> </a>
+                            <a href="<?php echo home_url() . '/dwellings-profile/'  ?>" class="login username"><?php echo $user_identity; ?> </a>
                             <a href="<?php echo wp_logout_url( home_url() ); ?>" class="login sign-out"><i
                                         class="fa fa-sign-out"></i></a>
 

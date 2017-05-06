@@ -14,6 +14,7 @@ Template Name: Template new campaign
 
 
 			if ($current_user->ID == '') {
+			    echo '<h1 class="entry-title">Dwellings login</h1>';
 				echo do_shortcode('[charitable_login]');
 			}
 			else {

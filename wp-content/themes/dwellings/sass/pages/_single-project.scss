@@ -51,6 +51,8 @@ content-campaign.php
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
     }
   }
   @media (min-width: 768px) {
@@ -84,6 +86,23 @@ content-campaign.php
   }
   .bar-wrapper {
     margin-top: 65px;
+  }
+  .campaign-timestamp{
+    font: 400 16px/20px $lato;
+    .timestamp-time{
+      float: left;
+      margin-right: 10px;
+      span{
+        font: 900 16px/20px $lato;
+        color: $brand-color;
+      }
+    }
+    .timestamp-date{
+      span{
+        font: 900 16px/20px $lato;
+      }
+    }
+
   }
   .donate-info-wrap {
     margin-top: 20px;
