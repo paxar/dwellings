@@ -33,7 +33,7 @@
   .contact-form {
     width: 100%;
     background-color: #fff;
-    padding: 45px;
+    padding: 45px 15px;
     border-radius: 0 0 6px 6px;
     border: 1px solid #e5e5e5;
     border-top: none;
@@ -51,6 +51,7 @@
     .contact-form {
       display: table-cell;
       width: 50%;
+      padding: 45px;
       border-radius: 0 6px 6px 0;
       border: 1px solid #e5e5e5;
       border-left: none;

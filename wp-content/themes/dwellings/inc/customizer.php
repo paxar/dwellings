@@ -1118,8 +1118,10 @@ add_action( 'customize_register', 'dwellings_customize_register' );
 function custom_style() {
     ?>
     <style type="text/css">
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(<?php echo get_theme_mod('bg-hero') ?>) 50% 0 /cover no-repeat;
+        @media (max-width: 768px) {
+            .hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(<?php echo get_theme_mod('bg-hero') ?>) 50% 0 /cover no-repeat;
+            }
         }
         .info {
             background: url(<?php echo get_theme_mod('bg-info') ?>)center /cover no-repeat;

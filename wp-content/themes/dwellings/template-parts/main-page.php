@@ -10,6 +10,12 @@ Template Name: Template main page
 <?php get_header() ?>
 
     <section class="hero">
+        <div id="video-hero">
+            <video preload="auto" autoplay="autoplay"
+                   loop="loop">
+                <source src="<?php echo get_template_directory_uri() ?> ../video/dwellings.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="container">
 
             <?php if (get_theme_mod('hero-intro') != ''): ?>
