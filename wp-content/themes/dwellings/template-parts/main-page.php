@@ -13,7 +13,7 @@ Template Name: Template main page
         <div id="video-hero">
             <video preload="auto" autoplay="autoplay"
                    loop="loop">
-                <source src="<?php echo get_template_directory_uri() ?> ../video/dwellings.mp4" type="video/mp4">
+                <source src="<?php echo get_template_directory_uri() ?>video/dwellings.mp4" type="video/mp4">
             </video>
         </div>
         <div class="container">
