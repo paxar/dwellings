@@ -18,7 +18,7 @@ Description: Dwellings Projects_page
             custom_breadcrumbs();
             ?>
         </div>
-        <a class="projects-donate-button" href="<?php echo home_url() . '/finished-campaigns/';?>">Get finished campaigns</a>
+        <a class="projects-donate-button" href="<?php echo home_url() . '/completed-campaigns/';?>">See completed campaigns</a>
 
 
         <?php echo do_shortcode('[campaigns]'); ?>

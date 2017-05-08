@@ -66,6 +66,12 @@ em {
 .alignnone {
   display: block; }
 
+.extended-description img,
+.campaign-updates img {
+  max-width: 100%;
+  height: auto;
+  margin: 5px; }
+
 .extended-description h1,
 .campaign-updates h1 {
   font: 600 22px/26px "Lato", sans-serif; }
@@ -1612,7 +1618,11 @@ em {
     padding-top: 56px; }
 
 .map-learn-more {
-  height: 451px; }
+  height: 251px; }
+
+@media only screen and (min-width: 768px) {
+  .map-learn-more {
+    height: 451px; } }
 
 .right-image-section,
 .left-image-section {

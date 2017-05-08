@@ -15,7 +15,7 @@ Template Name: Template campaign endless
 			custom_breadcrumbs();
 			?>
 		</div>
-        <a class="projects-donate-button" href="<?php echo home_url() . '/candidate-families/';?>">Get active campaigns</a>
+        <a class="projects-donate-button" href="<?php echo home_url() . '/candidate-families/';?>">See active campaigns</a>
 
         <?php
 
@@ -50,7 +50,7 @@ if ($wp_query->have_posts()) :
 		$value = $campaign->get_percent_donated_raw();
 		$ended = $campaign->get_time_since_ended();
 
-		print_r($seconds);
+		//print_r($seconds);
 
 
 		if ($value > 100) {

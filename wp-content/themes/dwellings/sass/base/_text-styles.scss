@@ -21,6 +21,11 @@ em{
 
 .extended-description,
 .campaign-updates{
+  img{
+    max-width: 100%;
+    height: auto;
+    margin: 5px;
+  }
   h1{
     font: 600 22px/26px $lato;
   }
