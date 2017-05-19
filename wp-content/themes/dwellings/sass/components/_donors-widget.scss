@@ -1,4 +1,12 @@
 /* Styles for donors widget cheritable in single-campaign page */
+.widget-donors{
+  padding: 10px 0;
+  p{
+    text-align: center;
+    font: 400 18px/26px $lato;
+    color: #000000;
+  }
+}
 .donors-list{
   li{
     padding: 20px;

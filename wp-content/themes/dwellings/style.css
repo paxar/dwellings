@@ -1455,8 +1455,6 @@ em {
   .content-post-wrap .bottom-link-block {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex: 1;
-        flex: 1;
     -ms-flex-direction: column;
         flex-direction: column;
     -ms-flex-pack: justify;

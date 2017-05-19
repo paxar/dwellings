@@ -1,11 +1,11 @@
-( function( window, document ){  
+( function( window, document ){
 
     /**
      * Set up a single map.
      */
-    var charitableMap = function ( element ) {        
+    var charitableMap = function ( element ) {
 
-        this.element    = element;        
+        this.element    = element;
         this.map        = new google.maps.Map( element, {
             mapTypeId   : google.maps.MapTypeId.ROADMAP,
             zoomControl : true
@@ -33,8 +33,8 @@
         if ( this.mapmarkers.length ) {
             markerCluster = new MarkerClusterer( this.map, this.mapmarkers, JSON.parse( CHARITABLE_GEOLOCATION.markerclusterer_options ) );
         }
-        
-        methods.setupInitialMapLocation( this );        
+
+        methods.setupInitialMapLocation( this );
 
         return this;
     }
@@ -52,7 +52,7 @@
         var infowindow = new google.maps.InfoWindow();
         var markers    = JSON.parse( that.element.dataset.markers );
 
-        for ( var i = 0; i < markers.length; i++ ) {  
+        for ( var i = 0; i < markers.length; i++ ) {
 
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng( markers[i]['latitude'],  markers[i]['longitude'] ),
@@ -76,7 +76,7 @@
      * Set up search/autocomplete for the map.
      */
     methods.setupSearch = function( that ) {
-        that.search = document.getElementById( that.element.dataset.search );        
+        that.search = document.getElementById( that.element.dataset.search );
 
         if ( null === that.search ) {
             return;
@@ -93,7 +93,7 @@
 
         that.autocomplete.addListener( 'place_changed', function() {
             return methods.setupPlace( that, that.autocomplete.getPlace() );
-        });        
+        });
     }
 
     /**
@@ -132,8 +132,8 @@
         }
 
         // Store the latitude and longitude in hidden fields
-        methods.storePlaceDetails( place, that );            
-        
+        methods.storePlaceDetails( place, that );
+
         that.a_marker.setIcon({
             url: place.icon,
             size: new google.maps.Size( 71, 71 ),
@@ -158,7 +158,7 @@
         that.a_infowindow.open( that.map, that.a_marker );
     }
 
-    /** 
+    /**
      * Set up the zoom level for the map.
      */
     methods.setupZoom = function( that ) {
@@ -187,7 +187,7 @@
         } else {
             content = content.replace( /{thumbnail}/g, marker.thumbnail );
         }
-        
+
         content = content.replace( /{title}/g, marker.title );
         content = content.replace( /{link}/g, marker.link );
         content = content.replace( /{description}/g, marker.description );
@@ -195,7 +195,7 @@
         return content;
     };
 
-    /** 
+    /**
      * Check if an value is defined in the dataset for a particular key.
      *
      * @param   string key
@@ -229,16 +229,16 @@
                     long = position.coords.longitude;
                 });
 
-            } 
+            }
 
             /* If the latitude has not been set, we couldn't grab the coordinates via geolocation. */
-            if ( 'undefined' === typeof( lat ) ) {            
+            if ( 'undefined' === typeof( lat ) ) {
                 lat  = parseFloat( CHARITABLE_GEOLOCATION.default_lat );
                 long = parseFloat( CHARITABLE_GEOLOCATION.default_long );
             }
 
         }
-        
+
         return new google.maps.LatLng( lat, long );
     }
 
@@ -261,17 +261,17 @@
                 });
 
             } else {
-                that.map.setCenter( methods.getMapCenter( that ) );                
+                that.map.setCenter( methods.getMapCenter( that ) );
             }
         };
 
-        if ( null !== tab ) {  
+        if ( null !== tab ) {
 
-            tab.addEventListener( 'click', function() {                
+            tab.addEventListener( 'click', function() {
 
                 setup( that );
 
-                google.maps.event.trigger( that.map, 'resize' );    
+                google.maps.event.trigger( that.map, 'resize' );
 
             });
 
@@ -340,6 +340,6 @@
         }
     }
 
-    window.onload = initializeMaps;    
+    window.onload = initializeMaps;
 
 })( window, document );
