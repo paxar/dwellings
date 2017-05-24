@@ -5,7 +5,7 @@
  * The responsibility of this class is to load all the plugin's functionality.
  *
  * @package     Charitable Stripe
- * @copyright   Copyright (c) 2016, Eric Daams
+ * @copyright   Copyright (c) 2017, Eric Daams
  * @license     http://opensource.org/licenses/gpl-1.0.0.php GNU Public License
  * @since       1.0.0
  */
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Charitable_Stripe' ) ) :
 		/**
 		 * The plugin version.
 		 */
-		const VERSION = '1.2.1';
+		const VERSION = '1.2.2';
 
 		/**
 		 * The plugin database version.

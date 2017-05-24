@@ -7,7 +7,7 @@
  * @package     Charitable Stripe/Functions/Recurring Donations
  * @version     1.2.0
  * @author      Eric Daams
- * @copyright   Copyright (c) 2016, Eric Daams
+ * @copyright   Copyright (c) 2017, Eric Daams
  * @license     http://opensource.org/licenses/gpl-3.0.php GNU Public License
  */
 

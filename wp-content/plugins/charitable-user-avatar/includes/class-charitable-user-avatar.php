@@ -24,7 +24,7 @@ class Charitable_User_Avatar {
 	/**
      * @var string
      */
-	const VERSION = '1.0.2';
+	const VERSION = '1.0.3';
 
 	/**
      * @var string 	A date in the format: YYYYMMDD

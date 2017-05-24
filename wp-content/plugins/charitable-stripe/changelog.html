@@ -1,3 +1,12 @@
+<h3>1.2.2</h3>
+<em>May 16, 2017</em>
+<ul>
+    <li>Include the customer's address, phone number and name in the metadata sent to Stripe.</li>
+    <li>Improved cross-referencing with Stripe by including links to the Stripe records from the Charitable donation log.</li>
+    <li>Ensure that recurring donation plans created in test mode are differentiated from plans created in live mode. This avoids a bug when you switched from test mode to live, where you could not make recurring donations to campaigns that had already received a recurring donation while in test mode.</li>
+    <li>Resolved a bug that prevented payments for recurring donations from being marked as refunded after they are refunded in the Stripe dashboard.</li>
+    <li>Use <a href="https://stripe.com/docs/connect/shared-customers" target="_blank">Shared Customers</a> for platforms using Stripe alongside our Connect integration.</li>
+</ul>
 <h3>1.2.1</h3>
 <em>March 16, 2017</em>
 <ul>

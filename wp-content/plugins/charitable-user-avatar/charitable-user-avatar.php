@@ -3,11 +3,11 @@
  * Plugin Name: 		Charitable - User Avatar
  * Plugin URI: 			http://wpcharitable.com/extensions/charitable-user-avatar/
  * Description: 		Allow your donors and campaign creators to upload their own avatar.
- * Version: 			1.0.2
+ * Version: 			1.0.3
  * Author: 				Studio 164a
  * Author URI: 			http://164a.com
  * Requires at least: 	4.1
- * Tested up to: 		4.5.2
+ * Tested up to: 		4.7.3
  *
  * Text Domain: 		charitable-user-avatar
  * Domain Path: 		/languages/

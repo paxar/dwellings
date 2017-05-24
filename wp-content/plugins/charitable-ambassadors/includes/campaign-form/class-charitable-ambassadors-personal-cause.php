@@ -31,9 +31,9 @@ if ( ! class_exists( 'Charitable_Ambassadors_Personal_Cause' ) ) :
 		 */
 		public static function register() {
 			$args = apply_filters( 'charitable_ambassadors_personal_recipient_type', array(
-				'label' => __( 'Your Cause', 'charitable-ambassadors' ),
-				'description' => __( 'You are raising money for a personal cause. You will receive the donations.', 'charitable-ambassadors' ),
-				'admin_label' => __( 'Personal Causes', 'charitable-ambassadors' ),
+				'label'             => __( 'Your Cause', 'charitable-ambassadors' ),
+				'description' 	    => __( 'You are raising money for a personal cause. You will receive the donations.', 'charitable-ambassadors' ),
+				'admin_label' 		=> __( 'Personal Causes', 'charitable-ambassadors' ),
 				'admin_description' => __( 'Campaign creators raise money for their own cause. You will send them the funds raised by their campaign.', 'charitable-ambassadors' ),
 			) );
 
@@ -43,8 +43,8 @@ if ( ! class_exists( 'Charitable_Ambassadors_Personal_Cause' ) ) :
 		/**
 		 * Add payment details fields to the campaign form.
 		 *
-		 * @param   array[] $fields
-		 * @param   Charitable_Ambassadors_Campaign_Form $form
+		 * @param   array[] 							 $fields Fields in the payment section of the form.
+		 * @param   Charitable_Ambassadors_Campaign_Form $form   Form object.
 		 * @return  array[]
 		 * @access  public
 		 * @static
@@ -75,9 +75,9 @@ if ( ! class_exists( 'Charitable_Ambassadors_Personal_Cause' ) ) :
 		/**
 		 * Add the funding data to the campaign admin.
 		 *
-		 * @param   array[] $data
-		 * @param   Charitable_Campaign $campaign
-		 * @param   array $recipient_type
+		 * @param   array[]             $data     		Default data to show.
+		 * @param   Charitable_Campaign $campaign       Campaign object.
+		 * @param   string 			    $recipient_type The type of recipient.
 		 * @return  array[]
 		 * @access  public
 		 * @static

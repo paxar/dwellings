@@ -299,7 +299,7 @@ CHARITABLE = window.CHARITABLE || {};
      * @return  string
      */
     Donation_Form.prototype.get_amount = function() {        
-        var amount = suggested = parseFloat( this.form.find( '[name=donation_amount]:checked' ).val() );
+        var amount = suggested = parseFloat( this.form.find( '[name=donation_amount]:checked, input[type=hidden][name=donation_amount]' ).val() );
 
         if ( isNaN( suggested ) ) {
             var custom = this.form.find( '.charitable-donation-options.active .custom-donation-input' );
@@ -677,8 +677,21 @@ CHARITABLE = window.CHARITABLE || {};
          * Hide toggle target.
          */
         var hide_target = function() {
-            $( '#' + $(this).data('charitable-toggle') ).addClass( 'charitable-hidden' );
+            get_target( $(this) ).addClass( 'charitable-hidden' );
         };
+
+        /**
+         * Get the target element.
+         */
+        var get_target = function( $el ) {
+            var target = $el.data('charitable-toggle');
+
+            if ( target[0] !== '.' && target[0] !== '#' ) {
+                target = '#' + target;
+            } 
+
+            return $( target );
+        }
 
         /**
          * Toggle event handler for any fields with the [data-charitable-toggle] attribute.
@@ -687,10 +700,14 @@ CHARITABLE = window.CHARITABLE || {};
          */
         var on_toggle = function() {
 
-            var $this = $( this ),
-                target = $this.data( 'charitable-toggle' );
+            var $this  = $( this ), 
+                hidden = (function(){
+                    if ( $this.is( ':checkbox' ) ) {
+                        return ! $this.is( ':checked' );
+                    }
+                })();            
 
-            $( '#' + target ).toggleClass( 'charitable-hidden', $this.is( ':checked' ) );
+            get_target( $this ).toggleClass( 'charitable-hidden', hidden );
 
             return false;
 

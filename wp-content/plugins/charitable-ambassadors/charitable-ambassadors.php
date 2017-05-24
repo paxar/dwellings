@@ -3,11 +3,11 @@
  * Plugin Name: 		Charitable - Ambassadors
  * Plugin URI: 			https://wpcharitable.com/extensions/charitable-ambassadors/
  * Description: 		Transform your website into a platform for peer to peer fundraising or crowdfunding.
- * Version: 			1.1.13
+ * Version: 			1.1.14
  * Author: 				WP Charitable
  * Author URI: 			https://wpcharitable.com
  * Requires at least: 	4.1
- * Tested up to: 		4.7.3
+ * Tested up to: 		4.7.4
  *
  * Text Domain: 		charitable-ambassadors
  * Domain Path: 		/languages/
@@ -17,7 +17,7 @@
  * @author 				Studio164a
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) { exit; } //end if
 
 /**
  * Load plugin class, but only if Charitable and Easy Digital Downloads are found and activated.
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
  * @return 	void
  * @since 	1.0.0
  */
-function charitable_ambassadors_load() {	
+function charitable_ambassadors_load() {
 	require_once( 'includes/class-charitable-ambassadors.php' );
 
 	$has_dependencies = true;
@@ -43,11 +43,11 @@ function charitable_ambassadors_load() {
 		$activation = $activation->run();
 
 		$has_dependencies = false;
-	} 
+	}
 
 	/* Finally, if both Charitable and Easy Digital Downloads are installed, start the plugin */
 	if ( $has_dependencies ) {
-	
+
 		new Charitable_Ambassadors( __FILE__ );
 
 	}
@@ -56,7 +56,7 @@ function charitable_ambassadors_load() {
 add_action( 'plugins_loaded', 'charitable_ambassadors_load', 1 );
 
 /**
- * Activate plugin. 
+ * Activate plugin.
  *
  * @return 	void
  * @since 	1.0.0
@@ -66,14 +66,14 @@ function charitable_ambassadors_activate() {
 
 	Charitable_Ambassadors_Roles::add_roles();
 
-	set_transient( 'charitable_ambassadors_install', true, 0 );	
+	set_transient( 'charitable_ambassadors_install', true, 0 );
 }
 
 register_activation_hook( __FILE__, 'charitable_ambassadors_activate' );
-add_action( 'charitable_install', 'charitable_ambassadors_activate' );	
+add_action( 'charitable_install', 'charitable_ambassadors_activate' );
 
 /**
- * Deactivate plugin. 
+ * Deactivate plugin.
  *
  * @return 	void
  * @since 	1.0.0

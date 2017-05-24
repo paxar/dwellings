@@ -3,11 +3,11 @@
  * Plugin Name: 		Charitable - Stripe Payment Gateway
  * Plugin URI: 			https://www.wpcharitable.com/extensions/charitable-stripe/
  * Description: 		Adds the ability for your donors to make their donations through Stripe.
- * Version: 			1.2.1
+ * Version: 			1.2.2
  * Author: 				WPCharitable
  * Author URI: 			https://www.wpcharitable.com/
  * Requires at least: 	4.1
- * Tested up to: 		4.7.3
+ * Tested up to: 		4.7.4
  *
  * Text Domain: 		charitable-stripe
  * Domain Path: 		/languages/

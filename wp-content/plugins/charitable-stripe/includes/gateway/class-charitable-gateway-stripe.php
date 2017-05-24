@@ -5,13 +5,12 @@
  * @version     1.1.3
  * @package     Charitable/Classes/Charitable_Gateway_Stripe
  * @author      Eric Daams
- * @copyright   Copyright (c) 2016, Studio 164a
+ * @copyright   Copyright (c) 2017, Studio 164a
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 
@@ -476,6 +475,14 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 				'metadata'      	   => array(
 					'email'       => $donor->get_email(),
 					'donation_id' => $donation_id,
+					'name'		  => $donor->get_name(),
+					'phone'		  => $donor->get_donor_meta( 'phone' ),
+					'city'		  => $donor->get_donor_meta( 'city' ),
+					'country' 	  => $donor->get_donor_meta( 'country' ),
+					'address'	  => $donor->get_donor_meta( 'address' ),
+					'address_2'   => $donor->get_donor_meta( 'address_2' ),
+					'postcode'	  => $donor->get_donor_meta( 'postcode' ),
+					'state'		  => $donor->get_donor_meta( 'state' ),
 				),
 			);
 
@@ -532,21 +539,47 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 			}
 
 			/**
-			 * Some charge succeeded, but not all.
+			 * Some charges succeeded, but not all.
 			 */
 			if ( $has_failed_charges || $has_errors ) {
 				/**
-				 * @todo
-				 *
 				 * At this stage, it's not possible for a single donation
 				 * to contain multiple charges, since all donations are
 				 * for a single campaign.
+				 *
+				 * @todo
 				 */
 			}
 
 			$new_status = apply_filters( 'charitable_stripe_donation_status', 'charitable-completed', $charge_args, $donation );
 
 			$donation->update_status( $new_status );
+			
+			foreach ( wp_list_pluck( $charge_results, 'result' ) as $charge ) {
+				
+				/* Charge includes an application fee. */
+				if ( ! is_null( $charge->application_fee ) ) {
+
+					$donation->update_donation_log( sprintf( __( 'Stripe application fee: <a href="https://dashboard.stripe.com/%sapplications/fees/%s" target="_blank"><code>%s</code></a>', 'charitable-stripe' ),
+						$charge->livemode ? '' : 'test/',
+						$charge->application_fee,
+						$charge->application_fee
+					) );
+
+				}
+				
+				/* Charge is on our account (not directly on a connected account). */
+				if ( is_null( $charge->application ) || ! is_null( $charge->destination ) ) {
+
+					$donation->update_donation_log( sprintf( __( 'Stripe charge: <a href="https://dashboard.stripe.com/%spayments/%s" target="_blank"><code>%s</code></a>', 'charitable-stripe' ),
+						$charge->livemode ? '' : 'test/',
+						$charge->id,
+						$charge->id
+					) );	
+
+				}
+				
+			}
 
 			return true;
 		}
@@ -555,350 +588,56 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 		 * Attemps a Stripe charge and returns the status of the charge.
 		 *
 		 * @param   array                         $charge_args The arguments for the charge API request.
-		 * @param   Charitable_User               $donor The current user.
-		 * @param   Charitable_Donation_Processor $processor The Donation Processor helper object.
+		 * @param   Charitable_Donor              $donor       The current user.
+		 * @param   Charitable_Donation_Processor $processor   The Donation Processor helper object.
 		 * @return  string
 		 * @access  public
 		 * @since   1.1.0
 		 */
-		public function make_charge( $charge_args, $donor, $processor, $plan_args, $customer_args, $donation_amount ) {
+		public function make_charge( $charge_args, $donor, $processor ) {
 
 			$options = isset( $charge_args['options'] ) ? $charge_args['options'] : null;
 
 			unset( $charge_args['options'] );
 
-			/* If the donation was made by a logged in user, get their Stripe customer ID */
-			if ( $donor->ID ) {
+			/* Get (and maybe create) the donor's Stripe Customer ID. */
+			$charge_args['customer'] = $this->get_stripe_customer( $donor, $processor );
 
-				$charge_args['customer'] = $this->get_stripe_customer( $donor, $processor, $options );
-
-				if ( ! $charge_args['customer'] ) {
-
-					$this->save_charge_results( __( 'Unable to retrieve customer.', 'charitable-stripe' ), 'error' );
-					return;
-
-				}
+			if ( ! $charge_args['customer'] ) {
+				$this->save_charge_results( __( 'Unable to retrieve customer.', 'charitable-stripe' ), 'error' );
+				return;
 			}
 
 			/**
 			 * If a logged in user has made a donation with a card that wasn't already on file,
 			 * we need to set it up as a card with Stripe first.
 			 */
-			if ( ! $this->get_gateway_value( 'source', $processor->get_donation_data() ) && isset( $charge_args['customer'] ) ) {
+			if ( ! $this->get_gateway_value( 'source', $processor->get_donation_data() ) ) {
 				$charge_args['source'] = $this->get_customer_card( $charge_args['customer'], $charge_args['source'], $options );
 
 				if ( ! $charge_args['source'] ) {
-
 					$this->save_charge_results( __( 'Unable to set a payment source for the charge.', 'charitable-stripe' ), 'error' );
 					return;
-
 				}
 			}
 
 			/**
-			 * We're ready to proceed with the charge now.
+			 * When charges are made directly against different Stripe accounts, the
+			 * customer needs to be added to the connected Stripe account.
+			 *
+			 * @see 	https://stripe.com/docs/connect/shared-customers
 			 */
-
-			/* set existing customer plan */
-		  	$active_customer_args = array(
-		  		'customer' => $this->get_stripe_customer( $donor, $processor, $options ),
-				'plan' => $donation_amount,
-			);
-
-			/* check if recurring is active */
-			if ( $processor->get_donation_data_value( 'donation_period', false ) && ! $processor->get_donation_data_value( 'is_renewal', false ) ) {
+			if ( is_array( $options ) && isset( $options['stripe_account'] ) ) {
 
 				try {
-					$checkplan = \Stripe\Plan::retrieve( $checkplan_args );
-				} catch (Exception $e) {}
 
-	  			try {
-	  				$createplan = \Stripe\Plan::create( $plan_args );
-	  			} catch (Exception $e) {}
+					$token = \Stripe\Token::create(array(
+						'customer' => $charge_args['customer'],
+					), $options );
 
-		   		/* check if user is active */
-				if ( $donor->ID ) {
+					$charge_args['source'] = $token->id;
 
-		          	try {
-
-	    	      		$newsub = \Stripe\Subscription::create( $active_customer_args );
-
-						/**
-						 * If the charge failed, add an error message to be displayed.
-						 */
-						if ( '' === $newsub->id ) {
-
-							$message = is_null( $charge->failure_message ) ? __( 'There was an error processing your payment. Please try again.', 'charitable-stripe' ) : $charge->failure_message;
-
-							charitable_get_notices()->add_error( $message );
-
-						} else {
-
-		                     $this->save_charge_results( $newsub, 'succeeded' );
-		                }
-					} catch ( Stripe_CardError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] )
-							? $body['error']['message']
-							: __( 'There was an error processing your payment, please ensure you have entered your card number correctly.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_ApiConnectionError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = __( 'There was an error processing your payment (our payment gateways\'s API is down), please try again.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_InvalidRequestError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] )
-							? $body['error']['message']
-							: __( 'The payment gateway API request was invalid, please try again.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_ApiError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] )
-							? $body['error']['message']
-							: __( 'The payment gateway API request was invalid, please try again.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_AuthenticationError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] )
-							? $body['error']['message']
-							: __( 'The API keys entered in settings are incorrect', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_Error $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Exception $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					}
-
-		        } else {
-
-		 			try {
-
-		 				$customer = \Stripe\Customer::create( $customer_args );
-
-						/**
-						 * If the charge failed, add an error message to be displayed.
-						 */
-						if ( '' === $customer->id ) {
-
-							$message = is_null( $charge->failure_message ) ? __( 'There was an error processing your payment. Please try again.', 'charitable-stripe' ) : $charge->failure_message;
-
-							charitable_get_notices()->add_error( $message );
-
-						} else {
-		                      $this->save_charge_results( $customer, 'succeeded' );
-		                }
-		     		} catch ( Stripe_CardError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] )
-							? $body['error']['message']
-							: __( 'There was an error processing your payment, please ensure you have entered your card number correctly.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_ApiConnectionError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = __( 'There was an error processing your payment (our payment gateways\'s API is down), please try again.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_InvalidRequestError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] )
-							? $body['error']['message']
-							: __( 'The payment gateway API request was invalid, please try again.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_ApiError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] )
-							? $body['error']['message']
-							: __( 'The payment gateway API request was invalid, please try again.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_AuthenticationError $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] )
-							? $body['error']['message']
-							: __( 'The API keys entered in settings are incorrect', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Stripe_Error $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					} catch ( Exception $e ) {
-
-						$body = $e->getJsonBody();
-
-						$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
-
-						charitable_get_notices()->add_error( $message );
-
-						$this->save_charge_results( $body, 'error' );
-
-					}
-
-				}
-			} else {
-
-				try {
-
-			       	$charge = \Stripe\Charge::create( $charge_args, $options );
-
-					$this->save_charge_results( $charge, $charge->status );
-
-					/**
-					 * If the charge failed, add an error message to be displayed.
-					 */
-					if ( 'failed' === $charge->status ) {
-
-						$message = is_null( $charge->failure_message ) ? __( 'There was an error processing your payment. Please try again.', 'charitable-stripe' ) : $charge->failure_message;
-
-						charitable_get_notices()->add_error( $message );
-					}
-				} catch ( Stripe_CardError $e ) {
-
-					$body = $e->getJsonBody();
-
-					$message = isset( $body['error']['message'] )
-					? $body['error']['message']
-					: __( 'There was an error processing your payment, please ensure you have entered your card number correctly.', 'charitable-stripe' );
-
-					charitable_get_notices()->add_error( $message );
-
-					$this->save_charge_results( $body, 'error' );
-
-				} catch ( Stripe_ApiConnectionError $e ) {
-
-					$body = $e->getJsonBody();
-
-					$message = __( 'There was an error processing your payment (our payment gateways\'s API is down), please try again.', 'charitable-stripe' );
-
-					charitable_get_notices()->add_error( $message );
-
-					$this->save_charge_results( $body, 'error' );
-
-				} catch ( Stripe_InvalidRequestError $e ) {
-
-					$body = $e->getJsonBody();
-
-					$message = isset( $body['error']['message'] )
-						? $body['error']['message']
-						: __( 'The payment gateway API request was invalid, please try again.', 'charitable-stripe' );
-
-					charitable_get_notices()->add_error( $message );
-
-					$this->save_charge_results( $body, 'error' );
-
-				} catch ( Stripe_ApiError $e ) {
-
-					$body = $e->getJsonBody();
-
-					$message = isset( $body['error']['message'] )
-						? $body['error']['message']
-						: __( 'The payment gateway API request was invalid, please try again.', 'charitable-stripe' );
-
-					charitable_get_notices()->add_error( $message );
-
-					$this->save_charge_results( $body, 'error' );
-
-				} catch ( Stripe_AuthenticationError $e ) {
-
-					$body = $e->getJsonBody();
-
-					$message = isset( $body['error']['message'] )
-						? $body['error']['message']
-						: __( 'The API keys entered in settings are incorrect', 'charitable-stripe' );
-
-					charitable_get_notices()->add_error( $message );
-
-					$this->save_charge_results( $body, 'error' );
-
-				} catch ( Stripe_Error $e ) {
-
-					$body = $e->getJsonBody();
-
-					$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
-
-					charitable_get_notices()->add_error( $message );
-
-					$this->save_charge_results( $body, 'error' );
+					unset( $charge_args['customer'] );
 
 				} catch ( Exception $e ) {
 
@@ -910,8 +649,108 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 
 					$this->save_charge_results( $body, 'error' );
 
+					return;
+
+				}//end try
+
+			}//end if
+
+			/* We're ready to proceed with the charge now. */
+			try {
+
+		       	$charge = \Stripe\Charge::create( $charge_args, $options );
+
+				$this->save_charge_results( $charge, $charge->status );
+
+				/**
+				 * If the charge failed, add an error message to be displayed.
+				 */
+				if ( 'failed' === $charge->status ) {
+
+					$message = is_null( $charge->failure_message ) ? __( 'There was an error processing your payment. Please try again.', 'charitable-stripe' ) : $charge->failure_message;
+
+					charitable_get_notices()->add_error( $message );
 				}
-			}
+			} catch ( Stripe_CardError $e ) {
+
+				$body = $e->getJsonBody();
+
+				$message = isset( $body['error']['message'] )
+				? $body['error']['message']
+				: __( 'There was an error processing your payment, please ensure you have entered your card number correctly.', 'charitable-stripe' );
+
+				charitable_get_notices()->add_error( $message );
+
+				$this->save_charge_results( $body, 'error' );
+
+
+			} catch ( Stripe_ApiConnectionError $e ) {
+
+				$body = $e->getJsonBody();
+
+				$message = __( 'There was an error processing your payment (our payment gateways\'s API is down), please try again.', 'charitable-stripe' );
+
+				charitable_get_notices()->add_error( $message );
+
+				$this->save_charge_results( $body, 'error' );
+
+			} catch ( Stripe_InvalidRequestError $e ) {
+
+				$body = $e->getJsonBody();
+
+				$message = isset( $body['error']['message'] )
+					? $body['error']['message']
+					: __( 'The payment gateway API request was invalid, please try again.', 'charitable-stripe' );
+
+				charitable_get_notices()->add_error( $message );
+
+				$this->save_charge_results( $body, 'error' );
+
+			} catch ( Stripe_ApiError $e ) {
+
+				$body = $e->getJsonBody();
+
+				$message = isset( $body['error']['message'] )
+					? $body['error']['message']
+					: __( 'The payment gateway API request was invalid, please try again.', 'charitable-stripe' );
+
+				charitable_get_notices()->add_error( $message );
+
+				$this->save_charge_results( $body, 'error' );
+
+			} catch ( Stripe_AuthenticationError $e ) {
+
+				$body = $e->getJsonBody();
+
+				$message = isset( $body['error']['message'] )
+					? $body['error']['message']
+					: __( 'The API keys entered in settings are incorrect', 'charitable-stripe' );
+
+				charitable_get_notices()->add_error( $message );
+
+				$this->save_charge_results( $body, 'error' );
+
+			} catch ( Stripe_Error $e ) {
+
+				$body = $e->getJsonBody();
+
+				$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
+
+				charitable_get_notices()->add_error( $message );
+
+				$this->save_charge_results( $body, 'error' );
+
+			} catch ( Exception $e ) {
+
+				$body = $e->getJsonBody();
+
+				$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
+
+				charitable_get_notices()->add_error( $message );
+
+				$this->save_charge_results( $body, 'error' );
+
+			}//end try
 		}
 
 		/**
@@ -1048,22 +887,13 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 		 *
 		 * @param   Charitable_User|Charitable_Donor $donor The donor/user object for the logged in user.
 		 * @param   Charitable_Donation_Processor    $processor The Donation Procesor helper.
-		 * @param   null|array                       $options An optional array of arguments to be sent to Stripe.
-		 * @return  string
+		 * @return  string|false
 		 * @access  public
 		 * @since   1.0.0
 		 */
-		public function get_stripe_customer( $donor, Charitable_Donation_Processor $processor, $options = null ) {
+		public function get_stripe_customer( $donor, Charitable_Donation_Processor $processor ) {
 
 			$key = charitable_get_option( 'test_mode' ) ? self::STRIPE_CUSTOMER_ID_KEY_TEST : self::STRIPE_CUSTOMER_ID_KEY;
-
-			/**
-			 * When charges are made directly against different Stripe accounts, the
-			 * customer needs to be created as a customer of each Stripe account.
-			 */
-			if ( is_array( $options ) && isset( $options['stripe_account'] ) ) {
-				$key .= '_' . $options['stripe_account'];
-			}
 
 			/**
 			 * Retrieve current customer ID and verify that the customer still exists
@@ -1075,7 +905,7 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 
 				try {
 					/* Retrieve the customer object from Stripe. */
-					$cu = \Stripe\Customer::retrieve( $stripe_customer_id, $options );
+					$cu = \Stripe\Customer::retrieve( $stripe_customer_id );
 
 				} catch ( Stripe\Error\InvalidRequest $e ) {
 					$cu = null;
@@ -1086,33 +916,55 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 				}
 			}
 
+			/* No Stripe Customer ID found, so we're going to create one. */
 			if ( ! $stripe_customer_id ) {
-				$stripe_customer_args = apply_filters( 'charitable_stripe_customer_args', array(
-					'description'   => sprintf( '%s %s', __( 'Donor for', 'charitable-stripe' ), $donor->get_email() ),
-					'email'         => $donor->get_email(),
-					'metadata'      => array(
-						'donor_id'  => $processor->get_donor_id(),
-						'user_id'   => $donor->ID,
-					),
-				), $donor, $processor );
 
-				try {
-					$customer = \Stripe\Customer::create( $stripe_customer_args, $options );
+				$stripe_customer_id = $this->create_stripe_customer( $donor, $processor );
 
-					if ( isset( $customer->id ) ) {
-						$stripe_customer_id = $customer->id;
-						update_user_meta( $donor->ID, $key, $stripe_customer_id );
-					}
-				} catch ( Exception $e ) {
-
-					$body = $e->getJsonBody();
-					$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
-					charitable_get_notices()->add_error( $message );
-
+				/* Store the customer ID for logged in users. */
+				if ( $stripe_customer_id && $donor->ID ) {
+					update_user_meta( $donor->ID, $key, $stripe_customer_id );
 				}
 			}
 
 			return $stripe_customer_id;
+		}
+
+		/**
+		 * Create a Stripe Customer object through the API.
+		 *
+		 * @param   Charitable_Donor              $donor     The Donor object.
+		 * @param   Charitable_Donation_Processor $processor The Donation Procesor helper.
+		 * @return  string|false
+		 * @access  public
+		 * @since   1.2.2
+		 */
+		public function create_stripe_customer( $donor, Charitable_Donation_Processor $processor ) {
+
+			$stripe_customer_args = apply_filters( 'charitable_stripe_customer_args', array(
+				'description'   => sprintf( '%s %s', __( 'Donor for', 'charitable-stripe' ), $donor->get_email() ),
+				'email'         => $donor->get_email(),
+				'metadata'      => array(
+					'donor_id'  => $processor->get_donor_id(),
+					'user_id'   => $donor->ID,
+				),
+			), $donor, $processor );
+
+			try {
+				$customer = \Stripe\Customer::create( $stripe_customer_args );
+
+				return $customer->id;
+
+			} catch ( Exception $e ) {
+
+				$body = $e->getJsonBody();
+				$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
+				charitable_get_notices()->add_error( $message );
+
+				return false;
+
+			}
+
 		}
 
 		/**
@@ -1183,18 +1035,15 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 		 *
 		 * @param   string     $customer Stripe's customer ID.
 		 * @param   string     $card The customer's card details or token.
-		 * @param   null|array $options An optional array of arguments to be sent to Stripe.
-		 * @return  string Card ID
+		 * @return  string|false Card ID or false if Stripe returns an error.
 		 * @access  public
 		 * @since   1.0.0
 		 */
-		public function get_customer_card( $customer, $card, $options = null ) {
-
-			$card_id = false;
+		public function get_customer_card( $customer, $card ) {
 
 			try {
 
-				$cu = \Stripe\Customer::retrieve( $customer, $options );
+				$cu = \Stripe\Customer::retrieve( $customer );
 				$card = $cu->sources->create( array( 'source' => $card ) );
 				$card_id = $card->id;
 
@@ -1203,6 +1052,7 @@ if ( ! class_exists( 'Charitable_Gateway_Stripe' ) ) :
 				$body = $e->getJsonBody();
 				$message = isset( $body['error']['message'] ) ? $body['error']['message'] : __( 'Something went wrong.', 'charitable-stripe' );
 				charitable_get_notices()->add_error( $message );
+				$card_id = false;
 
 			}
 

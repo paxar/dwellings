@@ -21,7 +21,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Email_Creator_Donation_Notification
 	class Charitable_Ambassadors_Email_Creator_Donation_Notification extends Charitable_Email {
 
 		/**
-		 * @var     string
+		 * The ID of this email.
 		 */
 		const ID = 'creator_donation_notification';
 
@@ -35,21 +35,27 @@ if ( ! class_exists( 'Charitable_Ambassadors_Email_Creator_Donation_Notification
 		protected $has_recipient_field = false;
 
 		/**
-		 * @var     string[] Array of supported object types (campaigns, donations, donors, etc).
+		 * Object types (campaigns, donations, donors, etc) supported by this email.
+		 *
+		 * @var     string[]
 		 * @access  protected
 		 * @since   1.1.0
 		 */
 		protected $object_types = array( 'donation', 'creator' );
 
 		/**
-		 * @var     Charitable_User The campaign creator who will be receiving the email.
+		 * The campaign creator who will be receiving the email.
+		 *
+		 * @var     Charitable_User
 		 * @access  protected
 		 * @since   1.1.0
 		 */
 		protected $creator;
 
 		/**
-		 * @var     object[] The campaign donations received by the campaign creator in this donation.
+		 * The campaign donations received by the campaign creator in this donation.
+		 *
+		 * @var     object[]
 		 * @access  protected
 		 * @since   1.1.0
 		 */
@@ -58,7 +64,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Email_Creator_Donation_Notification
 		/**
 		 * Instantiate the email class, defining its key values.
 		 *
-		 * @param   mixed[]  $objects
+		 * @param   mixed[] $objects The objects used to create the email.
 		 * @access  public
 		 * @since   1.1.0
 		 */
@@ -91,7 +97,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Email_Creator_Donation_Notification
 		/**
 		 * Static method that is fired right after a donation is completed, sending the donation receipt.
 		 *
-		 * @param   int     $donation_id
+		 * @param   int $donation_id The donation ID.
 		 * @return  boolean
 		 * @access  public
 		 * @static
@@ -135,8 +141,8 @@ if ( ! class_exists( 'Charitable_Ambassadors_Email_Creator_Donation_Notification
 			foreach ( $creators as $creator_id => $campaign_donations ) {
 
 				$email = new Charitable_Ambassadors_Email_Creator_Donation_Notification( array(
-					'donation' => $donation,
-					'creator' => new Charitable_User( $creator_id ),
+					'donation' 			 => $donation,
+					'creator' 			 => new Charitable_User( $creator_id ),
 					'campaign_donations' => $campaign_donations,
 				) );
 
@@ -169,12 +175,20 @@ if ( ! class_exists( 'Charitable_Ambassadors_Email_Creator_Donation_Notification
 		 */
 		public function send() {
 			if ( is_null( $this->creator ) ) {
-				_doing_it_wrong( __METHOD__, __( 'You cannot send a creator donation notification without a Charitable_User object for the campaign creator.', 'charitable-ambassadors' ), '1.1.0' );
+				charitable_get_deprecated()->doing_it_wrong(
+					__METHOD__,
+					__( 'You cannot send a creator donation notification without a Charitable_User object for the campaign creator.', 'charitable-ambassadors' ),
+					'1.1.0'
+				);
 				return false;
 			}
 
 			if ( empty( $this->campaign_donations ) ) {
-				_doing_it_wrong( __METHOD__, __( 'You cannot send a creator donation notification without an array of campaign donations.', 'charitable-ambassadors' ), '1.1.0' );
+				charitable_get_deprecated()->doing_it_wrong(
+					__METHOD__,
+					__( 'You cannot send a creator donation notification without an array of campaign donations.', 'charitable-ambassadors' ),
+					'1.1.0'
+				);
 				return false;
 			}
 
@@ -296,7 +310,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Email_Creator_Donation_Notification
 		 * @since   1.1.0
 		 */
 		protected function get_default_recipient() {
-			return $this->creator->get_email();
+			return $this->creator->get( 'user_email' );
 		}
 
 		/**

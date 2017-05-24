@@ -38,11 +38,15 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		protected $page;
 
 		/**
+		 * The nonce action identifier.
+		 *
 		 * @var     string
 		 */
 		protected $nonce_action = 'charitable_campaign_submission';
 
 		/**
+		 * The nonce name.
+		 *
 		 * @var     string
 		 */
 		protected $nonce_name = '_charitable_campaign_submission_nonce';
@@ -145,8 +149,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Returns the value of a particular key.
 		 *
-		 * @param   string $key
-		 * @param   array $args Optional array of arguments.
+		 * @param   string $key The key of the field value we need.
 		 * @return  mixed
 		 * @access  public
 		 * @since   1.0.0
@@ -194,8 +197,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 
 						if ( empty( $thumbnail_id ) ) {
 							$value = '';
-						} // Backwards compatibility
-						elseif ( version_compare( charitable()->get_version(), '1.4.0', '<' ) ) {
+						} elseif ( version_compare( charitable()->get_version(), '1.4.0', '<' ) ) {
 							$value = wp_get_attachment_image( $thumbnail_id );
 						} else {
 							$value = $thumbnail_id;
@@ -206,17 +208,22 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 						$value = $campaign->get( 'suggested_donations' );
 						break;
 
+					case 'recurring_donations' :
+						$current = $campaign->get( 'recurring_donations' );
+						$value   = in_array( $current, array( 'simple', 'advanced' ) );
+						break;
+
 					default :
 						$data = $campaign->get( 'submission_data' );
 
 						if ( ! is_array( $data ) ) {
 							$value = '';
 						} else {
-							$value = array_key_exists( $key, $data ) ? $data[ $key ] : $campaign->get( $key ); // Fallback method
+							// Fallback.
+							$value = array_key_exists( $key, $data ) ? $data[ $key ] : $campaign->get( $key );
 						}
-
-				}
-			}
+				}//end switch
+			}//end if
 
 			return apply_filters( 'charitable_campaign_value', $value, $key, $campaign );
 		}
@@ -224,6 +231,8 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Returns the value of a particular key.
 		 *
+		 * @param 	string $key     The key to search for.
+		 * @param 	mixed  $default The default value to return if none is found.
 		 * @return  mixed
 		 * @access  public
 		 * @since   1.0.0
@@ -284,8 +293,8 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Adds hidden fields to the start of the donation form.
 		 *
-		 * @param   Charitable_Form     $form
-		 * @return  void
+		 * @param   Charitable_Form $form The form object.
+		 * @return  boolean
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -305,6 +314,8 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 			foreach ( $hidden_fields as $name => $value  ) {
 				printf( '<input type="hidden" name="%s" value="%s" />', $name, $value );
 			}
+
+			return true;
 		}
 
 		/**
@@ -318,10 +329,15 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 			$campaign_min = charitable_get_option( 'campaign_length_min' );
 			$campaign_max = charitable_get_option( 'campaign_length_max' );
 
-			if ( $campaign_min > 0 ) {
-				$campaign_length_placeholder = apply_filters( 'charitable_default_campaign_length', $campaign_min, $campaign_max, $campaign_min );
+			if ( empty( $campaign_max ) ) {
+				$campaign_length_placeholder = '&#8734;';
+				$length_required = false;
 			} else {
-				$campaign_length_placeholder = false;
+				if ( 0 == $campaign_min ) {
+					$campaign_min = 1;
+				}
+				$campaign_length_placeholder = apply_filters( 'charitable_default_campaign_length', $campaign_min, $campaign_max, $campaign_min );
+				$length_required = true;
 			}
 
 			$currency_symbol = is_callable( array( Charitable_Currency::get_instance(), 'get_currency_symbol' ) ) ? Charitable_Currency::get_instance()->get_currency_symbol() : '$';
@@ -362,7 +378,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 					'label'         => __( 'Length in Days', 'charitable-ambassadors' ),
 					'type'          => 'number',
 					'priority'      => 8,
-					'required'      => true,
+					'required'      => $length_required,
 					'placeholder'   => $campaign_length_placeholder,
 					'min'           => $campaign_min,
 					'max'           => $campaign_max,
@@ -440,7 +456,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		 * @since   1.0.0
 		 */
 		public function get_donation_options_fields() {
-			$donation_fields = apply_filters( 'charitable_campaign_submission_donation_options_fields', array(
+			$donation_fields = array(
 				'donation_options'  => array(
 					'type'          => 'paragraph',
 					'priority'      => 22,
@@ -461,7 +477,22 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 					'value'         => 1,
 					'data_type'     => 'meta',
 				),
-			), $this );
+			);
+
+			if ( class_exists( 'Charitable_Recurring' ) && charitable_get_option( 'allow_creators_to_create_recurring_campaigns', 0 ) ) {
+
+				$donation_fields['recurring_donations'] = array(
+					'type'			=> 'checkbox',
+					'label'			=> __( 'Allow your donors to give with monthly recurring donations.', 'charitable-ambassadors' ),
+					'priority'		=> 28,
+					'value'			=> '1',
+					'checked'     	=> $this->get_campaign_value( 'recurring_donations' ),
+					'data_type'     => 'meta',
+				);
+
+			}
+
+			$donation_fields = apply_filters( 'charitable_campaign_submission_donation_options_fields', $donation_fields, $this );
 
 			uasort( $donation_fields, 'charitable_priority_sort' );
 
@@ -629,9 +660,12 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		 * @since   1.0.0
 		 */
 		public function get_current_page() {
+
 			if ( ! isset( $this->current_page ) ) {
-				$pages = $this->get_pages();
+
+				$pages 				= $this->get_pages();
 				$this->current_page = $pages[ $this->get_current_page_number() ]['page'];
+
 			}
 
 			return $this->current_page;
@@ -750,6 +784,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Remove non-editable fields when we are editing a published campaign.
 		 *
+		 * @param 	array[] $fields The fields in the form.
 		 * @return  array[]
 		 * @access  public
 		 * @since   1.0.0
@@ -765,6 +800,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Remove "update only" fields when we are creating a new campaign.
 		 *
+		 * @param 	array[] $fields The fields in the form.
 		 * @return  array[]
 		 * @access  public
 		 * @since   1.0.0
@@ -780,7 +816,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Returns all fields as a merged array.
 		 *
-		 * @param   string  $page
+		 * @param   string $page The page we're on currently.
 		 * @return  array[]
 		 * @access  public
 		 * @since   1.0.0
@@ -805,9 +841,9 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Organize fields by data type, also filtering out unused parameters (we just need the key and the type).
 		 *
-		 * @param   string      $key
-		 * @param   array       $field
-		 * @param   array       $ret
+		 * @param   string $key   The key of the field.
+		 * @param   array  $field The field settings.
+		 * @param   array  $ret   Default return value.
 		 * @return  array[]
 		 * @access  public
 		 * @since   1.0.0
@@ -829,12 +865,18 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Verify that the current user can create or edit this campaign.
 		 *
-		 * @return  boolean
+		 * @return  boolean This will return true if the user can edit the campaign, or if this is a new campaign.
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function current_user_can_edit_campaign() {
-			return false === $this->get_campaign() || ( $this->get_campaign()->post_author == get_current_user_id() );
+			$campaign = $this->get_campaign();
+
+			if ( ! $campaign ) {
+				return true;
+			}
+
+			return $this->get_campaign()->post_author == get_current_user_id();
 		}
 
 		/**
@@ -852,8 +894,8 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 				return;
 			}
 
-			/* Confirm that the current user has permission to create/edit this campaign. */
-			if ( ! $form->current_user_can_edit_campaign() ) {
+			/* Confirm that the current user has permission to edit this campaign. */
+			if ( false !== $form->get_campaign() && ! $form->current_user_can_edit_campaign() ) {
 				return;
 			}
 
@@ -869,7 +911,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Save the campaign details.
 		 *
-		 * @param   Charitable_Ambassadors_Campaign_Form $form
+		 * @param   Charitable_Ambassadors_Campaign_Form $form The form object.
 		 * @return  void
 		 * @access  public
 		 * @static
@@ -954,9 +996,9 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Save the user data for this form.
 		 *
-		 * @param   array[] $fields
-		 * @param   array $submitted
-		 * @return  int $user_id
+		 * @param   array[] $fields    List of all form fields (not just user ones).
+		 * @param   array   $submitted The values submitted by the user.
+		 * @return  int     $user_id
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -985,10 +1027,10 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Create the campaign as a new object in the wp_posts table.
 		 *
-		 * @param   array[] $fields
-		 * @param   array $submitted
-		 * @param   int $user_id
-		 * @return  int $campaign_id
+		 * @param   array[] $fields      List of all form fields (not just user ones).
+		 * @param   array   $submitted   The values submitted by the user.
+		 * @param   int     $user_id     The ID of the user who submitted the form.
+		 * @return  int     $campaign_id The ID of the newly created campaign.
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -1050,8 +1092,8 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Save the raw submitted data as a JSON encoded array.
 		 *
-		 * @param   array $submitted
-		 * @param   int $campaign_id
+		 * @param   array $submitted   The values submitted by the user.
+		 * @param   int   $campaign_id The campaign ID.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -1063,9 +1105,9 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Save the campaign taxonomy data.
 		 *
-		 * @param   array[]     $fields
-		 * @param   array       $submitted
-		 * @param   int         $campaign_id
+		 * @param   array[] $fields      All the form fields.
+		 * @param   array   $submitted   The values submitted by the user.
+		 * @param   int     $campaign_id The campaign ID.
 		 * @return  void
 		 * @access  public
 		 * @since   1.0.0
@@ -1112,6 +1154,11 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 			/* We're formatting the end date ourselves, so no need to run this filter. */
 			remove_filter( 'charitable_sanitize_campaign_meta_campaign_end_date', array( 'Charitable_Campaign', 'sanitize_campaign_end_date' ) );
 
+			if ( class_exists( 'Charitable_Recurring' ) ) {
+				remove_filter( 'charitable_sanitize_campaign_meta_campaign_allow_custom_donations', 'charitable_recurring_sanitize_custom_donations', 11, 2 );
+				add_filter( 'charitable_sanitize_campaign_meta_campaign_recurring_donations', array( $this, 'sanitize_recurring_donations' ), 10, 3 );
+			}
+
 			foreach ( $fields['meta'] as $key => $field_type ) {
 
 				$meta_key = apply_filters( 'charitable_campaign_meta_key', '_campaign_' . $key, $key, $campaign_id );
@@ -1122,16 +1169,37 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 
 				$value = 'checkbox' == $field_type ? isset( $submitted[ $key ] ) : $submitted[ $key ];
 
+				/**
+				 * This filter is deprecated. Use charitable_sanitize_campaign_meta{$key} instead.
+				 *
+				 * @deprecated
+				 */
 				$value = apply_filters( 'charitable_sanitize_campaign_meta', $value, $meta_key, $submitted );
+
+				/**
+				 * Filter this meta value.
+				 *
+				 * The filter hook is charitable_sanitize_campaign_meta{$key}.
+				 *
+				 * For example, for _campaign_end_date the filter hook will be:
+				 *
+				 * charitable_sanitize_campaign_meta_campaign_end_date
+				 */
+				$value = apply_filters( 'charitable_sanitize_campaign_meta' . $meta_key, $value, $submitted, $campaign_id );
 
 				update_post_meta( $campaign_id, $meta_key, $value );
 
 				$updated_pairs[ $key ] = $value;
 
-			}
+			}//end foreach
 
 			/* Turn the filter back on. */
 			add_filter( 'charitable_sanitize_campaign_meta_campaign_end_date', array( 'Charitable_Campaign', 'sanitize_campaign_end_date' ) );
+
+			if ( class_exists( 'Charitable_Recurring' ) ) {
+				add_filter( 'charitable_sanitize_campaign_meta_campaign_allow_custom_donations', 'charitable_recurring_sanitize_custom_donations', 11, 2 );
+				remove_filter( 'charitable_sanitize_campaign_meta_campaign_recurring_donations', array( $this, 'sanitize_recurring_donations' ), 10, 3 );
+			}
 
 			return count( $updated_pairs );
 		}
@@ -1161,6 +1229,11 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 					 */
 					charitable_get_notices()->add_error( __( 'There was an error uploading your campaign image.', 'charitable-ambassadors' ) );
 				}
+			} elseif ( ! array_key_exists( 'image', $submitted ) ) {
+
+				/* The picture has been removed. */
+				$submitted['image'] = '';
+
 			}
 
 			return $submitted;
@@ -1185,7 +1258,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 			/* A length is set, so parse the end date based on that. */
 			if ( array_key_exists( 'length', $submitted ) ) {
 
-				if ( '0' == $submitted['length'] ) {
+				if ( '0' == $submitted['length'] || empty( $submitted['length'] ) ) {
 
 					/* This is an endless campaign. */
 					$submitted['end_date'] = 0;
@@ -1247,6 +1320,7 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		/**
 		 * Make sure the campaign length is a valid value.
 		 *
+		 * @param 	mixed $value The length specified by the user.
 		 * @return  int
 		 * @access  public
 		 * @since   1.0.0
@@ -1266,8 +1340,34 @@ if ( ! class_exists( 'Charitable_Ambassadors_Campaign_Form' ) ) :
 		}
 
 		/**
+		 * Sanitize the recurring donations meta.
+		 *
+		 * @param 	mixed $value       Current value of setting.
+		 * @param 	array $submitted   Values submitted by the user.
+		 * @param 	int   $campaign_id The ID of the campaign.
+		 * @return  string
+		 * @access  public
+		 * @since   1.1.14
+		 */
+		public function sanitize_recurring_donations( $value, $submitted, $campaign_id ) {
+			$current = get_post_meta( $campaign_id, '_campaign_recurring_donations', true );
+
+			if ( ! $value ) {
+				$value = 'disabled';
+			} elseif ( 'advanced' == $current ) {
+				$value = 'advanced';
+			} else {
+				$value = 'simple';
+			}
+
+			return $value;
+		}
+
+		/**
 		 * Set meta key for thumbnail ID.
 		 *
+		 * @param 	string $key 		 The meta key of the image.
+		 * @param 	string $original_key The original key.
 		 * @return  string
 		 * @access  public
 		 * @since   1.0.0

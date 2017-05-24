@@ -5,12 +5,13 @@
  * @version     1.2.0
  * @package     Charitable Stripe/Classes/Charitable_Stripe_Recurring
  * @author      Eric Daams
- * @copyright   Copyright (c) 2016, Eric Daams
+ * @copyright   Copyright (c) 2017, Eric Daams
  * @license     http://opensource.org/licenses/gpl-3.0.php GNU Public License
  */
 
-if ( ! defined( 'ABSPATH' ) ) { exit; // Exit if accessed directly
-}
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
 if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 
 	/**
@@ -117,7 +118,11 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 				/* Save the subscription ID. */
 				$recurring->set_gateway_subscription_id( $subscription->id );
 
-				$recurring->update_donation_log( sprintf( __( 'Stripe subscription ID: %s.', 'charitable-stripe' ), $subscription->id ) );
+				$recurring->update_donation_log( sprintf( __( 'Stripe subscription ID: <a href="https://dashboard.stripe.com/%ssubscriptions/%s" target="_blank"><code>%s</code></a>', 'charitable-stripe' ),
+					$subscription->livemode ? '' : 'test/',
+					$subscription->id,
+					$subscription->id
+				) );
 
 				$status = $this->get_subscription_status( $subscription );
 
@@ -199,7 +204,7 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 
 				$status = 'charitable-failed';
 
-			}
+			}//end try
 
 			if ( 'charitable-failed' == $status ) {
 				$recurring->set_to_failed( __( 'Initial subscription payment failed', 'charitable-stripe' ) );
@@ -237,6 +242,27 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 				charitable_recurring_get_donation_period_strings( $interval, $period )
 			);
 
+			/* Check whether the plan may have been created before. */
+			$plans    = get_post_meta( $campaign_id, 'stripe_donation_plans', true );
+			$plan_key = charitable_recurring_get_plan_key( $plan_args );
+
+			/* The plan exists in the database, so let's check whether it exists in Stripe. */
+			if ( is_array( $plans ) && array_key_exists( $plan_key, $plans ) ) {
+
+				try {
+
+					$plan = \Stripe\Plan::retrieve( $plan_id );
+
+					return $plan_id;
+
+				} catch ( Exception $e ) {
+
+					/* The plan doesn't exist in Stripe, so we still need to create it. Do nothing. */
+
+				}//end try
+
+			}//end if
+
 			try {
 
 				$plan = \Stripe\Plan::create( array(
@@ -255,9 +281,11 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 
 				/* Log the error message and return false. */
 				error_log( 'STRIPE - Error creating plan: ' . $e->getMessage() );
+
 				return false;
 
-			}
+			}//end try
+
 		}
 
 		/**
@@ -300,36 +328,21 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 		public function process_invoice_created( $event ) {
 
 			$invoice      = $event->data->object;
+
 			$subscription = charitable_recurring_get_subscription_by_gateway_id( $invoice->subscription, 'stripe' );
 
 			if ( empty( $subscription ) ) {
 				die( __( 'Recurring Donation IPN: Missing subscription', 'charitable-stripe' ) );
 			}
 
-			$status        = $invoice->paid ? 'charitable-completed' : 'charitable-pending';
-			$last_donation = $subscription->get_most_recent_donation_id();
+			/* Record the invoice in the subscription. */
+			$subscription->update_donation_log( sprintf( __( 'New invoice created for the subscription: <a href="https://dashboard.stripe.com/%sinvoices/%s" target="_blank"><code>%s</code></a>', 'charitable-stripe' ),
+				$invoice->livemode ? '' : 'test/',
+				$invoice->id,
+				$invoice->id
+			) );
 
-			if ( 'charitable-pending' == get_post_status( $last_donation ) ) {
-
-				$ipn_message = __( 'Recurring Donation IPN: Initial donation completed', 'charitable-stripe' );
-				$donation    = charitable_get_donation( $last_donation );
-
-				$donation->update_status( $status );
-
-			} else {
-
-				$ipn_message = __( 'Recurring Donation IPN: Recurring donation completed', 'charitable-stripe' );
-				$donation_id = $subscription->create_renewal_donation( array( 'status' => $status ) );
-				$donation    = charitable_get_donation( $donation_id );
-
-			}
-
-			$log_message = sprintf( '%s: %s', __( 'Stripe Transaction ID', 'charitable-stripe' ), $invoice->payment );
-
-			$donation->update_donation_log( $log_message );
-			$donation->set_gateway_transaction_id( $invoice->payment );
-
-			die( $ipn_message );
+			die( __( 'Recurring Donation IPN: Invoice created' ) );
 
 		}
 
@@ -350,19 +363,14 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 				die( __( 'Recurring Donation IPN: Missing subscription', 'charitable-stripe' ) );
 			}
 
-			$donation_id = $this->get_donation_by_gateway_transaction_id( $invoice->payment );
+			$subscription->set_to_failed( sprintf( __( 'Payment for invoice %s failed. Stripe charge: <a href="https://dashboard.stripe.com/%spayments/%s" target="_blank"><code>%s</code></a>', 'charitable-stripe' ),
+				$invoice->id,
+				$invoice->livemode ? '' : 'test/',
+				$invoice->charge,
+				$invoice->charge
+			) );
 
-			if ( is_null( $donation_id ) ) {
-				die( __( 'Recurring Donation IPN: Donation not found for failed payment.', 'charitable-stripe' ) );
-			}
-
-			$donation = charitable_get_donation( $donation_id );
-
-			$donation->update_status( 'charitable-failed' );
-
-			$subscription->set_to_failed( sprintf( __( 'Payment for donation #%d failed. Stripe Transaction ID: %s', 'charitable-stripe' ), $donation_id, $invoice->payment ) );
-
-			die( __( 'Recurring Donation IPN: Failed payment status', 'charitable-stripe' ) );
+			die( __( 'Recurring Donation IPN: Invoice payment failed', 'charitable-stripe' ) );
 
 		}
 
@@ -377,22 +385,53 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 		public function process_invoice_payment_succeeded( $event ) {
 
 			$invoice      = $event->data->object;
+
 			$subscription = charitable_recurring_get_subscription_by_gateway_id( $invoice->subscription, 'stripe' );
 
 			if ( empty( $subscription ) ) {
 				die( __( 'Recurring Donation IPN: Missing subscription', 'charitable-stripe' ) );
 			}
+			
+			/* The first donation is pending, which means this is the payment for that webhook. */
+			$first_donation = $subscription->get_first_donation_id();
 
-			$donation_id = $this->get_donation_by_gateway_transaction_id( $invoice->payment );
+			if ( 'charitable-pending' == get_post_status( $first_donation ) ) {
 
-			if ( is_null( $donation_id ) ) {
-				die( __( 'Recurring Donation IPN: Donation not found for successful payment.', 'charitable-stripe' ) );
+				$donation = charitable_get_donation( $first_donation );
+
+				$donation->update_status( 'charitable-completed' );
+
+			} else {
+
+				$donation_id = $subscription->create_renewal_donation( array( 'status' => 'charitable-completed' ) );
+				
+				$donation    = charitable_get_donation( $donation_id );
+
 			}
+			
+			$donation->set_gateway_transaction_id( $invoice->charge );
+			
+			$donation->update_donation_log( sprintf( __( 'Stripe charge: <a href="https://dashboard.stripe.com/%spayments/%s" target="_blank"><code>%s</code></a>', 'charitable-stripe' ),
+				$invoice->livemode ? '' : 'test/',
+				$invoice->charge,
+				$invoice->charge
+			) );
 
-			$donation = charitable_get_donation( $donation_id );
+			/* Store the donation_id in the charge's metadata to support refunds. */
+			try {
 
-			$donation->update_status( 'charitable-completed' );
+				$charge = \Stripe\Charge::retrieve( $invoice->charge );
 
+				$charge->metadata->donation_id = $donation->ID;
+
+				$charge->save();
+
+			} catch ( Exception $e ) {
+
+				$donation->update_donation_log( __( 'Unable to save donation ID to Stripe charge metadata.', 'charitable-stripe' ) );
+
+			}
+			
 			die( __( 'Recurring Donation IPN: Payment complete', 'charitable-stripe' ) );
 
 		}
@@ -446,9 +485,9 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 			if ( empty( $subscription ) ) {
 				die( __( 'Recurring Donation IPN: Missing subscription', 'charitable-stripe' ) );
 			}
-			
+
 			$subscription->update_status( 'charitable-cancelled' );
-	
+
 			die( __( 'Recurring Donation IPN: Recurring donation cancelled', 'charitable-stripe' ) );
 
 		}
@@ -510,4 +549,4 @@ if ( ! class_exists( 'Charitable_Stripe_Recurring' ) ) :
 		}
 	}
 
-endif; // End class_exists check
+endif;
