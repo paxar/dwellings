@@ -132,7 +132,7 @@ Template Name: Template main page
             <?php endif; ?>
 
             <div class="families-map">
-                <?php echo do_shortcode('[campaigns map=1 zoom=3]'); ?>
+                <?php echo do_shortcode('[campaigns map=1 zoom=6]'); ?>
             </div>
 
 
