@@ -233,8 +233,8 @@
 
             /* If the latitude has not been set, we couldn't grab the coordinates via geolocation. */
             if ( 'undefined' === typeof( lat ) ) {            
-                lat  = parseFloat( CHARITABLE_GEOLOCATION.default_lat );
-                long = parseFloat( CHARITABLE_GEOLOCATION.default_long );
+               lat  = parseFloat( CHARITABLE_GEOLOCATION.default_lat );
+               long = parseFloat( CHARITABLE_GEOLOCATION.default_long );
             }
 
         }
