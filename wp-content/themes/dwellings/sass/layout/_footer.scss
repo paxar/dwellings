@@ -4,10 +4,17 @@
     float: right;
   }
   .custom-logo-link {
-    width: 131px;
+    width: 140px;
+    height: 45px;
     margin-left: 15px;
     float: left;
-    filter: brightness(0);
+    img {
+      width: 100%;
+      height: auto;
+      -webkit-filter: brightness(0);
+      filter: brightness(0);
+      -moz-filter: brightness(0)
+    }
   }
   .nav-footer {
     margin-left: 45%;
@@ -40,6 +47,9 @@
     padding: 0;
   }
   .subscribe {
+    .mc4wp-form {
+      padding-top: 10px;
+    }
     label {
       display: block;
       margin: 0 15px;

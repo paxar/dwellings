@@ -812,10 +812,17 @@ em {
   padding: 7px 15px;
   z-index: 10; }
   .site-header .logo {
+    margin-top: 5px;
     float: left;
-    width: 131px;
-    height: 57px;
+    width: 140px;
+    height: 45px;
     overflow: hidden; }
+    .site-header .logo img {
+      width: 100%;
+      height: auto;
+      -webkit-filter: brightness(0);
+      filter: brightness(0);
+      -moz-filter: brightness(0); }
   .site-header .main-nav {
     float: right; }
     .site-header .main-nav .nav-btn {
@@ -889,7 +896,7 @@ em {
 
 .header-page {
   position: fixed;
-  background-color: #2d2620; }
+  background-color: rgba(45, 38, 32, 0.9); }
 
 .fixed-scroll {
   width: 100%;
@@ -929,7 +936,7 @@ em {
     z-index: 1; }
     .site-header .main-nav .navigation li {
       margin: 0;
-      padding: 0 10px; }
+      padding: 0 9px; }
       .site-header .main-nav .navigation li:last-child {
         padding-right: 0; }
       .site-header .main-nav .navigation li:first-child {
@@ -1060,11 +1067,16 @@ em {
   .site-footer .dev {
     float: right; }
   .site-footer .custom-logo-link {
-    width: 131px;
+    width: 140px;
+    height: 45px;
     margin-left: 15px;
-    float: left;
-    -webkit-filter: brightness(0);
-            filter: brightness(0); }
+    float: left; }
+    .site-footer .custom-logo-link img {
+      width: 100%;
+      height: auto;
+      -webkit-filter: brightness(0);
+      filter: brightness(0);
+      -moz-filter: brightness(0); }
   .site-footer .nav-footer {
     margin-left: 45%;
     -moz-column-count: 2;
@@ -1088,6 +1100,8 @@ em {
       margin-right: 15px; }
   .site-footer .col-xs-12 {
     padding: 0; }
+  .site-footer .subscribe .mc4wp-form {
+    padding-top: 10px; }
   .site-footer .subscribe label {
     display: block;
     margin: 0 15px; }
