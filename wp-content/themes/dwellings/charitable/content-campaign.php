@@ -163,7 +163,7 @@ if (empty($video)) {
             <?php dynamic_sidebar('sidebar-tabs-1'); ?>
         </div>
         <div id="panel4" class="tab-pane fade">
-            <?php echo do_shortcode('[campaigns map=1 zoom=2]'); ?>
+            <?php echo do_shortcode('[campaigns map=1 zoom=4]'); ?>
 
 
 
