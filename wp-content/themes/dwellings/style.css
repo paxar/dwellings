@@ -820,9 +820,9 @@ em {
     .site-header .logo img {
       width: 100%;
       height: auto;
-      -webkit-filter: brightness(0);
-      filter: brightness(0);
-      -moz-filter: brightness(0); }
+      -webkit-filter: brightness(6);
+      filter: brightness(6);
+      -moz-filter: brightness(6); }
   .site-header .main-nav {
     float: right; }
     .site-header .main-nav .nav-btn {
@@ -1074,9 +1074,9 @@ em {
     .site-footer .custom-logo-link img {
       width: 100%;
       height: auto;
-      -webkit-filter: brightness(5);
-      filter: brightness(5);
-      -moz-filter: brightness(5); }
+      -webkit-filter: brightness(0);
+      filter: brightness(0);
+      -moz-filter: brightness(0); }
   .site-footer .nav-footer {
     margin-left: 45%;
     -moz-column-count: 2;
