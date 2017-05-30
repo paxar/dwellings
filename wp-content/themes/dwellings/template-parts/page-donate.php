@@ -39,7 +39,7 @@ Template Name: Template donate page
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="donation-wrap">
-                                <div id="mcmeqeil46hzy"></div>
+                                <div id="mc5h7l7zhkkym9"><a href="https://app.moonclerk.com/pay/5h7l7zhkkym9">Dwellings General Donations</a></div><script type="text/javascript">var mc5h7l7zhkkym9;(function(d,t) {var s=d.createElement(t),opts={"checkoutToken":"5h7l7zhkkym9","width":"100%"};s.src='https://d2l7e0y6ygya2s.cloudfront.net/assets/embed.js';s.onload=s.onreadystatechange = function() {var rs=this.readyState;if(rs) if(rs!='complete') if(rs!='loaded') return;try {mc5h7l7zhkkym9=new MoonclerkEmbed(opts);mc5h7l7zhkkym9.display();} catch(e){}};var scr=d.getElementsByTagName(t)[0];scr.parentNode.insertBefore(s,scr);})(document,'script');</script>
                             </div>
                         </div>
                     </div>
